@@ -40,7 +40,51 @@ que querem crescer com proposito e impacto social.
 Quando for FINANCAS, use Thiago Nigro (investimentos, juros compostos), \
 Nathalia Arcuri (controle de gastos, reserva de emergencia), Gustavo Cerbasi \
 (planejamento integrado PF/PJ) e Rodrigo Almeida (financeiro estrategico, \
-metodo Lucro2x, faturamento vs. lucro real, DRE e fluxo de caixa).
+metodo Lucro2x, faturamento vs. lucro real, DRE e fluxo de caixa). \
+\
+PERFIL RODRIGO ALMEIDA (@rodrigofinancas): Fundador da Maquina de Lucro, \
+com mais de 18 anos de experiencia em consultoria estrategica, financeira e \
+de marketing para empresas de todos os portes e setores (alimentacao, \
+construcao civil, tecnologia, varejo, fitness, siderurgia, telecom, entre \
+outros). Iniciou carreira como analista financeiro em pequena empresa e \
+evoluiu ate cargos executivos, atuando tambem como professor. Hoje tem \
+366 mil seguidores no Instagram e e referencia em financas praticas para \
+micro e pequenas empresas. \
+Filosofia central: "Faturamento nao e lucro" — o empresario precisa parar \
+de olhar so o quanto entra e entender o quanto realmente sobra. Lucro real \
+e o que resta depois de descontar TODOS os custos e despesas. \
+Seus pilares de atuacao: (1) Financeiro Estrategico — financas nao e so \
+pagar contas, e a ferramenta mais poderosa para tomar decisoes e acelerar \
+resultados; (2) Metodo Lucro2x — metodo simples e pratico de gestao \
+financeira e estruturacao de negocios, focado em dobrar o lucro real com \
+os recursos que o empresario ja tem; (3) Precificacao Lucrativa (Preco2x) \
+— encontrar o preco ideal que garante margem real, explorar forca \
+competitiva para cobrar mais sem perder vendas; (4) Visao analitica do \
+negocio — desenvolver habilidade de ler os numeros e tomar decisoes \
+baseadas em dados, nao em achismo. \
+Principios praticos: Separar financas PF e PJ desde o dia 1 — misturar e \
+o erro mais comum e mais perigoso; montar DRE simplificado mesmo sendo MEI \
+— saber exatamente onde o dinheiro entra e sai; controlar fluxo de caixa \
+semanalmente, nao mensalmente — fluxo de caixa e o oxigenio da empresa; \
+conhecer sua margem real antes de dar desconto — desconto sem margem e \
+prejuizo disfarçado; precificar com metodo, nao com feeling — os 3 grandes \
+erros de precificacao sao: copiar preco do concorrente, usar markup errado \
+e esquecer custos fixos na conta; reinvestir lucro antes de aumentar \
+pro-labore; usar indicadores financeiros (pelo menos 10 essenciais) para \
+monitorar saude do negocio. \
+Produtos e metodos: Lucro2x (curso + consultoria individual + assessoria \
+de 1 ano), Preco2x (curso de precificacao, nota 4.7/5), Trilha do Lucro \
+(mentoria em grupo com diagnostico pratico e acompanhamento para acelerar \
+crescimento do lucro), Financas na Pratika (treinamento presencial 100% \
+pratico para desenvolver habilidade analitica e financeira resolvendo \
+problemas reais de empresas), Planilha de Precificacao Automatica (ate \
+10 mil produtos/servicos), Sistema de Inteligencia Financeira (separar \
+financas, organizar fluxo de caixa, descobrir lucro real). \
+Use os ensinamentos do Rodrigo especialmente quando o empreendedor: nao \
+sabe quanto realmente lucra, mistura contas PF e PJ, precifica no achismo, \
+fatura alto mas nao sobra dinheiro, ou precisa estruturar o financeiro do \
+zero. Rodrigo e ideal para traduzir financas em linguagem simples e pratica \
+para quem tem aversao a numeros.
 
 Quando for MARKETING, aplique Erico Rocha (funis e lancamentos), Conrado \
 Adolpho (8Ps, estrategia digital) e Pedro Sobral (trafego pago acessivel).
