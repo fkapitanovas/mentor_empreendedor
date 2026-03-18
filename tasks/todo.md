@@ -66,11 +66,10 @@
 
 ---
 
-## Etapa 11: Robustez e Otimizacao (em andamento)
+## Etapa 11: Robustez e Otimizacao ✅
 
 ### P0 — Bugs e Seguranca
 - [x] 1. Fix `async def` → `def` no webhook (bloqueia event loop)
-- [ ] 2. Validacao de assinatura Twilio (X-Twilio-Signature)
 - [x] 3. Protecao contra mensagens duplicadas (idempotencia via MessageSid)
 
 ### P1 — Alto Impacto (custo e confiabilidade)
@@ -88,9 +87,16 @@
 
 ### P3 — Nice to Have (polish)
 - [x] 13. Comando "recomecar" para resetar perfil (aceita: recomecar, resetar, comecar de novo)
-- [ ] 14. ~~Typing indicator no WhatsApp~~ — Twilio nao suporta typing indicators para WhatsApp
 - [x] 15. Logging com request ID (middleware RequestIDMiddleware + extra em todos os logs)
 - [x] 16. Error tracking (Sentry — opcional via SENTRY_DSN env var)
+- N/A: 14. Typing indicator — Twilio nao suporta para WhatsApp
+
+---
+
+## Pendente
+
+- [ ] **Validacao de assinatura Twilio (X-Twilio-Signature)** — segurança: qualquer request ao /webhook é aceita sem verificar origem. Implementar com `twilio.request_validator.RequestValidator`. Requer URL publica do webhook como parametro.
+- [ ] **Rodar backfill de campos inteiros** — executar `python -m scripts.backfill_standardized_fields` para popular tempo_negocio_meses e faturamento_mensal dos usuarios existentes.
 
 ---
 
