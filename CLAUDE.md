@@ -18,9 +18,10 @@ Chatbot via WhatsApp que funciona como mentor virtual para microempreendedores b
 - Diagnostico via conversa livre: Claude extrai perfil organicamente e sinaliza via tag `[PERFIL_EXTRAIDO]`
 
 ### Produção (Railway)
+- **URL**: https://faithful-intuition-production-82bb.up.railway.app
+- **Webhook Twilio**: https://faithful-intuition-production-82bb.up.railway.app/webhook
 - Deploy automático via `git push origin main`
 - Env vars configuradas no dashboard do Railway
-- Webhook Twilio aponta para URL do Railway + `/webhook`
 - `Procfile` define o comando de start
 - `runtime.txt` define Python 3.9.18
 

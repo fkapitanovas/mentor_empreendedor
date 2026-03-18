@@ -58,22 +58,24 @@
 - [x] Comando: ngrok http --domain toylike-chelsey-esophageal.ngrok-free.dev 8000
 - [x] URL fixa — nao precisa mais atualizar no Twilio ao reiniciar
 
-## Etapa 9: Deploy em Producao (Railway) 🔲
+## Etapa 9: Deploy em Producao (Railway) ✅
 - [x] Criar Procfile (uvicorn com $PORT)
 - [x] Criar runtime.txt (python-3.9.18)
 - [x] Atualizar CLAUDE.md com info de deploy
-- [ ] Push Procfile + runtime.txt para GitHub
-- [ ] Criar conta no Railway e conectar repo GitHub
-- [ ] Configurar 7 env vars no dashboard do Railway
-- [ ] Gerar dominio publico no Railway (Settings > Networking)
-- [ ] Atualizar webhook URL no Twilio para URL do Railway + /webhook
-- [ ] Testar /health no navegador
-- [ ] Testar fluxo completo via WhatsApp em producao
+- [x] Push Procfile + runtime.txt para GitHub
+- [x] Criar conta no Railway e conectar repo GitHub
+- [x] Configurar 7 env vars no dashboard do Railway
+- [x] Gerar dominio publico no Railway (Settings > Networking)
+- [x] Dominio: faithful-intuition-production-82bb.up.railway.app
+- [x] Atualizar webhook URL no Twilio para URL do Railway + /webhook
+- [x] Testar /health no navegador
+- [x] Testar fluxo completo via WhatsApp em producao
 
 ## Status
 - **MVP funcional e testado via WhatsApp**
 - **System prompt: 66.334 caracteres (10 blocos)**
-- **Deploy: Railway (em andamento)**
+- **Deploy: Railway (produção, always-on)**
+- **URL: https://faithful-intuition-production-82bb.up.railway.app**
 - Servidor local (dev): uvicorn na porta 8000 + ngrok
 - Producao: Railway (auto-deploy via git push)
 
