@@ -93,6 +93,77 @@ mas nao sabe por onde, mistura contas PF e PJ, nao tem reserva de emergencia, \
 quer criar multiplas fontes de renda, ou precisa de mentalidade financeira \
 para pensar no longo prazo. \
 \
+PERFIL NATHALIA ARCURI (@nathaliaarcuri — Me Poupe!): Jornalista que se tornou \
+a maior educadora financeira do Brasil. Ex-reporter da Record (R$13 mil/mes), \
+largou tudo pelo Me Poupe! em 2015. Alcancou primeiro milhao investido aos 32 \
+anos. +7.5 milhoes de inscritos no YouTube (maior canal de financas da America \
+Latina), impacta +15 milhoes de pessoas/mes. Eleita celebridade mais influente \
+do Brasil (Ipsos 2023) e Young Global Leader pelo Forum Economico Mundial. \
+Pioneira no conceito de "entretenimento financeiro" — torna financas acessiveis \
+com humor, linguagem coloquial e exemplos do dia a dia. Autora de "Me Poupe!" \
+(best-seller), "Guia Pratico Me Poupe!" e "Chefe de Mim" (para autonomos e MEIs). \
+Regra 50-30-20: 50% gastos fixos essenciais, 30% desejos pessoais, 20% prioridades \
+financeiras (dividas, reserva, investimentos). Alternativa 70/30 para quem ganha \
+pouco. Sistema das 3 Contas: Sobrevivencia, Sonhos e Liberdade. Metodo dos \
+Envelopes: dinheiro separado por categoria com limite fixo — acabou, acabou. \
+"Invista primeiro, gaste depois" — nunca funciona guardar o que sobra. \
+5 etapas para sair das dividas: (1) pare de fazer novas dividas (torniquete), \
+(2) raio-X completo (valores, juros, prazos), (3) priorize as mais caras \
+(cartao rotativo e cheque especial primeiro), (4) negocie com credores, \
+(5) metodo bola de neve (quite a menor primeiro, avance para as maiores). \
+Reserva de emergencia: 6-12 meses de despesas em investimento liquido (Tesouro \
+Selic, CDB liquidez diaria). Construir ANTES de investir para crescer. \
+Metodo N.A. para Autonomos (livro "Chefe de Mim"): separar PF de PJ, definir \
+pro-labore com contador, nao misturar dinheiro da empresa com pessoal, construir \
+reserva de caixa para a empresa separada da pessoal, entender diferenca entre \
+pegar emprestimo para pagar contas (ma gestao) vs. investir em crescimento. \
+Com apenas R$30-50/mes ja e possivel comecar a investir (Tesouro Direto, CDBs). \
+Frases-chave: "Poupar nao e so acumular dinheiro, e realizar sonhos." / \
+"Dinheiro e o meio, nunca o fim." / "Problemas financeiros sao mais sobre \
+cultura e comportamento do que sobre matematica." \
+Use quando o empreendedor: esta endividado e precisa de plano para sair, nao \
+consegue poupar, precisa montar reserva de emergencia, e autonomo/MEI e mistura \
+contas PF e PJ, ou precisa aprender a investir com pouco dinheiro. \
+\
+PERFIL GUSTAVO CERBASI (@gustavocerbasi): Maior referencia em educacao \
+financeira do Brasil. Administrador pela FGV, mestre em Financas pela USP, \
+especializacao em Financas pela NYU. Professor por quase 14 anos na FIA/USP. \
+Autor de 16 livros com +3 milhoes de exemplares vendidos. "Casais Inteligentes \
+Enriquecem Juntos" (+1.5 milhao de copias) inspirou a trilogia de filmes "Ate \
+que a Sorte nos Separe". +2 milhoes de seguidores no Instagram. +45 mil alunos \
+formados em cursos online. +11 milhoes de pessoas impactadas por aulas gratuitas. \
+Fundador do SuperRico (plataforma de saude financeira) e do IBMD. \
+Filosofia central: "Enriquecer e uma questao de escolha" / "E preciso inverter \
+a ordem: em vez de montar estilo de vida com base no que ganha, liste sonhos e \
+monte estilo de vida que permita realiza-los." \
+Planejamento integrado PF/PJ (essencial para MEIs): separar contas pessoais e \
+do negocio como prioridade absoluta, definir pro-labore fixo, nao corrigir \
+contas do negocio com dinheiro pessoal, nao retirar do fluxo de caixa para \
+uso pessoal, reinvestir excedente conforme planejado. Reserva de emergencia \
+DUPLA: pessoal E empresarial. \
+7 pilares dos Casais Inteligentes: identificar perfil financeiro (5 perfis: \
+poupadores, gastadores, descontrolados, desligados, financistas), planejar \
+cedo, construir sonhos comuns, usar exemplo como ferramenta, disciplina com \
+contas, celebrar conquistas, conversar sobre dinheiro (maioria dos conflitos \
+conjugais se relaciona a dinheiro). \
+Empreendedores Inteligentes — 3 etapas de riqueza: (1) educacao para trabalho, \
+(2) educacao para empreender (negocio como investimento), (3) educacao para \
+investir. "Entender DO negocio (produto) e diferente de entender DE negocios \
+(gerar valor e resultados)." Indicadores para MEIs: rentabilidade, liquidez, \
+ponto de equilibrio. \
+A Riqueza da Vida Simples: distincao entre padrao de vida (aparencia) e \
+qualidade de vida (liberdade). Minimalismo inteligente — reduzir custos fixos \
+aumenta sobrevivencia do negocio e liberdade pessoal. \
+4 passos do metodo Cerbasi: reflexao sobre habitos prejudiciais, analise \
+qualitativa do orcamento, antecipacao de problemas futuros, acao baseada no \
+desconforto. Guardar pelo menos 20% da renda para investimentos. \
+Frases-chave: "Investir e multiplicar, nao somar." / "Investir mal e melhor \
+que nao investir." / "Educacao financeira e forca transformadora da sociedade." \
+Use quando o empreendedor: e casado e precisa alinhar financas do casal com o \
+negocio, mistura contas PF e PJ, precisa de planejamento financeiro integrado, \
+quer independencia financeira de longo prazo, ou precisa entender indicadores \
+basicos do negocio. \
+\
 PERFIL RODRIGO ALMEIDA (@rodrigofinancas): Fundador da Maquina de Lucro, \
 com mais de 18 anos de experiencia em consultoria estrategica, financeira e \
 de marketing para empresas de todos os portes e setores (alimentacao, \
