@@ -121,7 +121,43 @@ Adolpho (8Ps, estrategia digital) e Pedro Sobral (trafego pago acessivel).
 Quando for MENTALIDADE, use Joel Jota (alta performance, rotina) e Wendell \
 Carvalho (inteligencia emocional).
 
-Para INSPIRACAO, conte historias de Geraldo Rufino, Luiza Trajano e Abilio Diniz.
+Para INSPIRACAO, conte historias de Geraldo Rufino, Luiza Trajano e Abilio Diniz. \
+\
+PERFIL GERALDO RUFINO (@geraldoarufino): Nascido em Campos Altos/MG, criado na \
+Favela do Sape em SP, negro, orfao de mae aos 7 anos, comecou a trabalhar aos 8 \
+ensacando carvao e catando latinhas no lixao dos 9 aos 12 anos. Aos 13, entrou como \
+office boy no Playcenter, onde trabalhou 16 anos ate virar diretor de operacoes. Aos \
+25, comprou 2 caminhoes para fretes, mas ambos bateram sem seguro. Em vez de desistir, \
+desmontou os caminhoes e vendeu as pecas — nasceu a JR Diesel, hoje a maior \
+recicladora de pecas de caminhoes da America Latina, com faturamento de R$50 milhoes/ano \
+e crescimento de 30% ao ano. Quebrou 6 vezes e se reergueu de todas. Autor dos \
+best-sellers "O Catador de Sonhos" e "O Poder da Positividade", com mais de 300 mil \
+copias vendidas. Mais de 1.400 palestras (incluindo TEDx), 4 milhoes de seguidores \
+no Instagram. Professor de empreendedorismo na PUCRS e Fael-SP. \
+Filosofia central: "Empreender e comportamento — e dedicacao e paixao naquilo que \
+voce esta fazendo." / "O tempo nao e dificil, e apenas diferente." \
+Seus 3 pilares de sucesso: (1) Trabalho arduo — dedicar 12h por dia ao seu projeto, \
+"so o que cai do ceu e chuva, o resto a gente faz acontecer"; (2) Entusiasmo — \
+manter positividade apesar das falencias, aprender com cada queda em vez de desistir; \
+(3) Familia — "crescer sozinho nao vale a pena", tratar funcionarios como familia. \
+Os 7 principios da positividade (livro "O Poder da Positividade"): familia como base, \
+humildade (ninguem e superior a ninguem), positividade (gentileza gera gentileza), \
+paixao (contagiosa e diferenciadora), nao julgar, praticar o bem sem esperar retorno, \
+ser feliz (riqueza nao garante felicidade). \
+Principios praticos para o MEI: "na crise ninguem poe fogo no dinheiro, ele so muda \
+de mao — va busca-lo"; nao pule degraus, avance um de cada vez com entusiasmo; \
+transforme problemas em oportunidades (ele descobriu o negocio milionario no lixo); \
+construa credibilidade — ela permite melhores condicoes de negociacao; voce pode ter \
+mentalidade empreendedora mesmo sendo empregado ("saber empreender na condicao que \
+voce esta, inclusive no CNPJ do outro"); foque em pessoas, nao em curriculos; mude \
+o que pode, aceite o que nao pode mudar; em crises, identifique para onde o dinheiro \
+esta fluindo e va atras dele. \
+Bordao mais famoso: "Eu recolhia latinha e hoje tenho a maior empresa de pecas \
+seminovas da America Latina. So mudou o tamanho da lata." \
+Use a historia do Geraldo especialmente quando o empreendedor: esta desanimado ou \
+pensando em desistir, veio de origem humilde e duvida do proprio potencial, esta \
+enfrentando uma crise ou falencia, precisa de inspiracao para comecar com pouco, ou \
+precisa entender que o fracasso e parte do caminho e nao o fim dele.
 """.strip()
 
 # Bloco 3: Regras de Interacao (7 regras)
@@ -334,8 +370,18 @@ acao anterior), (2) identifique a rotina, (3) experimente recompensas diferentes
 habito de cada vez — pequenas mudancas geram grandes resultados ao longo do tempo.
 
 INSPIRACAO:
-- O Catador de Sonhos (Geraldo Rufino): De catador de lixo a empresario milionario. \
-Comece com o que tem, trate todos com respeito, nao tenha vergonha de comecar pequeno.
+- O Catador de Sonhos (Geraldo Rufino): De catador de latinhas na favela a dono \
+da maior recicladora de pecas de caminhoes da America Latina. Comece com o que tem, \
+nao tenha vergonha de comecar pequeno — "so mudou o tamanho da lata." Tres pilares: \
+trabalho arduo (12h/dia de dedicacao), entusiasmo (positividade apesar de 6 falencias) \
+e familia (crescer sozinho nao vale a pena). Problemas geram oportunidades quando \
+abordados com criatividade — ele descobriu um negocio milionario desmontando caminhoes \
+batidos. Nao pule degraus: avance um de cada vez. Na crise o dinheiro nao desaparece, \
+so muda de mao — va busca-lo. Credibilidade se constroi tijolo por tijolo e abre portas. \
+- O Poder da Positividade (Geraldo Rufino): 7 principios para blindar a mente — \
+familia como base, humildade, positividade (coisas boas retornam multiplicadas), paixao \
+pelo que faz, nao julgar, praticar o bem sem esperar retorno, e ser feliz independente \
+das posses. "A melhor maneira de nao ter medo do futuro e viver o seu melhor presente."
 - Sonho Grande (Cristiane Correa): Lemann, Telles e Sicupira — metas claras e \
 mensuraveis, corte custos desnecessarios, cerque-se de pessoas melhores, pense grande.
 """.strip()
