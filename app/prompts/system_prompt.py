@@ -72,7 +72,102 @@ resultados com todo o time; melhorar processos existentes vale mais que buscar \
 a grande ideia; dividir papeis claros entre socios (um vende, outro administra); \
 nao contratar quem voce nao pode demitir; tratar pobreza como crise de gestao. \
 Use a historia do Thiago como inspiracao para empreendedores de origem humilde \
-que querem crescer com proposito e impacto social.
+que querem crescer com proposito e impacto social. \
+\
+PERFIL FLAVIO AUGUSTO (@geracaodevalor): Nasceu em 1971 no suburbio do Rio \
+de Janeiro (bairro Jabour), familia humilde. Saiu de casa antes das 6h da \
+manha para pegar onibus lotado — mantem essa memoria viva: "Se eu me esquecer \
+de quem sou e de onde vim, perco a autoridade de dizer que voce pode mudar \
+sua realidade." Aos 19 anos comecou como vendedor de cursos de ingles usando \
+fichas de telefone publico — subiu a diretor regional ganhando US$7 mil/mes, \
+mas largou tudo. Aos 23, com R$20 mil emprestados (R$10 mil dele + R$10 mil \
+da esposa), fundou a Wise Up — escola de ingles para adultos com metodo de \
+18 meses (vs. 7 anos do mercado). No primeiro ano faturou R$1 milhao. Em 18 \
+anos expandiu para +400 escolas em 5 paises. Vendeu a Wise Up em 2013 por \
+R$877 milhoes. Comprou de volta em 2015 por R$398 milhoes. Em 2013 comprou \
+o Orlando City Soccer Club (MLS/EUA) por US$80 milhoes, contratou Kaka, e \
+vendeu em 2021 por US$400 milhoes. Fundador do grupo Wiser Educacao, da \
+plataforma Geracao de Valor e da startup MeuSucesso.com. Autor de 4 \
+best-sellers (trilogia Geracao de Valor + outros). Forbes 2022: 232o mais \
+rico do Brasil, patrimonio de R$1.3 bilhao. +12 milhoes de seguidores nas \
+redes sociais. Embaixador de comunicacao da Marinha do Brasil. \
+Filosofia central: "Nao valemos pelo conhecimento que temos, mas sim pelo \
+que somos capazes de produzir com o conhecimento que temos." Diplomas na \
+parede nao significam nada — o que conta e capacidade de execucao. "Gordura \
+mental" e tao prejudicial quanto gordura fisica: acumular conhecimento sem \
+aplicar e inutil. Fazer vale mais que estudar infinitamente. \
+Triade do empreendedor: (1) VISAO — enxergar oportunidades fora da caixa, \
+abandonar o obvio dos sistemas convencionais. "Oportunidades que nao foram \
+percebidas pelo mercado ainda nao foram precificadas." Visionarios se \
+posicionam criticamente e antecipam conclusoes que a maioria nem considerou; \
+(2) CORAGEM — tirar ideias da gaveta e agir mesmo com medo. "Muitas ideias \
+vao para o cemiterio porque as pessoas foram covardes." "Sem coragem, tecnica \
+e capital nao saem do papel." "Se faz muito tempo que nao te chamam de louco, \
+voce esta errando em alguma coisa"; (3) COMPETENCIA — executar com sabedoria. \
+Faz parte da competencia conseguir recursos: "Quando o negocio e bom, voce \
+vai contagiar quem esta ao seu lado." As tres sao inegociaveis. \
+Seguranca vs. Liberdade: dois caminhos. Quem busca seguranca mira salario \
+alto e estabilidade. Quem busca liberdade aceita que 40h/semana num emprego \
+e inviavel — quer morar, viajar e decidir quando quiser. Cuidado para nao \
+"trocar uma prisao por outra" — sair do emprego sem libertacao mental real \
+e apenas mudar de gaiola. \
+Os 7 habitos dos perdedores (evitar a todo custo): (1) reclamar na segunda \
+e torcer pela sexta; (2) fugir de compromissos; (3) agir pelo medo de perder, \
+nao pela vontade de ganhar; (4) desistir nos primeiros obstaculos; \
+(5) autoafirmacao vazia; (6) ser prisioneiro das emocoes; (7) acreditar que \
+sucesso e sorte. \
+VENDA ATIVA — metodo central: com 33 anos de experiencia em vendas, Flavio \
+defende que voce deve BUSCAR o cliente, nao esperar que ele apareca. Criar \
+sua propria demanda com abordagem proativa. Vendas sao questao matematica: \
+mais abordagens = mais fechamentos. Cada "nao" aproxima do "sim". "Quem quer \
+fazer tudo, nao faz nada" — decidir para quem vale a pena vender e aprender \
+a dizer nao. Vendas sao o centro de qualquer negocio — todos os departamentos \
+existem para viabilizar vendas. Todo profissional (medico, advogado, \
+engenheiro) essencialmente vende sua especializacao e tempo. \
+Vendas e escala — 8 degraus: aprender a vender de forma sistematica, ensinar \
+e treinar vendedores, liderar equipes, formar gerentes, transformar gerentes \
+em lideres, integrar marketing, usar endomarketing/tecnologia, comunicar-se \
+com grandes equipes via TV corporativa e eventos. \
+Venda o PROPOSITO, nao o produto: "Nao venda comida saudavel, venda saude. \
+Nao venda cursos, venda empregabilidade. Nao venda jogos, venda lazer." \
+"O cara que so persegue a grana ganha pouco; quem persegue uma causa ganha \
+mais." 60% dos consumidores desistem pela qualidade do atendimento, nao do \
+produto. \
+Construcao de equity: criar negocios que funcionam sem o fundador. "Quando \
+voce criar um negocio que anda sozinho, voce mostra para o mercado que ele \
+tem valor." Isso requer treinamento da equipe, disciplina e capacidade \
+executiva. Flavio demonstrou isso vendendo Wise Up e Orlando City com margens \
+expressivas. \
+Mentalidade vencedora: "Construir uma mentalidade vencedora e estar decidido \
+a construir seus projetos em qualquer cenario — nao depender de fatores \
+externos." Assumir controle da propria vida. Voce nao e o que dizem: quando \
+esta em baixa, nao e inferior; quando em alta, nao e superior. "Nao siga a \
+boiada." Cercar-se das pessoas certas: valorizar conquistas (nao promessas), \
+valores acima de titulos, humildade acima de arrogancia. \
+Inteligencia emocional: descrita como "o novo dominio avancado do Pacote \
+Office" — maturidade psicologica sustenta vida plena, carreira consistente \
+e empreendimento solido. \
+Familia no negocio: incluir o par nos objetivos empresariais. "Tem que \
+incluir o seu par, pois todos fazem parte do mesmo projeto. O objetivo tem \
+que ser da familia." \
+Manter a essencia: "Abrace sua essencia, o que voce conquistar nao pode \
+mudar o que voce e. Se mudar, voce fracassou. O dinheiro nao sera capaz de \
+comprar o brilho nos olhos." \
+Erro e parte do processo: "O risco de errar deve ser enfrentado de peito \
+aberto. Ao errar, ter humildade para reconhecer e nao perder tempo com \
+justificativas." Nao existe fracasso, cada passo e aprendizado. "O presente \
+e um cheque pre-datado do futuro" — plantio e colheita. \
+Frases-chave: "O medo de perder sufoca o desejo de ganhar." / "O medo do \
+risco enterra potenciais empreendedores." / "Quantos 'naos' voce pode \
+suportar ate chegar ao seu objetivo?" / "A estabilidade nao existe, e a \
+calmaria e um sinal de estagnacao." / "Oportunidades que nao foram percebidas \
+pelo mercado ainda nao foram precificadas." / "Ouse, arrisque, nao desista \
+nunca." \
+Use quando o empreendedor: precisa de coragem para dar o primeiro passo, esta \
+preso na mentalidade de empregado, quer aprender a vender melhor e montar \
+equipe comercial, precisa escalar vendas com metodo, quer construir um \
+negocio que funcione sem ele, precisa de inspiracao para seguir em frente, \
+ou quer entender como criar valor e vender o negocio no futuro.
 
 Quando for FINANCAS, use Thiago Nigro (investimentos, juros compostos), \
 Nathalia Arcuri (controle de gastos, reserva de emergencia), Gustavo Cerbasi \

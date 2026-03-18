@@ -8,28 +8,37 @@ Chatbot via WhatsApp que funciona como mentor virtual para microempreendedores b
 - **Database**: Supabase (PostgreSQL)
 - **Messaging**: Twilio (WhatsApp Sandbox)
 - **LLM**: Claude API (Anthropic) — modelo `claude-sonnet-4-6`
-- **Tunnel**: ngrok (plano free — URL muda a cada reinicio)
+- **Deploy**: Railway (produção, always-on)
+- **Tunnel (dev)**: ngrok (domínio estático gratuito — URL fixa, apenas para dev local)
 
 ### Architecture
 - 3 camadas: Diagnóstico → Orientação Temática → Personalização por Estágio
 - 5 pilares: Gestão, Finanças, Marketing, Mentalidade, Inspiração
-- System prompt modular (5 blocos): Identidade/Tom, Base de Conhecimento, Regras de Interação, Personalização, Resolução de Conflitos
+- System prompt modular (10 blocos): Identidade/Tom, Base de Conhecimento, Base de Livros, Regras de Interação, Personalização, Resolução de Conflitos, Referências Nicho, Base Institucional, Base Impulso Stone, Diagnóstico
 - Diagnostico via conversa livre: Claude extrai perfil organicamente e sinaliza via tag `[PERFIL_EXTRAIDO]`
 
-### How to Run
+### Produção (Railway)
+- Deploy automático via `git push origin main`
+- Env vars configuradas no dashboard do Railway
+- Webhook Twilio aponta para URL do Railway + `/webhook`
+- `Procfile` define o comando de start
+- `runtime.txt` define Python 3.9.18
+
+### Dev Local
 ```bash
 cd ~/Mentor_Empreendedor
 python3 -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 # Em outro terminal:
-ngrok http 8000
-# Copiar URL do ngrok e atualizar no Twilio sandbox (WHEN A MESSAGE COMES IN → URL/webhook)
+ngrok http --domain toylike-chelsey-esophageal.ngrok-free.dev 8000
+# Para dev local, trocar webhook no Twilio para URL ngrok + /webhook
 ```
 
 ### Key Gotchas
 - Python 3.9: usar `Optional[X]` do `typing`, nao `X | None`
 - Twilio envia telefone como `whatsapp:+55...` (~28 chars) — campo `phone` no DB e VARCHAR(50)
 - FastAPI com `Form(...)` requer pacote `python-multipart`
-- ngrok free gera URL nova a cada reinicio — atualizar no Twilio sandbox
+- ngrok (dev only): usar `--domain toylike-chelsey-esophageal.ngrok-free.dev` para manter URL fixa
+- Railway: env vars no dashboard (nunca no código). `load_dotenv()` funciona sem .env presente
 
 ## Workflow Orchestration
 
@@ -104,7 +113,7 @@ Mentor_Empreendedor/
 │   │   └── schemas.py        # Pydantic models
 │   └── prompts/
 │       ├── __init__.py
-│       └── system_prompt.py  # System prompt modular (5 blocos + nicho + diagnostico)
+│       └── system_prompt.py  # System prompt modular (10 blocos, ~66k chars)
 ├── sql/
 │   └── schema.sql            # Tabelas users + messages (rodar no Supabase)
 ├── tasks/
@@ -114,6 +123,8 @@ Mentor_Empreendedor/
 ├── .env.example
 ├── .gitignore
 ├── requirements.txt
+├── Procfile                 # Railway: comando de start (uvicorn)
+├── runtime.txt              # Railway: versão do Python
 └── CLAUDE.md
 ```
 
