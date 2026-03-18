@@ -183,8 +183,43 @@ REFERENCIAS_NICHO = """
 Ao identificar o setor do empreendedor, integre conceitos dos seguintes \
 especialistas nichados (sem necessariamente citar os nomes):
 
-- Confeitaria/Doces: Marrara Bortoloti (precificacao), Chef Leo Oliveira \
-(escala de producao), Confeiteiro Empreendedor (gestao de negocio de doces).
+- Confeitaria/Doces — nicho detalhado com 4 referencias principais: \
+\
+MARRARA BORTOLOTI (@marrarabortoloti): Confeiteira que comecou vendendo fatias \
+de bolo na rua com R$30 e transformou em imperio de educacao em confeitaria. \
+Hoje tem mais de 500 mil alunas em 24 paises. Criadora da Escola de Bolo 4.0 \
+(+100 videoaulas: massas, recheios, decoracao, bolos de andares, pasta americana) \
+e do Metodo Pascoa de Ouro (+400 mil alunas). Diferencial: ensina nao so receitas \
+mas GESTAO DO NEGOCIO — precificacao com planilha automatica (calcular custos reais, \
+margem e lucro por unidade), marketing para confeiteiras (atrair e fidelizar clientes \
+pelo Instagram), e estrategias de vendas. Filosofia: "qualquer pessoa pode viver de \
+confeitaria comecando da cozinha de casa com pouco investimento". Use quando a \
+empreendedora precisa precificar doces/bolos corretamente ou montar negocio do zero. \
+\
+CHEF LEO OLIVEIRA (@chefleoliveira): Chef e professora com mais de 30 anos de \
+experiencia, quase 3 milhoes de inscritos no YouTube e escola online com 20 mil \
+alunos ativos. Criadora do podcast "Confeitaria Lucrativa" (com Alisson Oliveira) \
+que ensina receitas, marketing, vendas e como trilhar caminho proprio na confeitaria. \
+Foco em escala de producao e tecnicas profissionais. Filosofia: "como meus alunos, \
+comecei no mesmo nivel" — ensina com base em experiencia real testada e aprovada. \
+Use quando a empreendedora quer profissionalizar a producao, escalar volume ou \
+transformar confeitaria caseira em negocio estruturado. \
+\
+CONFEITEIRO EMPREENDEDOR (@confeiteiroempreendedor): Perfil focado em gestao \
+de negocio de doces, com 200 mil seguidores no Instagram. Conteudo voltado para \
+confeiteiras que ja produzem mas precisam organizar o lado empresarial: gestao \
+financeira, organizacao de producao, atendimento ao cliente e como crescer sem \
+perder qualidade. Use quando a empreendedora ja sabe fazer doces mas precisa de \
+ajuda com o lado "empresa" do negocio. \
+\
+BRUNA RAMOS — "Bruna e Voce na Confeitaria" (@brunaconfeitaria): Canal no YouTube \
+com 150 mil inscritos, focado em receitas "faca e venda" — doces praticos, rapidos \
+e com baixo custo para gerar renda extra ou renda principal. Criadora do "Projeto \
+da Fortuna", desafio para mulheres construirem um 13o salario com confeitaria. \
+Especialidade: bolos de feira/fatias, doces no pote (faceis, baratos, alta demanda), \
+e receitas que qualquer pessoa consegue fazer mesmo sem experiencia. Use quando a \
+empreendedora esta comecando do zero, tem pouco capital e precisa de receitas \
+simples que vendam rapido.
 - Beleza/Estetica: Natalia Beauty (empreendedorismo em estetica), Lash \
 Business (gestao de negocio de cilios), Manicure Empreendedora (gestao de salao).
 - Marketing Digital: Ana Tex (vendas e funil simples), Camila Porto \
