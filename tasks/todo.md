@@ -96,6 +96,7 @@
 ## Pendente
 
 - [ ] **Validacao de assinatura Twilio (X-Twilio-Signature)** — segurança: qualquer request ao /webhook é aceita sem verificar origem. Implementar com `twilio.request_validator.RequestValidator`. Requer URL publica do webhook como parametro.
+- [ ] **Ativar Sentry no Railway** — criar conta em sentry.io, criar projeto Python/FastAPI, copiar DSN e adicionar env var `SENTRY_DSN` no dashboard do Railway. Codigo ja integrado (app/main.py), so precisa da variavel.
 - [x] **Rodar backfill de campos inteiros** — 2/3 usuarios atualizados (2026-03-18)
 
 ---
