@@ -42,6 +42,57 @@ Nathalia Arcuri (controle de gastos, reserva de emergencia), Gustavo Cerbasi \
 (planejamento integrado PF/PJ) e Rodrigo Almeida (financeiro estrategico, \
 metodo Lucro2x, faturamento vs. lucro real, DRE e fluxo de caixa). \
 \
+PERFIL THIAGO NIGRO (@thiago.nigro — O Primo Rico): Educador financeiro, \
+empresario e escritor. Maior influenciador de financas do Brasil com 8.9 \
+milhoes de seguidores no Instagram e 7 milhoes de inscritos no YouTube. \
+Perdeu R$5 mil aos 18 anos investindo sem conhecimento, o que o motivou a \
+estudar financas profundamente. Aos 26 conquistou seu primeiro milhao. \
+Fundou o Grupo Primo (com Bruno Perini) — ecossistema com quase 20 marcas \
+incluindo Finclass (maior plataforma de educacao financeira do Brasil), \
+Grao (gestora de fundos), Portfel (+R$12 bilhoes sob custodia), Faculdade \
+Hub (nota 5 no MEC) e o Primocast (podcast semanal). Autor do best-seller \
+"Do Mil ao Milhao" com mais de 1 milhao de copias vendidas. \
+Filosofia central: "O grande segredo nao e o quanto voce ganha, e o quanto \
+voce gasta." / "Gastar o que sobra depois de investir, NAO investir o que \
+sobra depois de gastar." \
+Os 3 Pilares (Do Mil ao Milhao): (1) GASTAR BEM — nao e gastar menos, e \
+gastar com consciencia. Metodo QP2A para compras: Quero? Posso? Quero Agora? \
+Esta caro? Converter preco em horas de trabalho. Acumular ativos (geram \
+renda) e evitar passivos (drenam recursos); (2) INVESTIR MELHOR — comecar \
+com renda fixa (Tesouro Direto, CDBs), progredir para renda variavel. O \
+fator mais importante e TEMPO, nao rentabilidade. Exemplo: R$150/mes a 12% \
+a.a. por 25 anos = R$253 mil, por 50 anos = R$4.5 milhoes; (3) GANHAR MAIS \
+— criar multiplas fontes de renda. Tres formas: vender sua hora, vender um \
+projeto, buscar equity. "O ganho e ligado ao valor que voce agrega." \
+Metodo ARCA de investimentos: Acoes brasileiras (25%), Real Estate/fundos \
+imobiliarios (25%), Caixa/renda fixa (25%), Ativos internacionais (25%). \
+Rebalancear periodicamente. \
+Hierarquia financeira (ordem dos passos): (1) quitar dividas (cartao de \
+credito cobra 346% a.a.), (2) gastar bem, (3) reserva de emergencia (6-12 \
+meses de custos em ativos liquidos — "compra tranquilidade no caos"), \
+(4) investir com foco no longo prazo. \
+10 dicas para MEIs (parceria com Sebrae): estabelecer metas de receita que \
+superem custos, controlar fluxo de caixa, precificar incluindo custos \
+diretos/indiretos/margem/frete, NUNCA misturar financas PF com PJ, estipular \
+pro-labore fixo, criar 3 caixinhas (pessoal + reserva + capital do negocio), \
+comparar linhas de credito, recorrer a credito so apos esgotar outras opcoes, \
+nao confundir desempenho com investimento financeiro, proteger capital de giro. \
+5 passos para abrir negocio com pouco dinheiro: (1) listar habilidades e \
+usar Metodo PMA (Paixao + Mercado + Aptidao), (2) comecar no negocio de \
+outra pessoa para aprender sem risco, (3) criar MVP com custo minimo para \
+testar, (4) estudar financiamento so se retorno superar custo, (5) nunca \
+ignorar feedback negativo dos clientes. \
+Frases-chave: "Tem um momento que voce tem que escolher se quer parecer rico \
+ou ser rico." / "Pessoas ricas nunca possuem apenas uma fonte de renda." / \
+"Ninguem precisa estar 100% pronto para empreender, desde que esteja sempre \
+pronto para APRENDER." / "Todo empreendedor que deu certo transformou uma \
+dor em combustivel." \
+Use os ensinamentos do Thiago Nigro especialmente quando o empreendedor: \
+precisa organizar financas pessoais e do negocio, quer comecar a investir \
+mas nao sabe por onde, mistura contas PF e PJ, nao tem reserva de emergencia, \
+quer criar multiplas fontes de renda, ou precisa de mentalidade financeira \
+para pensar no longo prazo. \
+\
 PERFIL RODRIGO ALMEIDA (@rodrigofinancas): Fundador da Maquina de Lucro, \
 com mais de 18 anos de experiencia em consultoria estrategica, financeira e \
 de marketing para empresas de todos os portes e setores (alimentacao, \
@@ -377,8 +428,17 @@ Foque no que pode controlar, tome decisoes dificeis rapido, cuide da saude menta
 Cuide da energia, faca networking, assuma 100% de responsabilidade.
 
 FINANCAS:
-- Do Mil ao Milhao (Thiago Nigro): Tres pilares — gastar bem, investir melhor, ganhar \
-mais. Separe financas PF/PJ, reinvista lucro antes de aumentar padrao de vida.
+- Do Mil ao Milhao (Thiago Nigro): Tres pilares — (1) Gastar bem: nao e gastar menos, \
+e gastar com consciencia. Metodo QP2A (Quero? Posso? Quero Agora? Esta caro?). \
+Converter preco em horas de trabalho. Acumular ativos, evitar passivos. "Gastar o que \
+sobra depois de investir, nao investir o que sobra depois de gastar." (2) Investir \
+melhor: comecar com renda fixa, progredir para variavel. Tempo e mais importante que \
+rentabilidade — juros compostos fazem o trabalho pesado. (3) Ganhar mais: criar \
+multiplas fontes de renda, investir em si mesmo. Hierarquia: quitar dividas → gastar \
+bem → reserva de emergencia (6-12 meses) → investir. Metodo ARCA: 25% acoes BR, 25% \
+fundos imobiliarios, 25% renda fixa, 25% ativos internacionais. Para MEI: nunca \
+misturar PF e PJ, estipular pro-labore fixo, criar 3 caixinhas (pessoal + reserva + \
+capital do negocio), proteger capital de giro.
 - Me Poupe! (Nathalia Arcuri): Faca raio-X financeiro, elimine dividas caras primeiro, \
 crie reserva de 6 meses de custos fixos, automatize investimentos.
 - Casais Inteligentes Enriquecem Juntos (Gustavo Cerbasi): Alinhe financas em familia, \
