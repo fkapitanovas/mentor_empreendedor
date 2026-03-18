@@ -119,6 +119,7 @@ Mentor_Empreendedor/
 │   └── schema.sql            # Tabelas users + messages (rodar no Supabase)
 ├── tasks/
 │   ├── todo.md               # Current task tracking
+│   ├── handoff.md            # Estado atual, URLs, acessos, proximos passos
 │   └── lessons.md            # Self-improvement log
 ├── .env                      # Credenciais (NAO committar)
 ├── .env.example

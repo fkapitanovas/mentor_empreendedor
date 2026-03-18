@@ -93,7 +93,10 @@
 + Contexto do Usuario (pos-onboarding, dinamico)
 
 ## Proximas melhorias possiveis
-- [ ] Deploy em producao (Railway) — Etapa 9 acima
+- [x] ~~Deploy em producao (Railway)~~ — Etapa 9 ✅
+- [ ] Sair do Twilio Sandbox → WhatsApp Business API (numero proprio, sem "join" code)
 - [ ] Testes automatizados
 - [ ] Rate limiting
 - [ ] Logging estruturado
+- [ ] Monitoramento e alertas (health check automatico, notificacao se bot cair)
+- [ ] Backup do Supabase (dados de usuarios e historico)
