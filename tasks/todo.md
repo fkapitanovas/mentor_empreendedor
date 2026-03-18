@@ -80,17 +80,17 @@
 - [x] 7. Rate limiting por telefone (~10 msgs/minuto)
 
 ### P2 — Impacto Medio (qualidade e observabilidade)
-- [ ] 8. Testes unitarios (parsing, webhook, extração de perfil)
-- [ ] 9. Smart message split (respeitar limites de palavra)
-- [ ] 10. Deep health check (verificar Supabase, Claude, Twilio)
-- [ ] 11. Backfill de campos inteiros para usuarios existentes
-- [ ] 12. Fix import fora de lugar em system_prompt.py
+- [x] 8. Testes unitarios (47 testes: parsing, split, idempotencia, rate limit)
+- [x] 9. Smart message split (respeitar limites de palavra/newline)
+- [x] 10. Deep health check (GET /health/deep — verifica Supabase, Claude, Twilio)
+- [x] 11. Backfill de campos inteiros (script: python -m scripts.backfill_standardized_fields)
+- [x] 12. Fix import fora de lugar em system_prompt.py
 
 ### P3 — Nice to Have (polish)
-- [ ] 13. Comando "recomecar" para resetar perfil
-- [ ] 14. Typing indicator no WhatsApp
-- [ ] 15. Logging com request ID (correlacao entre logs)
-- [ ] 16. Error tracking (Sentry ou equivalente)
+- [x] 13. Comando "recomecar" para resetar perfil (aceita: recomecar, resetar, comecar de novo)
+- [ ] 14. ~~Typing indicator no WhatsApp~~ — Twilio nao suporta typing indicators para WhatsApp
+- [x] 15. Logging com request ID (middleware RequestIDMiddleware + extra em todos os logs)
+- [x] 16. Error tracking (Sentry — opcional via SENTRY_DSN env var)
 
 ---
 

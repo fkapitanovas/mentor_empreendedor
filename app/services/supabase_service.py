@@ -62,6 +62,28 @@ def get_conversation_history(user_id: str, limit: int = 100) -> List[dict]:
     return list(reversed(result.data))
 
 
+def reset_user_profile(phone: str) -> dict:
+    """Reseta perfil do usuario para refazer onboarding."""
+    client = _get_client()
+    result = (
+        client.table("users")
+        .update({
+            "name": None,
+            "setor": None,
+            "estagio": None,
+            "tempo_negocio": None,
+            "faturamento": None,
+            "tempo_negocio_meses": None,
+            "faturamento_mensal": None,
+            "desafio_principal": None,
+            "is_onboarded": False,
+        })
+        .eq("phone", phone)
+        .execute()
+    )
+    return result.data[0]
+
+
 def get_message_count(user_id: str) -> int:
     """Retorna o total de mensagens do usuario."""
     client = _get_client()

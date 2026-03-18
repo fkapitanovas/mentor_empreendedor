@@ -1,5 +1,7 @@
 """System prompt modular do Mentor Empreendedor — 5 blocos."""
 
+from typing import Optional
+
 
 # Bloco 1: Identidade e Tom
 IDENTIDADE_E_TOM = """
@@ -1069,8 +1071,6 @@ Exemplos:
 - Usuario diz "ja faz 3 anos que comecei":
   [PERFIL_ATUALIZADO]{"tempo_negocio":"3 anos","tempo_negocio_meses":36,"estagio":"consolidado"}[/PERFIL_ATUALIZADO]
 """
-
-from typing import Optional
 
 
 def build_system_prompt(user_profile: Optional[dict] = None, summary: Optional[str] = None) -> str:

@@ -15,5 +15,7 @@ class Settings:
     TWILIO_AUTH_TOKEN: str = os.getenv("TWILIO_AUTH_TOKEN", "")
     TWILIO_WHATSAPP_FROM: str = os.getenv("TWILIO_WHATSAPP_FROM", "")
 
+    SENTRY_DSN: str = os.getenv("SENTRY_DSN", "")
+
 
 settings = Settings()

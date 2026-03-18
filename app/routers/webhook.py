@@ -1,15 +1,17 @@
 import logging
 import threading
 import time
+import uuid
 from typing import Dict
 
-from fastapi import APIRouter, Form, Response
+from fastapi import APIRouter, Form, Request, Response
 from app.services import supabase_service, mentor, twilio_service
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
 SUMMARY_TRIGGER_INTERVAL = 20
+_RESET_COMMANDS = {"recomecar", "recomeçar", "resetar", "comecar de novo", "começar de novo"}
 
 # --- Idempotency: track recently processed MessageSids ---
 _seen_sids: Dict[str, float] = {}
@@ -57,6 +59,7 @@ def _is_rate_limited(phone: str) -> bool:
 
 @router.post("/webhook")
 def whatsapp_webhook(
+    request: Request,
     From: str = Form(...),
     Body: str = Form(...),
     MessageSid: str = Form(""),
@@ -64,15 +67,19 @@ def whatsapp_webhook(
     """Recebe mensagem do Twilio WhatsApp e responde."""
     phone = From
     message = Body.strip()
+    req_id = getattr(request.state, "request_id", uuid.uuid4().hex[:8])
 
-    logger.info("Mensagem recebida de %s: %s", phone, message[:50])
+    logger.info("Mensagem recebida de %s: %s", phone, message[:50],
+                extra={"request_id": req_id})
 
     if MessageSid and _is_duplicate(MessageSid):
-        logger.info("Duplicate MessageSid %s, skipping", MessageSid)
+        logger.info("Duplicate MessageSid %s, skipping", MessageSid,
+                     extra={"request_id": req_id})
         return Response(status_code=200)
 
     if _is_rate_limited(phone):
-        logger.warning("Rate limit exceeded for %s", phone)
+        logger.warning("Rate limit exceeded for %s", phone,
+                        extra={"request_id": req_id})
         twilio_service.send_whatsapp_message(
             phone,
             "Calma, estou processando suas mensagens! Aguarde um minutinho antes de enviar mais.",
@@ -80,6 +87,17 @@ def whatsapp_webhook(
         return Response(status_code=200)
 
     try:
+        # Comando de reset: recomecar onboarding
+        if message.lower().strip() in _RESET_COMMANDS:
+            supabase_service.reset_user_profile(phone)
+            twilio_service.send_whatsapp_message(
+                phone,
+                "Pronto! Seu perfil foi resetado. Vamos comecar de novo — me conta, qual e o seu nome e o que voce faz?",
+            )
+            logger.info("Perfil resetado para %s", phone,
+                        extra={"request_id": req_id})
+            return Response(status_code=200)
+
         # 1. Identifica/cria usuario
         user = supabase_service.get_or_create_user(phone)
         user_id = user["id"]
@@ -99,7 +117,8 @@ def whatsapp_webhook(
         # 5. Se extraiu perfil (diagnostico ou atualizacao), atualiza no banco
         if profile_data:
             supabase_service.update_user_profile(phone, profile_data)
-            logger.info("Perfil atualizado para %s: %s", phone, profile_data)
+            logger.info("Perfil atualizado para %s: %s", phone, profile_data,
+                        extra={"request_id": req_id})
 
         # 6. Salva mensagens no historico
         supabase_service.save_message(user_id, "user", message)
@@ -116,7 +135,8 @@ def whatsapp_webhook(
         ).start()
 
     except Exception:
-        logger.exception("Erro ao processar mensagem de %s", phone)
+        logger.exception("Erro ao processar mensagem de %s", phone,
+                         extra={"request_id": req_id})
         twilio_service.send_whatsapp_message(
             phone,
             "Desculpe, tive um probleminha tecnico. Pode tentar de novo em alguns segundos?",
