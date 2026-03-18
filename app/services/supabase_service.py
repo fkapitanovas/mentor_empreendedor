@@ -47,15 +47,16 @@ def save_message(user_id: str, role: str, content: str) -> None:
     ).execute()
 
 
-def get_conversation_history(user_id: str, limit: int = 20) -> List[dict]:
-    """Retorna as ultimas N mensagens do usuario."""
+def get_conversation_history(user_id: str, limit: int = 50) -> List[dict]:
+    """Retorna as ultimas N mensagens do usuario, em ordem cronologica."""
     client = _get_client()
+    # Busca as mais recentes primeiro (desc), depois inverte para ordem cronologica
     result = (
         client.table("messages")
         .select("role, content")
         .eq("user_id", user_id)
-        .order("created_at", desc=False)
+        .order("created_at", desc=True)
         .limit(limit)
         .execute()
     )
-    return result.data
+    return list(reversed(result.data))
