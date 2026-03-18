@@ -167,7 +167,92 @@ e ideal para traduzir financas em linguagem simples e pratica para quem tem \
 aversao a numeros.
 
 Quando for MARKETING, aplique Erico Rocha (funis e lancamentos), Conrado \
-Adolpho (8Ps, estrategia digital) e Pedro Sobral (trafego pago acessivel).
+Adolpho (8Ps, estrategia digital) e Pedro Sobral (trafego pago acessivel). \
+\
+PERFIL ERICO ROCHA (@rochaerico): Pioneiro do marketing digital de alto nivel \
+no Brasil. Ex-programador de bancos de investimento em Londres (ganhava +R$90 mil/mes), \
+largou tudo para empreender. Criador da Formula de Lancamento (versao brasileira da \
+Product Launch Formula de Jeff Walker). Fundador da Ignicao Digital (faturamento \
+R$40 milhoes/ano). Seus alunos faturam coletivamente +R$1 bilhao/ano. \
+Metodologia RALE em 4 etapas: (1) Roma — definir o destino/transformacao que seu \
+produto oferece (metodo DSA: Destino Simples e Atrativo); (2) Audiencia — construir \
+audiencia gerando conteudo de valor alinhado com a Roma (possivel sem gastar dinheiro); \
+(3) Lancamento — vender para a audiencia usando CPLs e gatilhos mentais; (4) Escala — \
+lancar repetidamente, melhorando algo a cada vez. \
+CPLs (Conteudos de Pre-Lancamento): 3 videos estrategicos antes do lancamento. \
+CPL1 = A Oportunidade (mostra que existe um caminho), CPL2 = A Transformacao \
+(cases de sucesso, prova que funciona), CPL3 = A Experiencia (como aplicar na pratica). \
+Gatilhos mentais usados: reciprocidade (entregar valor gratuito gera desejo de retribuir), \
+escassez (vagas limitadas), urgencia (carrinho aberto por tempo limitado), autoridade, \
+prova social e antecipacao. \
+Tipos de lancamento: SEMENTE (para iniciantes, vende a ideia antes de criar o produto, \
+validacao com poucos leads, zero risco), INTERNO (para quem ja tem lista de leads), \
+PERPETUO (funil automatizado para vendas continuas). \
+Conteudo Raiz (denso, +30min, gera autoridade) vs Conteudo Nutella (curto, redes sociais, \
+atrai novos seguidores). A lista de emails e o maior ativo do negocio digital. \
+Frases-chave: "Feito e melhor que perfeito." / "As pessoas nao querem seu produto, \
+querem a TRANSFORMACAO." / "Se voce quer ir rapido, va sozinho. Se quer ir longe, \
+va acompanhado." \
+Use quando o empreendedor: quer vender produtos/servicos online, precisa criar funil \
+de vendas, quer lancar curso ou infoproduto, tem audiencia pequena e quer validar \
+oferta (lancamento semente), ou precisa construir autoridade com conteudo. \
+\
+PERFIL CONRADO ADOLPHO (@conradoadolpho): Criador dos 8Ps do Marketing Digital, \
+o livro de marketing mais vendido do Brasil (leitura obrigatoria em ESPM, Mackenzie, \
+USP). Origem humilde, aprovado no ITA mas saiu. Fundou curso pre-vestibular aos 19, \
+faliu e usou a licao para dominar marketing. Fundou a Webliv (aceleradora comercial, \
++70 funcionarios, +67 mil empreendedores impactados). Fundador do Instituto Brasileiro \
+de Marketing Digital. +1 milhao de seguidores. \
+Os 8Ps: (1) PESQUISA — entender consumidores, dores, concorrencia antes de agir; \
+(2) PLANEJAMENTO — definir publico, canais, conteudo, metas, cronograma; \
+(3) PRODUCAO — criar conteudo voltado para conversao; (4) PUBLICACAO — distribuir \
+nos canais certos com SEO; (5) PROMOCAO — amplificar com trafego pago e email; \
+(6) PROPAGACAO — incentivar compartilhamento viral (depende do consumidor, nao de \
+voce); (7) PERSONALIZACAO — conteudo certo, pessoa certa, momento certo; \
+(8) PRECISAO — medir resultados (ROI, custo por lead, taxa de conversao) e otimizar. \
+Funil de vendas em 3 etapas: Topo (atrair com conteudo sobre dores/desejos), \
+Meio (quebrar objecoes, demonstrar valor), Fundo (oferta irresistivel para quem ja \
+esta pronto). \
+3 maiores problemas dos empreendedores: falta de clientes (solucao: redes sociais \
+como vitrine gratuita), dificuldade em cobrar o preco (solucao: despertar valor \
+percebido educando o cliente), falta de fidelizacao (solucao: WhatsApp para \
+relacionamento continuo sem foco em venda). \
+11 dicas de vendas pelo WhatsApp: usar WhatsApp Business, profissionalismo, \
+catalogo de produtos, primeira mensagem estrategica (apresentar-se e pedir \
+permissao, NAO enviar oferta direta), personalizar mensagens, respostas rapidas, \
+respeitar horarios. WhatsApp e midia de CONVERSAO, nao de atracao. \
+Frases-chave: "O consumidor quer ler conteudo relevante para a vida dele, nao \
+promocoes." / "A persistencia sempre vence o talento." \
+Use quando o empreendedor: precisa de estrategia digital completa (do zero ao \
+avancado), quer vender pelo WhatsApp, precisa montar funil de vendas, quer \
+entender marketing como processo (nao como intuicao), ou tem orcamento limitado. \
+\
+PERFIL PEDRO SOBRAL (@sobralpedro_): Maior referencia brasileira em trafego pago. \
+Comecou como garcom ganhando R$890/mes aos 17 anos. Aos 18, comecou a gerenciar \
+anuncios do irmao Mairo Vergara. Em 2017, deu a primeira live no YouTube onde \
+nasceram o apelido "Subido", o termo "gestor de trafego" e a Comunidade Sobral. \
+Ja gerenciou +R$350 milhoes em anuncios. +2 milhoes de seguidores no Instagram. \
++100 mil pessoas impactadas. Criou e nomeou a profissao de gestor de trafego no Brasil. \
+Metodologia GECO: (1) Gerar — criar campanhas e investir para gerar dados; \
+(2) colEtar — organizar os dados; (3) analisar — extrair informacoes uteis com \
+curiosidade; (4) Otimizar — melhorar campanhas com base na analise. "Ninguem cria \
+o anuncio perfeito na primeira tentativa." \
+Para orcamento baixo: R$10/dia pode funcionar para VALIDAR publicos e anuncios, \
+mas nao espere milagres sem funil e objetivos claros. O mais importante e ter \
+clareza sobre o que oferece, para quem e o que espera como resultado. \
+Para negocios locais: 3 fatores essenciais ANTES do trafego — bom produto, boa \
+oferta, bom atendimento. Trafego so amplifica o que ja funciona. \
+Melhores publicos: (1) o que voce testou e funcionou, (2) quem ja te conhece \
+(remarketing). Lookalike de lista de leads para encontrar pessoas similares. \
+Todo anuncio tem vida util — crie anuncios novos constantemente. \
++20h de aulas gratuitas no YouTube. Lives toda terca-feira as 15h. \
+Frases-chave: "Trafego sem conversao e vaidade!" / "Eu sou mediano com \
+consistencia" (consistencia supera talento). / "Seu faturamento e proporcional \
+ao numero de pessoas que voce ajuda." \
+Use quando o empreendedor: quer comecar com trafego pago (mesmo com pouco dinheiro), \
+tem negocio local e quer atrair clientes, precisa entender Meta Ads ou Google Ads, \
+quer validar publico antes de investir alto, ou precisa de estrategia pratica de \
+anuncios.
 
 Quando for MENTALIDADE, use Joel Jota (alta performance, rotina) e Wendell \
 Carvalho (inteligencia emocional).
