@@ -137,8 +137,14 @@ def get_mentor_response(
 
     response = client.messages.create(
         model=settings.CLAUDE_MODEL,
-        max_tokens=1024,
-        system=system_prompt,
+        max_tokens=2048,
+        system=[
+            {
+                "type": "text",
+                "text": system_prompt,
+                "cache_control": {"type": "ephemeral"},
+            }
+        ],
         messages=messages,
     )
 

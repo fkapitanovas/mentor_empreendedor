@@ -1,4 +1,8 @@
 import logging
+import threading
+import time
+from typing import Dict
+
 from fastapi import APIRouter, Form, Response
 from app.services import supabase_service, mentor, twilio_service
 
@@ -7,17 +11,73 @@ router = APIRouter()
 
 SUMMARY_TRIGGER_INTERVAL = 20
 
+# --- Idempotency: track recently processed MessageSids ---
+_seen_sids: Dict[str, float] = {}
+_seen_sids_lock = threading.Lock()
+_SEEN_SIDS_TTL = 300  # 5 minutes
+_SEEN_SIDS_MAX = 5000
+
+
+def _is_duplicate(message_sid: str) -> bool:
+    """Return True if this MessageSid was already processed recently."""
+    now = time.monotonic()
+    with _seen_sids_lock:
+        if len(_seen_sids) > _SEEN_SIDS_MAX:
+            cutoff = now - _SEEN_SIDS_TTL
+            expired = [k for k, v in _seen_sids.items() if v < cutoff]
+            for k in expired:
+                del _seen_sids[k]
+        if message_sid in _seen_sids:
+            return True
+        _seen_sids[message_sid] = now
+        return False
+
+
+# --- Rate limiting: per-phone ---
+_rate_tracker: Dict[str, list] = {}
+_rate_lock = threading.Lock()
+_RATE_LIMIT_MAX = 10
+_RATE_LIMIT_WINDOW = 60  # seconds
+
+
+def _is_rate_limited(phone: str) -> bool:
+    """Return True if phone has exceeded 10 messages in 60 seconds."""
+    now = time.monotonic()
+    cutoff = now - _RATE_LIMIT_WINDOW
+    with _rate_lock:
+        timestamps = _rate_tracker.get(phone, [])
+        timestamps = [t for t in timestamps if t > cutoff]
+        if len(timestamps) >= _RATE_LIMIT_MAX:
+            _rate_tracker[phone] = timestamps
+            return True
+        timestamps.append(now)
+        _rate_tracker[phone] = timestamps
+        return False
+
 
 @router.post("/webhook")
-async def whatsapp_webhook(
+def whatsapp_webhook(
     From: str = Form(...),
     Body: str = Form(...),
+    MessageSid: str = Form(""),
 ) -> Response:
     """Recebe mensagem do Twilio WhatsApp e responde."""
-    phone = From  # formato: whatsapp:+5511999999999
+    phone = From
     message = Body.strip()
 
     logger.info("Mensagem recebida de %s: %s", phone, message[:50])
+
+    if MessageSid and _is_duplicate(MessageSid):
+        logger.info("Duplicate MessageSid %s, skipping", MessageSid)
+        return Response(status_code=200)
+
+    if _is_rate_limited(phone):
+        logger.warning("Rate limit exceeded for %s", phone)
+        twilio_service.send_whatsapp_message(
+            phone,
+            "Calma, estou processando suas mensagens! Aguarde um minutinho antes de enviar mais.",
+        )
+        return Response(status_code=200)
 
     try:
         # 1. Identifica/cria usuario
@@ -45,17 +105,21 @@ async def whatsapp_webhook(
         supabase_service.save_message(user_id, "user", message)
         supabase_service.save_message(user_id, "assistant", response_text)
 
-        # 7. Envia resposta via WhatsApp (antes do resumo, para nao atrasar)
+        # 7. Envia resposta via WhatsApp
         twilio_service.send_whatsapp_message(phone, response_text)
 
-        # 8. Verifica se deve gerar resumo (a cada 20 novas mensagens)
-        _maybe_generate_summary(user_id, summary_record)
+        # 8. Gera resumo em background (nao bloqueia proxima request)
+        threading.Thread(
+            target=_maybe_generate_summary,
+            args=(user_id, summary_record),
+            daemon=True,
+        ).start()
 
     except Exception:
         logger.exception("Erro ao processar mensagem de %s", phone)
         twilio_service.send_whatsapp_message(
             phone,
-            "Desculpe, tive um probleminha tecnico. Pode tentar de novo em alguns segundos? 🙏",
+            "Desculpe, tive um probleminha tecnico. Pode tentar de novo em alguns segundos?",
         )
 
     # Twilio espera 200 OK com corpo vazio (nao usar TwiML aqui)
