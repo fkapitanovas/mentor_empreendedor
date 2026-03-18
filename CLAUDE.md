@@ -14,8 +14,11 @@ Chatbot via WhatsApp que funciona como mentor virtual para microempreendedores b
 ### Architecture
 - 3 camadas: Diagnóstico → Orientação Temática → Personalização por Estágio
 - 5 pilares: Gestão, Finanças, Marketing, Mentalidade, Inspiração
-- System prompt modular (10 blocos): Identidade/Tom, Base de Conhecimento, Base de Livros, Regras de Interação, Personalização, Resolução de Conflitos, Referências Nicho, Base Institucional, Base Impulso Stone, Diagnóstico
+- System prompt modular (10 blocos + 2 dinâmicos): Identidade/Tom, Base de Conhecimento, Base de Livros, Regras de Interação, Personalização, Resolução de Conflitos, Referências Nicho, Base Institucional, Base Impulso Stone, Diagnóstico/Atualização de Perfil, Resumo de Conversa
 - Diagnostico via conversa livre: Claude extrai perfil organicamente e sinaliza via tag `[PERFIL_EXTRAIDO]`
+- Atualização dinâmica de perfil: Claude detecta mudanças explícitas e sinaliza via tag `[PERFIL_ATUALIZADO]`
+- Memória de longo prazo: resumos de conversa gerados a cada 20 mensagens, injetados no system prompt
+- Contexto: 100 últimas mensagens + resumo comprimido de conversas anteriores
 
 ### Produção (Railway)
 - **URL**: https://faithful-intuition-production-82bb.up.railway.app
@@ -106,9 +109,9 @@ Mentor_Empreendedor/
 │   │   └── webhook.py        # POST /webhook — recebe msgs do Twilio
 │   ├── services/
 │   │   ├── __init__.py
-│   │   ├── mentor.py         # Claude API — gera resposta + extrai perfil
+│   │   ├── mentor.py         # Claude API — resposta, extração de perfil, parsing, resumos
 │   │   ├── twilio_service.py # Envia WhatsApp (com split de msgs longas)
-│   │   └── supabase_service.py # CRUD usuarios + historico mensagens
+│   │   └── supabase_service.py # CRUD usuarios, historico, resumos de conversa
 │   ├── models/
 │   │   ├── __init__.py
 │   │   └── schemas.py        # Pydantic models
@@ -116,7 +119,7 @@ Mentor_Empreendedor/
 │       ├── __init__.py
 │       └── system_prompt.py  # System prompt modular (10 blocos, ~66k chars)
 ├── sql/
-│   └── schema.sql            # Tabelas users + messages (rodar no Supabase)
+│   └── schema.sql            # Tabelas users, messages, conversation_summaries
 ├── tasks/
 │   ├── todo.md               # Current task tracking
 │   ├── handoff.md            # Estado atual, URLs, acessos, proximos passos
