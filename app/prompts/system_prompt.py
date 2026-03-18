@@ -567,6 +567,69 @@ FERRAMENTAS GRATUITAS DO SEBRAE:
 - Trilhas por fase: Comece (iniciando), Faca (mantendo), Alcance (crescendo).
 - Consultorias presenciais e online gratuitas.
 - Ferramentas: plano de negocios, canvas, calculadoras de precificacao.
+
+CREDITO E FINANCIAMENTO PARA MEI:
+- PRONAMPE: ate R$250 mil por empresa, juros Selic + 6% a.a., prazo ate 48 meses. \
+Garantia pelo FGO. Condicao especial para mulheres (selo "Mulher Emprega Mais": \
+ate 50% do faturamento anterior). Como solicitar: Portal e-CAC da Receita Federal \
+→ Pronampe → autorizar compartilhamento de dados → contratar no banco.
+- PROCRED 360: para MEI/ME ate R$360 mil/ano, juros Selic + 5% a.a. (menor que \
+Pronampe). Inclui orientacao financeira. Parte do Programa Acredita.
+- Desenrola Pequenos Negocios: renegociacao de dividas com descontos de ate 100% \
+sobre juros, multas e encargos para dividas em Divida Ativa.
+- Microcredito: disponivel em Caixa, bancos digitais e fintechs com menos burocracia.
+
+DIA A DIA PRATICO DO MEI:
+- Nota Fiscal de Servico (NFS-e): obrigatoria desde 01/01/2026 para todos os MEIs \
+prestadores de servico. Emitir pelo Portal Nacional (nfse.gov.br) ou app NFS-e \
+Mobile. Nao precisa de certificado digital.
+- Nota Fiscal de Produto (NF-e): emissao pela SEFAZ estadual. Emissor gratuito: \
+emissornfe.sebrae.com.br. Maioria dos estados exige certificado digital.
+- MEI deve emitir NF quando vender para empresa ou governo, ou quando pessoa \
+fisica solicitar. Opcional para PF que nao solicitar.
+- Declaracao Anual (DASN-SIMEI): ate 31/maio, obrigatoria mesmo sem faturamento. \
+Multa minima por atraso: R$50. Online, sem contador.
+- Parcelamento de DAS atrasado: ate 60 parcelas (minimo R$50 cada). Acessar \
+PGMEI no Portal do Simples Nacional. Limite: 1 parcelamento por ano.
+
+CONSEQUENCIAS DE NAO PAGAR O DAS:
+- Multa 0,33%/dia (max 20%) + juros Selic.
+- Meses nao pagos NAO contam para aposentadoria/INSS.
+- Risco de exclusao do Simples Nacional (90 dias para regularizar apos notificacao).
+- Inscricao em Divida Ativa, cobranca judicial, restricoes de credito.
+
+DIREITOS DO MEI:
+- Participar de licitacoes com tratamento diferenciado (contratacao exclusiva ate \
+R$80 mil, empate ficto com preferencia para ME/EPP). Plataforma Contrata+Brasil.
+- Exportar produtos/servicos: ate US$3.000 dispensado de RADAR/Siscomex. Isento \
+de impostos federais na exportacao.
+- MEI e Bolsa Familia: ser MEI nao impede. Criterio e renda per capita familiar \
+ate R$218/pessoa/mes. Conta o lucro liquido, nao o faturamento bruto. Manter \
+CadUnico atualizado.
+- MEI e BPC/LOAS: situacao complexa — ter MEI ativo pode ser interpretado como \
+presuncao de renda. Avaliar com cuidado antes de formalizar.
+
+PREVIDENCIA — COMPLEMENTACAO INSS:
+- Pagando so 5% (DAS), aposentadoria e apenas por idade e vale 1 salario minimo.
+- Para aposentadoria por tempo de contribuicao: pagar complemento de 15% via GPS \
+(R$243,15/mes em 2026). Total: 20% do salario minimo.
+- Com complementacao: mulher aposenta com 30 anos de contribuicao + 59,5 anos; \
+homem com 35 anos + 64,5 anos (regras de transicao 2026).
+- ATENCAO: somente meses pagos EM DIA contam para carencia.
+
+NOVIDADES 2025-2026:
+- Reforma Tributaria: MEI continua no DAS, isento de IBS e CBS. Em 2026 campos \
+IBS/CBS nas NFs sao apenas informativos. Transicao completa ate 2033.
+- Nanoempreendedor: nova categoria com faturamento ate R$40.500/ano, isento total \
+de CBS e IBS. Nao pode ser MEI simultaneamente.
+- Propostas em tramitacao (NAO em vigor): "Super MEI" com teto de R$140 mil \
+(PLP 60/2025) e teto de R$150 mil (PLP 67/2025). Limite atual: R$81 mil.
+- Desde 2025: rendimentos PF na mesma atividade do CNPJ contam no faturamento MEI.
+
+VALORES-CHAVE 2026:
+- Salario minimo: R$1.621 | DAS Comercio: R$82,05 | DAS Servicos: R$86,05
+- Limite MEI: R$81.000/ano | Pronampe: ate R$250 mil (Selic+6%)
+- INSS complementar: R$243,15/mes | Parcela minima DAS: R$50
 """.strip()
 
 # Instrucoes de diagnostico (onboarding via conversa livre)
