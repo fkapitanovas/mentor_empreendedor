@@ -202,8 +202,32 @@ Base de conhecimento de livros. Use estes conceitos para fundamentar suas \
 orientacoes, sem necessariamente citar os titulos — integre as ideias naturalmente.
 
 GESTAO E MENTALIDADE EMPREENDEDORA:
-- Geracao de Valor (Flavio Augusto): Riqueza se cria gerando valor para outros. \
-Pense como dono, foque em vendas desde o dia 1, acao imperfeita supera planejamento perfeito.
+- Geracao de Valor — Trilogia completa (Flavio Augusto): \
+VOLUME 1: Riqueza se cria gerando valor para outros. Para empreender com sucesso sao \
+necessarias 3 habilidades: visao (enxergar oportunidades fora da caixa), coragem (tirar \
+ideias da gaveta) e competencia (executar com sabedoria). "Nao valemos pelo conhecimento \
+que temos, mas pelo que somos capazes de produzir com ele." Roteiro pratico do autor se \
+tivesse 18 anos: vender produto, viver com metade do que ganha, criar modelos recorrentes, \
+fabricar produto proprio, ampliar mix, criar canais de distribuicao (franquias, online, B2B), \
+no auge vender a companhia. 7 habitos dos perdedores a evitar: reclamar da segunda-feira, \
+nao assumir compromissos, agir pelo medo, desistir nos primeiros obstaculos, se autoafirmar \
+sem produzir, ser prisioneiro das emocoes, acreditar que sucesso e sorte. O medo de perder \
+sufoca o desejo de ganhar — escolha coragem, nao covardia. \
+VOLUME 2: Deixe de ser apenas consumidor, seja tambem empreendedor. 8 degraus para \
+crescer: aprender a vender sistematicamente, treinar novos vendedores, liderar equipes, \
+formar gerentes, transformar gerentes em lideres, integrar com marketing, integrar com \
+tecnologia, comunicar-se com grandes equipes. Saiba qual e seu momento: dificil (mantenha-se \
+firme), duvidas (encontre a direcao antes de agir), conquistas (sucesso e diario). Escolha \
+bem com quem anda — valorize conquistas reais, nao titulos; prefira humildade a arrogancia. \
+Perca o medo do nao: sua vontade de vencer tem que ser maior que a quantidade de nãos. \
+VOLUME 3: Micro e pequenas empresas sao o maior empregador do Brasil (50,1% dos \
+trabalhadores). O Brasil precisa de mais empreendedores. Errar faz parte — enfrente de \
+peito aberto, reconheca com humildade, nao perca tempo com justificativas. Nao venda o \
+produto, venda o PROPOSITO (nao venda comida saudavel, venda saude; nao venda cursos, \
+venda empregabilidade). 60% dos consumidores desistem por mau atendimento. A chave para \
+sair do sistema e desenvolver mente vencedora: construir projetos em qualquer cenario, \
+nao depender de fatores externos. "Mesmo com toda tecnica e capital, NADA sai do papel \
+sem CORAGEM."
 - O Mito do Empreendedor (Michael Gerber): Trabalhe PELO negocio, nao so NO negocio. \
 Documente processos, crie sistemas, pense no MEI como franquia que funcionaria sem voce.
 - Empresas Feitas para Vencer (Jim Collins): Descubra a interseccao entre o que faz \
@@ -257,9 +281,22 @@ dificil de copiar: relacionamento, conhecimento especializado, reputacao local.
 pacote, recorrencia). Adapte ideias de outros setores. Teste em pequena escala.
 
 HABITOS E PRODUTIVIDADE:
-- O Poder do Habito (Charles Duhigg): Use ciclo gatilho-rotina-recompensa para criar \
-habitos produtivos (prospeccao diaria, postagem, controle financeiro). Mude um habito \
-de cada vez.
+- O Poder do Habito (Charles Duhigg): Habitos sao acoes que decidimos fazer \
+intencionalmente e depois continuamos subconscientemente. O loop do habito tem 3 \
+estagios: deixa (gatilho que ativa o modo automatico) → rotina (acao fisica, mental \
+ou emocional) → recompensa (satisfacao que reforca o loop). Regra de ouro da mudanca: \
+mantenha a mesma deixa e a mesma recompensa, mas troque a rotina. Exemplo pratico \
+para o empreendedor: se o gatilho e estresse e a recompensa e alivio, troque a rotina \
+de comer besteira por 3 minutos de caminhada. Habitos angulares sao os mais importantes \
+— ao mudar UM habito-chave, outros mudam em cascata (ex: Paul O'Neill focou so em \
+seguranca na Alcoa e o faturamento cresceu 5x). Para o MEI, habitos angulares incluem: \
+controle financeiro diario, prospeccao diaria de clientes, postagem consistente em \
+redes sociais. Forca de vontade e o habito mais importante para sucesso pessoal — a \
+Starbucks ensina isso aos funcionarios e suas vidas melhoram em todas as areas. Para \
+mudar um habito: (1) isole a deixa (lugar, hora, estado emocional, pessoas presentes, \
+acao anterior), (2) identifique a rotina, (3) experimente recompensas diferentes, \
+(4) crie um plano de acao e insista ate o novo habito se tornar automatico. Mude um \
+habito de cada vez — pequenas mudancas geram grandes resultados ao longo do tempo.
 
 INSPIRACAO:
 - O Catador de Sonhos (Geraldo Rufino): De catador de lixo a empresario milionario. \
