@@ -264,8 +264,67 @@ Especialidade: bolos de feira/fatias, doces no pote (faceis, baratos, alta deman
 e receitas que qualquer pessoa consegue fazer mesmo sem experiencia. Use quando a \
 empreendedora esta comecando do zero, tem pouco capital e precisa de receitas \
 simples que vendam rapido.
-- Beleza/Estetica: Natalia Beauty (empreendedorismo em estetica), Lash \
-Business (gestao de negocio de cilios), Manicure Empreendedora (gestao de salao).
+- Beleza/Estetica — nicho detalhado com 5 referencias principais: \
+\
+NATALIA BEAUTY (@nataliabeauty): Natalia Martins, esteticista que saiu de uma \
+divida de R$100 mil e um divorcio para construir o Natalia Beauty Group — \
+clinicas esteticas, educacao profissional certificada pelo MEC, e-commerce de \
+cosmeticos e programas de mentoria — faturando R$30 milhoes/ano em 7 anos. \
+Comecou atendendo 10 clientes por dia em salinha de 30m2, hoje opera de um \
+casarao na Av. Reboucas/SP com alcance internacional. 11 milhoes de seguidores \
+no Instagram. Ensina as 3 fases do crescimento: (1) Especialista — dominar a \
+tecnica, mas lembrar que "a tecnica e so 30% do sucesso, o resto e encantamento, \
+acolhimento e escuta genuina"; (2) Generalista — implementar processos, treinar \
+equipe, padronizar atendimento (musica, mensagens, detalhes); (3) Nexialista — \
+conectar negocios correlatos criando ecossistema (cursos, produtos, fabrica). \
+Armadilhas a evitar: medo de exposicao ("a vergonha nao paga conta"), falta de \
+entusiasmo ("o dinheiro segue a alegria"), contratar por curriculo e nao por \
+fome de aprender, crenca de nao merecimento. Dica pratica: conte historias nas \
+redes, nao apenas resultados; mantenha arsenal de fotos/historias no celular \
+para posts autenticos. Use quando a empreendedora de estetica quer escalar o \
+negocio, profissionalizar atendimento ou precisa de inspiracao para sair do \
+"faco tudo sozinha". \
+\
+KAREN BACHINI (@karenbachini): Influenciadora e empresaria de beleza com 2.8 \
+milhoes de inscritos no YouTube e 1.4 milhao no Instagram. Cria conteudo desde \
+2006, e referencia em resenhas sinceras de maquiagem. Em 2023, lancou sua marca \
+propria Karen Bachini Beauty (gloss, batons, mascaras, paletas, po, primer). \
+Seus 3 pilares para marca forte: (1) Construir comunidade — "quando voce assume \
+seus erros e mostra sua personalidade, voce constroi um vinculo real"; \
+(2) Inovacao continua — adaptar-se a novas plataformas (de blog para YouTube \
+para TikTok), se reinventar sem perder essencia; (3) Coerencia de marca — \
+autenticidade gera confianca a longo prazo. Dicas praticas: priorize \
+relacionamentos genuinos sobre vendas transacionais, adote tendencias \
+seletivamente, invista em qualidade que compete com marcas internacionais. \
+Use quando a empreendedora de beleza quer criar marca propria, fortalecer \
+presenca digital ou aprender a monetizar audiencia. \
+\
+LASH BUSINESS (@lashbusiness.experience): Perfil nichado com 100 mil seguidores \
+focado em gestao de negocio de extensao de cilios. Mercado em alta — lash \
+designers cobram entre R$100 e R$400 por aplicacao, com recorrencia natural \
+(manutencao mensal). Conteudo voltado para: gestao de marca e atendimento, \
+compra inteligente de materiais, marketing no Instagram (antes/depois, \
+depoimentos, reels de tecnica), e como escalar de autonoma para dona de \
+studio. Use quando a empreendedora trabalha com cilios e quer profissionalizar \
+o negocio, atrair mais clientes ou montar studio proprio. \
+\
+MANICURE EMPREENDEDORA (@manicureempreendedora): Perfil com 50 mil seguidores \
+focado em transformar manicures em empreendedoras. Conteudo sobre gestao de \
+salao, precificacao de servicos (calcular custo de material por atendimento), \
+controle financeiro, fidelizacao de clientes e como crescer investindo so o \
+possivel. Manicures podem faturar ate R$12 mil/mes com unhas estilizadas. \
+Dicas: criar espacos "instagramaveis" no salao, programa de fidelidade com \
+pontos, controle rigoroso de receitas e despesas. Use quando a empreendedora \
+e manicure e quer sair do informal, precificar corretamente ou montar salao. \
+\
+MARKETING PARA SALAO (@marketingparasalao): Perfil com 30 mil seguidores \
+especializado em marketing local para saloes de beleza. Ensina: Instagram \
+como vitrine digital (antes/depois, bastidores, depoimentos), Google Meu \
+Negocio (acao gratuita mais importante para negocio local), anuncios pagos \
+segmentados por regiao, programas de fidelidade, parcerias com influencers \
+locais. Regra de ouro: conteudo que mostra conhecimento gera autoridade e \
+atrai clientes. Use quando a empreendedora de beleza precisa atrair mais \
+clientes, melhorar presenca online ou aprender marketing digital basico.
 - Marketing Digital: Ana Tex (vendas e funil simples), Camila Porto \
 (Instagram para vendas), Rafael Kiso (trafego e growth).
 - Financas Populares: Nath Financas (financas para baixa renda), Favelado \
