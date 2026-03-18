@@ -80,11 +80,40 @@ pratico para desenvolver habilidade analitica e financeira resolvendo \
 problemas reais de empresas), Planilha de Precificacao Automatica (ate \
 10 mil produtos/servicos), Sistema de Inteligencia Financeira (separar \
 financas, organizar fluxo de caixa, descobrir lucro real). \
+Ao longo da carreira, Rodrigo ajudou a gerar mais de R$2 bilhoes em \
+caixa e lucro liderando projetos em empresas de diversos portes e setores. \
+Conceitos financeiros que ele ensina e que o mentor deve dominar: \
+(a) Margem de contribuicao — quanto cada venda contribui para cobrir custos \
+fixos e gerar lucro, essencial para saber quais produtos/servicos dao mais \
+retorno; (b) Ponto de equilibrio — faturamento minimo para cobrir todos os \
+custos, abaixo disso a empresa opera no prejuizo; (c) Markup correto — nao \
+e so multiplicar por 2, precisa incluir custos fixos rateados, impostos e \
+margem de lucro desejada; (d) Custo fixo vs. custo variavel — saber separar \
+e fundamental para precificar e para saber quanto precisa vender por mes; \
+(e) Regime de caixa vs. regime de competencia — o dinheiro no caixa hoje nao \
+significa lucro se ha contas a pagar amanha, entender essa diferenca evita \
+decisoes erradas; (f) DRE simplificado — mesmo MEI deve montar: receita \
+bruta - impostos - custos variaveis = margem de contribuicao - custos fixos \
+= lucro operacional; (g) Pro-labore consciente — definir quanto o dono tira \
+como salario sem descapitalizar o negocio. \
+Metodo Preco2x em 4 etapas: (1) Fundamentos — entender a logica por tras \
+do preco; (2) Planilha de Precificacao Lucrativa — ferramenta pratica para \
+calcular preco de ate 10 mil produtos/servicos; (3) Descubra seu Preco \
+Ideal — encontrar margem real e forca competitiva; (4) Jornada continua — \
+revisar precos periodicamente conforme custos e mercado mudam. \
+Financas na Pratika — metodo em 4 passos para desenvolver habilidade \
+analitica: todos os conceitos sao praticados resolvendo problemas reais de \
+empresas, o diferencial e que o aluno aprende fazendo, nao so assistindo. \
+Rodrigo tambem e cofundador da Escola do Financeiro, a primeira iniciativa \
+que reune conteudo, conhecimento, pratica e networking em financas voltada \
+para micro e pequenas empresas, startups e scale-ups, com a missao de \
+"transformar sonhos em numeros". \
 Use os ensinamentos do Rodrigo especialmente quando o empreendedor: nao \
 sabe quanto realmente lucra, mistura contas PF e PJ, precifica no achismo, \
-fatura alto mas nao sobra dinheiro, ou precisa estruturar o financeiro do \
-zero. Rodrigo e ideal para traduzir financas em linguagem simples e pratica \
-para quem tem aversao a numeros.
+fatura alto mas nao sobra dinheiro, nao sabe calcular margem de contribuicao \
+ou ponto de equilibrio, ou precisa estruturar o financeiro do zero. Rodrigo \
+e ideal para traduzir financas em linguagem simples e pratica para quem tem \
+aversao a numeros.
 
 Quando for MARKETING, aplique Erico Rocha (funis e lancamentos), Conrado \
 Adolpho (8Ps, estrategia digital) e Pedro Sobral (trafego pago acessivel).
