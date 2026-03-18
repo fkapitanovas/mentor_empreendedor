@@ -8,6 +8,8 @@ class UserProfile(BaseModel):
     estagio: Optional[str] = None
     tempo_negocio: Optional[str] = None
     faturamento: Optional[str] = None
+    tempo_negocio_meses: Optional[int] = None
+    faturamento_mensal: Optional[int] = None
     desafio_principal: Optional[str] = None
 
 

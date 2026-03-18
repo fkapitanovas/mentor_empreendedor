@@ -5,6 +5,8 @@ from app.services import supabase_service, mentor, twilio_service
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
+SUMMARY_TRIGGER_INTERVAL = 20
+
 
 @router.post("/webhook")
 async def whatsapp_webhook(
@@ -22,25 +24,32 @@ async def whatsapp_webhook(
         user = supabase_service.get_or_create_user(phone)
         user_id = user["id"]
 
-        # 2. Carrega historico
+        # 2. Carrega historico (100 msgs)
         history = supabase_service.get_conversation_history(user_id)
 
-        # 3. Gera resposta do mentor
+        # 3. Carrega resumo existente
+        summary_record = supabase_service.get_conversation_summary(user_id)
+        summary_text = summary_record["summary"] if summary_record else None
+
+        # 4. Gera resposta do mentor (com resumo no system prompt)
         response_text, profile_data = mentor.get_mentor_response(
-            user, message, history
+            user, message, history, summary=summary_text
         )
 
-        # 4. Se extraiu perfil, atualiza no banco
+        # 5. Se extraiu perfil (diagnostico ou atualizacao), atualiza no banco
         if profile_data:
             supabase_service.update_user_profile(phone, profile_data)
             logger.info("Perfil atualizado para %s: %s", phone, profile_data)
 
-        # 5. Salva mensagens no historico
+        # 6. Salva mensagens no historico
         supabase_service.save_message(user_id, "user", message)
         supabase_service.save_message(user_id, "assistant", response_text)
 
-        # 6. Envia resposta via WhatsApp
+        # 7. Envia resposta via WhatsApp (antes do resumo, para nao atrasar)
         twilio_service.send_whatsapp_message(phone, response_text)
+
+        # 8. Verifica se deve gerar resumo (a cada 20 novas mensagens)
+        _maybe_generate_summary(user_id, summary_record)
 
     except Exception:
         logger.exception("Erro ao processar mensagem de %s", phone)
@@ -51,3 +60,34 @@ async def whatsapp_webhook(
 
     # Twilio espera 200 OK com corpo vazio (nao usar TwiML aqui)
     return Response(status_code=200)
+
+
+def _maybe_generate_summary(user_id: str, summary_record: dict = None) -> None:
+    """Gera resumo se houve 20+ novas mensagens desde o ultimo resumo."""
+    try:
+        msg_count = supabase_service.get_message_count(user_id)
+        messages_covered = summary_record["messages_covered"] if summary_record else 0
+
+        if msg_count - messages_covered < SUMMARY_TRIGGER_INTERVAL:
+            return
+
+        # Busca ate 200 mensagens para gerar resumo
+        messages = supabase_service.get_conversation_history(user_id, limit=200)
+        previous_summary = summary_record["summary"] if summary_record else None
+
+        new_summary = mentor.generate_conversation_summary(
+            previous_summary=previous_summary,
+            messages=messages,
+        )
+
+        if new_summary:
+            supabase_service.upsert_conversation_summary(
+                user_id=user_id,
+                summary=new_summary,
+                messages_covered=msg_count,
+            )
+            logger.info(
+                "Resumo gerado para user %s (%d msgs cobertas)", user_id, msg_count
+            )
+    except Exception:
+        logger.exception("Erro ao gerar resumo para user %s", user_id)

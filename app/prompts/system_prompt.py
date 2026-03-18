@@ -1029,22 +1029,51 @@ NAO faca um questionario rigido. Conduza como uma conversa natural, coletando \
 as informacoes organicamente. Quando tiver informacoes suficientes (pelo menos \
 setor e tempo de negocio), sinalize no final da sua resposta com uma linha \
 especial no formato:
-[PERFIL_EXTRAIDO]{"name":"...","setor":"...","estagio":"...","tempo_negocio":"...","faturamento":"...","desafio_principal":"..."}[/PERFIL_EXTRAIDO]
+[PERFIL_EXTRAIDO]{"name":"...","setor":"...","estagio":"...","tempo_negocio":"...","faturamento":"...","desafio_principal":"...","tempo_negocio_meses":...,"faturamento_mensal":...}[/PERFIL_EXTRAIDO]
 
 Use null para campos que ainda nao sabe. O estagio deve ser inferido:
 - 0-1 ano → "iniciante"
 - 1-3 anos → "crescimento"
 - 3+ anos → "consolidado"
 
+Campos padronizados (incluir quando possivel):
+- tempo_negocio_meses: tempo de negocio convertido em meses inteiros (ex: "2 anos" = 24, "6 meses" = 6)
+- faturamento_mensal: faturamento mensal em reais inteiros, sem centavos (ex: "R$ 10.000/mes" = 10000)
+
 Se o usuario ja foi diagnosticado, NAO repita o diagnostico. Va direto \
 ao que ele precisa.
 """
 
 
+INSTRUCOES_ATUALIZACAO_PERFIL = """
+ATUALIZACAO DINAMICA DE PERFIL:
+Se durante a conversa o usuario EXPLICITAMENTE informar uma mudanca em seus dados \
+(ex: "agora estou faturando R$20mil", "mudei de setor, agora trabalho com alimentacao", \
+"ja faz 3 anos que abri meu negocio"), emita no final da sua resposta:
+[PERFIL_ATUALIZADO]{"campo":"novo_valor"}[/PERFIL_ATUALIZADO]
+
+Regras:
+- So emita quando o usuario EXPLICITAMENTE declarar a mudanca. NAO infira mudancas.
+- Inclua APENAS os campos que mudaram.
+- Campos validos: name, setor, estagio, tempo_negocio, faturamento, desafio_principal, \
+tempo_negocio_meses, faturamento_mensal
+- Para tempo_negocio_meses: valor inteiro em meses (ex: "3 anos" = 36)
+- Para faturamento_mensal: valor inteiro em reais (ex: "R$ 20.000" = 20000)
+- Se o tempo mudou, reavalie o estagio (0-1 ano: iniciante, 1-3 anos: crescimento, 3+: consolidado)
+
+Exemplos:
+- Usuario diz "agora to faturando 20 mil por mes":
+  [PERFIL_ATUALIZADO]{"faturamento":"R$ 20.000/mes","faturamento_mensal":20000}[/PERFIL_ATUALIZADO]
+- Usuario diz "mudei pra area de alimentacao":
+  [PERFIL_ATUALIZADO]{"setor":"alimentacao"}[/PERFIL_ATUALIZADO]
+- Usuario diz "ja faz 3 anos que comecei":
+  [PERFIL_ATUALIZADO]{"tempo_negocio":"3 anos","tempo_negocio_meses":36,"estagio":"consolidado"}[/PERFIL_ATUALIZADO]
+"""
+
 from typing import Optional
 
 
-def build_system_prompt(user_profile: Optional[dict] = None) -> str:
+def build_system_prompt(user_profile: Optional[dict] = None, summary: Optional[str] = None) -> str:
     """Monta o system prompt completo com contexto do usuario."""
     blocks = [
         IDENTIDADE_E_TOM,
@@ -1063,19 +1092,34 @@ def build_system_prompt(user_profile: Optional[dict] = None) -> str:
         setor = user_profile.get("setor", "nao informado")
         nome = user_profile.get("name", "empreendedor")
         desafio = user_profile.get("desafio_principal", "")
+        tempo = user_profile.get("tempo_negocio", "")
+        faturamento = user_profile.get("faturamento", "")
 
         contexto = f"""
 CONTEXTO DO USUARIO ATUAL:
 - Nome: {nome}
 - Setor: {setor}
 - Estagio: {estagio}
+- Tempo de negocio: {tempo or 'nao informado'}
+- Faturamento: {faturamento or 'nao informado'}
 - Desafio principal: {desafio or 'nao informado'}
 
 O usuario ja completou o diagnostico. Personalize suas respostas para \
 o estagio "{estagio}" e o setor "{setor}".
 """.strip()
         blocks.append(contexto)
+        blocks.append(INSTRUCOES_ATUALIZACAO_PERFIL)
     else:
         blocks.append(INSTRUCOES_DIAGNOSTICO)
+
+    if summary:
+        bloco_resumo = f"""
+HISTORICO RESUMIDO DAS CONVERSAS ANTERIORES:
+{summary}
+
+Use este historico para dar continuidade ao acompanhamento. NAO repita conselhos \
+ja dados. Acompanhe o progresso do usuario e retome pendencias quando relevante.
+""".strip()
+        blocks.append(bloco_resumo)
 
     return "\n\n---\n\n".join(blocks)

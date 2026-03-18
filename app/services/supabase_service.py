@@ -47,7 +47,7 @@ def save_message(user_id: str, role: str, content: str) -> None:
     ).execute()
 
 
-def get_conversation_history(user_id: str, limit: int = 50) -> List[dict]:
+def get_conversation_history(user_id: str, limit: int = 100) -> List[dict]:
     """Retorna as ultimas N mensagens do usuario, em ordem cronologica."""
     client = _get_client()
     # Busca as mais recentes primeiro (desc), depois inverte para ordem cronologica
@@ -60,3 +60,49 @@ def get_conversation_history(user_id: str, limit: int = 50) -> List[dict]:
         .execute()
     )
     return list(reversed(result.data))
+
+
+def get_message_count(user_id: str) -> int:
+    """Retorna o total de mensagens do usuario."""
+    client = _get_client()
+    result = (
+        client.table("messages")
+        .select("id", count="exact")
+        .eq("user_id", user_id)
+        .execute()
+    )
+    return result.count or 0
+
+
+def get_conversation_summary(user_id: str) -> Optional[dict]:
+    """Retorna o resumo de conversa do usuario, se existir."""
+    client = _get_client()
+    result = (
+        client.table("conversation_summaries")
+        .select("*")
+        .eq("user_id", user_id)
+        .execute()
+    )
+    if result.data:
+        return result.data[0]
+    return None
+
+
+def upsert_conversation_summary(
+    user_id: str, summary: str, messages_covered: int
+) -> dict:
+    """Cria ou atualiza o resumo de conversa do usuario."""
+    client = _get_client()
+    result = (
+        client.table("conversation_summaries")
+        .upsert(
+            {
+                "user_id": user_id,
+                "summary": summary,
+                "messages_covered": messages_covered,
+            },
+            on_conflict="user_id",
+        )
+        .execute()
+    )
+    return result.data[0]

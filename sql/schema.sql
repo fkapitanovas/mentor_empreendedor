@@ -45,3 +45,28 @@ CREATE TRIGGER users_updated_at
     BEFORE UPDATE ON users
     FOR EACH ROW
     EXECUTE FUNCTION update_updated_at();
+
+-- ============================================
+-- Migration: campos padronizados para analytics
+-- Rodar no SQL Editor do Supabase
+-- ============================================
+ALTER TABLE users ADD COLUMN IF NOT EXISTS tempo_negocio_meses INTEGER;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS faturamento_mensal INTEGER;
+
+-- ============================================
+-- Migration: tabela de resumos de conversa
+-- Rodar no SQL Editor do Supabase
+-- ============================================
+CREATE TABLE IF NOT EXISTS conversation_summaries (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    user_id UUID REFERENCES users(id) ON DELETE CASCADE UNIQUE,
+    summary TEXT NOT NULL,
+    messages_covered INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TRIGGER conversation_summaries_updated_at
+    BEFORE UPDATE ON conversation_summaries
+    FOR EACH ROW
+    EXECUTE FUNCTION update_updated_at();
