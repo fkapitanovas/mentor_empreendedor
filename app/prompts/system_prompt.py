@@ -513,6 +513,62 @@ das posses. "A melhor maneira de nao ter medo do futuro e viver o seu melhor pre
 mensuraveis, corte custos desnecessarios, cerque-se de pessoas melhores, pense grande.
 """.strip()
 
+# Bloco 7: Base Institucional — dados oficiais MEI, tributacao e ferramentas
+BASE_INSTITUCIONAL = """
+Base de dados institucionais (Sebrae, Receita Federal, Portal do Empreendedor). \
+Use para orientar sobre formalizacao, tributacao e obrigacoes legais. Sempre \
+reforce que duvidas tributarias especificas devem ser validadas com um contador.
+
+MEI — MICROEMPREENDEDOR INDIVIDUAL (dados 2026):
+- Limite anual: R$81.000 (media R$6.750/mes). MEI Caminhoneiro: R$251.600/ano.
+- 467 ocupacoes permitidas (1 principal + ate 15 secundarias). Profissoes \
+regulamentadas por conselhos (medicos, advogados, engenheiros) NAO sao permitidas.
+- DAS mensal (baseado em 5% do salario minimo R$1.621): Comercio/Industria \
+R$82,05 | Servicos R$86,05 | Comercio+Servicos R$87,05. Vencimento: dia 20. \
+Pagamento obrigatorio mesmo sem faturamento.
+- Obrigacoes: DAS mensal, DASN-SIMEI (declaracao anual ate 31/maio), nota \
+fiscal obrigatoria para vendas a PJ (opcional para PF), relatorio mensal de \
+receitas.
+- Beneficios INSS: aposentadoria por idade (15 anos de contribuicao, mulheres \
+62 anos / homens 65 anos, valor 1 salario minimo), auxilio-doenca (12 meses \
+carencia), salario-maternidade (sem carencia, R$1.621 por 120 dias), pensao \
+por morte e auxilio-reclusao (sem carencia).
+- Pode contratar 1 funcionario CLT (salario minimo ou piso da categoria). \
+Encargos: FGTS 8% + INSS patronal 3% = 11% sobre salario.
+- Formalizacao 100% gratuita e online pelo Portal do Empreendedor (gov.br). \
+Precisa de conta gov.br nivel Prata ou Ouro.
+- NFS-e obrigatoria para todos os prestadores de servicos desde janeiro 2026 \
+(Portal Nacional NFS-e: gov.br/nfse). Informar CRT 4 no documento.
+
+DESENQUADRAMENTO DO MEI:
+- Sai do MEI quando: faturamento acima de R$81 mil/ano, atividade nao permitida, \
+mais de 1 funcionario, ou entrada de socio.
+- Excesso ate 20% (ate R$97.200): continua MEI ate fim do ano, vira ME em janeiro, \
+paga DAS complementar sobre excedente.
+- Excesso acima de 20% (acima de R$97.200): desenquadramento IMEDIATO e retroativo.
+
+TRANSICAO MEI → ME:
+- ME fatura ate R$360 mil/ano. EPP de R$360 mil a R$4,8 milhoes.
+- ME precisa de contador obrigatoriamente.
+- Simples Nacional: guia unica (DAS) com ate 8 tributos. Comercio comeca em 4% \
+(ate R$180 mil). Servicos comeca em 6% (Anexo III) ou 15,5% (Anexo V).
+- Fator R: se folha de pagamento >= 28% do faturamento, empresa do Anexo V pode \
+ser tributada pelo Anexo III (aliquotas menores).
+
+DADOS DO SEBRAE SOBRE MORTALIDADE:
+- 29% dos MEIs fecham em ate 5 anos (3 em cada 10).
+- 60% das empresas em geral nao sobrevivem 5 anos (IBGE).
+- Principais causas: falta de planejamento, gestao financeira ineficaz (misturar \
+PF com PJ), desconhecimento do mercado, capital de giro insuficiente.
+- 77% dos pequenos negocios abertos sao MEIs.
+
+FERRAMENTAS GRATUITAS DO SEBRAE:
+- +348 cursos online gratuitos com certificado (sebrae.com.br/cursosonline).
+- Trilhas por fase: Comece (iniciando), Faca (mantendo), Alcance (crescendo).
+- Consultorias presenciais e online gratuitas.
+- Ferramentas: plano de negocios, canvas, calculadoras de precificacao.
+""".strip()
+
 # Instrucoes de diagnostico (onboarding via conversa livre)
 INSTRUCOES_DIAGNOSTICO = """
 IMPORTANTE — Diagnostico inicial:
@@ -553,6 +609,7 @@ def build_system_prompt(user_profile: Optional[dict] = None) -> str:
         PERSONALIZACAO_ESTAGIO,
         RESOLUCAO_CONFLITOS,
         REFERENCIAS_NICHO,
+        BASE_INSTITUCIONAL,
     ]
 
     if user_profile and user_profile.get("is_onboarded"):
