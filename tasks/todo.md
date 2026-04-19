@@ -93,24 +93,65 @@
 
 ---
 
-## Pendente
+## Etapa 12: Migração para Web App (Next.js/Vercel) ✅ (2026-04-19)
 
-- [ ] **Validacao de assinatura Twilio (X-Twilio-Signature)** — segurança: qualquer request ao /webhook é aceita sem verificar origem. Implementar com `twilio.request_validator.RequestValidator`. Requer URL publica do webhook como parametro.
-- [ ] **Ativar Sentry no Railway** — criar conta em sentry.io, criar projeto Python/FastAPI, copiar DSN e adicionar env var `SENTRY_DSN` no dashboard do Railway. Codigo ja integrado (app/main.py), so precisa da variavel.
-- [x] **Rodar backfill de campos inteiros** — 2/3 usuarios atualizados (2026-03-18)
+### Motivação
+Twilio se mostrou caro e com experiência ruim. Migração para web app responsivo.
+
+### Decisões de Design
+- Chat minimalista (estilo Claude.ai), streaming SSE, múltiplas conversas
+- Light + Dark mode, onboarding opcional (formulário ou captura orgânica pela IA)
+- Email + senha (Supabase Auth), deploy Vercel
+
+### Implementação (10 commits, 5 batches)
+- [x] **Batch 1 — Foundation**: Scaffold Next.js 16 + Tailwind v4 + shadcn/ui (16 componentes), Supabase Auth + middleware + login/register, migration SQL (conversations, email, skipped_onboarding) + tipos TS
+- [x] **Batch 2 — Core Logic**: System prompt portado (11 blocos, ~66KB idênticos ao Python), profile extractor + summary generator portados
+- [x] **Batch 3 — APIs**: Chat API com streaming SSE (Claude → ReadableStream), CRUD conversas, geração automática de título (Haiku), summary trigger a cada 20 msgs
+- [x] **Batch 4 — Frontend**: Hooks useChat (streaming) + useConversations, componentes de chat (bubble, streaming, input, list), sidebar de conversas, layout desktop/mobile (Sheet), ThemeProvider + toggle
+- [x] **Batch 5 — Features**: Onboarding opcional (5 campos, preencher ou pular), perfil editável, settings (tema, senha, excluir conta), signout server-side
+
+### Build
+- 13 rotas (7 estáticas + 6 dinâmicas), zero TypeScript errors
+- Código em `web/` (Python original preservado intacto)
+
+### Specs e Planos
+- Spec: `docs/superpowers/specs/2026-04-19-migracao-web-app-design.md`
+- Plano: `docs/superpowers/plans/2026-04-19-migracao-web-app.md`
 
 ---
 
-## Proximas melhorias (backlog)
-- [ ] Sair do Twilio Sandbox → WhatsApp Business API (numero proprio)
-- [ ] Backup do Supabase (dados de usuarios e historico)
-- [ ] Monitoramento e alertas (notificacao se bot cair)
+## Pendente — Web App
+
+- [ ] **Deploy Vercel** — criar projeto, configurar env vars (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, ANTHROPIC_API_KEY), deploy `web/`
+- [ ] **Configurar domínio** — decidir domínio e apontar DNS
+- [ ] **Testar fluxo completo em produção** — registro → onboarding → chat streaming → perfil → dark mode → logout
+- [ ] **RLS policies em messages/users** — verificar que RLS está habilitado e políticas cobrem o web app (auth.uid vs user_id)
+- [ ] **Criar usuário no Supabase Auth** — verificar que o trigger de criação de profile (users) funciona com Supabase Auth
+
+## Pendente — Chatbot WhatsApp (legado)
+
+- [ ] Validação de assinatura Twilio (X-Twilio-Signature) — deprioritizado com migração web
+- [ ] Ativar Sentry no Railway — deprioritizado com migração web
+- [x] Rodar backfill de campos inteiros — 2/3 usuários atualizados (2026-03-18)
+
+---
+
+## Backlog (futuro)
+
+- [ ] PWA instalável (manifest + service worker)
+- [ ] Notificações push/email
+- [ ] Catálogo de artigos para empreendedores
+- [ ] Admin dashboard com métricas
+- [ ] Exportação de dados (LGPD)
+- [ ] Backup do Supabase (dados de usuários e histórico)
+- [ ] Monitoramento e alertas (notificação se bot cair)
+- [ ] Considerar reativar WhatsApp via WhatsApp Business API como canal adicional
 
 ## Status
-- **MVP funcional e testado via WhatsApp**
-- **System prompt: ~66k caracteres (10 blocos + 2 dinamicos)**
-- **Deploy: Railway (producao, always-on)**
-- **URL: https://faithful-intuition-production-82bb.up.railway.app**
+- **Web app completo em `web/` (Next.js 16 + React 19 + Tailwind v4 + shadcn/ui)**
+- **Chatbot WhatsApp em `app/` (Python/FastAPI) — funcional mas deprioritizado**
+- **System prompt: ~66k caracteres (10 blocos + 2 dinâmicos) — portado para TS**
+- **Aguardando deploy Vercel + configuração de env vars**
 
 ## Conteudo do System Prompt (blocos)
 1. Identidade e Tom (469 chars)
