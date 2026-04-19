@@ -9,3 +9,5 @@ build/
 .idea/
 .vscode/
 *.DS_Store
+.superpowers/
+supabase/

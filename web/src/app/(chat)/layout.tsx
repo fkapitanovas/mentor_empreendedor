@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { Menu, LogOut, User, Settings } from 'lucide-react'
+import { Menu, LogOut, User, Settings, UserCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Sheet,
@@ -122,6 +122,12 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
             <DropdownMenuContent align="end">
               <DropdownMenuItem
                 render={<Link href="/profile" />}
+              >
+                <UserCircle className="size-4" />
+                Perfil
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                render={<Link href="/settings" />}
               >
                 <Settings className="size-4" />
                 Configuracoes
