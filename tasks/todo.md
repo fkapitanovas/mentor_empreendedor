@@ -122,8 +122,16 @@ Twilio se mostrou caro e com experiência ruim. Migração para web app responsi
 
 ## Pendente — Web App
 
-- [ ] **Deploy Vercel** — criar projeto, configurar env vars (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, ANTHROPIC_API_KEY), deploy `web/`
-- [ ] **Configurar domínio** — decidir domínio e apontar DNS
+- [x] **Deploy Vercel** — projeto `web` criado, env vars configuradas, deploy production READY (2026-04-19)
+  - URL: https://web-theta-ashen-35.vercel.app
+- [ ] **Configurar domínio customizado** — registrar domínio, configurar DNS (A/CNAME) no Vercel, SSL automático. Opções: mentorempreendedor.com.br, maximpulso.com.br, ou outro
+- [ ] **Product Analytics (PostHog)** — instalar PostHog para rastrear uso, retenção e comportamento dos empreendedores:
+  - Criar conta em posthog.com (plano gratuito: 1M eventos/mês)
+  - Instalar `posthog-js` e `posthog-node`
+  - Criar provider `PostHogProvider` no layout
+  - Eventos a rastrear: registro, onboarding (preencheu/pulou), mensagem enviada, conversa criada, perfil editado, tema alterado
+  - Session replay e heatmaps para entender UX
+  - Funil: registro → onboarding → 1ª mensagem → 5ª mensagem → retorno D7
 - [ ] **Testar fluxo completo em produção** — registro → onboarding → chat streaming → perfil → dark mode → logout
 - [ ] **RLS policies em messages/users** — verificar que RLS está habilitado e políticas cobrem o web app (auth.uid vs user_id)
 - [ ] **Criar usuário no Supabase Auth** — verificar que o trigger de criação de profile (users) funciona com Supabase Auth
