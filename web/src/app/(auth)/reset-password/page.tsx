@@ -1,16 +1,16 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Eye, EyeOff, Mail } from 'lucide-react'
+import { Eye, EyeOff, CheckCircle } from 'lucide-react'
 
-export default function RegisterPage() {
-  const [email, setEmail] = useState('')
+export default function ResetPasswordPage() {
+  const router = useRouter()
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -36,22 +36,19 @@ export default function RegisterPage() {
     setLoading(true)
 
     const supabase = createClient()
-    const { error: authError } = await supabase.auth.signUp({
-      email,
+    const { error: authError } = await supabase.auth.updateUser({
       password,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback?next=/onboarding`,
-      },
     })
 
     if (authError) {
-      setError('Erro ao criar conta. Tente novamente.')
+      setError('Erro ao redefinir senha. Tente novamente.')
       setLoading(false)
       return
     }
 
     setSuccess(true)
     setLoading(false)
+    setTimeout(() => router.push('/'), 2000)
   }
 
   if (success) {
@@ -59,47 +56,28 @@ export default function RegisterPage() {
       <Card>
         <CardContent className="flex flex-col items-center gap-4 pt-8 pb-8">
           <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
-            <Mail className="h-7 w-7 text-green-600" />
+            <CheckCircle className="h-7 w-7 text-green-600" />
           </div>
-          <h2 className="text-lg font-semibold text-center">Conta criada com sucesso!</h2>
+          <h2 className="text-lg font-semibold text-center">Senha redefinida!</h2>
           <p className="text-sm text-muted-foreground text-center">
-            Verifique seu e-mail para confirmar o cadastro.
+            Sua senha foi alterada com sucesso. Redirecionando...
           </p>
-          <Link
-            href="/login"
-            className="text-sm text-primary underline underline-offset-4"
-          >
-            Voltar para login
-          </Link>
         </CardContent>
       </Card>
     )
   }
 
   const hasError = error.length > 0
-  const passwordMismatch = error === 'As senhas nao coincidem.'
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-center">Criar conta</CardTitle>
+        <CardTitle className="text-center">Redefinir senha</CardTitle>
       </CardHeader>
       <form onSubmit={handleSubmit}>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">E-mail</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="seu@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className={hasError && !passwordMismatch ? 'border-destructive' : ''}
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="password">Senha</Label>
+            <Label htmlFor="password">Nova senha</Label>
             <div className="relative">
               <Input
                 id="password"
@@ -121,7 +99,7 @@ export default function RegisterPage() {
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="confirmPassword">Confirmar senha</Label>
+            <Label htmlFor="confirmPassword">Confirmar nova senha</Label>
             <div className="relative">
               <Input
                 id="confirmPassword"
@@ -146,16 +124,10 @@ export default function RegisterPage() {
             <p className="text-sm text-destructive">{error}</p>
           )}
         </CardContent>
-        <CardFooter className="flex flex-col gap-4">
+        <CardFooter>
           <Button type="submit" className="w-full h-11" disabled={loading}>
-            {loading ? 'Criando conta...' : 'Criar conta'}
+            {loading ? 'Salvando...' : 'Redefinir senha'}
           </Button>
-          <p className="text-sm text-muted-foreground">
-            Ja tem conta?{' '}
-            <Link href="/login" className="text-primary underline underline-offset-4">
-              Entrar
-            </Link>
-          </p>
         </CardFooter>
       </form>
     </Card>

@@ -34,7 +34,13 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser()
 
   const pathname = request.nextUrl.pathname
-  const isAuthPage = pathname === '/login' || pathname === '/register'
+  const isAuthPage = pathname === '/login' || pathname === '/register' || pathname === '/forgot-password' || pathname === '/reset-password'
+  const isAuthCallback = pathname.startsWith('/auth/callback')
+
+  // Allow auth callback through without redirects
+  if (isAuthCallback) {
+    return supabaseResponse
+  }
 
   // No user and not on auth page → redirect to login
   if (!user && !isAuthPage) {
@@ -43,8 +49,8 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  // User exists and on auth page → redirect to home
-  if (user && isAuthPage) {
+  // User exists and on auth page (except reset-password) → redirect to home
+  if (user && isAuthPage && pathname !== '/reset-password') {
     const url = request.nextUrl.clone()
     url.pathname = '/'
     return NextResponse.redirect(url)
