@@ -1,82 +1,100 @@
 # Handoff — Mentor Empreendedor
 
-## Estado Atual (2026-03-18)
-O projeto esta **em producao no Railway**, funcionando 24/7 sem depender de maquina local.
+## Estado Atual (2026-04-20)
 
-### O que esta funcionando
-- Bot WhatsApp responde via Twilio Sandbox
-- System prompt com 10 blocos + 2 dinamicos (~66k chars), perfis expandidos de 10+ gurus
-- Diagnostico via conversa livre (onboarding organico)
-- Personalizacao por estagio do empreendedor
-- Historico de 100 mensagens no contexto do Claude
-- Campos padronizados para analytics (`tempo_negocio_meses`, `faturamento_mensal`) com parsing automatico
-- Atualizacao dinamica de perfil: Claude detecta mudancas explicitas do usuario via tag `[PERFIL_ATUALIZADO]`
-- Memoria de longo prazo: resumos de conversa gerados a cada 20 mensagens (5 secoes estruturadas)
-- Resumos injetados no system prompt para continuidade entre conversas
-- Deploy automatico: `git push origin main` → Railway redeploy
+O projeto tem **dois deploys ativos**:
+- **Web App (principal)**: Vercel — https://web-theta-ashen-35.vercel.app
+- **WhatsApp Chatbot (legado)**: Railway — deprioritizado
+
+### O que está funcionando — Web App
+
+**Chat:**
+- Chat com streaming SSE (Claude Sonnet 4.6 → ReadableStream)
+- Múltiplas conversas com sidebar, título auto-gerado via Haiku
+- System prompt modular (14 blocos): 12 gurus, 22 livros, 9 regras de conflito, formalização MEI, e-commerce, ferramentas práticas, referências por nicho
+- Diagnóstico via conversa (onboarding orgânico via tags `[PERFIL_EXTRAIDO]`/`[PERFIL_ATUALIZADO]`)
+- Tags limpas no client (useChat) + ao carregar do DB (defesa em profundidade)
+- Memória de longo prazo: resumos a cada 20 mensagens
+- Contexto: 100 últimas msgs + resumo comprimido
+- Suggestion chips no empty state (3 perguntas clicáveis)
+
+**Design — "Tropical & Vibrante" (redesign 2026-04-20):**
+- Fontes: Plus Jakarta Sans (headings) + DM Sans (body)
+- Paleta: emerald (#059669) + amber (#F59E0B), dark mode neutro (#111111)
+- Bolhas assimétricas: assistente com canto achatado esquerdo (bg-secondary), usuário com gradiente emerald→teal
+- Header 56px, sidebar bg-muted com botão gradiente, active item com borda verde
+- Auth pages: dot grid background, ícones nos inputs, botões gradiente
+- Settings: segmented theme control (Light | Dark | Sistema)
+- Profile: badges coloridos por estágio (amber/green/blue)
+- Onboarding: barra de progresso, ícones por campo
+- Animações: fade-in + slide-up em mensagens, cursor `|` pulsante no streaming
+
+**Auth:**
+- Email + senha (Supabase Auth)
+- Esqueci senha, redefinir senha, confirmação de email
+- Auth callback: /auth/callback troca code por session
+- Toggle de senha em todos os campos
+
+**Admin:**
+- Página `/admin` com tabela de perfis de empreendedores
+- Exportação CSV via `/api/admin/users?format=csv`
+- Protegido por `ADMIN_EMAILS` env var (validação server-side)
+- Admins: fkapitanovas@gmail.com, fabio.kapitanovas@me.com
+
+**Conteúdo do System Prompt (14 blocos):**
+1. Identidade e Tom
+2. Base de Conhecimento (12 gurus: Marcus Marques, Flávio Augusto, Thiago Oliveira, Thiago Nigro, Nathalia Arcuri, Gustavo Cerbasi, Rodrigo Almeida, Érico Rocha, Conrado Adolpho, Pedro Sobral, Joel Jota, Geraldo Rufino, Ana Fontes)
+3. Base de Livros (22 livros incl. Lucro Primeiro — deduplicada vs perfis de gurus)
+4. Regras de Interação
+5. Personalização por Estágio
+6. Resolução de Conflitos (9 tensões documentadas)
+7. Referências Nichadas (confeitaria 4 refs, beleza 5 refs, marketing, finanças populares, moda, gastronomia, MEI geral)
+8. Base Institucional
+9. Base Impulso Stone
+10. Formalização MEI (DAS 2026, obrigações, migração ME, reforma tributária)
+11. E-commerce (Mercado Livre, Shopee, Amazon, Instagram Shopping, WhatsApp Business, logística)
+12. Ferramentas Práticas (financeiro, CRM, design, pagamentos, IA — escalonadas por faturamento)
+13. Diagnóstico/Atualização de Perfil (dinâmico)
+14. Contexto do Usuário + Histórico Resumido (dinâmico)
 
 ### Tabelas no Supabase
-- `users` — perfil do empreendedor (campos texto + campos inteiros padronizados)
-- `messages` — historico de mensagens (role: user/assistant)
-- `conversation_summaries` — 1 linha por usuario, resumo comprimido + contador de msgs cobertas
-
-### Fluxo do Webhook (POST /webhook)
-1. Identifica/cria usuario pelo telefone
-2. Carrega historico (100 msgs) + resumo existente
-3. Gera resposta do mentor (resumo no system prompt)
-4. Extrai perfil (`[PERFIL_EXTRAIDO]` ou `[PERFIL_ATUALIZADO]`) e atualiza banco
-5. Salva mensagens no historico
-6. Envia resposta via WhatsApp
-7. Se 20+ msgs novas desde ultimo resumo → gera novo resumo (pos-resposta, nao atrasa usuario)
+- `users` — perfil do empreendedor (email, name, setor, estagio, faturamento, etc.)
+- `conversations` — conversas com FK para users
+- `messages` — histórico (role: user/assistant, conversation_id)
+- `conversation_summaries` — resumos comprimidos por conversa
 
 ### URLs e Acessos
-- **Producao**: https://faithful-intuition-production-82bb.up.railway.app
-- **Health check**: https://faithful-intuition-production-82bb.up.railway.app/health
-- **Webhook Twilio**: https://faithful-intuition-production-82bb.up.railway.app/webhook
-- **Dev local (ngrok)**: https://toylike-chelsey-esophageal.ngrok-free.dev
+- **Web App**: https://web-theta-ashen-35.vercel.app
+- **Admin**: https://web-theta-ashen-35.vercel.app/admin
 - **GitHub**: https://github.com/fkapitanovas/mentor_empreendedor
-- **Supabase**: https://wlpglssnqkjsydjylxjj.supabase.co
-- **Railway dashboard**: railway.app (login com GitHub fkapitanovas)
-- **Twilio console**: console.twilio.com (sandbox WhatsApp)
+- **Supabase**: https://supabase.com/dashboard/project/wlpglssnqkjsydjylxjj
+- **Vercel**: vercel.com (projeto `web`)
+- **WhatsApp (legado)**: https://faithful-intuition-production-82bb.up.railway.app
 
-### Env Vars (Railway)
-7 variaveis configuradas no dashboard do Railway:
-- `ANTHROPIC_API_KEY` — Claude API
-- `CLAUDE_MODEL` — claude-sonnet-4-6
-- `SUPABASE_URL` — URL do projeto Supabase
-- `SUPABASE_KEY` — anon key do Supabase
-- `TWILIO_ACCOUNT_SID` — SID da conta Twilio
-- `TWILIO_AUTH_TOKEN` — auth token Twilio
-- `TWILIO_WHATSAPP_FROM` — whatsapp:+14155238886 (sandbox)
+### Env Vars (Vercel — production)
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `ANTHROPIC_API_KEY`
+- `ADMIN_EMAILS` — fkapitanovas@gmail.com,fabio.kapitanovas@me.com
 
 ### Como fazer deploy
-1. Fazer alteracoes no codigo
-2. `git add` + `git commit` + `git push origin main`
-3. Railway detecta automaticamente e faz redeploy
-4. Verificar logs no dashboard do Railway
+```bash
+cd web
+npm run build        # Verificar build local
+git add . && git commit && git push origin main
+vercel --prod        # Deploy produção
+```
 
-### Como rodar localmente (dev)
-1. `cd ~/Mentor_Empreendedor`
-2. `python3 -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000`
-3. Em outro terminal: `ngrok http --domain toylike-chelsey-esophageal.ngrok-free.dev 8000`
-4. Trocar webhook no Twilio para URL do ngrok + `/webhook`
-5. Ao terminar dev, trocar webhook de volta para URL do Railway
+### Próximos passos prioritários
+1. **Testar fluxo completo em produção** — registro → onboarding → chat → perfil → dark mode → reset senha
+2. **Domínio customizado** — registrar e configurar DNS no Vercel
+3. **PostHog analytics** — rastrear uso, retenção, funil de conversão
+4. **Nichos sub-representados** — pet, alimentação geral, serviços domésticos, artesanato (ver todo.md)
 
-### Proximos passos prioritarios
-1. **Sair do Twilio Sandbox** — migrar para WhatsApp Business API (numero proprio)
-2. **Testes automatizados** — garantir que mudancas nao quebrem o bot
-3. **Rate limiting** — proteger contra spam/abuso no webhook
-4. **Logging estruturado** — facilitar debug em producao
-5. **Monitoramento** — alertas se o bot cair ou der erro
-6. **Backup Supabase** — proteger dados de usuarios e historico
-
-### Decisoes tecnicas tomadas
-- **Railway** escolhido por simplicidade (zero config, sem cold start). Render free tem cold start de 30-60s e Twilio da timeout em 15s
-- **ngrok static domain** mantido para dev local (gratuito, URL fixa)
-- `load_dotenv()` funciona tanto com `.env` local quanto sem ele (Railway injeta env vars)
-- `Procfile` usa `$PORT` dinamico (Railway atribui automaticamente)
-- **Contexto 100 msgs** (~20k tokens adicionais no input, bem dentro do limite do Sonnet)
-- **Campos texto mantidos** ao lado dos inteiros (nao substitui, complementa) — backward compatible
-- **Resumo pos-resposta**: gerado apos enviar WhatsApp para nao atrasar a resposta ao usuario
-- **Upsert com on_conflict**: 1 linha por usuario na tabela de resumos, sem acumular registros
-- **Parsing Python como fallback**: campos inteiros sao parseados tanto pelo Claude (prompt) quanto pelo Python (`_standardize_profile_fields`)
+### Decisões técnicas relevantes
+- **Design system**: Plus Jakarta Sans + DM Sans, emerald/amber, dark neutro. CSS variables em globals.css, `font-heading` para Jakarta, `font-sans` para DM Sans
+- **Admin via env var**: `ADMIN_EMAILS` (comma-separated), sem coluna de role no banco. Validação server-side com service role key para bypassar RLS
+- **cleanProfileTags defesa em profundidade**: limpa tags no streaming (parciais), no done event (completas), E ao carregar do DB (loadMessages). Qualquer camada que falhe, outra pega
+- **Livros deduplicados**: conteúdo detalhado fica no perfil do guru (conhecimento.ts), livros.ts só tem complementos e livros sem guru dedicado
+- **Conflitos explícitos**: 9 regras com prioridade definida (ex: Thiago Nigro para finanças, Érico Rocha para marketing, Kiyosaki para dívidas, Geraldo Rufino para jornada)

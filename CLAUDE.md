@@ -19,16 +19,18 @@ Mentor virtual para microempreendedores brasileiros (MEIs, MEs, autônomos). Com
 ### Architecture
 - Chat minimalista estilo Claude.ai com streaming SSE
 - Múltiplas conversas por usuário (sidebar com lista)
-- System prompt modular (10 blocos + 2 dinâmicos, ~66KB): Identidade/Tom, Base de Conhecimento, Base de Livros, Regras de Interação, Personalização, Resolução de Conflitos, Referências Nicho, Base Institucional, Base Impulso Stone, Diagnóstico/Atualização de Perfil
+- System prompt modular (14 blocos + 2 dinâmicos): Identidade/Tom, Base de Conhecimento (12 gurus), Base de Livros (22 livros incl. Lucro Primeiro), Regras de Interação, Personalização, Resolução de Conflitos (9 tensões), Referências Nicho, Base Institucional, Base Impulso Stone, Formalização MEI, E-commerce/Marketplaces, Ferramentas Práticas, Diagnóstico/Atualização de Perfil
 - Onboarding opcional: formulário com 5 campos ou pular (IA captura organicamente)
 - Diagnóstico via conversa: Claude extrai perfil e sinaliza via tag `[PERFIL_EXTRAIDO]`
 - Atualização dinâmica: Claude detecta mudanças e sinaliza via tag `[PERFIL_ATUALIZADO]`
-- Tags removidas no client (`cleanProfileTags()` no useChat) antes de renderizar
+- Tags removidas no client (`cleanProfileTags()` no useChat) antes de renderizar + ao carregar do DB
+- Admin: `/admin` com tabela de perfis + exportação CSV, protegido por `ADMIN_EMAILS` env var
 - Memória de longo prazo: resumos a cada 20 mensagens, injetados no system prompt
 - Contexto: 100 últimas mensagens + resumo comprimido
 - Título de conversa gerado automaticamente via Claude Haiku após 1ª mensagem
 - Auth: email + senha (Supabase Auth), esqueci senha, confirmação de email, toggle de senha
-- Dark mode: light + dark + sistema (ThemeProvider)
+- Dark mode: light + dark + sistema (segmented control em settings, icon toggle no header)
+- Design: tema "Tropical & Vibrante" — Plus Jakarta Sans (headings) + DM Sans (body), paleta emerald/amber, dark mode neutro
 
 ### Supabase
 - **Project ref**: wlpglssnqkjsydjylxjj
@@ -121,7 +123,9 @@ mentor_empreendedor/
 │   │   │   ├── profile/         # Visualizar/editar perfil
 │   │   │   ├── settings/        # Tema, senha, excluir conta
 │   │   │   ├── auth/callback/   # Token exchange (email confirm + reset)
+│   │   │   ├── admin/           # Painel admin (tabela + CSV export)
 │   │   │   └── api/
+│   │   │       ├── admin/users/ # GET — lista users JSON/CSV (admin only)
 │   │   │       ├── chat/        # POST — streaming Claude SSE
 │   │   │       ├── conversations/ # CRUD + título automático
 │   │   │       └── auth/signout/  # Logout server-side
@@ -132,7 +136,14 @@ mentor_empreendedor/
 │   │   ├── hooks/               # use-chat (streaming), use-conversations
 │   │   ├── lib/
 │   │   │   ├── supabase/        # client, server, middleware
-│   │   │   ├── prompts/         # 11 blocos do system prompt (portados de Python)
+│   │   │   ├── prompts/         # 14 blocos do system prompt
+│   │   │   │   ├── conhecimento.ts  # 12 perfis de gurus (incl. Ana Fontes)
+│   │   │   │   ├── livros.ts        # 22 livros (deduplicado vs perfis)
+│   │   │   │   ├── formalizacao.ts  # MEI, DAS, migração ME, tributação
+│   │   │   │   ├── ecommerce.ts     # Marketplaces, logística, vendas online
+│   │   │   │   ├── ferramentas.ts   # Ferramentas por faixa de faturamento
+│   │   │   │   ├── conflitos.ts     # 9 regras de resolução de tensões
+│   │   │   │   └── ...              # identidade, regras, nichos, etc.
 │   │   │   ├── profile-extractor.ts  # Regex + parsers (portado de mentor.py)
 │   │   │   └── summary.ts      # Geração de resumos (portado de mentor.py)
 │   │   └── types/database.ts   # User, Conversation, Message, ConversationSummary

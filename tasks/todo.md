@@ -180,22 +180,26 @@ Twilio se mostrou caro e com experiência ruim. Migração para web app responsi
 - [ ] Monitoramento e alertas (notificação se bot cair)
 - [ ] Considerar reativar WhatsApp via WhatsApp Business API como canal adicional
 
-## Status
+## Status (atualizado 2026-04-20)
 - **Web app completo em `web/` (Next.js 16 + React 19 + Tailwind v4 + shadcn/ui)**
+- **Design "Tropical & Vibrante"**: Plus Jakarta Sans + DM Sans, paleta emerald/amber
+- **Admin**: `/admin` com tabela + export CSV, protegido por ADMIN_EMAILS
+- **Deploy Vercel**: https://web-theta-ashen-35.vercel.app
 - **Chatbot WhatsApp em `app/` (Python/FastAPI) — funcional mas deprioritizado**
-- **System prompt: ~66k caracteres (10 blocos + 2 dinâmicos) — portado para TS**
-- **Aguardando deploy Vercel + configuração de env vars**
 
-## Conteudo do System Prompt (blocos)
-1. Identidade e Tom (469 chars)
-2. Base de Conhecimento por Tema (35.841 chars)
-3. Base de Livros (9.150 chars)
-4. Regras de Interacao (1.172 chars)
-5. Personalizacao por Estagio (509 chars)
-6. Resolucao de Conflitos (1.131 chars)
-7. Referencias Nichadas por Setor (7.291 chars)
-8. Base Institucional (6.594 chars)
-9. Base Impulso Stone (3.211 chars)
-10. Instrucoes de Diagnostico/Atualizacao (dinamico)
+## Conteudo do System Prompt (14 blocos)
+1. Identidade e Tom
+2. Base de Conhecimento por Tema (12 gurus incl. Ana Fontes)
+3. Base de Livros (22 livros incl. Lucro Primeiro — deduplicada)
+4. Regras de Interacao
+5. Personalizacao por Estagio
+6. Resolucao de Conflitos (9 tensoes)
+7. Referencias Nichadas por Setor (confeitaria, beleza, marketing, financas, moda, gastronomia, MEI)
+8. Base Institucional
+9. Base Impulso Stone
+10. Formalizacao MEI (DAS 2026, obrigacoes, migracao ME)
+11. E-commerce (marketplaces, logistica, vendas online)
+12. Ferramentas Praticas (financeiro, CRM, design, pagamentos, IA)
+13. Instrucoes de Diagnostico/Atualizacao (dinamico)
 + Contexto do Usuario (pos-onboarding)
 + Historico Resumido (quando existir)
