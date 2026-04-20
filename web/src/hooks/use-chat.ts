@@ -4,6 +4,21 @@ import { useState, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import type { Message } from '@/types/database'
 
+function cleanProfileTags(text: string): string {
+  let cleaned = text
+    .replace(/\[PERFIL_EXTRAIDO\][\s\S]*?\[\/PERFIL_EXTRAIDO\]/g, '')
+    .replace(/\[PERFIL_ATUALIZADO\][\s\S]*?\[\/PERFIL_ATUALIZADO\]/g, '')
+  // Remove partial opening tags at the end (during streaming)
+  cleaned = cleaned.replace(/\[PERFIL_(?:EXTRAIDO|ATUALIZADO)\][\s\S]*$/, '')
+  // Remove trailing partial tag start
+  cleaned = cleaned.replace(/\[PERFIL_(?:EXTRAIDO|ATUALIZADO)?$/, '')
+  cleaned = cleaned.replace(/\[PERFIL_?$/, '')
+  cleaned = cleaned.replace(/\[PERF?$/, '')
+  cleaned = cleaned.replace(/\[PE?$/, '')
+  cleaned = cleaned.replace(/\[P?$/, '')
+  return cleaned.trim()
+}
+
 export function useChat(conversationId: string) {
   const [messages, setMessages] = useState<Message[]>([])
   const [isStreaming, setIsStreaming] = useState(false)
@@ -87,20 +102,20 @@ export function useChat(conversationId: string) {
               }
 
               if (data.done) {
-                // Final: add assistant message to state
+                // Final: add assistant message to state (cleaned)
                 const assistantMsg: Message = {
                   id: crypto.randomUUID(),
                   user_id: '',
                   conversation_id: conversationId,
                   role: 'assistant',
-                  content: fullText,
+                  content: cleanProfileTags(fullText),
                   created_at: new Date().toISOString(),
                 }
                 setMessages((prev) => [...prev, assistantMsg])
                 setStreamingText('')
               } else if (data.text) {
                 fullText += data.text
-                setStreamingText(fullText)
+                setStreamingText(cleanProfileTags(fullText))
               }
             } catch {
               // Skip malformed JSON lines
