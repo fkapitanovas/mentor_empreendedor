@@ -8,17 +8,17 @@ export function StreamingMessage({ text }: StreamingMessageProps) {
   const paragraphs = text.split('\n\n')
 
   return (
-    <div className="flex gap-3 px-4 py-2 justify-start">
-      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-green-500 to-green-700 text-xs font-bold text-white">
+    <div className="flex gap-3 px-4 py-2 justify-start animate-message-in">
+      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-xs font-bold text-white">
         M
       </div>
-      <div className="max-w-[720px] rounded-2xl bg-muted/50 px-4 py-2.5 text-sm leading-relaxed text-foreground">
+      <div className="max-w-[min(720px,85%)] rounded-2xl rounded-tl-md border border-border bg-secondary px-4 py-3 text-sm text-secondary-foreground" style={{ lineHeight: '1.7' }}>
         {paragraphs.map((paragraph, i) => (
           <p key={i} className={i > 0 ? 'mt-3' : undefined}>
             {paragraph}
           </p>
         ))}
-        <span className="inline-block motion-safe:animate-pulse">&#x2588;</span>
+        <span className="ml-0.5 inline-block animate-cursor-blink">|</span>
       </div>
     </div>
   )
