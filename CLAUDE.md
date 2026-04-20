@@ -1,32 +1,41 @@
 # Mentor Empreendedor
 
 ## Project Overview
-Chatbot via WhatsApp que funciona como mentor virtual para microempreendedores brasileiros (MEIs, MEs, autônomos). Combina conhecimento de múltiplos gurus do empreendedorismo em um único ponto de acesso.
+Mentor virtual para microempreendedores brasileiros (MEIs, MEs, autônomos). Combina conhecimento de múltiplos gurus do empreendedorismo em uma interface de chat com IA.
 
-### Stack
+### Stack (Web App — atual)
+- **Frontend**: Next.js 16 (App Router) + React 19 + TypeScript 5
+- **UI**: Tailwind CSS v4 + shadcn/ui (Radix UI)
+- **Database**: Supabase (Auth + PostgreSQL)
+- **LLM**: Claude API (Anthropic) via `@anthropic-ai/sdk` — modelo `claude-sonnet-4-6`
+- **Deploy**: Vercel
+- **URL**: https://web-theta-ashen-35.vercel.app
+
+### Stack (WhatsApp Chatbot — legado, deprioritizado)
 - **Backend**: Python 3.9 + FastAPI
-- **Database**: Supabase (PostgreSQL)
 - **Messaging**: Twilio (WhatsApp Sandbox)
-- **LLM**: Claude API (Anthropic) — modelo `claude-sonnet-4-6`
-- **Deploy**: Railway (produção, always-on)
-- **Tunnel (dev)**: ngrok (domínio estático gratuito — URL fixa, apenas para dev local)
+- **Deploy**: Railway — https://faithful-intuition-production-82bb.up.railway.app
 
 ### Architecture
-- 3 camadas: Diagnóstico → Orientação Temática → Personalização por Estágio
-- 5 pilares: Gestão, Finanças, Marketing, Mentalidade, Inspiração
-- System prompt modular (10 blocos + 2 dinâmicos): Identidade/Tom, Base de Conhecimento, Base de Livros, Regras de Interação, Personalização, Resolução de Conflitos, Referências Nicho, Base Institucional, Base Impulso Stone, Diagnóstico/Atualização de Perfil, Resumo de Conversa
-- Diagnostico via conversa livre: Claude extrai perfil organicamente e sinaliza via tag `[PERFIL_EXTRAIDO]`
-- Atualização dinâmica de perfil: Claude detecta mudanças explícitas e sinaliza via tag `[PERFIL_ATUALIZADO]`
-- Memória de longo prazo: resumos de conversa gerados a cada 20 mensagens, injetados no system prompt
-- Contexto: 100 últimas mensagens + resumo comprimido de conversas anteriores
+- Chat minimalista estilo Claude.ai com streaming SSE
+- Múltiplas conversas por usuário (sidebar com lista)
+- System prompt modular (10 blocos + 2 dinâmicos, ~66KB): Identidade/Tom, Base de Conhecimento, Base de Livros, Regras de Interação, Personalização, Resolução de Conflitos, Referências Nicho, Base Institucional, Base Impulso Stone, Diagnóstico/Atualização de Perfil
+- Onboarding opcional: formulário com 5 campos ou pular (IA captura organicamente)
+- Diagnóstico via conversa: Claude extrai perfil e sinaliza via tag `[PERFIL_EXTRAIDO]`
+- Atualização dinâmica: Claude detecta mudanças e sinaliza via tag `[PERFIL_ATUALIZADO]`
+- Tags removidas no client (`cleanProfileTags()` no useChat) antes de renderizar
+- Memória de longo prazo: resumos a cada 20 mensagens, injetados no system prompt
+- Contexto: 100 últimas mensagens + resumo comprimido
+- Título de conversa gerado automaticamente via Claude Haiku após 1ª mensagem
+- Auth: email + senha (Supabase Auth), esqueci senha, confirmação de email, toggle de senha
+- Dark mode: light + dark + sistema (ThemeProvider)
 
-### Produção (Railway)
-- **URL**: https://faithful-intuition-production-82bb.up.railway.app
-- **Webhook Twilio**: https://faithful-intuition-production-82bb.up.railway.app/webhook
-- Deploy automático via `git push origin main`
-- Env vars configuradas no dashboard do Railway
-- `Procfile` define o comando de start
-- `runtime.txt` define Python 3.9.18
+### Supabase
+- **Project ref**: wlpglssnqkjsydjylxjj
+- **Tabelas**: users, conversations, messages, conversation_summaries
+- **Trigger**: `handle_new_user()` — auto-cria perfil em `public.users` quando signup em `auth.users`
+- **RLS**: habilitado em todas as tabelas com policies por auth.uid()
+- **Auth callback**: `/auth/callback` troca code por session (email confirm + password reset)
 
 ### Dev Local
 ```bash
@@ -99,38 +108,51 @@ ngrok http --domain toylike-chelsey-esophageal.ngrok-free.dev 8000
 
 ## Project Structure
 ```
-Mentor_Empreendedor/
-├── app/
-│   ├── __init__.py
-│   ├── main.py              # FastAPI entry point + GET /health
-│   ├── config.py             # Settings & env vars (from .env)
-│   ├── routers/
-│   │   ├── __init__.py
-│   │   └── webhook.py        # POST /webhook — recebe msgs do Twilio
-│   ├── services/
-│   │   ├── __init__.py
-│   │   ├── mentor.py         # Claude API — resposta, extração de perfil, parsing, resumos
-│   │   ├── twilio_service.py # Envia WhatsApp (com split de msgs longas)
-│   │   └── supabase_service.py # CRUD usuarios, historico, resumos de conversa
-│   ├── models/
-│   │   ├── __init__.py
-│   │   └── schemas.py        # Pydantic models
-│   └── prompts/
-│       ├── __init__.py
-│       └── system_prompt.py  # System prompt modular (10 blocos, ~66k chars)
-├── sql/
-│   └── schema.sql            # Tabelas users, messages, conversation_summaries
-├── tasks/
-│   ├── todo.md               # Current task tracking
-│   ├── handoff.md            # Estado atual, URLs, acessos, proximos passos
-│   └── lessons.md            # Self-improvement log
-├── .env                      # Credenciais (NAO committar)
-├── .env.example
-├── .gitignore
-├── requirements.txt
-├── Procfile                 # Railway: comando de start (uvicorn)
-├── runtime.txt              # Railway: versão do Python
+mentor_empreendedor/
+├── web/                         # Web App (Next.js — ATIVO)
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── (auth)/          # Login, registro, esqueci-senha, redefinir-senha
+│   │   │   ├── (chat)/          # Layout principal + conversas
+│   │   │   │   ├── layout.tsx   # Sidebar + header + área de chat
+│   │   │   │   ├── page.tsx     # Entry point (redireciona para conversa)
+│   │   │   │   └── c/[id]/      # Conversa específica
+│   │   │   ├── onboarding/      # Formulário opcional pós-registro
+│   │   │   ├── profile/         # Visualizar/editar perfil
+│   │   │   ├── settings/        # Tema, senha, excluir conta
+│   │   │   ├── auth/callback/   # Token exchange (email confirm + reset)
+│   │   │   └── api/
+│   │   │       ├── chat/        # POST — streaming Claude SSE
+│   │   │       ├── conversations/ # CRUD + título automático
+│   │   │       └── auth/signout/  # Logout server-side
+│   │   ├── components/
+│   │   │   ├── ui/              # shadcn/ui
+│   │   │   ├── chat/            # message-bubble, message-list, chat-input, streaming
+│   │   │   └── sidebar/         # conversation-list, conversation-item
+│   │   ├── hooks/               # use-chat (streaming), use-conversations
+│   │   ├── lib/
+│   │   │   ├── supabase/        # client, server, middleware
+│   │   │   ├── prompts/         # 11 blocos do system prompt (portados de Python)
+│   │   │   ├── profile-extractor.ts  # Regex + parsers (portado de mentor.py)
+│   │   │   └── summary.ts      # Geração de resumos (portado de mentor.py)
+│   │   └── types/database.ts   # User, Conversation, Message, ConversationSummary
+│   └── sql/migration-web.sql   # DDL: conversations, RLS, trigger handle_new_user
+├── app/                         # WhatsApp Chatbot (Python — LEGADO)
+│   ├── prompts/system_prompt.py # Source original do system prompt (~66KB)
+│   ├── services/mentor.py       # Source original dos extractors
+│   └── ...
+├── docs/superpowers/
+│   ├── specs/                   # Spec da migração
+│   └── plans/                   # Plano de implementação
 └── CLAUDE.md
+```
+
+### Comandos (Web App)
+```bash
+cd web
+npm run dev          # Dev server
+npm run build        # Build de produção
+vercel --prod        # Deploy produção
 ```
 
 ## Key Domain Context

@@ -120,6 +120,24 @@ Twilio se mostrou caro e com experiência ruim. Migração para web app responsi
 
 ---
 
+## Etapa 13: Auth Improvements ✅ (2026-04-19)
+
+- [x] **Esqueci minha senha** — /forgot-password, email via Supabase `resetPasswordForEmail`, tela de sucesso
+- [x] **Redefinir senha** — /reset-password, nova senha + confirmar, `updateUser({ password })`
+- [x] **Confirmação de email** — após registro mostra "verifique seu email" em vez de redirecionar direto
+- [x] **Auth callback** — /auth/callback troca code por session (email confirm + password reset)
+- [x] **Toggle de senha** — Eye/EyeOff em todos os campos de senha (login, registro, redefinir)
+- [x] **Middleware atualizado** — permite /forgot-password, /reset-password, /auth/callback
+
+## Etapa 14: Bug Fixes Pós-Deploy ✅ (2026-04-19)
+
+- [x] **phone NOT NULL** — relaxado para permitir users web sem telefone
+- [x] **Trigger handle_new_user** — auto-cria perfil em public.users no signup do Supabase Auth
+- [x] **RLS policies completas** — users (read/update own), messages (read/insert own), conversation_summaries (read/insert/update via conversation)
+- [x] **cleanProfileTags()** — remove tags [PERFIL_EXTRAIDO] e [PERFIL_ATUALIZADO] do streaming e mensagem final no client
+
+---
+
 ## Pendente — Web App
 
 - [x] **Deploy Vercel** — projeto `web` criado, env vars configuradas, deploy production READY (2026-04-19)
@@ -132,9 +150,7 @@ Twilio se mostrou caro e com experiência ruim. Migração para web app responsi
   - Eventos a rastrear: registro, onboarding (preencheu/pulou), mensagem enviada, conversa criada, perfil editado, tema alterado
   - Session replay e heatmaps para entender UX
   - Funil: registro → onboarding → 1ª mensagem → 5ª mensagem → retorno D7
-- [ ] **Testar fluxo completo em produção** — registro → onboarding → chat streaming → perfil → dark mode → logout
-- [ ] **RLS policies em messages/users** — verificar que RLS está habilitado e políticas cobrem o web app (auth.uid vs user_id)
-- [ ] **Criar usuário no Supabase Auth** — verificar que o trigger de criação de profile (users) funciona com Supabase Auth
+- [ ] **Testar fluxo completo em produção** — registro → onboarding → chat streaming → perfil → dark mode → esqueci senha → logout
 
 ## Pendente — Chatbot WhatsApp (legado)
 
