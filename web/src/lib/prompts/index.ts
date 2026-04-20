@@ -8,6 +8,8 @@ import { RESOLUCAO_CONFLITOS } from './conflitos'
 import { REFERENCIAS_NICHO } from './nichos'
 import { BASE_INSTITUCIONAL } from './institucional'
 import { BASE_IMPULSO_STONE } from './impulso-stone'
+import { BASE_FORMALIZACAO } from './formalizacao'
+import { BASE_ECOMMERCE } from './ecommerce'
 import { INSTRUCOES_DIAGNOSTICO } from './diagnostico'
 import { INSTRUCOES_ATUALIZACAO_PERFIL } from './atualizacao-perfil'
 
@@ -22,6 +24,8 @@ export function buildSystemPrompt(user: User | null, summary?: string | null): s
     REFERENCIAS_NICHO,
     BASE_INSTITUCIONAL,
     BASE_IMPULSO_STONE,
+    BASE_FORMALIZACAO,
+    BASE_ECOMMERCE,
   ]
 
   if (user?.is_onboarded) {
