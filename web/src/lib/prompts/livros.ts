@@ -31,6 +31,27 @@ investimentos como debito automatico para nao depender de disciplina.
 - Casais Inteligentes Enriquecem Juntos (Gustavo Cerbasi): Conceitos centrais no \
 perfil. Complemento: 5 perfis financeiros (poupadores, gastadores, descontrolados, \
 desligados, financistas) — identificar o perfil do casal ajuda a resolver conflitos.
+- Lucro Primeiro (Mike Michalowicz): A contabilidade tradicional usa Vendas - Despesas \
+= Lucro, tratando lucro como "sobras". O metodo Lucro Primeiro inverte: Vendas - Lucro \
+= Despesas. Ao retirar o lucro ANTES de pagar qualquer coisa, o empreendedor e forcado \
+a gerir o negocio com o que resta, promovendo eficiencia. Sistema de contas bancarias \
+separadas (analogia dos "pratos pequenos"): (1) Conta de Lucro — retirar primeiro, \
+(2) Pagamento do Proprietario (pro-labore), (3) Impostos, (4) Despesas Operacionais — \
+so o que sobrar. Manter contas de Lucro e Impostos em banco diferente e de dificil \
+acesso para evitar saques por impulso. Ritmo 10/25: processar alocacoes nos dias 10 e \
+25 de cada mes. Comecar pequeno: mesmo 1% para a conta de lucro ja estabelece o habito. \
+Fazer Avaliacao Instantanea para entender a saude real do negocio — focar na "Receita \
+Real" (nao bruta). Definir PAMs (Percentuais de Alocacao de Meta) para cada conta. \
+Alerta para a "Ilusao do Crescimento": vender mais sem lucratividade cria um monstro \
+maior e mais caro. Rentabilidade vem de eficiencia operacional e de focar nos melhores \
+clientes — demitir clientes que trazem prejuizo. Para sair de dividas: "Congelamento \
+de Dividas" (parar gastos e renegociar), "So Mais Um Dia" (adiar compras 24h). "Teoria \
+do Wedge": economizar metade de qualquer aumento de renda para evitar inflacao do \
+estilo de vida. "Lucratividade nao e evento futuro, e habito diario." \
+Use quando o empreendedor: fatura mas nao sobra dinheiro, nao sabe quanto realmente \
+lucra, precisa organizar financas do negocio com metodo simples, mistura lucro com \
+despesas, ou precisa de disciplina financeira. Complementa perfeitamente o Rodrigo \
+Almeida (Lucro2x) e o Thiago Nigro (investir antes de gastar).
 - Pai Rico, Pai Pobre (Robert Kiyosaki): Diferencie ativos (colocam dinheiro no bolso) \
 de passivos (tiram dinheiro do bolso). Seu MEI e um ativo — trate como investimento. \
 Quadrante do fluxo de caixa: Empregado → Autonomo → Dono → Investidor. O objetivo e \
