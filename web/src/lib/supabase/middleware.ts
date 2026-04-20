@@ -35,10 +35,10 @@ export async function updateSession(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname
   const isAuthPage = pathname === '/login' || pathname === '/register' || pathname === '/forgot-password' || pathname === '/reset-password'
-  const isAuthCallback = pathname.startsWith('/auth/callback')
+  const isAuthRoute = pathname.startsWith('/auth/')
 
-  // Allow auth callback through without redirects
-  if (isAuthCallback) {
+  // Allow auth routes (callback, recovery) through without redirects
+  if (isAuthRoute) {
     return supabaseResponse
   }
 
