@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { CheckCircle } from 'lucide-react'
+import { Mail, AlertCircle, CheckCircle } from 'lucide-react'
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('')
@@ -37,18 +37,18 @@ export default function ForgotPasswordPage() {
 
   if (success) {
     return (
-      <Card>
-        <CardContent className="flex flex-col items-center gap-4 pt-8 pb-8">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
-            <CheckCircle className="h-7 w-7 text-green-600" />
+      <Card className="rounded-2xl shadow-lg">
+        <CardContent className="flex flex-col items-center gap-4 px-8 pt-8 pb-8">
+          <div className="animate-message-in flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100">
+            <CheckCircle className="h-7 w-7 text-emerald-600" />
           </div>
-          <h2 className="text-lg font-semibold text-center">E-mail enviado!</h2>
+          <h2 className="font-heading text-lg font-bold text-center">E-mail enviado!</h2>
           <p className="text-sm text-muted-foreground text-center">
             Enviamos um link para redefinir sua senha. Verifique seu e-mail.
           </p>
           <Link
             href="/login"
-            className="text-sm text-primary underline underline-offset-4"
+            className="text-sm text-primary hover:underline"
           >
             Voltar para login
           </Link>
@@ -58,33 +58,43 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-center">Esqueci minha senha</CardTitle>
+    <Card className="rounded-2xl shadow-lg">
+      <CardHeader className="px-8 pt-8">
+        <CardTitle className="text-center font-heading text-xl font-bold">Esqueci minha senha</CardTitle>
       </CardHeader>
       <form onSubmit={handleSubmit}>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 px-8">
           <p className="text-sm text-muted-foreground">
             Informe seu e-mail e enviaremos um link para redefinir sua senha.
           </p>
-          <div className="space-y-2">
-            <Label htmlFor="email">E-mail</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="seu@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className={error ? 'border-destructive' : ''}
-            />
-          </div>
           {error && (
-            <p className="text-sm text-destructive">{error}</p>
+            <div className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive">
+              <AlertCircle className="size-4 shrink-0" />
+              {error}
+            </div>
           )}
+          <div className="space-y-2">
+            <Label htmlFor="email" className="font-heading text-[13px] font-semibold">E-mail</Label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+              <Input
+                id="email"
+                type="email"
+                placeholder="seu@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="h-11 rounded-xl border-[1.5px] pl-10"
+              />
+            </div>
+          </div>
         </CardContent>
-        <CardFooter className="flex flex-col gap-4">
-          <Button type="submit" className="w-full h-11" disabled={loading}>
+        <CardFooter className="flex flex-col gap-4 px-8 pb-8">
+          <Button
+            type="submit"
+            className="w-full h-12 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-700 font-heading text-sm font-semibold text-white hover:from-emerald-600 hover:to-emerald-800 transition-all duration-150 hover:shadow-md"
+            disabled={loading}
+          >
             {loading ? 'Enviando...' : 'Enviar link'}
           </Button>
           <Link

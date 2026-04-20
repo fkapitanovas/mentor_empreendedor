@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Eye, EyeOff, CheckCircle } from 'lucide-react'
+import { Eye, EyeOff, Lock, AlertCircle, CheckCircle } from 'lucide-react'
 
 export default function ResetPasswordPage() {
   const router = useRouter()
@@ -53,12 +53,12 @@ export default function ResetPasswordPage() {
 
   if (success) {
     return (
-      <Card>
-        <CardContent className="flex flex-col items-center gap-4 pt-8 pb-8">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
-            <CheckCircle className="h-7 w-7 text-green-600" />
+      <Card className="rounded-2xl shadow-lg">
+        <CardContent className="flex flex-col items-center gap-4 px-8 pt-8 pb-8">
+          <div className="animate-message-in flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100">
+            <CheckCircle className="h-7 w-7 text-emerald-600" />
           </div>
-          <h2 className="text-lg font-semibold text-center">Senha redefinida!</h2>
+          <h2 className="font-heading text-lg font-bold text-center">Senha redefinida!</h2>
           <p className="text-sm text-muted-foreground text-center">
             Sua senha foi alterada com sucesso. Redirecionando...
           </p>
@@ -67,18 +67,23 @@ export default function ResetPasswordPage() {
     )
   }
 
-  const hasError = error.length > 0
-
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-center">Redefinir senha</CardTitle>
+    <Card className="rounded-2xl shadow-lg">
+      <CardHeader className="px-8 pt-8">
+        <CardTitle className="text-center font-heading text-xl font-bold">Redefinir senha</CardTitle>
       </CardHeader>
       <form onSubmit={handleSubmit}>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 px-8">
+          {error && (
+            <div className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive">
+              <AlertCircle className="size-4 shrink-0" />
+              {error}
+            </div>
+          )}
           <div className="space-y-2">
-            <Label htmlFor="password">Nova senha</Label>
+            <Label htmlFor="password" className="font-heading text-[13px] font-semibold">Nova senha</Label>
             <div className="relative">
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
               <Input
                 id="password"
                 type={showPassword ? 'text' : 'password'}
@@ -86,7 +91,7 @@ export default function ResetPasswordPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className={hasError ? 'border-destructive pr-10' : 'pr-10'}
+                className="h-11 rounded-xl border-[1.5px] pl-10 pr-10"
               />
               <button
                 type="button"
@@ -99,8 +104,9 @@ export default function ResetPasswordPage() {
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="confirmPassword">Confirmar nova senha</Label>
+            <Label htmlFor="confirmPassword" className="font-heading text-[13px] font-semibold">Confirmar nova senha</Label>
             <div className="relative">
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
               <Input
                 id="confirmPassword"
                 type={showConfirmPassword ? 'text' : 'password'}
@@ -108,7 +114,7 @@ export default function ResetPasswordPage() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
-                className={hasError ? 'border-destructive pr-10' : 'pr-10'}
+                className="h-11 rounded-xl border-[1.5px] pl-10 pr-10"
               />
               <button
                 type="button"
@@ -120,12 +126,13 @@ export default function ResetPasswordPage() {
               </button>
             </div>
           </div>
-          {error && (
-            <p className="text-sm text-destructive">{error}</p>
-          )}
         </CardContent>
-        <CardFooter>
-          <Button type="submit" className="w-full h-11" disabled={loading}>
+        <CardFooter className="px-8 pb-8">
+          <Button
+            type="submit"
+            className="w-full h-12 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-700 font-heading text-sm font-semibold text-white hover:from-emerald-600 hover:to-emerald-800 transition-all duration-150 hover:shadow-md"
+            disabled={loading}
+          >
             {loading ? 'Salvando...' : 'Redefinir senha'}
           </Button>
         </CardFooter>

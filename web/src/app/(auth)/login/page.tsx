@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Eye, EyeOff } from 'lucide-react'
+import { Eye, EyeOff, Mail, Lock, AlertCircle } from 'lucide-react'
 
 function LoginForm() {
   const router = useRouter()
@@ -42,30 +42,43 @@ function LoginForm() {
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-center">Entrar</CardTitle>
+    <Card className="rounded-2xl shadow-lg">
+      <CardHeader className="px-8 pt-8">
+        <CardTitle className="text-center font-heading text-xl font-bold">Entrar</CardTitle>
       </CardHeader>
       <form onSubmit={handleSubmit}>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 px-8">
           {urlError === 'invalid_link' && (
-            <p className="text-sm text-destructive">Link invalido ou expirado. Solicite um novo.</p>
+            <div className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive">
+              <AlertCircle className="size-4 shrink-0" />
+              Link invalido ou expirado. Solicite um novo.
+            </div>
+          )}
+          {error && (
+            <div className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive">
+              <AlertCircle className="size-4 shrink-0" />
+              {error}
+            </div>
           )}
           <div className="space-y-2">
-            <Label htmlFor="email">E-mail</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="seu@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className={error ? 'border-destructive' : ''}
-            />
+            <Label htmlFor="email" className="font-heading text-[13px] font-semibold">E-mail</Label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+              <Input
+                id="email"
+                type="email"
+                placeholder="seu@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="h-11 rounded-xl border-[1.5px] pl-10"
+              />
+            </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Senha</Label>
+            <Label htmlFor="password" className="font-heading text-[13px] font-semibold">Senha</Label>
             <div className="relative">
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
               <Input
                 id="password"
                 type={showPassword ? 'text' : 'password'}
@@ -73,7 +86,7 @@ function LoginForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className={error ? 'border-destructive pr-10' : 'pr-10'}
+                className="h-11 rounded-xl border-[1.5px] pl-10 pr-10"
               />
               <button
                 type="button"
@@ -84,23 +97,24 @@ function LoginForm() {
                 {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </button>
             </div>
+            <div className="flex justify-end">
+              <Link href="/forgot-password" className="text-[13px] text-primary hover:underline">
+                Esqueceu a senha?
+              </Link>
+            </div>
           </div>
-          <div className="flex justify-end">
-            <Link href="/forgot-password" className="text-sm text-muted-foreground hover:text-primary">
-              Esqueceu a senha?
-            </Link>
-          </div>
-          {error && (
-            <p className="text-sm text-destructive">{error}</p>
-          )}
         </CardContent>
-        <CardFooter className="flex flex-col gap-4">
-          <Button type="submit" className="w-full h-11" disabled={loading}>
+        <CardFooter className="flex flex-col gap-4 px-8 pb-8">
+          <Button
+            type="submit"
+            className="w-full h-12 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-700 font-heading text-sm font-semibold text-white hover:from-emerald-600 hover:to-emerald-800 transition-all duration-150 hover:shadow-md"
+            disabled={loading}
+          >
             {loading ? 'Entrando...' : 'Entrar'}
           </Button>
           <p className="text-sm text-muted-foreground">
             Nao tem conta?{' '}
-            <Link href="/register" className="text-primary underline underline-offset-4">
+            <Link href="/register" className="text-primary hover:underline">
               Criar conta
             </Link>
           </p>

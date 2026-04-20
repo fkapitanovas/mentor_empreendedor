@@ -4,15 +4,22 @@ export default function AuthLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex min-h-dvh items-center justify-center p-4">
+    <div
+      className="flex min-h-dvh items-center justify-center p-4"
+      style={{
+        backgroundImage: 'radial-gradient(circle, var(--border) 1px, transparent 1px)',
+        backgroundSize: '24px 24px',
+        backgroundPosition: 'center',
+      }}
+    >
       <div className="w-full max-w-md space-y-6">
         <div className="flex flex-col items-center gap-2">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-green-700 text-2xl font-bold text-white">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-xl font-bold text-white font-heading">
             M
           </div>
-          <h1 className="text-xl font-bold">Max Impulso</h1>
+          <h1 className="font-heading text-xl font-bold text-primary">Max Impulso</h1>
           <p className="text-sm text-muted-foreground">
-            Seu mentor virtual de negócios
+            Seu mentor virtual de negocios
           </p>
         </div>
         {children}
