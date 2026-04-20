@@ -26,12 +26,14 @@ export function ConversationItem({
       href={`/c/${conversation.id}`}
       onClick={onNavigate}
       className={cn(
-        'group flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors hover:bg-accent',
-        isActive && 'bg-accent'
+        'group flex items-center gap-2 rounded-xl px-3 py-3 text-sm transition-all duration-150',
+        isActive
+          ? 'border-l-3 border-primary bg-background font-medium'
+          : 'hover:bg-background'
       )}
     >
       <div className="min-w-0 flex-1">
-        <p className="truncate font-medium">{conversation.title}</p>
+        <p className="truncate">{conversation.title}</p>
         <p className="truncate text-xs text-muted-foreground">
           {formatDistanceToNow(new Date(conversation.updated_at || conversation.created_at), {
             addSuffix: true,

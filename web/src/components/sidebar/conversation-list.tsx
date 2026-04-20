@@ -29,8 +29,7 @@ export function ConversationList({
       <div className="p-3">
         <Button
           onClick={onNew}
-          variant="outline"
-          className="w-full justify-start gap-2"
+          className="w-full justify-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-700 font-heading text-sm font-semibold text-white hover:from-emerald-600 hover:to-emerald-800"
           size="lg"
         >
           <Plus className="size-4" />
@@ -40,9 +39,9 @@ export function ConversationList({
       <ScrollArea className="flex-1 px-3 pb-3">
         {loading ? (
           <div className="space-y-2">
-            <Skeleton className="h-14 w-full rounded-lg" />
-            <Skeleton className="h-14 w-full rounded-lg" />
-            <Skeleton className="h-14 w-full rounded-lg" />
+            <Skeleton className="h-14 w-full rounded-xl" />
+            <Skeleton className="h-14 w-full rounded-xl" />
+            <Skeleton className="h-14 w-full rounded-xl" />
           </div>
         ) : conversations.length === 0 ? (
           <div className="flex flex-col items-center gap-2 py-8 text-center text-sm text-muted-foreground">

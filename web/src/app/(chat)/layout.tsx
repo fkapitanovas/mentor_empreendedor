@@ -18,7 +18,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Separator } from '@/components/ui/separator'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ConversationList } from '@/components/sidebar/conversation-list'
 import { useConversations } from '@/hooks/use-conversations'
@@ -31,7 +30,6 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
     useConversations()
   const [sheetOpen, setSheetOpen] = useState(false)
 
-  // Extract active conversation ID from pathname
   const activeId = pathname.startsWith('/c/') ? pathname.split('/c/')[1] : null
 
   useEffect(() => {
@@ -47,7 +45,6 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
   const handleDelete = useCallback(
     async (id: string) => {
       await deleteConversation(id)
-      // If the deleted conversation was active, navigate away
       if (activeId === id) {
         if (conversations.length > 1) {
           const next = conversations.find((c) => c.id !== id)
@@ -81,9 +78,8 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
   return (
     <div className="flex min-h-dvh flex-col">
       {/* Header */}
-      <header className="flex h-12 shrink-0 items-center justify-between border-b px-3">
-        <div className="flex items-center gap-2">
-          {/* Mobile hamburger */}
+      <header className="flex h-14 shrink-0 items-center justify-between px-4" style={{ boxShadow: '0 1px 0 var(--border)' }}>
+        <div className="flex items-center gap-3">
           <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
             <SheetTrigger
               render={
@@ -103,10 +99,10 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
             </SheetContent>
           </Sheet>
 
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-green-500 to-green-700 text-xs font-bold text-white">
+          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-sm font-bold text-white">
             M
           </div>
-          <span className="text-sm font-semibold">Max Impulso</span>
+          <span className="font-heading text-base font-bold text-primary">Max Impulso</span>
         </div>
 
         <div className="flex items-center gap-1">
@@ -120,15 +116,11 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
               <User className="size-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem
-                render={<Link href="/profile" />}
-              >
+              <DropdownMenuItem render={<Link href="/profile" />}>
                 <UserCircle className="size-4" />
                 Perfil
               </DropdownMenuItem>
-              <DropdownMenuItem
-                render={<Link href="/settings" />}
-              >
+              <DropdownMenuItem render={<Link href="/settings" />}>
                 <Settings className="size-4" />
                 Configuracoes
               </DropdownMenuItem>
@@ -143,12 +135,9 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
       </header>
 
       <div className="flex flex-1 overflow-hidden">
-        {/* Desktop sidebar */}
-        <aside className="hidden w-72 shrink-0 border-r md:block">
+        <aside className="hidden w-72 shrink-0 bg-muted md:block" style={{ boxShadow: '1px 0 0 var(--border)' }}>
           {sidebarContent}
         </aside>
-
-        {/* Main content */}
         <main className="flex flex-1 flex-col overflow-hidden">
           {children}
         </main>
