@@ -150,7 +150,8 @@ Twilio se mostrou caro e com experiência ruim. Migração para web app responsi
   - Eventos a rastrear: registro, onboarding (preencheu/pulou), mensagem enviada, conversa criada, perfil editado, tema alterado
   - Session replay e heatmaps para entender UX
   - Funil: registro → onboarding → 1ª mensagem → 5ª mensagem → retorno D7
-- [ ] **Testar fluxo completo em produção** — registro → onboarding → chat streaming → perfil → dark mode → esqueci senha → logout
+- [ ] **Testar emails via Resend** — domínio `maximpulso.com.br` verificado no Resend, SMTP configurado no Supabase, templates pt-BR prontos. Aguardando propagação DNS. Após propagar, testar: registro (email de confirmação) + esqueci senha (email de reset). Verificar entrega na caixa de entrada (não spam).
+- [ ] **Testar fluxo completo em produção** — registro → email confirmação → onboarding → chat streaming → perfil → dark mode → esqueci senha → logout
 
 ## Pendente — Chatbot WhatsApp (legado)
 
