@@ -23,6 +23,7 @@ export default function ConversationPage({
         messages={messages}
         streamingText={streamingText}
         isStreaming={isStreaming}
+        onSendSuggestion={sendMessage}
       />
       <ChatInput onSend={sendMessage} disabled={isStreaming} />
     </div>
