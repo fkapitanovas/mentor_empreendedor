@@ -142,7 +142,7 @@ Twilio se mostrou caro e com experiência ruim. Migração para web app responsi
 
 - [x] **Deploy Vercel** — projeto `web` criado, env vars configuradas, deploy production READY (2026-04-19)
   - URL: https://web-theta-ashen-35.vercel.app
-- [ ] **Configurar domínio customizado** — registrar domínio, configurar DNS (A/CNAME) no Vercel, SSL automático. Opções: mentorempreendedor.com.br, maximpulso.com.br, ou outro
+- [ ] **Configurar domínio maximpulso.com.br no Vercel** — domínio registrado, configurar DNS (A/CNAME) no Vercel, SSL automático. Atualizar Supabase Site URL + Redirect URLs após configurar
 - [ ] **Product Analytics (PostHog)** — instalar PostHog para rastrear uso, retenção e comportamento dos empreendedores:
   - Criar conta em posthog.com (plano gratuito: 1M eventos/mês)
   - Instalar `posthog-js` e `posthog-node`

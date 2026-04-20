@@ -41,6 +41,16 @@ O projeto tem **dois deploys ativos**:
 - Protegido por `ADMIN_EMAILS` env var (validação server-side)
 - Admins: fkapitanovas@gmail.com, fabio.kapitanovas@me.com
 
+**Email (Resend via SMTP):**
+- Provedor: Resend (smtp.resend.com:465, user: resend)
+- Sender: `Max Impulso <noreply@maximpulso.com.br>`
+- Domínio: maximpulso.com.br (registrado, DNS em propagação — verificar em resend.com/domains)
+- Configurado no Supabase Dashboard → Auth → SMTP Settings (via Management API)
+- Email confirmation habilitado (mailer_autoconfirm: false)
+- Templates pt-BR com branding Max Impulso (logo verde, botão emerald, fundo off-white)
+- Subjects: "Confirme seu cadastro no Max Impulso", "Redefinir sua senha — Max Impulso"
+- Tela de registro mostra email para o qual foi enviado + instrução de verificar spam
+
 **Conteúdo do System Prompt (14 blocos):**
 1. Identidade e Tom
 2. Base de Conhecimento (12 gurus: Marcus Marques, Flávio Augusto, Thiago Oliveira, Thiago Nigro, Nathalia Arcuri, Gustavo Cerbasi, Rodrigo Almeida, Érico Rocha, Conrado Adolpho, Pedro Sobral, Joel Jota, Geraldo Rufino, Ana Fontes)
@@ -69,6 +79,8 @@ O projeto tem **dois deploys ativos**:
 - **GitHub**: https://github.com/fkapitanovas/mentor_empreendedor
 - **Supabase**: https://supabase.com/dashboard/project/wlpglssnqkjsydjylxjj
 - **Vercel**: vercel.com (projeto `web`)
+- **Resend**: https://resend.com/domains (domínio maximpulso.com.br)
+- **Domínio**: maximpulso.com.br (futuro domínio do app)
 - **WhatsApp (legado)**: https://faithful-intuition-production-82bb.up.railway.app
 
 ### Env Vars (Vercel — production)
@@ -87,10 +99,11 @@ vercel --prod        # Deploy produção
 ```
 
 ### Próximos passos prioritários
-1. **Testar fluxo completo em produção** — registro → onboarding → chat → perfil → dark mode → reset senha
-2. **Domínio customizado** — registrar e configurar DNS no Vercel
-3. **PostHog analytics** — rastrear uso, retenção, funil de conversão
-4. **Nichos sub-representados** — pet, alimentação geral, serviços domésticos, artesanato (ver todo.md)
+1. **Testar emails Resend** — aguardar propagação DNS do maximpulso.com.br, testar confirmação de cadastro + reset de senha
+2. **Testar fluxo completo em produção** — registro → email confirmação → onboarding → chat → perfil → dark mode → reset senha
+3. **Configurar domínio maximpulso.com.br no Vercel** — DNS A/CNAME, SSL automático
+4. **PostHog analytics** — rastrear uso, retenção, funil de conversão
+5. **Nichos sub-representados** — pet, alimentação geral, serviços domésticos, artesanato (ver todo.md)
 
 ### Decisões técnicas relevantes
 - **Design system**: Plus Jakarta Sans + DM Sans, emerald/amber, dark neutro. CSS variables em globals.css, `font-heading` para Jakarta, `font-sans` para DM Sans
@@ -98,3 +111,4 @@ vercel --prod        # Deploy produção
 - **cleanProfileTags defesa em profundidade**: limpa tags no streaming (parciais), no done event (completas), E ao carregar do DB (loadMessages). Qualquer camada que falhe, outra pega
 - **Livros deduplicados**: conteúdo detalhado fica no perfil do guru (conhecimento.ts), livros.ts só tem complementos e livros sem guru dedicado
 - **Conflitos explícitos**: 9 regras com prioridade definida (ex: Thiago Nigro para finanças, Érico Rocha para marketing, Kiyosaki para dívidas, Geraldo Rufino para jornada)
+- **Email via Resend SMTP**: configurado no Supabase (não no código). Templates customizados via Management API. Domínio maximpulso.com.br. Supabase Site URL deve apontar para o app (não localhost)

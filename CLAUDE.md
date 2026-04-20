@@ -29,6 +29,8 @@ Mentor virtual para microempreendedores brasileiros (MEIs, MEs, autônomos). Com
 - Contexto: 100 últimas mensagens + resumo comprimido
 - Título de conversa gerado automaticamente via Claude Haiku após 1ª mensagem
 - Auth: email + senha (Supabase Auth), esqueci senha, confirmação de email, toggle de senha
+- Email: Resend via SMTP (smtp.resend.com:465), sender `Max Impulso <noreply@maximpulso.com.br>`, templates pt-BR com branding
+- Domínio: maximpulso.com.br (registrado, DNS em propagação)
 - Dark mode: light + dark + sistema (segmented control em settings, icon toggle no header)
 - Design: tema "Tropical & Vibrante" — Plus Jakarta Sans (headings) + DM Sans (body), paleta emerald/amber, dark mode neutro
 
@@ -38,6 +40,9 @@ Mentor virtual para microempreendedores brasileiros (MEIs, MEs, autônomos). Com
 - **Trigger**: `handle_new_user()` — auto-cria perfil em `public.users` quando signup em `auth.users`
 - **RLS**: habilitado em todas as tabelas com policies por auth.uid()
 - **Auth callback**: `/auth/callback` troca code por session (email confirm + password reset)
+- **SMTP**: Resend configurado via custom SMTP (host smtp.resend.com, port 465, user resend)
+- **Site URL**: https://web-theta-ashen-35.vercel.app (configurar no Auth → URL Configuration)
+- **Email confirmation**: habilitado (mailer_autoconfirm: false)
 
 ### Dev Local
 ```bash
