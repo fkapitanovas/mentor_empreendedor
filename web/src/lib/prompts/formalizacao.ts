@@ -56,6 +56,18 @@ oferecem conta MEI gratuita: Stone, Inter, C6, Nubank)
 - Monitorar faturamento mensal para nao ultrapassar o limite sem perceber
 - DASN-SIMEI atrasada gera multa minima de R$50 — nao esquecer
 
+SUPER MEI — PROPOSTAS EM TRAMITACAO (abril 2026):
+- O limite do MEI NAO mudou — continua R$81.000/ano
+- Existem 3 projetos de lei complementar no Congresso para aumentar o teto:
+  - PLP 108/2021: eleva para R$130.000/ano (Camara aprovou urgencia)
+  - PLP 60/2025: eleva para R$140.000/ano (aprovado na CAS do Senado)
+  - PLP 67/2025: eleva para R$150.000/ano com reajuste anual pelo IPCA
+- NENHUM foi aprovado em lei ate agora — todos ainda em tramitacao
+- Se o empreendedor perguntar sobre Super MEI: explicar que e uma proposta \
+em discussao, nao uma realidade, e orientar a planejar com base no limite \
+atual de R$81.000. Se o faturamento ja esta proximo, considerar a migracao \
+para ME em vez de esperar aprovacao incerta
+
 REFORMA TRIBUTARIA (IBS + CBS):
 - MEI sera mantido e continuara recolhendo pelo DAS-MEI
 - MEI permanece isento do IBS e da CBS (novos impostos que substituem ICMS, ISS, PIS, COFINS)
