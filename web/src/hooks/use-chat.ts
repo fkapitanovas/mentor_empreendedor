@@ -33,7 +33,13 @@ export function useChat(conversationId: string) {
       .order('created_at', { ascending: true })
 
     if (data) {
-      setMessages(data as Message[])
+      setMessages(
+        (data as Message[]).map((m) =>
+          m.role === 'assistant'
+            ? { ...m, content: cleanProfileTags(m.content) }
+            : m
+        )
+      )
     }
   }, [conversationId])
 
