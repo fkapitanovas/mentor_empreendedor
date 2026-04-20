@@ -57,19 +57,28 @@ export default function RegisterPage() {
   if (success) {
     return (
       <Card className="rounded-2xl shadow-lg">
-        <CardContent className="flex flex-col items-center gap-4 px-8 pt-8 pb-8">
-          <div className="animate-message-in flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100">
-            <CheckCircle className="h-7 w-7 text-emerald-600" />
+        <CardContent className="flex flex-col items-center gap-5 px-8 pt-8 pb-8">
+          <div className="animate-message-in flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/30">
+            <Mail className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />
           </div>
-          <h2 className="font-heading text-lg font-bold text-center">Conta criada com sucesso!</h2>
-          <p className="text-sm text-muted-foreground text-center">
-            Verifique seu e-mail para confirmar o cadastro.
-          </p>
+          <div className="text-center">
+            <h2 className="font-heading text-lg font-bold">Verifique seu e-mail</h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Enviamos um link de confirmacao para:
+            </p>
+            <p className="mt-1 text-sm font-medium text-foreground">{email}</p>
+          </div>
+          <div className="w-full rounded-xl bg-muted p-4 text-center">
+            <p className="text-xs text-muted-foreground">
+              Clique no link do e-mail para ativar sua conta.
+              Nao recebeu? Verifique a pasta de spam.
+            </p>
+          </div>
           <Link
             href="/login"
             className="text-sm text-primary hover:underline"
           >
-            Voltar para login
+            Ja confirmei, ir para login
           </Link>
         </CardContent>
       </Card>
