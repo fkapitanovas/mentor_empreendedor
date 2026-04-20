@@ -1,3 +1,6 @@
+-- Allow phone to be null (web users use email, not phone)
+ALTER TABLE users ALTER COLUMN phone DROP NOT NULL;
+
 -- Add email and skipped_onboarding to users
 ALTER TABLE users
   ADD COLUMN IF NOT EXISTS email TEXT UNIQUE,
@@ -53,3 +56,44 @@ BEGIN
     CREATE POLICY "Users can update own conversations" ON conversations FOR UPDATE USING (auth.uid()::text = user_id::text);
   END IF;
 END $$;
+
+-- Auto-create profile on Supabase Auth signup
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS trigger AS $$
+BEGIN
+  INSERT INTO public.users (id, email)
+  VALUES (NEW.id, NEW.email)
+  ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+
+-- RLS policies for users
+CREATE POLICY "Users can read own profile"
+  ON users FOR SELECT USING (auth.uid() = id);
+CREATE POLICY "Users can update own profile"
+  ON users FOR UPDATE USING (auth.uid() = id);
+
+-- RLS policies for messages
+ALTER TABLE messages ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users can read own messages"
+  ON messages FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can insert own messages"
+  ON messages FOR INSERT WITH CHECK (auth.uid() = user_id);
+
+-- RLS policies for conversation_summaries
+ALTER TABLE conversation_summaries ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users can read own summaries"
+  ON conversation_summaries FOR SELECT
+  USING (conversation_id IN (SELECT id FROM conversations WHERE user_id = auth.uid()));
+CREATE POLICY "Users can manage own summaries"
+  ON conversation_summaries FOR INSERT
+  WITH CHECK (conversation_id IN (SELECT id FROM conversations WHERE user_id = auth.uid()));
+CREATE POLICY "Users can update own summaries"
+  ON conversation_summaries FOR UPDATE
+  USING (conversation_id IN (SELECT id FROM conversations WHERE user_id = auth.uid()));
