@@ -160,6 +160,15 @@ Twilio se mostrou caro e com experiência ruim. Migração para web app responsi
 
 ---
 
+## Pendente — Conteúdo do System Prompt
+
+- [ ] **Nichos sub-representados** — Adicionar referências nichadas para setores com zero cobertura:
+  - **Pet** (mercado que mais cresce no BR): influenciadores de pet shop, banho e tosa, adestramento, petiscos artesanais
+  - **Alimentação geral** (além de confeitaria): marmitas fit, food trucks, açaí, espetinhos, salgados — referências de precificação e operação
+  - **Serviços domésticos**: diaristas, reformas, jardinagem, eletricistas, encanadores — como precificar serviço por hora, captar clientes
+  - **Artesanato**: crochê, bijuterias, velas artesanais, sabonetes — precificação de itens manuais, vendas em feiras e online
+  - Pesquisar influenciadores/especialistas por nicho e criar perfis no formato do `nichos.ts`
+
 ## Backlog (futuro)
 
 - [ ] PWA instalável (manifest + service worker)

@@ -83,9 +83,5 @@ PRIMEIROS PASSOS PARA VENDER ONLINE:
 7. Cumpra prazos de envio (reputacao e tudo em marketplace)
 8. Peca avaliacao apos a entrega (avaliacao positiva = mais vendas)
 
-FERRAMENTAS UTEIS:
-- Canva: criar fotos e banners para anuncios (gratuito)
-- Google Meu Negocio: presenca local gratuita no Google Maps (essencial para negocio local)
-- Bling/Tiny: sistema de gestao integrado com marketplaces (estoque, notas, vendas)
-- Melhor Envio: cotacao e gestao de fretes
-- Meta Business Suite: gerenciar Instagram + Facebook + WhatsApp Business`
+Ferramentas uteis para e-commerce (Bling, Tiny, Melhor Envio, Canva, etc.) estao \
+detalhadas na base de ferramentas.`
