@@ -1,5 +1,5 @@
 /**
- * Resumos dos 25 livros que compõem a base de conhecimento do Max Impulso.
+ * Resumos dos 26 livros que compõem a base de conhecimento do Max Impulso.
  *
  * Fontes:
  * - Lista de livros e conceitos-âncora: docs/agente_microempreendedor.docx
@@ -27,6 +27,9 @@
  *   - (externo) 859766094-Mindset-A-Nova-Psicologia-Do-Sucesso-Carol-Dweck.pdf
  *     — 223pp, leitura integral em 21/04/2026 via OCR Swift/Vision (PDF
  *     escaneado em imagem; NOVO no projeto)
+ *   - "Negócios: um assunto de mulheres" (Ana Fontes, Ed. Jandaíra 2022, 205pp)
+ *     — transcrição Kindle→Markdown em /Users/kapi/Documents/livros/, migrada
+ *     de conhecimento.ts para livros.ts em 21/04/2026
  * - Resumos em PDF (PocketBook4You ou outros, não o livro completo):
  *   - docs/O Poder do Hábito - Charles Duhigg.pdf (5pp, resumo — OBSOLETO,
  *     superado pela leitura integral acima)
@@ -267,6 +270,137 @@ precisa definir um nicho claro para parar de dispersar energia.
 Foque no que pode controlar, tome decisoes dificeis rapido, cuide da saude mental.
 - Seja Foda! (Caio Carneiro): Sucesso vem de disciplina nos pequenos habitos diarios. \
 Cuide da energia, faca networking, assuma 100% de responsabilidade.
+- Negocios: Um Assunto de Mulheres — A Forca Transformadora do \
+Empreendedorismo Feminino (Ana Fontes, Ed. Jandaira, 2022, 205pp). Sintese de \
+13+ anos a frente da Rede Mulher Empreendedora (RME) e do Instituto RME, com \
+depoimentos de 13 empreendedoras brasileiras e dados das pesquisas anuais \
+RME/IRME. Ana Fontes tem perfil detalhado em conhecimento.ts (biografia, \
+RME/IRME, programas, premios, filosofia) — ESTA ENTRADA traz apenas os \
+CONCEITOS DO LIVRO. \
+\
+TESE CENTRAL. Empreender e, para a mulher, caminho de INDEPENDENCIA \
+ECONOMICA E DE DECISAO — mas nao e atalho nem "mundo dos sonhos". E maratona \
+com obstaculos ESTRUTURAIS (machismo, dupla jornada, falta de credito, \
+educacao financeira negada) que exige trabalho, rede de apoio e atitudes \
+empreendedoras especificas. Dedicado a microempreendedoras brasileiras em \
+qualquer estagio. \
+\
+(1) INDEPENDENCIA FINANCEIRA = INDEPENDENCIA DE DECISAO. Nao e sobre luxo, e \
+sobre PODER DE ESCOLHA. A autonomia com dinheiro permite a mulher sair de \
+relacionamentos abusivos, escolher a educacao dos filhos, priorizar saude. \
+Argumento central para o tema de negocio proprio na mulher brasileira. \
+\
+(2) A MAE POSSIVEL (nao a supermae). Desmistifica a imagem idealizada da \
+maternidade que leva empreendedoras ao esgotamento. Empreender NAO e \
+trabalhar menos — e maratona, nao corrida curta. Conciliacao e possivel \
+com rede de apoio e LIMITES CLAROS (ex.: Heloisa Motoki — dona de \
+escritorio contabil — desliga notificacoes das 21h as 8h; Juliana Martins \
+/ Fico com a Cria — separa manha para filha, tarde para negocio). \
+\
+(3) DOMINAR O TEMPO (nao brigar com o relogio). Fazer GESTAO. Diferenciar \
+urgente de importante. Planejar com prazos realistas. "Pintar tarefas \
+concluidas de outra cor" para visualizar progresso. Aprender a DELEGAR — \
+nao confundir com "delargar" (largar e sumir). Delegar e ACOMPANHAR sem \
+microgerenciar. Para o relacionamento com conjuge: "ajudar" nao existe \
+entre marido e esposa — o verbo certo e DIVIDIR (tarefas domesticas sao \
+responsabilidade dos dois). \
+\
+(4) AUTOCUIDADO NAO E EGOISMO — E SOBREVIVENCIA. Reservar espacos para si \
+na agenda. Normalizar o nao. Parar de comparar conquistas/fracassos com \
+os de outros. Saude emocional e mental sao prerequisito, nao luxo. \
+\
+(5) SOCIEDADE COM MARIDO/FAMILIA — os 4 cuidados obrigatorios (caso Paula \
+/ cliente real que perdeu empresa porque entregou financas ao marido que \
+desviou milhoes): (a) CONTRATO ESCRITO em qualquer parceria familiar; \
+(b) PAPEIS BEM DEFINIDOS — quem cuida do que; (c) CONVERSA SOBRE \
+VISIBILIDADE antes de comecar — sucesso dela pode incomodar o parceiro, \
+discutir expectativas antes; (d) AUTONOMIA FINANCEIRA mesmo quando \
+delega a gestao — conhecer os numeros, ter acesso as contas, nunca "nao \
+mexo em dinheiro porque ele cuida". \
+\
+(6) FINANCAS SEM MEDO — contexto cultural brasileiro. A mulher PODE \
+cuidar de dinheiro sim. Ate os anos 1960 a brasileira nao podia ter \
+conta bancaria propria; ate 1974 nao podia ter cartao de credito sem \
+assinatura de homem. Por isso a falta de confianca e CULTURAL, nao \
+cognitiva. Nao precisa ser especialista em balancetes, mas conhecer os \
+basicos: precificacao (custo + margem + posicionamento), fluxo de caixa \
+(atencao ao DESCASAMENTO entre pagar fornecedor e receber cliente — \
+causa #1 de morte de negocio de revenda), separar PF e PJ desde o dia \
+1. Emprestimo NAO e problema — o problema e o QUE voce faz com ele. O \
+PIOR emprestimo e para pagar dividas; o MELHOR e para ativo que gera \
+retorno claro. \
+\
+(7) IRMANDADE FEMININA > networking tradicional. A "competitividade \
+feminina" e MITO. Dado-chave das pesquisas RME/IRME: nas empresas \
+lideradas por mulheres, 73% dos funcionarios sao mulheres (contra 21% \
+em empresas de homens). Mulher apoia mulher. Operacional: construir \
+lacos genuinos nas REDES LOCAIS (familia, escola, empregos passados, \
+vizinhanca) e nas SOCIAIS (LinkedIn para parceiros, Instagram/Facebook \
+para clientes). Usar com RECIPROCIDADE, nao so quando precisa. "Pense \
+que voce tem 30 segundos no elevador para vender seu peixe" — invista \
+em autoconhecimento e ENSAIE. \
+\
+(8) ALERTA CONTRA FORMULAS MAGICAS. Desconfie de: cursos que prometem \
+ensinar voce a ganhar muito em pouco tempo; marketing digital que \
+promete triplicar vendas em semanas; gurus de Instagram com 5 passos \
+para ficar rica. A UNICA formula real = muito trabalho + produto/ \
+servico que resolve dor real + conexoes alimentadas ao longo do \
+tempo. Fato estatistico: negocios levam entre 3 e 5 anos para se \
+firmarem. \
+\
+(9) AS 7 ATITUDES EMPREENDEDORAS (Cap 11 — use como checklist de \
+autodiagnostico da empreendedora): \
+(a) INQUIETACAO — ver oportunidade em tudo, MAS COM FOCO (nao atirar \
+para todos os lados); \
+(b) DISPOSICAO PARA ASSUMIR RISCOS CALCULADOS — nao apostar tudo, \
+manter reserva, comecar enxuto com MVP simples, preparar-se para ficar \
+um tempo sem renda; \
+(c) RESILIENCIA — "bambu enverga mas nao quebra". A empreendedora \
+brasileira JA TEM DE SOBRA, dada a adversidade social que enfrenta \
+(argumento de Fontes); \
+(d) CAPACIDADE DE REALIZACAO — ideia na cabeca nao vale nada. \
+Executar, testar no mercado, corrigir rota com o carro andando; \
+(e) BUSCA CONSTANTE POR CONHECIMENTO — o erro e PEDAGOGICO. Aprendiz \
+permanente. A internet democratizou o acesso, nao tem desculpa; \
+(f) CAPACIDADE DE RESOLVER PROBLEMAS — mulheres "nadam de bracada" \
+aqui. Pesquisa IRME 2020: mulheres foram mais AFETADAS pela pandemia, \
+mas responderam com INOVACAO e DIGITALIZACAO, enquanto homens so \
+cortaram custos; \
+(g) PROPOSITO COMO CONSELHEIRO MAIOR (nao o dinheiro) — o dinheiro e \
+CONSEQUENCIA; o CLIENTE e o conselheiro. Proposito alimenta todas as \
+outras atitudes (sem proposito, nao ha resiliencia). \
+\
+Casos-ancora do livro (depoimentos completos): Andrea Carvalho / Papel \
+Semente (sociedade com ex-marido e marido atual); Juliana Martins / Fico \
+com a Cria (mae solo que virou agencia de babas); Elizandra Cerqueira / \
+Bistro Maos de Maria (restaurante de Paraisopolis); Tatiana Pimenta / \
+Vittude (saude mental); Ana Minuto / Minuto Consultoria (empreendedorismo \
+negro); Paula Bazzo / SuperRico (educacao financeira feminina); Heloisa \
+Motoki / Quali Contabil (rede de apoio). \
+\
+Frases-ancora: "A unica formula magica e muito trabalho." / "O dinheiro \
+nao e um bom conselheiro. Seu conselheiro tem que ser seu cliente." / \
+"Domine o seu tempo, nao adianta brigar com o relogio." / "Delegar \
+significa aceitar que a pessoa vai fazer do jeito dela, no tempo dela." \
+/ "Empreender nao e corrida curta, e maratona com obstaculos." / \
+"Quando a mulher prospera, beneficia todo o entorno — familia, \
+comunidade, emprega outras mulheres." / "Independencia financeira \
+significa independencia de decisao." \
+\
+Use quando a empreendedora: (a) se cobra como supermae/supermulher \
+— lembre a "mae possivel"; (b) tem horror a mexer com dinheiro — \
+contextualize que e CULTURAL (historico de exclusao bancaria ate 1974) \
+e ensine os basicos; (c) esta considerando sociedade com marido/ \
+familiar — os 4 cuidados obrigatorios; (d) caiu ou esta tentada por \
+"formulas magicas" online — redirecione para trabalho consistente e \
+cite a estatistica dos 3-5 anos; (e) quer se autodiagnosticar como \
+empreendedora — use as 7 atitudes como checklist; (f) sente solidao \
+na jornada — estimule irmandade feminina e redes locais; (g) tenta \
+competir sozinha — a forca esta na rede, nao no isolamento; (h) \
+delega e depois sofre com "nada sai do meu jeito" — nao "delargar", \
+acompanhar sem microgerenciar. COMBINA COM: Ana Fontes (perfil em \
+conhecimento.ts — biografia/RME/Instituto). Para marketing digital \
+com proposito, combina com Sinek.
 - Mindset — A Nova Psicologia do Sucesso (Carol Dweck, 223pp, psicologa de \
 Stanford): livro-fundacao sobre a crenca que molda tudo — se voce acredita que \
 inteligencia e talento sao FIXOS ou CULTIVAVEIS. Baseado em decadas de \

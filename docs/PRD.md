@@ -1,6 +1,6 @@
 # PRD — Max Impulso (Mentor Virtual para Microempreendedores)
 
-> **Versão**: 1.0 · **Data**: 21/04/2026 · **Domínio de produção**: https://maximpulso.com.br
+> **Versão**: 1.1 · **Data**: 21/04/2026 · **Domínio de produção**: https://maximpulso.com.br
 > **Stack**: Next.js 16 + React 19 + Supabase + Claude Sonnet 4.6 + Resend
 > **Escopo deste documento**: especificação da base de conhecimento, matrizes de personalização, fontes curadas e mecanismo de adequação de respostas por fase do negócio e setor.
 
@@ -10,7 +10,7 @@
 
 ### 1.1 Proposta de valor
 
-Mentor virtual 24/7 para **microempreendedores brasileiros** (MEIs, MEs e autônomos com faturamento até R$ 360 mil/ano). Combina a expertise de 13 gurus de empreendedorismo + 25 livros curados + 26 influenciadores nichados + 4 fontes institucionais em conversas naturais pelo navegador. Foco em conselho **prático, brasileiro, acolhedor** — como um amigo experiente que entende MEI, Simples Nacional, PIX, WhatsApp Business e a realidade da confeitaria de bairro ou da esteticista autônoma.
+Mentor virtual 24/7 para **microempreendedores brasileiros** (MEIs, MEs e autônomos com faturamento até R$ 360 mil/ano). Combina a expertise de 13 gurus de empreendedorismo + 26 livros curados + 26 influenciadores nichados + 4 fontes institucionais em conversas naturais pelo navegador. Foco em conselho **prático, brasileiro, acolhedor** — como um amigo experiente que entende MEI, Simples Nacional, PIX, WhatsApp Business e a realidade da confeitaria de bairro ou da esteticista autônoma.
 
 ### 1.2 Público-alvo (personas prioritárias)
 
@@ -43,8 +43,8 @@ O sistema injeta um **system prompt composto por 14 blocos modulares** (+ 2 din�
 buildSystemPrompt(user, summary)
     │
     ├── [1] IDENTIDADE_E_TOM                 ~170 tokens
-    ├── [2] BASE_CONHECIMENTO (12 gurus)     ~13.800 tokens
-    ├── [3] BASE_LIVROS (25 livros)          ~27.000 tokens
+    ├── [2] BASE_CONHECIMENTO (13 gurus)     ~12.200 tokens
+    ├── [3] BASE_LIVROS (26 livros)          ~36.200 tokens
     ├── [4] REGRAS_INTERACAO                 ~360 tokens
     ├── [5] PERSONALIZACAO_ESTAGIO           ~170 tokens
     ├── [6] RESOLUCAO_CONFLITOS (9 tensões)  ~1.100 tokens
@@ -65,7 +65,7 @@ buildSystemPrompt(user, summary)
             └── HISTORICO_RESUMIDO           variável
 ```
 
-**Tokens totais típicos do system prompt**: ~53.500 tokens (≈ 27% do contexto de 200k do Sonnet 4.6).
+**Tokens totais típicos do system prompt**: ~60.900 tokens (≈ 30% do contexto de 200k do Sonnet 4.6).
 **Prompt caching ativo** (`cache_control: ephemeral` em `api/chat/route.ts`) — hit cache reduz latência e custo em ~90%.
 
 ### 2.2 Camadas conceituais
@@ -163,7 +163,9 @@ Personalize suas respostas para o estagio "crescimento" e o setor "confeitaria".
 | **Pedro Sobral** | Tráfego pago Facebook/Instagram | Crescimento com oferta validada |
 | **Joel Jota** | Alta performance (atletas-CEOs) | Qualquer estágio, disciplina/hábitos |
 | **Geraldo Rufino** | Superação (catador → milionário) | Iniciante em crise, inspiração |
-| **Ana Fontes** | Empreendedorismo feminino (RME) | Empreendedora mulher, contexto de gênero |
+| **Ana Fontes** | Empreendedorismo feminino (RME/IRME) | Empreendedora mulher, contexto de gênero, maternidade+negócio, irmandade feminina |
+
+> **Separação perfil × livro (v1.1)**: O `conhecimento.ts` mantém apenas o perfil biográfico/institucional de Ana Fontes (RME, Instituto RME, programas, prêmios, filosofia). Os conceitos específicos do livro *Negócios: um assunto de mulheres* (Jandaíra, 2022) — 7 atitudes empreendedoras, mãe possível, os 4 cuidados em sociedade familiar, irmandade feminina como alternativa ao networking — estão em `livros.ts`. Este padrão segue a regra de deduplicação do projeto: perfil de guru fica em `conhecimento.ts`; conteúdo de obra autoral fica em `livros.ts`.
 
 ### 4.2 Influenciadores nichados (base em `nichos.ts`)
 
@@ -462,12 +464,12 @@ Mecanismos para monitorar e iterar o prompt:
 | **Tamanho do system prompt** | Tokens totais injetados | ≤ 80k (saudável); alerta > 100k |
 | **Tamanho do livros.ts** | Tokens do maior bloco | ≤ 40k (confortável) |
 
-### 7.1 Estado atual (21/04/2026)
+### 7.1 Estado atual (21/04/2026, pós-v1.1)
 
-- System prompt total: **~53.500 tokens** (27% do context window Sonnet 4.6)
-- `livros.ts`: **~27.000 tokens** (51% do prompt)
-- `conhecimento.ts`: **~14.000 tokens** (26% do prompt)
-- **Margem**: confortável para +6-8 livros deep ou +20 livros médios antes de atingir teto saudável
+- System prompt total: **~60.900 tokens** (30% do context window Sonnet 4.6)
+- `livros.ts`: **~36.200 tokens** (59% do prompt) — 26 livros, 7 no padrão deep
+- `conhecimento.ts`: **~12.200 tokens** (20% do prompt) — 13 perfis de guru
+- **Margem**: saudável. Alvo confortável de `livros.ts` é 40k tokens (margem ~10% para mais ~2 livros deep ou ~6 médios)
 
 ---
 
