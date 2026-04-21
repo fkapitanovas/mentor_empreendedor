@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 100" width="720" height="200">
+  <title>Max Impulso — lockup horizontal</title>
+  <!-- ícone -->
+  <g transform="translate(50 52) rotate(-30)">
+    <path d="M -6 22 Q -3 34 0 40 Q 3 34 6 22 Z" fill="#FFA500"/>
+    <path d="M -3 22 Q -1 32 0 36 Q 1 32 3 22 Z" fill="#FFE066"/>
+    <path d="M -9 -14 L -9 20 L 9 20 L 9 -14 Q 9 -30 0 -40 Q -9 -30 -9 -14 Z" fill="#1F2937"/>
+    <circle cx="0" cy="-6" r="4.5" fill="#4FD1C5"/>
+    <circle cx="0" cy="-6" r="4.5" fill="none" stroke="#0F172A" stroke-width="1.2"/>
+    <path d="M -9 10 L -19 22 L -9 20 Z" fill="#FF6B35"/>
+    <path d="M 9 10 L 19 22 L 9 20 Z" fill="#FF6B35"/>
+  </g>
+  <!-- wordmark -->
+  <text x="115" y="65"
+        font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
+        font-size="38"
+        font-weight="900"
+        fill="#1F2937"
+        letter-spacing="-0.5">MAX</text>
+  <text x="205" y="65"
+        font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
+        font-size="38"
+        font-weight="300"
+        fill="#1F2937"
+        letter-spacing="2">IMPULSO</text>
+</svg>
