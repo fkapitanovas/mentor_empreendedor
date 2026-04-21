@@ -1,5 +1,13 @@
 /**
- * Resumos dos 26 livros que compõem a base de conhecimento do Max Impulso.
+ * Resumos dos 23 livros que compõem a base de conhecimento do Max Impulso.
+ * Curadoria v1.2 (21/04/2026): removidos 3 livros cujo público original não
+ * se alinha com a realidade MEI brasileiro — De Zero a Um (Thiel, escrito
+ * para founder de startup de VC buscando monopólio), O Lado Difícil das
+ * Coisas Difíceis (Horowitz, escrito para CEO com VC/IPO/layoffs), Sonho
+ * Grande (Correa, biografia de aquisições bilionárias Lemann/Telles).
+ * Também reduzidos: Obsessão pelo Cliente (195 → 45 linhas), Empresas
+ * Feitas para Vencer (35 → 15 linhas), A Startup Enxuta (30 → 15 linhas)
+ * — mantendo só conceitos universais aplicáveis ao micro/pequeno negócio.
  *
  * Fontes:
  * - Lista de livros e conceitos-âncora: docs/agente_microempreendedor.docx
@@ -227,47 +235,20 @@ profissionalizar um negocio que cresceu organicamente (aplicar 7 Passos); (i) \
 investiu em funcionarios caros "porque os bons custam" (Regra das Pessoas \
 Normais); (j) esta considerando abrir negocio motivado por "gostar de fazer X" \
 (alertar sobre a Convulsao do Empreendedor antes que abra).
-- Empresas Feitas para Vencer (Jim Collins): Resultado de estudo de 5 anos comparando \
-empresas que saltaram de boas para grandes (com retorno de acoes 3x o mercado por \
-15+ anos) com concorrentes que estagnaram. As conclusoes contrariam o senso comum \
-sobre liderancas carismaticas e estrategias ousadas. CONCEITO DO OURICO (Hedgehog): \
-interseccao de 3 circulos — (a) o que voce pode ser o MELHOR DO MUNDO em fazer (nao \
-o que voce quer ser, o que voce PODE ser), (b) o que MOVE SUA MAQUINA ECONOMICA \
-(qual e o denominador — lucro por cliente? por hora? por m2? identifique o seu), \
+- Empresas Feitas para Vencer (Jim Collins): estudo de 5 anos comparando empresas \
+que saltaram de boas para grandes. Dois conceitos que valem para MEI: \
+CONCEITO DO OURICO (Hedgehog) — interseccao de 3 circulos: (a) o que voce pode \
+ser MELHOR DO MUNDO em fazer (nao o que quer, o que PODE), (b) o que MOVE SUA \
+MAQUINA ECONOMICA (seu denominador: lucro por cliente? por hora? por m²?), \
 (c) o que voce e PROFUNDAMENTE APAIXONADO por fazer. Fazer qualquer coisa fora \
-dessa interseccao e dispersao. A maioria dos MEIs fica nos circulos 2 ou 3 \
-isolados; a forca esta no centro. LIDERANCA DE NIVEL 5: humildade pessoal + \
-determinacao profissional inabalavel. Lideres grandes dao credito quando da certo \
-e assumem culpa quando da errado (o oposto do que a maioria faz). "Janela e \
-espelho": olham pela janela para explicar o sucesso (foi a equipe, a sorte, o \
-mercado) e no espelho para explicar o fracasso (fui eu). PRIMEIRO QUEM, DEPOIS O \
-QUE: coloque as pessoas certas no onibus, tire as erradas, ponha as certas nos \
-assentos certos — DEPOIS decida para onde dirigir. Com o time errado, nenhuma \
-estrategia salva; com o time certo, a estrategia emerge. Para MEI: contratar bem \
-antes de crescer, nao o contrario. Demissao nao e "cortar custo", e dever com o \
-resto do time. PARADOXO DE STOCKDALE (confrontar os fatos brutais): fe absoluta \
-de que voce vai prevalecer no final E disciplina para encarar a realidade mais \
-brutal do presente, por pior que seja. Otimistas ingenuos ("vai melhorar no \
-proximo mes") quebram; realistas com fe duram. Para MEI: olhar o extrato real, \
-medir ticket medio real, ouvir o cliente que reclamou — sem fugir. VOLANTE \
-(FLYWHEEL): grandeza nao vem de um evento magico, uma grande ideia ou uma reforma \
-dramatica. Vem de empurrar um volante pesado volta apos volta, ate que o momento \
-assuma e ele gire sozinho. O oposto e o CIRCULO-PERDICAO: lancar programa, nao \
-ver resultado, trocar, lancar outro, trocar — muita atividade, zero acumulo. \
+dessa interseccao e dispersao. MEI tipicamente fica nos circulos 2 ou 3 \
+isolados; a forca esta no centro. \
 CULTURA DE DISCIPLINA: pessoas disciplinadas dentro do Hedgehog dispensam \
-hierarquia pesada e controles excessivos. Liberdade dentro de estrutura. \
-TECNOLOGIA COMO ACELERADOR: tecnologia nao cria grandeza; amplifica o que ja \
-existe. Empresa sem Hedgehog + tecnologia nova = bagunca amplificada. CUIDADO \
-COM BHAGs desconectadas: objetivos ambiciosos (Big Hairy Audacious Goals) funcionam \
-SO quando alinhados ao Hedgehog. Frase-ancora: "Bom e inimigo do otimo. E por isso \
-tao poucas coisas se tornam otimas." \
-Use quando o empreendedor: esta em varios nichos ao mesmo tempo, quer crescer mas \
-nao sabe em qual direcao, contrata "para tapar buraco" em vez de contratar bem, \
-foge de feedback negativo, pula de estrategia em estrategia sem ver resultado \
-(ciclo-perdicao), idolatra solucoes magicas/ferramentas novas como salvacao, ou \
-precisa definir um nicho claro para parar de dispersar energia.
-- O Lado Dificil das Coisas Dificeis (Ben Horowitz): Momentos dificeis fazem parte. \
-Foque no que pode controlar, tome decisoes dificeis rapido, cuide da saude mental.
+hierarquia pesada. Liberdade dentro de estrutura. Aplicacao MEI: contratar \
+pessoa autodirigida comprometida com o nicho, nao "mais um par de bracos". \
+Use quando o empreendedor: esta em varios nichos ao mesmo tempo, quer crescer \
+mas nao sabe em qual direcao, precisa definir UM nicho claro para parar de \
+dispersar. Frase-ancora: "Bom e inimigo do otimo."
 - Seja Foda! (Caio Carneiro): Sucesso vem de disciplina nos pequenos habitos diarios. \
 Cuide da energia, faca networking, assuma 100% de responsabilidade.
 - Negocios: Um Assunto de Mulheres — A Forca Transformadora do \
@@ -567,203 +548,57 @@ mindset mas nao sabe por onde comecar → aplicar os 4 passos + ritual no \
 espelho; (l) pergunta "sou empreendedor de verdade?" → reformular para \
 "quero me tornar isso?"; (m) contratou e esta frustrado com equipe → \
 trocar linguagem de talento por linguagem de processo.
-- Obsessao pelo Cliente / Working Backwards (Colin Bryar e Bill Carr, 371pp — dois \
-ex-executivos seniores da Amazon; Bryar foi "sombra" de Bezos, Carr liderou midia \
-digital). Codifica os mecanismos operacionais que transformaram a Amazon numa \
-"maquina de inovacao" replicavel: cultura de liderança + rituais de escrita + \
-contratacao + organizacao em times pequenos + metricas controlaveis. Um dos \
-poucos livros que traduz praticas de Big Tech em ferramentas aplicaveis a \
-pequenos negocios. \
+- Obsessao pelo Cliente / Working Backwards (Colin Bryar e Bill Carr, 371pp — \
+dois ex-executivos Amazon). Maioria do livro descreve rituais corporativos \
+nao aplicaveis a MEI (6-pager, OP1/OP2, two-pizza teams, bar raiser de 8 \
+etapas, 14 principios). Esta entrada foca nos 4 conceitos universais \
+UTIS para pequeno negocio brasileiro: \
 \
-PRINCIPIO-RAIZ: OBSESSAO PELO CLIENTE (Leadership Principle #1). Toda discussao \
-estrategica comeca perguntando "o que e melhor para o cliente?" — nao "o que e \
-melhor para nos?" ou "o que o concorrente esta fazendo?". Bezos revisava \
-pessoalmente e-mails de atendimento nos primeiros anos. Regra: "Tem que ser \
-perfeito" — uma experiencia ruim mancha cem boas. \
+(1) OBSESSAO PELO CLIENTE. Toda decisao comeca perguntando "o que e melhor \
+para o cliente?" — nao "o que e melhor para nos?" nem "o que o concorrente \
+esta fazendo?". Bezos revisava e-mails de atendimento pessoalmente nos \
+primeiros anos. Regra: "Tem que ser perfeito" — uma experiencia ruim \
+mancha cem boas. Para MEI: responda toda reclamacao em <24h; peca 3 \
+avaliacoes por semana; nao "aceite perder o cliente" sem entender por que. \
 \
-WORKING BACKWARDS (de tras para a frente). Em vez de partir de "temos esta \
-tecnologia/capacidade, que produto fazemos?", comeca-se definindo a \
-EXPERIENCIA IDEAL do cliente e retrocede-se ate o produto. Bezos usou a Sony \
-como exemplo negativo: engenharia projetou uma TV de US$2.000 de custo \
-enquanto marketing queria vender por US$1.999. Se tivessem comecado pelo \
-comunicado a imprensa (cliente + preco), teriam negociado as restricoes \
-antes, nao depois. E uma "funcao de imposicao" que obriga a confrontar \
-decisoes dificeis cedo. \
+(2) INPUT vs OUTPUT METRICS (o conceito mais valioso do livro para MEI). \
+Metricas de SAIDA (output): faturamento, lucro, nº de clientes. Voce NAO \
+controla diretamente. Metricas de ENTRADA (input): nº de orcamentos \
+enviados, tempo de resposta, % de clientes que voltam, reviews, nº de \
+indicacoes. Voce CONTROLA hoje. Se inputs feitos bem, outputs acontecem. \
+Ex.: "faturamento do mes" e output — traduza para "nº de orcamentos \
+enviados nesta semana" (controlavel). \
 \
-PR/FAQ (ferramenta operacional do Working Backwards). Antes de construir \
-QUALQUER coisa, escreve-se: \
-• PRESS RELEASE (PR) — no maximo 1 PAGINA, paragrafos curtos, simulando o \
-anuncio do produto ja pronto: titulo, subtitulo, cidade/data, paragrafo de \
-resumo, problema do cliente, solucao, como funciona, citacao do lider da \
-empresa, citacao de cliente, call-to-action. \
-• FAQ — no maximo 5 paginas, em duas partes: \
-  - FAQs EXTERNAS: o que imprensa/clientes perguntariam ("Quanto custa? Como \
-    funciona?"). \
-  - FAQs INTERNAS: as perguntas dificeis de negocio, tecnica, custo, prazo, \
-    legal ("Como podemos fabricar por esse preco e ter 25% de margem? \
-    Quantos engenheiros teremos que contratar?"). \
-Processo: autor escreve rascunho, marca reuniao de 1h, distribui o \
-documento, TODOS LEEM EM SILENCIO no inicio, depois discussao linha por \
-linha. Seniores falam por ultimo para nao influenciar. Equipes costumam \
-fazer 10+ rascunhos e 5 reunioes antes de aprovar. Se alguem na revisao \
-pergunta "e dai?" sobre o beneficio — o produto nao vale a pena. Aplicacao \
-MEI: antes de investir em servico ou produto novo, escreva em 1 pagina "se \
+(3) PR/FAQ SIMPLIFICADO (funcao de imposicao). Antes de investir em \
+produto/servico novo, escreva em 1 PARAGRAFO o anuncio hipotetico: "se \
 eu lancasse isso amanha, o post no Instagram diria o que? quanto custa? \
 por que meu cliente pagaria?". Se nao convence no papel, nao vai convencer \
-na rua. \
+na rua. Comece pelo cliente e retroceda ao produto — nao o inverso. \
 \
-O 6-PAGER (narrative memo). Em junho de 2004, Bezos baniu PowerPoint das \
-reunioes do S-Team por e-mail. Substituicao: narrativa escrita de ate 6 \
-paginas, fonte 11pt, espacamento simples, sem "truques de formatacao". \
-Apendices permitidos mas nao lidos. Regras operacionais: \
-• Primeiros 20 MINUTOS da reuniao = silencio absoluto, todos lendo. \
-• Depois, discussao linha-por-linha guiada pelo autor. \
-• Uma narrativa densa carrega ~9x mais informacao que 60 slides. \
-• Vantagem cultural: elimina vies pro-carismatico; ideias ganham, \
-apresentadores nao. \
-• "Escrever um memorando de 4 paginas e mais dificil do que 'escrever' um \
-PowerPoint de 20 paginas — porque a estrutura narrativa forca a pensar \
-melhor." — Bezos. \
-Aplicacao MEI: substituir brainstorms desorganizados por um documento curto \
-(1-2 paginas) antes de decisoes importantes (mudar fornecedor, contratar, \
-investir em marketing). \
+(4) "BOAS INTENCOES NAO FUNCIONAM. MECANISMOS SIM." Dito interno Amazon. \
+Voce nao resolve problema repetitivo com "da proxima vez eu lembro"; \
+resolve mudando a ESTRUTURA (processo escrito, checklist, ritual, \
+automacao). Esqueceu de dar retorno para cliente? Nao promete "vou \
+lembrar" — crie um gatilho na agenda. \
 \
-TWO-PIZZA TEAMS (equipes de duas pizzas). Equipes tao pequenas que duas \
-pizzas grandes alimentam todos (<=10 pessoas). Criterios: pequena, \
-autonoma (nao depende de outras equipes), tem uma metrica de qualidade \
-monitorada, dona do negocio ponta-a-ponta, autossuficiente (o trabalho \
-se paga), liderada por alguem multidisciplinar. Licao posterior: o \
-TAMANHO importava menos que o LIDER dedicado. Aplicacao MEI: quando \
-contratar o primeiro ajudante, de-lhe um escopo unico e claro \
-(atendimento OU producao OU entrega), nao "tudo que aparecer". \
-\
-SINGLE-THREADED LEADER (STL). Evolucao natural da two-pizza team. \
-Single-threaded na ciencia da computacao = pessoa so trabalha em UMA \
-coisa de cada vez, dedicacao total. "A melhor maneira de falhar em \
-inventar algo e fazer disso o trabalho de meio periodo de alguem." (Dave \
-Limp, VP Amazon). Exemplo: Fulfillment by Amazon ficou 1 ano empacado \
-ate Tom Taylor ser liberado de todas as outras responsabilidades e \
-dedicar-se SO ao FBA — ai decolou. Aplicacao MEI: voce JA e o STL do \
-seu negocio. Quando abre frente nova (loja fisica, e-commerce, \
-franquia), reserve UM bloco dedicado — nao trate como "mais uma coisa". \
-Se tem socio, cada um e STL de uma area. \
-\
-INPUT vs OUTPUT METRICS (CORE). Metricas de SAIDA (output, lagging \
-indicators): receita, lucro, preco da acao, numero de clientes, pedidos. \
-Voce NAO controla diretamente. Anedota: Bezos apos reuniao com CEO de \
-Fortune 500 comenta: "nao ha nada que ele tenha feito hoje que causou a \
-acao a subir 30 centavos". Metricas de ENTRADA (input, leading \
-indicators): itens no catalogo, tempo de entrega, preco, disponibilidade \
-em estoque, tempo de resposta a cliente. Voce CONTROLA hoje. Se feitas \
-bem, produzem os outputs desejados. Evolucao classica da metrica de \
-selecao na Amazon: (1) paginas criadas → estoque parado → errada; (2) \
-paginas visualizadas; (3) % visualizacoes com produto em estoque; (4) \
-FAST TRACK IN STOCK = % visualizacoes com produto em estoque + pronto \
-para entrega em 2 dias. Esta virou a metrica definitiva. Aplicacao MEI: \
-"faturamento do mes" e output — voce nao controla direto. Controle \
-inputs: nº de orcamentos enviados, tempo de resposta, % clientes que \
-voltam, reviews recebidos, nº de indicacoes. \
-\
-WBR — WEEKLY BUSINESS REVIEW. Reuniao semanal de dados, derivada do \
-Six Sigma DMAIC (Define, Measure, Analyze, Improve, Control). Abre a \
-planilha de metricas e olha a tendencia — nao espera fechar o mes. \
-Fractal: pequenas equipes, categorias e divisoes inteiras tem cada uma \
-a sua. Aplicacao MEI: 30 min toda segunda-feira, 5-8 metricas \
-(clientes atendidos, ticket medio, custo fixo, reviews, horas \
-trabalhadas), olhar tendencia. \
-\
-O FLYWHEEL (engrenagem). Bezos desenhou em um guardanapo em 2001 \
-(inspirado em Good to Great de Collins): melhor experiencia do cliente \
-→ mais trafego → mais vendedores → selecao maior → melhor experiencia. \
-Ciclo gira; crescimento baixa custos; custos menores viram precos \
-menores; precos menores melhoram experiencia. Aplicacao MEI: desenhe \
-seu proprio ciclo virtuoso. Bom atendimento → cliente volta e indica → \
-mais vendas → melhor margem → mais bom atendimento. Qual elo esta \
-travando? \
-\
-BAR RAISER (contratacao). Processo de 8 etapas para garantir que cada \
-nova contratacao ELEVE o nivel da equipe. "Queremos missionarios, nao \
-mercenarios" — Bezos. As 8 etapas: (1) descricao do trabalho \
-especifica; (2) analise de curriculo; (3) ligacao de 1h com perguntas \
-comportamentais ("me conte uma vez que..."); (4) ciclo de entrevistas \
-(5-7h); (5) feedback por escrito de cada entrevistador ANTES da reuniao; \
-(6) reuniao de avaliacao; (7) verificacao de referencias; (8) oferta. \
-Chave: o BAR RAISER e entrevistador treinado, EXTERNO a equipe \
-contratante, com PODER DE VETO ABSOLUTO — independente da urgencia do \
-gerente. Aplicacao MEI: quando contratar, monte um processo minimo: \
-descricao clara + ligacao de 1h com perguntas comportamentais + 1 \
-referencia verificada + peca opiniao de alguem que NAO e da familia \
-(esse tem poder de veto). \
-\
-14 PRINCIPIOS DE LIDERANCA DA AMAZON (os mais uteis para MEI): \
-#1 Obsessao pelo cliente / #2 Propriedade (Ownership) — "nunca dizem \
-'isso nao e meu trabalho'" / #8 Pense grande — "pensar pequeno e uma \
-profecia que se autorrealiza" / #9 Tendencia a acao — "muitas decisoes \
-sao reversiveis e nao requerem estudo extensivo" / #10 Frugalidade — \
-"orcamento restrito gera desenvoltura" / #12 Va fundo (Dive Deep) — \
-"nenhuma tarefa esta abaixo deles" / #13 Discorde e se comprometa / #14 \
-Forneca resultados. \
-\
-OP1 / OP2 — PLANEJAMENTO OPERACIONAL ANUAL. OP1 no outono (set-out): \
-cada grupo escreve narrativa com (i) avaliacao do ano anterior, (ii) \
-iniciativas do proximo, (iii) demonstrativo de resultados, (iv) pedidos \
-de recursos. OP2 em janeiro ajusta com resultados reais do Q4 — vira o \
-plano oficial. S-Team Goals: dos ~23 objetivos, o S-Team seleciona ~6 \
-que sao SMART, numericos, rastreaveis. Aplicacao MEI simplificada: no \
-fim do ano, escrever 1-2 paginas: (i) o que deu certo/errado, (ii) 3 \
-iniciativas para o proximo ano, (iii) metas SMART, (iv) revisao em \
-janeiro. \
-\
-DISAGREE AND COMMIT (Principio #13). Voce tem OBRIGACAO de discordar \
-de decisao que acha errada, mesmo que incomode. Uma vez decidido, \
-COMPROMISSO TOTAL — nada de sabotar passivamente ou dizer "eu avisei" \
-depois. O inverso — "nem discordar nem se comprometer" — e o pior. \
-Aplicacao MEI: util em sociedade/familia. Depois de decidir o preco, \
-fornecedor, estrategia — ninguem fica sabotando. Discussao antes, \
-execucao depois. \
-\
-DECISOES TIPO 1 vs TIPO 2. Tipo 1 = "porta de uma via so" \
-(irreversiveis — contrato longo, demissao, investimento alto — exigem \
-deliberacao profunda). Tipo 2 = "porta de duas vias" (reversiveis — \
-testar um novo horario, post, preco por uma semana — podem ser rapidas \
-e com poucos dados). Erro comum: tratar decisao Tipo 2 como Tipo 1 e \
-travar indecisao por meses. \
-\
-"BOAS INTENCOES NAO FUNCIONAM. MECANISMOS SIM." Dito interno Amazon. \
-Voce nao resolve problema repetitivo com "da proxima vez lembre-se"; \
-resolve mudando a estrutura que o produz (processo, checklist, \
-sistema, rotina). \
-\
-Casos emblematicos do livro: KINDLE (PR/FAQ + STL Steve Kessel), PRIME \
-(11 semanas do e-mail de Bezos ao lancamento), AWS (Invente e \
-Simplifique aplicado a B2B). \
+COMPLEMENTARES rapidos tambem uteis: DECISOES TIPO 1 (irreversiveis — \
+contrato longo, investimento alto — deliberar profundamente) vs TIPO 2 \
+(reversiveis — testar preco por 1 semana — decidir rapido); FRUGALIDADE \
+("orcamento restrito gera desenvoltura"); TENDENCIA A ACAO (nao estude \
+eternamente decisao que pode ser testada). \
 \
 Frases-ancora: "Comece com o cliente e trabalhe de tras para a frente." \
-/ "Boas intencoes nao funcionam. Mecanismos, sim." / "Queremos \
-missionarios, nao mercenarios." / "A melhor maneira de falhar em \
-inventar algo e fazer disso o trabalho de meio periodo de alguem." / \
-"Pensar pequeno e uma profecia que se autorrealiza." / "Tem que ser \
+/ "Boas intencoes nao funcionam. Mecanismos, sim." / "Tem que ser \
 perfeito." \
 \
-Use quando o empreendedor: (a) vai lancar produto/servico novo → \
-Working Backwards + PR/FAQ de 1 pagina; (b) so fala em faturamento → \
-traduzir para input metrics controlaveis; (c) vai contratar primeiro \
-funcionario/socio → Bar Raiser simplificado + STL (escopo unico); (d) \
-apaga incendios fazendo tudo ao mesmo tempo → Single-Threaded Leader: \
-uma iniciativa por vez; (e) ignora reclamacoes → Obsessao pelo Cliente; \
-(f) quer copiar concorrente → obcecado pelo cliente, nao pelo \
-concorrente; (g) esta em reuniao/discussao familiar sem chegar a lugar \
-nenhum → escrever 1-2 paginas antes da proxima conversa (todos leem em \
-silencio, depois discutem); (h) vai investir alto em algo \
-irreversivel → Decisao Tipo 1 + FAQ interno; (i) socio/conjuge empacado \
-em discussao → Disagree and Commit com prazo; (j) quer fazer \
-planejamento de 2026 → OP1/OP2 simplificado; (k) escolhe entre gastar \
-com marketing ou contratar → Frugalidade + "qual input essa despesa \
-mexe?"; (l) duvida se preco/produto esta bom → teste "E dai?" sobre o \
-beneficio; (m) sente que a equipe nao se importa → Propriedade \
-(Ownership, PL #2) + "nunca digam isso nao e meu trabalho"; (n) quer \
-instaurar uma rotina que nao pega → substituir "boa intencao" por \
-MECANISMO (processo escrito, checklist, ritual).
+Use quando o empreendedor: (a) vai lancar produto/servico novo → PR/FAQ \
+de 1 paragrafo; (b) so fala em faturamento → traduzir para input metrics \
+controlaveis (nº de orcamentos, tempo de resposta, indicacoes); (c) \
+ignora reclamacoes ou demora a responder → Obsessao pelo Cliente; (d) \
+quer copiar concorrente → obcecado pelo cliente, nao pelo concorrente; \
+(e) quer instaurar rotina que nao pega → trocar "boa intencao" por \
+MECANISMO (processo, checklist, gatilho); (f) trava em decisao reversivel \
+por meses → Decisao Tipo 2 = teste e ajuste.
 
 FINANCAS:
 - Do Mil ao Milhao (Thiago Nigro): Conceitos centrais no perfil (3 pilares, ARCA, \
@@ -1363,46 +1198,26 @@ INOVACAO E AGILIDADE:
 - Pense Dentro da Caixa e O Segredo da Gestao Agil (Thiago Oliveira): Conceitos \
 centrais no perfil. Complemento: 75% das startups morrem no 1o ano por falta de \
 gestao, nao de ideia. Ciclos curtos, metas semanais, teste com baixo custo.
-- A Startup Enxuta (Eric Ries): Startup nao e versao pequena de empresa grande; e \
-uma instituicao humana desenhada para criar algo novo em condicoes de EXTREMA \
-INCERTEZA. O mesmo vale para qualquer MEI que esteja lancando produto/servico \
-novo: voce nao sabe se vai funcionar ate testar no cliente real. Metodo central: \
-ciclo CONSTRUIR → MEDIR → APRENDER. Constroi o MVP (Minimum Viable Product — menor \
-versao possivel que gera aprendizado real), mede como cliente responde, aprende o \
-que funciona e o que nao. A velocidade desse ciclo e mais importante que o tamanho \
-do produto. Exemplo classico para MEI: antes de alugar ponto para confeitaria, \
-venda 20 bolos por encomenda no Instagram e meca se as pessoas pagam, voltam, \
-indicam. Se ninguem compra, voce economizou o aluguel. MVP nao e produto ruim — \
-e produto com as features MINIMAS necessarias para testar a hipotese central (e \
-quais sao essas features depende da pergunta que voce precisa responder). \
-Aprendizado Validado: cada experimento deve reduzir uma incerteza concreta, nao \
-so gerar atividade. Se voce "trabalhou muito" mas ainda nao sabe se cliente paga, \
-nao houve aprendizado validado. Metricas de Vaidade vs. Acionaveis: likes, \
-visualizacoes, seguidores e visitas sao vaidade (sobem sempre, nao pagam boleto). \
-Acionaveis: taxa de conversao, receita por cliente, retencao, ticket medio, tempo \
-ate a 2a compra. So cobre decisao nas acionaveis. Pivot vs. Perseverar: decisao \
-baseada em DADOS, nao em paixao. Pivotar nao e desistir — e mudar uma hipotese \
-errada mantendo a visao. Tipos de pivot: zoom-in (uma feature vira o produto \
-inteiro), zoom-out (produto vira feature de algo maior), segmento de cliente (mesmo \
-produto, outro publico), necessidade (mesmo publico, outra dor), plataforma, canal, \
-motor de crescimento. Se nos ultimos 3 meses as metricas acionaveis nao melhoraram \
-apesar dos esforcos, e hora de pivotar. 3 motores de crescimento (escolha UM por \
-vez): PEGAJOSO (retencao — cliente volta), VIRAL (cliente trazendo cliente — \
-coeficiente viral > 1), PAGO (reinvestir parte do lucro por cliente em aquisicao). \
-Cohort analysis: nao analise "media de todos os clientes" — analise grupos que \
-entraram no mesmo periodo. Revela se melhorias recentes estao funcionando ou se \
-voce esta sendo enganado por numeros agregados. Lotes Pequenos: produzir/lancar \
-em lotes pequenos roda mais rapido, mostra problemas mais cedo, permite correcao. \
+- A Startup Enxuta (Eric Ries): aplicavel a qualquer MEI lancando produto/servico \
+novo — voce NAO SABE se vai funcionar ate testar no cliente real. \
+Metodo central: ciclo CONSTRUIR → MEDIR → APRENDER. Constroi o MVP (Minimum \
+Viable Product — menor versao possivel que gera aprendizado real), mede como \
+cliente responde, aprende o que funciona. A velocidade do ciclo e mais \
+importante que o tamanho do produto. \
+EXEMPLO MEI: antes de alugar ponto para confeitaria, venda 20 bolos por \
+encomenda no Instagram e meca se as pessoas pagam, voltam, indicam. Se \
+ninguem compra, voce economizou o aluguel. MVP NAO e produto ruim — e produto \
+com as features minimas para testar a hipotese central. \
+METRICAS DE VAIDADE vs. ACIONAVEIS: likes, seguidores e visualizacoes sao \
+vaidade (sobem sempre, nao pagam boleto). Acionaveis: taxa de conversao, \
+ticket medio, retencao, tempo ate a 2a compra. So cobre decisao nas acionaveis. \
 Frase-ancora: "Se voce nao sabe quem e o cliente, nao sabe o que e qualidade." \
-Use quando o empreendedor: tem uma ideia mas esta com medo de investir tudo, quer \
-validar demanda antes de abrir loja/contratar/alugar, esta ha meses "preparando o \
-lancamento perfeito" sem entregar nada, tem metricas bonitas mas receita estagnada, \
-nao sabe se deve insistir ou mudar de rumo, quer crescer com pouco capital, ou \
-esta testando um novo produto dentro de um negocio existente.
+Use quando o empreendedor: tem ideia mas medo de investir tudo, quer validar \
+demanda antes de abrir loja/contratar/alugar, esta "preparando o lancamento \
+perfeito" ha meses sem entregar nada, ou tem metricas bonitas mas receita \
+estagnada (vaidade vs acionavel).
 - Rework (Jason Fried): Lance rapido, evite planejamento excessivo, diga nao a maioria \
 das oportunidades. Negocio pequeno e lucrativo > grande e endividado.
-- De Zero a Um (Peter Thiel): Encontre nicho especifico e domine-o. Construa algo \
-dificil de copiar: relacionamento, conhecimento especializado, reputacao local.
 - Inovacao em Modelos de Negocios (Gustavo Caetano): Repense como cobra (assinatura, \
 pacote, recorrencia). Adapte ideias de outros setores. Teste em pequena escala.
 
@@ -1856,6 +1671,4 @@ separar decisao do relacionamento).
 INSPIRACAO:
 - O Catador de Sonhos e O Poder da Positividade (Geraldo Rufino): Conceitos centrais \
 no perfil. Complemento: "A melhor maneira de nao ter medo do futuro e viver o seu \
-melhor presente."
-- Sonho Grande (Cristiane Correa): Lemann, Telles e Sicupira — metas claras e \
-mensuraveis, corte custos desnecessarios, cerque-se de pessoas melhores, pense grande.`
+melhor presente."`

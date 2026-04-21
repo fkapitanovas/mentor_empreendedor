@@ -1,6 +1,6 @@
 # PRD — Max Impulso (Mentor Virtual para Microempreendedores)
 
-> **Versão**: 1.1 · **Data**: 21/04/2026 · **Domínio de produção**: https://maximpulso.com.br
+> **Versão**: 1.2 · **Data**: 21/04/2026 · **Domínio de produção**: https://maximpulso.com.br
 > **Stack**: Next.js 16 + React 19 + Supabase + Claude Sonnet 4.6 + Resend
 > **Escopo deste documento**: especificação da base de conhecimento, matrizes de personalização, fontes curadas e mecanismo de adequação de respostas por fase do negócio e setor.
 
@@ -10,7 +10,7 @@
 
 ### 1.1 Proposta de valor
 
-Mentor virtual 24/7 para **microempreendedores brasileiros** (MEIs, MEs e autônomos com faturamento até R$ 360 mil/ano). Combina a expertise de 13 gurus de empreendedorismo + 26 livros curados + 26 influenciadores nichados + 4 fontes institucionais em conversas naturais pelo navegador. Foco em conselho **prático, brasileiro, acolhedor** — como um amigo experiente que entende MEI, Simples Nacional, PIX, WhatsApp Business e a realidade da confeitaria de bairro ou da esteticista autônoma.
+Mentor virtual 24/7 para **microempreendedores brasileiros** (MEIs, MEs e autônomos com faturamento até R$ 360 mil/ano). Combina a expertise de 13 gurus de empreendedorismo + 23 livros curados + 26 influenciadores nichados + 4 fontes institucionais em conversas naturais pelo navegador. Foco em conselho **prático, brasileiro, acolhedor** — como um amigo experiente que entende MEI, Simples Nacional, PIX, WhatsApp Business e a realidade da confeitaria de bairro ou da esteticista autônoma.
 
 ### 1.2 Público-alvo (personas prioritárias)
 
@@ -44,7 +44,7 @@ buildSystemPrompt(user, summary)
     │
     ├── [1] IDENTIDADE_E_TOM                 ~170 tokens
     ├── [2] BASE_CONHECIMENTO (13 gurus)     ~12.200 tokens
-    ├── [3] BASE_LIVROS (26 livros)          ~36.200 tokens
+    ├── [3] BASE_LIVROS (23 livros)          ~32.500 tokens
     ├── [4] REGRAS_INTERACAO                 ~360 tokens
     ├── [5] PERSONALIZACAO_ESTAGIO           ~170 tokens
     ├── [6] RESOLUCAO_CONFLITOS (9 tensões)  ~1.100 tokens
@@ -65,7 +65,7 @@ buildSystemPrompt(user, summary)
             └── HISTORICO_RESUMIDO           variável
 ```
 
-**Tokens totais típicos do system prompt**: ~60.900 tokens (≈ 30% do contexto de 200k do Sonnet 4.6).
+**Tokens totais típicos do system prompt**: ~57.200 tokens (≈ 29% do contexto de 200k do Sonnet 4.6).
 **Prompt caching ativo** (`cache_control: ephemeral` em `api/chat/route.ts`) — hit cache reduz latência e custo em ~90%.
 
 ### 2.2 Camadas conceituais
@@ -166,6 +166,8 @@ Personalize suas respostas para o estagio "crescimento" e o setor "confeitaria".
 | **Ana Fontes** | Empreendedorismo feminino (RME/IRME) | Empreendedora mulher, contexto de gênero, maternidade+negócio, irmandade feminina |
 
 > **Separação perfil × livro (v1.1)**: O `conhecimento.ts` mantém apenas o perfil biográfico/institucional de Ana Fontes (RME, Instituto RME, programas, prêmios, filosofia). Os conceitos específicos do livro *Negócios: um assunto de mulheres* (Jandaíra, 2022) — 7 atitudes empreendedoras, mãe possível, os 4 cuidados em sociedade familiar, irmandade feminina como alternativa ao networking — estão em `livros.ts`. Este padrão segue a regra de deduplicação do projeto: perfil de guru fica em `conhecimento.ts`; conteúdo de obra autoral fica em `livros.ts`.
+
+> **Curadoria v1.2 (21/04/2026) — poda de livros fora da realidade MEI**: Três livros removidos por terem público original incompatível com micro/pequeno empreendedor brasileiro: **De Zero a Um** (Thiel — escrito para founder de startup de VC buscando monopólio global); **O Lado Difícil das Coisas Difíceis** (Horowitz — CEO com rodadas de VC, IPOs, layoffs em massa); **Sonho Grande** (Correa — biografia Lemann/Telles/Sicupira de aquisições bilionárias). Três livros reduzidos a apenas os conceitos universais: **Obsessão pelo Cliente** (195 → 45 linhas, mantendo Customer Obsession + Input vs Output Metrics + PR/FAQ simplificado + "mecanismos > intenções"); **Empresas Feitas para Vencer** (35 → 15 linhas, mantendo Hedgehog + Cultura de Disciplina); **A Startup Enxuta** (30 → 15 linhas, mantendo MVP + Build-Measure-Learn + métricas de vaidade vs acionáveis). Resultado: 26 → 23 livros, ~36.200 → ~32.500 tokens em `livros.ts`, ~10% de margem adicional para futuros livros alinhados (gap identificado: $100M Offers, Chris Voss, Radical Candor).
 
 ### 4.2 Influenciadores nichados (base em `nichos.ts`)
 
@@ -464,12 +466,12 @@ Mecanismos para monitorar e iterar o prompt:
 | **Tamanho do system prompt** | Tokens totais injetados | ≤ 80k (saudável); alerta > 100k |
 | **Tamanho do livros.ts** | Tokens do maior bloco | ≤ 40k (confortável) |
 
-### 7.1 Estado atual (21/04/2026, pós-v1.1)
+### 7.1 Estado atual (21/04/2026, pós-v1.2)
 
-- System prompt total: **~60.900 tokens** (30% do context window Sonnet 4.6)
-- `livros.ts`: **~36.200 tokens** (59% do prompt) — 26 livros, 7 no padrão deep
-- `conhecimento.ts`: **~12.200 tokens** (20% do prompt) — 13 perfis de guru
-- **Margem**: saudável. Alvo confortável de `livros.ts` é 40k tokens (margem ~10% para mais ~2 livros deep ou ~6 médios)
+- System prompt total: **~57.200 tokens** (29% do context window Sonnet 4.6)
+- `livros.ts`: **~32.500 tokens** (57% do prompt) — 23 livros, 7 no padrão deep
+- `conhecimento.ts`: **~12.200 tokens** (21% do prompt) — 13 perfis de guru
+- **Margem**: saudável. Alvo confortável de `livros.ts` é 40k tokens (margem ~19% = espaço para ~3 livros deep ou ~8 médios)
 
 ---
 
@@ -494,6 +496,16 @@ Mecanismos para monitorar e iterar o prompt:
 | Liderança da primeira contratação | **Radical Candor** (Kim Scott) | Média |
 | Saúde mental do empreendedor | **A Coragem de Ser Imperfeito** (Brené Brown) | Baixa |
 | Conteúdo / copywriting narrativo | **Storybrand** (Donald Miller) | Baixa |
+
+### 8.3 Livros já removidos na curadoria v1.2 (NÃO voltar)
+
+Para evitar que futuras curadorias "reintroduzam" livros inadequados por nostalgia canônica:
+
+| Livro removido | Motivo de exclusão permanente |
+|---|---|
+| **De Zero a Um** (Thiel) | Público original: founder de startup de VC buscando monopólio. Mindset "competição é para perdedores" desalinhado com MEI buscando 30-50 clientes leais. |
+| **O Lado Difícil** (Horowitz) | Público original: CEO com VC, demissões em massa, IPO, aquisição. Fora da realidade do MEI que quita boleto e emite NFS-e. |
+| **Sonho Grande** (Correa) | Biografia Lemann/Telles/Sicupira (AmBev, InBev, Burger King, Kraft-Heinz). Puramente narrativo. Filosofia 3G de corte agressivo de custos polêmica para negócio de relacionamento. |
 
 ### 8.3 Próximos passos arquiteturais
 
