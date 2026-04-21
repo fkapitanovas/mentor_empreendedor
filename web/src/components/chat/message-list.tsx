@@ -36,14 +36,17 @@ export function MessageList({
   onSendSuggestion,
   onViewportReady,
 }: MessageListProps) {
+  const topRef = useRef<HTMLDivElement>(null)
   const bottomRef = useRef<HTMLDivElement>(null)
   const viewportRef = useRef<HTMLDivElement | null>(null)
   const shouldStickRef = useRef(true)
-  const [showTop, setShowTop] = useState(false)
-  const [showBottom, setShowBottom] = useState(false)
+
+  // Atalhos visíveis sempre que a conversa tem >=4 mensagens
+  // (evita tracking de scroll que estava falhando no mobile).
+  const showShortcuts = messages.length >= 4
 
   // Ref callback direto na Viewport do base-ui. Dispara quando o elemento
-  // monta; chama o callback do parent e ancora o scroll listener.
+  // monta; chama o callback do parent e ancora o auto-scroll stick detector.
   const handleViewportRef = useCallback(
     (el: HTMLDivElement | null) => {
       viewportRef.current = el
@@ -52,31 +55,25 @@ export function MessageList({
     [onViewportReady]
   )
 
-  // Scroll listener anexado sempre que a viewport estiver disponível
+  // Listener só para shouldStick (auto-scroll inteligente)
   useEffect(() => {
     const el = viewportRef.current
     if (!el) return
     const handleScroll = () => {
       const distanceFromBottom = el.scrollHeight - el.scrollTop - el.clientHeight
       shouldStickRef.current = distanceFromBottom < 80
-      // Thresholds baixos: acionam assim que há ~100px de sobra em cada direção
-      setShowTop(el.scrollTop > 100)
-      setShowBottom(distanceFromBottom > 100)
     }
     handleScroll()
     el.addEventListener('scroll', handleScroll, { passive: true })
-    return () => {
-      el.removeEventListener('scroll', handleScroll)
-    }
+    return () => el.removeEventListener('scroll', handleScroll)
   }, [messages.length])
 
   const scrollToTop = useCallback(() => {
-    viewportRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
+    topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }, [])
 
   const scrollToBottom = useCallback(() => {
-    const el = viewportRef.current
-    if (el) el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' })
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
   }, [])
 
   useEffect(() => {
@@ -142,6 +139,7 @@ export function MessageList({
         aria-label="Conversa com Max Impulso"
       >
         <div className="mx-auto max-w-3xl py-4">
+          <div ref={topRef} />
           {messages.map((msg) => (
             <MessageBubble key={msg.id} message={msg} />
           ))}
@@ -176,40 +174,33 @@ export function MessageList({
         </div>
       </ScrollArea>
 
-      {/* Atalhos de scroll para conversas longas */}
-      <div
-        className="pointer-events-none absolute bottom-4 right-3 z-20 flex flex-col gap-2 md:bottom-6 md:right-6"
-        aria-hidden={!showTop && !showBottom}
-      >
-        <button
-          type="button"
-          onClick={scrollToTop}
-          aria-label="Ir para o início da conversa"
+      {/* Atalhos de scroll (fixed no canto inferior direito, acima do input) */}
+      {showShortcuts && (
+        <div
           className={cn(
-            'pointer-events-auto flex size-11 items-center justify-center rounded-full border-[2px] border-ink bg-card text-ink shadow-hard-sm transition-all duration-200 hover:bg-[var(--sun)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--ink)] focus-visible:bg-[var(--sun)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
-            showTop
-              ? 'opacity-100 scale-100'
-              : 'pointer-events-none opacity-0 scale-90'
+            'fixed right-3 z-40 flex flex-col gap-2 md:right-6',
+            // bottom calculado para ficar acima do ChatInput (~72px) + safe-area
+            'bottom-[calc(env(safe-area-inset-bottom,0px)+5rem)] md:bottom-[calc(env(safe-area-inset-bottom,0px)+6rem)]'
           )}
-          tabIndex={showTop ? 0 : -1}
         >
-          <ChevronsUp className="size-5" aria-hidden="true" />
-        </button>
-        <button
-          type="button"
-          onClick={scrollToBottom}
-          aria-label="Ir para o final da conversa"
-          className={cn(
-            'pointer-events-auto flex size-11 items-center justify-center rounded-full border-[2px] border-ink bg-card text-ink shadow-hard-sm transition-all duration-200 hover:bg-[var(--sun)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--ink)] focus-visible:bg-[var(--sun)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
-            showBottom
-              ? 'opacity-100 scale-100'
-              : 'pointer-events-none opacity-0 scale-90'
-          )}
-          tabIndex={showBottom ? 0 : -1}
-        >
-          <ChevronsDown className="size-5" aria-hidden="true" />
-        </button>
-      </div>
+          <button
+            type="button"
+            onClick={scrollToTop}
+            aria-label="Ir para o início da conversa"
+            className="flex size-11 items-center justify-center rounded-full border-[2px] border-ink bg-card text-ink shadow-hard-sm transition-all duration-150 hover:bg-[var(--sun)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--ink)] focus-visible:bg-[var(--sun)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 active:scale-95"
+          >
+            <ChevronsUp className="size-5" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            onClick={scrollToBottom}
+            aria-label="Ir para o final da conversa"
+            className="flex size-11 items-center justify-center rounded-full border-[2px] border-ink bg-card text-ink shadow-hard-sm transition-all duration-150 hover:bg-[var(--sun)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--ink)] focus-visible:bg-[var(--sun)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 active:scale-95"
+          >
+            <ChevronsDown className="size-5" aria-hidden="true" />
+          </button>
+        </div>
+      )}
     </div>
   )
 }
