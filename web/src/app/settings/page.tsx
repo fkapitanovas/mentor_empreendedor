@@ -148,7 +148,11 @@ export default function SettingsPage() {
               </div>
 
               {passwordError && (
-                <div className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive">
+                <div
+                  role="alert"
+                  aria-live="polite"
+                  className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive"
+                >
                   <AlertCircle className="size-4 shrink-0" />
                   {passwordError}
                 </div>
@@ -156,7 +160,7 @@ export default function SettingsPage() {
 
               <Button
                 type="submit"
-                className="h-12 w-full rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-700 font-heading text-sm font-semibold text-white hover:from-emerald-600 hover:to-emerald-800"
+                className="h-12 w-full rounded-xl bg-[image:var(--gradient-brand)] font-heading text-sm font-semibold text-white hover:brightness-105"
                 disabled={updatingPassword}
               >
                 {updatingPassword ? 'Atualizando...' : 'Atualizar senha'}
@@ -173,7 +177,10 @@ export default function SettingsPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-4 text-sm text-muted-foreground">
+            <p
+              id="delete-account-help"
+              className="mb-4 text-sm text-muted-foreground"
+            >
               Ao excluir sua conta, voce sera desconectado. Para exclusao definitiva dos seus dados, entre em contato com o suporte.
             </p>
             <AlertDialog>
@@ -181,6 +188,7 @@ export default function SettingsPage() {
                 render={
                   <Button
                     variant="destructive"
+                    aria-describedby="delete-account-help"
                     className="h-12 w-full rounded-xl font-heading text-sm font-semibold"
                     disabled={deleting}
                   />

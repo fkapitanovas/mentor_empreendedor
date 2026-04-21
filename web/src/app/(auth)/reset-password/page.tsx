@@ -54,7 +54,11 @@ export default function ResetPasswordPage() {
   if (success) {
     return (
       <Card className="rounded-2xl shadow-lg">
-        <CardContent className="flex flex-col items-center gap-4 px-8 pt-8 pb-8">
+        <CardContent
+          role="status"
+          aria-live="polite"
+          className="flex flex-col items-center gap-4 px-8 pt-8 pb-8"
+        >
           <div className="animate-message-in flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100">
             <CheckCircle className="h-7 w-7 text-emerald-600" />
           </div>
@@ -75,7 +79,11 @@ export default function ResetPasswordPage() {
       <form onSubmit={handleSubmit}>
         <CardContent className="space-y-4 px-8">
           {error && (
-            <div className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive">
+            <div
+              role="alert"
+              aria-live="polite"
+              className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive"
+            >
               <AlertCircle className="size-4 shrink-0" />
               {error}
             </div>
@@ -96,7 +104,7 @@ export default function ResetPasswordPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                 aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
               >
                 {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -119,7 +127,7 @@ export default function ResetPasswordPage() {
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                 aria-label={showConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'}
               >
                 {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -130,7 +138,7 @@ export default function ResetPasswordPage() {
         <CardFooter className="px-8 pb-8">
           <Button
             type="submit"
-            className="w-full h-12 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-700 font-heading text-sm font-semibold text-white hover:from-emerald-600 hover:to-emerald-800 transition-all duration-150 hover:shadow-md"
+            className="w-full h-12 rounded-xl bg-[image:var(--gradient-brand)] font-heading text-sm font-semibold text-white transition-all duration-150 hover:shadow-md hover:brightness-105"
             disabled={loading}
           >
             {loading ? 'Salvando...' : 'Redefinir senha'}

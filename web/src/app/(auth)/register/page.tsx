@@ -7,7 +7,38 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Eye, EyeOff, Mail, Lock, AlertCircle, CheckCircle } from 'lucide-react'
+import { Eye, EyeOff, Mail, Lock, AlertCircle } from 'lucide-react'
+import { cn } from '@/lib/utils'
+
+type PasswordStrength = {
+  score: 0 | 1 | 2 | 3 | 4
+  label: string
+  color: string
+}
+
+const STRENGTH_LABELS = ['Muito fraca', 'Fraca', 'Razoavel', 'Forte', 'Muito forte']
+const STRENGTH_COLORS = [
+  'bg-destructive',
+  'bg-destructive',
+  'bg-amber-500',
+  'bg-emerald-500',
+  'bg-emerald-600',
+]
+
+function calculatePasswordStrength(pw: string): PasswordStrength {
+  if (!pw) return { score: 0, label: STRENGTH_LABELS[0], color: STRENGTH_COLORS[0] }
+  let score = 0
+  if (pw.length >= 8) score += 1
+  if (/[a-z]/.test(pw) && /[A-Z]/.test(pw)) score += 1
+  if (/\d/.test(pw)) score += 1
+  if (/[^A-Za-z0-9]/.test(pw)) score += 1
+  const clamped = Math.min(4, score) as 0 | 1 | 2 | 3 | 4
+  return {
+    score: clamped,
+    label: STRENGTH_LABELS[clamped],
+    color: STRENGTH_COLORS[clamped],
+  }
+}
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('')
@@ -18,6 +49,8 @@ export default function RegisterPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
+
+  const { score, label, color } = calculatePasswordStrength(password)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -93,7 +126,11 @@ export default function RegisterPage() {
       <form onSubmit={handleSubmit}>
         <CardContent className="space-y-4 px-8">
           {error && (
-            <div className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive">
+            <div
+              role="alert"
+              aria-live="polite"
+              className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive"
+            >
               <AlertCircle className="size-4 shrink-0" />
               {error}
             </div>
@@ -129,12 +166,28 @@ export default function RegisterPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                 aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
               >
                 {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </button>
             </div>
+            {password.length > 0 && (
+              <div className="space-y-1" aria-live="polite">
+                <div className="flex gap-1 h-1">
+                  {[0, 1, 2, 3, 4].map((i) => (
+                    <div
+                      key={i}
+                      className={cn(
+                        'flex-1 rounded-full bg-muted transition-colors',
+                        i < score && color
+                      )}
+                    />
+                  ))}
+                </div>
+                <p className="text-xs text-muted-foreground">{label}</p>
+              </div>
+            )}
           </div>
           <div className="space-y-2">
             <Label htmlFor="confirmPassword" className="font-heading text-[13px] font-semibold">Confirmar senha</Label>
@@ -152,7 +205,7 @@ export default function RegisterPage() {
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                 aria-label={showConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'}
               >
                 {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -163,7 +216,7 @@ export default function RegisterPage() {
         <CardFooter className="flex flex-col gap-4 px-8 pb-8">
           <Button
             type="submit"
-            className="w-full h-12 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-700 font-heading text-sm font-semibold text-white hover:from-emerald-600 hover:to-emerald-800 transition-all duration-150 hover:shadow-md"
+            className="w-full h-12 rounded-xl bg-[image:var(--gradient-brand)] font-heading text-sm font-semibold text-white transition-all duration-150 hover:shadow-md hover:brightness-105"
             disabled={loading}
           >
             {loading ? 'Criando conta...' : 'Criar conta'}

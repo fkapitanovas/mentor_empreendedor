@@ -38,7 +38,11 @@ export default function ForgotPasswordPage() {
   if (success) {
     return (
       <Card className="rounded-2xl shadow-lg">
-        <CardContent className="flex flex-col items-center gap-4 px-8 pt-8 pb-8">
+        <CardContent
+          role="status"
+          aria-live="polite"
+          className="flex flex-col items-center gap-4 px-8 pt-8 pb-8"
+        >
           <div className="animate-message-in flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100">
             <CheckCircle className="h-7 w-7 text-emerald-600" />
           </div>
@@ -68,7 +72,11 @@ export default function ForgotPasswordPage() {
             Informe seu e-mail e enviaremos um link para redefinir sua senha.
           </p>
           {error && (
-            <div className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive">
+            <div
+              role="alert"
+              aria-live="polite"
+              className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive"
+            >
               <AlertCircle className="size-4 shrink-0" />
               {error}
             </div>
@@ -92,7 +100,7 @@ export default function ForgotPasswordPage() {
         <CardFooter className="flex flex-col gap-4 px-8 pb-8">
           <Button
             type="submit"
-            className="w-full h-12 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-700 font-heading text-sm font-semibold text-white hover:from-emerald-600 hover:to-emerald-800 transition-all duration-150 hover:shadow-md"
+            className="w-full h-12 rounded-xl bg-[image:var(--gradient-brand)] font-heading text-sm font-semibold text-white transition-all duration-150 hover:shadow-md hover:brightness-105"
             disabled={loading}
           >
             {loading ? 'Enviando...' : 'Enviar link'}

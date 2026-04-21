@@ -1,5 +1,6 @@
 'use client'
 
+import { memo, useMemo } from 'react'
 import { cn } from '@/lib/utils'
 import type { Message } from '@/types/database'
 
@@ -47,8 +48,13 @@ interface MessageBubbleProps {
   message: Message
 }
 
-export function MessageBubble({ message }: MessageBubbleProps) {
+function MessageBubbleInner({ message }: MessageBubbleProps) {
   const isAssistant = message.role === 'assistant'
+
+  const rendered = useMemo(
+    () => formatContent(message.content, isAssistant),
+    [message.content, isAssistant]
+  )
 
   return (
     <div
@@ -58,7 +64,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       )}
     >
       {isAssistant && (
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-xs font-bold text-white">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[image:var(--gradient-brand)] text-xs font-bold text-white">
           M
         </div>
       )}
@@ -67,12 +73,19 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           'rounded-2xl px-4 py-3 text-sm leading-relaxed',
           isAssistant
             ? 'max-w-[min(720px,85%)] rounded-tl-md border border-border bg-secondary text-secondary-foreground'
-            : 'max-w-[min(480px,75%)] rounded-tr-md bg-gradient-to-br from-emerald-600 to-teal-600 text-white'
+            : 'max-w-[min(480px,75%)] rounded-tr-md bg-[image:var(--gradient-brand-strong)] text-white'
         )}
         style={{ lineHeight: '1.7' }}
       >
-        {formatContent(message.content, isAssistant)}
+        {rendered}
       </div>
     </div>
   )
 }
+
+export const MessageBubble = memo(MessageBubbleInner, (prev, next) => {
+  return (
+    prev.message.id === next.message.id &&
+    prev.message.content === next.message.content
+  )
+})

@@ -25,11 +25,11 @@ export function ConversationList({
   loading,
 }: ConversationListProps) {
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col" aria-label="Lista de conversas">
       <div className="p-3">
         <Button
           onClick={onNew}
-          className="w-full justify-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-700 font-heading text-sm font-semibold text-white hover:from-emerald-600 hover:to-emerald-800"
+          className="w-full justify-center gap-2 bg-[image:var(--gradient-brand)] font-heading text-sm font-semibold text-white transition hover:brightness-110"
           size="lg"
         >
           <Plus className="size-4" />
@@ -49,7 +49,7 @@ export function ConversationList({
             <p>Nenhuma conversa ainda</p>
           </div>
         ) : (
-          <div className="space-y-1">
+          <div role="list" className="space-y-1">
             {conversations.map((conv) => (
               <ConversationItem
                 key={conv.id}

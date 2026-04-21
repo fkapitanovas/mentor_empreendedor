@@ -1,11 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, Download, ShieldAlert } from 'lucide-react'
+import { ArrowLeft, Download, Search, ShieldAlert } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
 import type { User } from '@/types/database'
 
@@ -21,6 +22,8 @@ const ESTAGIO_LABELS: Record<string, string> = {
   consolidado: 'Consolidado',
 }
 
+const PAGE_SIZE = 50
+
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('pt-BR')
 }
@@ -28,26 +31,62 @@ function formatDate(iso: string) {
 export default function AdminPage() {
   const [users, setUsers] = useState<User[]>([])
   const [loading, setLoading] = useState(true)
+  const [loadingMore, setLoadingMore] = useState(false)
   const [denied, setDenied] = useState(false)
+  const [offset, setOffset] = useState(0)
+  const [total, setTotal] = useState(0)
+  const [query, setQuery] = useState('')
+
+  const hasMore = users.length < total
+
+  const loadPage = useCallback(async (nextOffset: number, append: boolean) => {
+    const params = new URLSearchParams({
+      limit: String(PAGE_SIZE),
+      offset: String(nextOffset),
+    })
+    const res = await fetch(`/api/admin/users?${params.toString()}`)
+    if (res.status === 403) {
+      setDenied(true)
+      return { ok: false as const }
+    }
+    if (!res.ok) {
+      return { ok: false as const }
+    }
+    const data = (await res.json()) as {
+      users: User[]
+      total: number
+      limit: number
+      offset: number
+    }
+    setUsers((prev) => (append ? [...prev, ...data.users] : data.users))
+    setTotal(data.total)
+    setOffset(nextOffset + data.users.length)
+    return { ok: true as const }
+  }, [])
 
   useEffect(() => {
-    async function load() {
-      const res = await fetch('/api/admin/users')
-      if (res.status === 403) {
-        setDenied(true)
-        setLoading(false)
-        return
-      }
-      if (!res.ok) {
-        setLoading(false)
-        return
-      }
-      const data = await res.json()
-      setUsers(data)
+    async function init() {
+      await loadPage(0, false)
       setLoading(false)
     }
-    load()
-  }, [])
+    init()
+  }, [loadPage])
+
+  async function handleLoadMore() {
+    setLoadingMore(true)
+    await loadPage(offset, true)
+    setLoadingMore(false)
+  }
+
+  const filteredUsers = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    if (!q) return users
+    return users.filter((u) => {
+      const email = (u.email ?? '').toLowerCase()
+      const name = (u.name ?? '').toLowerCase()
+      return email.includes(q) || name.includes(q)
+    })
+  }, [users, query])
 
   if (loading) {
     return (
@@ -88,22 +127,42 @@ export default function AdminPage() {
         Voltar ao chat
       </Link>
 
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex items-center justify-between gap-4">
         <div>
           <h1 className="font-heading text-xl font-bold">Painel Admin</h1>
-          <p className="text-sm text-muted-foreground">
-            {users.length} empreendedor{users.length !== 1 ? 'es' : ''} cadastrado{users.length !== 1 ? 's' : ''}
+          <p className="text-sm text-muted-foreground" aria-live="polite">
+            {users.length} de {total} empreendedor{total !== 1 ? 'es' : ''} carregado{users.length !== 1 ? 's' : ''}
+            {query.trim() && (
+              <>
+                {' '}
+                &middot; {filteredUsers.length} resultado{filteredUsers.length !== 1 ? 's' : ''} para &ldquo;{query.trim()}&rdquo;
+              </>
+            )}
           </p>
         </div>
         <Button
           onClick={() => {
             window.location.href = '/api/admin/users?format=csv'
           }}
-          className="rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-700 font-heading text-sm font-semibold text-white hover:from-emerald-600 hover:to-emerald-800"
+          className="rounded-xl bg-[image:var(--gradient-brand)] font-heading text-sm font-semibold text-white hover:brightness-105"
         >
           <Download className="size-4" />
           Exportar CSV
         </Button>
+      </div>
+
+      <div className="mb-4">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+          <Input
+            type="search"
+            placeholder="Buscar por email ou nome..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="h-11 rounded-xl border-[1.5px] pl-10"
+            aria-label="Buscar usuarios"
+          />
+        </div>
       </div>
 
       <Card className="overflow-hidden rounded-2xl">
@@ -121,7 +180,7 @@ export default function AdminPage() {
               </tr>
             </thead>
             <tbody>
-              {users.map((user, i) => (
+              {filteredUsers.map((user, i) => (
                 <tr
                   key={user.id}
                   className={i % 2 === 1 ? 'bg-muted/20' : ''}
@@ -145,10 +204,30 @@ export default function AdminPage() {
                   </td>
                 </tr>
               ))}
+              {filteredUsers.length === 0 && (
+                <tr>
+                  <td colSpan={7} className="px-4 py-8 text-center text-sm text-muted-foreground">
+                    Nenhum usuario encontrado.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
       </Card>
+
+      {hasMore && !query.trim() && (
+        <div className="mt-4 flex justify-center">
+          <Button
+            onClick={handleLoadMore}
+            disabled={loadingMore}
+            variant="outline"
+            className="rounded-xl font-heading text-sm font-semibold"
+          >
+            {loadingMore ? 'Carregando...' : 'Carregar mais'}
+          </Button>
+        </div>
+      )}
     </div>
   )
 }

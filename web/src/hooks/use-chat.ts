@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import type { Message } from '@/types/database'
 
@@ -23,6 +23,10 @@ export function useChat(conversationId: string) {
   const [messages, setMessages] = useState<Message[]>([])
   const [isStreaming, setIsStreaming] = useState(false)
   const [streamingText, setStreamingText] = useState('')
+  const [error, setError] = useState<string | null>(null)
+  const [lastUserMessage, setLastUserMessage] = useState<string | null>(null)
+
+  const abortControllerRef = useRef<AbortController | null>(null)
 
   const loadMessages = useCallback(async () => {
     const supabase = createClient()
@@ -43,8 +47,17 @@ export function useChat(conversationId: string) {
     }
   }, [conversationId])
 
+  const stopStreaming = useCallback(() => {
+    abortControllerRef.current?.abort()
+    abortControllerRef.current = null
+  }, [])
+
   const sendMessage = useCallback(
     async (text: string) => {
+      // Reset error state on new send
+      setError(null)
+      setLastUserMessage(text)
+
       // 1. Optimistically add user message
       const userMsg: Message = {
         id: crypto.randomUUID(),
@@ -60,29 +73,39 @@ export function useChat(conversationId: string) {
       setIsStreaming(true)
       setStreamingText('')
 
+      // Abort any previous request and create a new controller
+      abortControllerRef.current?.abort()
+      const controller = new AbortController()
+      abortControllerRef.current = controller
+
+      let fullText = ''
+      let aborted = false
+
       try {
         const response = await fetch('/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ conversationId, message: text }),
+          signal: controller.signal,
         })
 
         if (!response.ok || !response.body) {
+          setError('Nao foi possivel obter resposta do servidor. Tente novamente.')
           setIsStreaming(false)
           return
         }
 
-        // 3. Read SSE stream
-        const reader = response.body.getReader()
-        const decoder = new TextDecoder()
+        // 3. Read SSE stream using TextDecoderStream
+        const reader = response.body
+          .pipeThrough(new TextDecoderStream())
+          .getReader()
         let buffer = ''
-        let fullText = ''
 
         while (true) {
           const { done, value } = await reader.read()
           if (done) break
 
-          buffer += decoder.decode(value, { stream: true })
+          buffer += value
           const lines = buffer.split('\n')
           buffer = lines.pop() || ''
 
@@ -93,18 +116,9 @@ export function useChat(conversationId: string) {
               const data = JSON.parse(line.slice(6))
 
               if (data.error) {
-                // Error from server
-                const errorMsg: Message = {
-                  id: crypto.randomUUID(),
-                  user_id: '',
-                  conversation_id: conversationId,
-                  role: 'assistant',
-                  content: 'Desculpe, ocorreu um erro ao processar sua mensagem. Tente novamente.',
-                  created_at: new Date().toISOString(),
-                }
-                setMessages((prev) => [...prev, errorMsg])
+                setError('Desculpe, ocorreu um erro ao processar sua mensagem. Tente novamente.')
                 setStreamingText('')
-                break
+                return
               }
 
               if (data.done) {
@@ -128,24 +142,62 @@ export function useChat(conversationId: string) {
             }
           }
         }
-      } catch {
-        // Network error
-        const errorMsg: Message = {
-          id: crypto.randomUUID(),
-          user_id: '',
-          conversation_id: conversationId,
-          role: 'assistant',
-          content: 'Erro de conexao. Verifique sua internet e tente novamente.',
-          created_at: new Date().toISOString(),
+      } catch (err) {
+        if (err instanceof DOMException && err.name === 'AbortError') {
+          aborted = true
+          // Preserve whatever streamed so far as a partial assistant message
+          const partial = cleanProfileTags(fullText)
+          if (partial) {
+            const assistantMsg: Message = {
+              id: crypto.randomUUID(),
+              user_id: '',
+              conversation_id: conversationId,
+              role: 'assistant',
+              content: partial,
+              created_at: new Date().toISOString(),
+            }
+            setMessages((prev) => [...prev, assistantMsg])
+          }
+          setStreamingText('')
+        } else {
+          setError('Erro de conexao. Verifique sua internet e tente novamente.')
+          setStreamingText('')
         }
-        setMessages((prev) => [...prev, errorMsg])
-        setStreamingText('')
       } finally {
         setIsStreaming(false)
+        if (!aborted && abortControllerRef.current === controller) {
+          abortControllerRef.current = null
+        }
       }
     },
     [conversationId]
   )
 
-  return { messages, setMessages, isStreaming, streamingText, sendMessage, loadMessages }
+  const retry = useCallback(() => {
+    if (!lastUserMessage) return
+    // Remove the last user message we had optimistically added so sendMessage re-adds it
+    setMessages((prev) => {
+      // Find the last user message with matching content and strip it
+      for (let i = prev.length - 1; i >= 0; i--) {
+        if (prev[i].role === 'user' && prev[i].content === lastUserMessage) {
+          return [...prev.slice(0, i), ...prev.slice(i + 1)]
+        }
+      }
+      return prev
+    })
+    setError(null)
+    sendMessage(lastUserMessage)
+  }, [lastUserMessage, sendMessage])
+
+  return {
+    messages,
+    setMessages,
+    isStreaming,
+    streamingText,
+    error,
+    sendMessage,
+    loadMessages,
+    stopStreaming,
+    retry,
+  }
 }

@@ -14,7 +14,7 @@ export default function AuthLayout({
     >
       <div className="w-full max-w-md space-y-6">
         <div className="flex flex-col items-center gap-2">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-xl font-bold text-white font-heading">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[image:var(--gradient-brand)] text-xl font-bold text-white font-heading">
             M
           </div>
           <h1 className="font-heading text-xl font-bold text-primary">Max Impulso</h1>

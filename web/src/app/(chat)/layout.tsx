@@ -77,8 +77,14 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <div className="flex min-h-dvh flex-col">
+      <a href="#main-content" className="skip-link">
+        Pular para o conteúdo
+      </a>
       {/* Header */}
-      <header className="flex h-14 shrink-0 items-center justify-between px-4" style={{ boxShadow: '0 1px 0 var(--border)' }}>
+      <header
+        role="banner"
+        className="flex h-14 shrink-0 items-center justify-between border-b border-border px-4"
+      >
         <div className="flex items-center gap-3">
           <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
             <SheetTrigger
@@ -86,20 +92,24 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="md:hidden"
+                  className="focus-visible:ring-2 focus-visible:ring-primary/40 md:hidden"
                   aria-label="Abrir menu"
                 />
               }
             >
               <Menu className="size-5" />
             </SheetTrigger>
-            <SheetContent side="left" className="w-72 p-0">
+            <SheetContent
+              side="left"
+              className="w-72 p-0"
+              aria-label="Conversas"
+            >
               <SheetTitle className="sr-only">Menu de conversas</SheetTitle>
               {sidebarContent}
             </SheetContent>
           </Sheet>
 
-          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-sm font-bold text-white">
+          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[image:var(--gradient-brand)] text-sm font-bold text-white">
             M
           </div>
           <span className="font-heading text-base font-bold text-primary">Max Impulso</span>
@@ -110,7 +120,12 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
-                <Button variant="ghost" size="icon" aria-label="Menu do usuario" />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label="Menu do usuario"
+                  className="focus-visible:ring-2 focus-visible:ring-primary/40"
+                />
               }
             >
               <User className="size-4" />
@@ -135,10 +150,18 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
       </header>
 
       <div className="flex flex-1 overflow-hidden">
-        <aside className="hidden w-72 shrink-0 bg-muted md:block" style={{ boxShadow: '1px 0 0 var(--border)' }}>
+        <aside
+          role="navigation"
+          aria-label="Conversas"
+          className="hidden w-72 shrink-0 border-r border-border bg-muted md:block"
+        >
           {sidebarContent}
         </aside>
-        <main className="flex flex-1 flex-col overflow-hidden">
+        <main
+          id="main-content"
+          role="main"
+          className="flex flex-1 flex-col overflow-hidden"
+        >
           {children}
         </main>
       </div>

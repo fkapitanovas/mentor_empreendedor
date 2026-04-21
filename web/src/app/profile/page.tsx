@@ -196,7 +196,7 @@ export default function ProfilePage() {
           <CardFooter className="px-8 pb-8">
             <Button
               type="submit"
-              className="h-12 w-full rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-700 font-heading text-sm font-semibold text-white hover:from-emerald-600 hover:to-emerald-800"
+              className="h-12 w-full rounded-xl bg-[image:var(--gradient-brand)] font-heading text-sm font-semibold text-white hover:brightness-105"
               disabled={saving}
             >
               <Save className="size-4" />

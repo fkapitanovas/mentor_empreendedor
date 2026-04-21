@@ -64,27 +64,28 @@ export async function GET(request: Request) {
     })
   }
 
-  // 3. Query all users with service role (bypasses RLS)
+  // 3. Query users with service role (bypasses RLS)
   const adminClient = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
 
-  const { data: users, error: queryError } = await adminClient
-    .from('users')
-    .select('*')
-    .order('created_at', { ascending: false })
-
-  if (queryError) {
-    return new Response(JSON.stringify({ error: 'Erro ao buscar usuarios' }), {
-      status: 500,
-    })
-  }
-
-  // 4. Return CSV or JSON
   const { searchParams } = new URL(request.url)
+  const isCsv = searchParams.get('format') === 'csv'
 
-  if (searchParams.get('format') === 'csv') {
+  // CSV: no pagination, full dump (preserves existing behavior)
+  if (isCsv) {
+    const { data: users, error: queryError } = await adminClient
+      .from('users')
+      .select('*')
+      .order('created_at', { ascending: false })
+
+    if (queryError) {
+      return new Response(JSON.stringify({ error: 'Erro ao buscar usuarios' }), {
+        status: 500,
+      })
+    }
+
     const today = new Date().toISOString().slice(0, 10)
     return new Response(usersToCsv(users as User[]), {
       headers: {
@@ -94,5 +95,28 @@ export async function GET(request: Request) {
     })
   }
 
-  return Response.json(users)
+  // JSON: server-side pagination
+  const rawLimit = Number(searchParams.get('limit') ?? '50')
+  const rawOffset = Number(searchParams.get('offset') ?? '0')
+  const limit = Number.isFinite(rawLimit) ? Math.min(Math.max(1, rawLimit), 200) : 50
+  const offset = Number.isFinite(rawOffset) ? Math.max(0, rawOffset) : 0
+
+  const { data: users, error: queryError, count } = await adminClient
+    .from('users')
+    .select('*', { count: 'exact' })
+    .order('created_at', { ascending: false })
+    .range(offset, offset + limit - 1)
+
+  if (queryError) {
+    return new Response(JSON.stringify({ error: 'Erro ao buscar usuarios' }), {
+      status: 500,
+    })
+  }
+
+  return Response.json({
+    users: users ?? [],
+    total: count ?? 0,
+    limit,
+    offset,
+  })
 }

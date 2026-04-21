@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
 import { Eye, EyeOff, Mail, Lock, AlertCircle } from 'lucide-react'
 
 function LoginForm() {
@@ -49,13 +50,21 @@ function LoginForm() {
       <form onSubmit={handleSubmit}>
         <CardContent className="space-y-4 px-8">
           {urlError === 'invalid_link' && (
-            <div className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive">
+            <div
+              role="alert"
+              aria-live="polite"
+              className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive"
+            >
               <AlertCircle className="size-4 shrink-0" />
               Link invalido ou expirado. Solicite um novo.
             </div>
           )}
           {error && (
-            <div className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive">
+            <div
+              role="alert"
+              aria-live="polite"
+              className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive"
+            >
               <AlertCircle className="size-4 shrink-0" />
               {error}
             </div>
@@ -91,7 +100,7 @@ function LoginForm() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                 aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
               >
                 {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -107,7 +116,7 @@ function LoginForm() {
         <CardFooter className="flex flex-col gap-4 px-8 pb-8">
           <Button
             type="submit"
-            className="w-full h-12 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-700 font-heading text-sm font-semibold text-white hover:from-emerald-600 hover:to-emerald-800 transition-all duration-150 hover:shadow-md"
+            className="w-full h-12 rounded-xl bg-[image:var(--gradient-brand)] font-heading text-sm font-semibold text-white transition-all duration-150 hover:shadow-md hover:brightness-105"
             disabled={loading}
           >
             {loading ? 'Entrando...' : 'Entrar'}
@@ -126,7 +135,22 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <Suspense>
+    <Suspense
+      fallback={
+        <Card className="rounded-2xl shadow-lg">
+          <CardHeader className="px-8 pt-8">
+            <Skeleton className="h-6 w-24 mx-auto" />
+          </CardHeader>
+          <CardContent className="space-y-4 px-8">
+            <Skeleton className="h-11 w-full" />
+            <Skeleton className="h-11 w-full" />
+          </CardContent>
+          <CardFooter className="flex flex-col gap-4 px-8 pb-8">
+            <Skeleton className="h-12 w-full" />
+          </CardFooter>
+        </Card>
+      }
+    >
       <LoginForm />
     </Suspense>
   )
