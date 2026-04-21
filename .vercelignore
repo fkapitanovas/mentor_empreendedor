@@ -1,0 +1,7 @@
+# DO NOT deploy the repo root. The web app lives in web/.
+# Always run `cd web && vercel --prod --yes` — if you deploy from here
+# Vercel creates a duplicate project with the root folder name.
+# This file causes the CLI to include nothing, minimizing blast radius if
+# someone accidentally runs `vercel` from the root.
+*
+!.vercelignore
