@@ -141,8 +141,8 @@ Twilio se mostrou caro e com experiência ruim. Migração para web app responsi
 ## Pendente — Web App
 
 - [x] **Deploy Vercel** — projeto `web` criado, env vars configuradas, deploy production READY (2026-04-19)
-  - URL: https://web-theta-ashen-35.vercel.app
-- [ ] **Configurar domínio maximpulso.com.br no Vercel** — domínio registrado, configurar DNS (A/CNAME) no Vercel, SSL automático. Atualizar Supabase Site URL + Redirect URLs após configurar
+  - URL original: https://web-theta-ashen-35.vercel.app
+- [x] **Configurar domínio maximpulso.com.br no Vercel** — DNS A apontando para 76.76.21.21, SSL emitido, Supabase Site URL atualizado (2026-04-20)
 - [ ] **Product Analytics (PostHog)** — instalar PostHog para rastrear uso, retenção e comportamento dos empreendedores:
   - Criar conta em posthog.com (plano gratuito: 1M eventos/mês)
   - Instalar `posthog-js` e `posthog-node`
@@ -181,12 +181,132 @@ Twilio se mostrou caro e com experiência ruim. Migração para web app responsi
 - [ ] Monitoramento e alertas (notificação se bot cair)
 - [ ] Considerar reativar WhatsApp via WhatsApp Business API como canal adicional
 
-## Status (atualizado 2026-04-20)
-- **Web app completo em `web/` (Next.js 16 + React 19 + Tailwind v4 + shadcn/ui)**
-- **Design "Tropical & Vibrante"**: Plus Jakarta Sans + DM Sans, paleta emerald/amber
-- **Admin**: `/admin` com tabela + export CSV, protegido por ADMIN_EMAILS
-- **Deploy Vercel**: https://web-theta-ashen-35.vercel.app
+---
+
+## Etapa 15: Auditoria UI/UX/Performance — 31 achados ✅ (2026-04-21)
+
+Auditoria completa usando skill `ui-ux-pro-max`. 6 críticos, 8 altos, 10 médios, 7 de performance.
+
+### Fundações (Grupo 1)
+- [x] **#1 Viewport meta** — `export const viewport` com `themeColor` light/dark
+- [x] **#2 Contraste muted-foreground** — `#78716C → #57534E` (ratio 5.5:1, passa AA)
+- [x] **#4 prefers-reduced-motion** — `@media` global em globals.css
+- [x] **#8 Gradient tokens** — `--gradient-brand`, `--gradient-brand-strong`, `--gradient-brand-text`
+- [x] **#10 OG/Twitter metadata** — openGraph, twitter card, robots
+- [x] **#15 Escala tipográfica** — `--text-xs..--text-6xl` canônica
+- [x] **#16 Border dark mode** — `rgba(255,255,255,0.08)` → `0.12`
+- [x] **#17 Radius scale** — shadcn pattern `calc(var(--radius) ± Npx)`
+- [x] **#25 next.config** — `compress`, `poweredByHeader=false`, `optimizePackageImports`, images AVIF/WebP
+- [x] **#31 PWA manifest** — `/manifest.webmanifest` + ícones 192/512/maskable via sharp script
+
+### Chat UX (Grupo 2)
+- [x] **#3 aria-live streaming** — `role="log"`, `aria-live="polite"`, `aria-busy` no MessageList; `role="status"` + sr-only no TypingIndicator/StreamingMessage
+- [x] **#5 Stop-streaming** — `AbortController` em ref no `use-chat`, botão Square no chat-input quando isStreaming
+- [x] **#6 Auto-scroll inteligente** — `shouldStickRef` via scroll listener no viewport base-ui; só faz scroll se <80px do fim
+- [x] **#9 Retry inline** — state `error` + `lastUserMessage`, bloco com AlertCircle + botão "Tentar novamente"
+- [x] **#11 MessageBubble memo** — `memo()` + comparator por id+content; `useMemo(formatContent)`
+- [x] **#12 Scroll preservation** — sessionStorage `scroll-conv-{id}` por conversa, restaurado após loadMessages
+- [x] **#28 Auto-scroll mobile** — debounced via shouldStick; evita layout thrash
+- [x] **#29 formatContent memo** — cacheado via useMemo por content+role
+- [x] **#30 TextDecoderStream** — `response.body.pipeThrough(new TextDecoderStream())` no use-chat
+
+### A11Y shell (Grupo 3)
+- [x] **#7 Delete confirmation** — AlertDialog shadcn com onConfirm
+- [x] **#13 Landmarks + skip-link** — `role="banner"` no header, `role="navigation"` na aside, `role="main"` no main, skip-link `.skip-link` visible-on-focus
+- [x] **#14 Focus-visible em botões custom** — eye-toggles, hamburger, dropdown triggers
+- [x] **#18 Theme toggle icon** — Sun/Moon/Monitor dinâmico conforme `theme`, `mounted` pattern para hydration
+
+### Forms (Grupo 4)
+- [x] **#19 Suspense fallback login** — Skeleton Card com mesma estrutura do form
+- [x] **#20 Password strength** — função `calculatePasswordStrength`, 5 barras coloridas com `aria-live`
+- [x] **#21 Autosave onboarding** — sessionStorage `onboarding-draft` com debounce 400ms, restore via `restoredOnceRef`
+- [x] **#22 Admin pagination** — server-side `?limit=50&offset=0&total=N`, botão "Carregar mais", busca local via useMemo
+
+### Loading/Error (Grupo 5)
+- [x] **#23 loading.tsx por rota** — root, (chat), (auth), admin
+- [x] **#24 error.tsx por rota** — root, (chat), (auth) com reset button
+
+### Bônus (imprevistos descobertos)
+- [x] **Middleware matcher** — expandido para excluir `manifest.webmanifest|icon|apple-icon|opengraph-image|*.png|svg|...` (PWA assets deixaram de redirecionar para /login)
+
+**Skip:** #26 Dynamic imports de admin/settings/profile — Next.js App Router já faz route-level splitting automaticamente.
+
+Commit: `0debe65 feat(web): auditoria UI/UX/performance — 31 achados implementados`
+
+---
+
+## Etapa 16: Segunda auditoria — polimento final ✅ (2026-04-21)
+
+Segunda passada revelou 6 achados emergentes. Implementados:
+
+- [x] **#32 autoComplete** — `email`, `current-password`, `new-password` em login/register/forgot/reset
+- [x] **#33 inputMode decimal** — faturamento do onboarding
+- [x] **#34 Metadata individual** — 8 `layout.tsx` de rota com `title` específico (Entrar, Criar conta, Esqueci, Redefinir, Conte sobre seu negócio, Meu perfil, Configurações, Painel admin com robots noindex)
+- [x] **#35 Toast QuotaExceededError** — onboarding mostra toast em vez de falhar silenciosamente
+- [x] **#36 text-[15px] → text-base** — headings markdown do assistant bubble
+- [x] **#26 AlertDialog lazy-load** — `DeleteConversationDialog` extraído + `next/dynamic` em conversation-item (ssr:false, loading:null). Bônus: refatorou Link e button para serem siblings (fim do AlertDialogTrigger dentro de Link frágil = #37)
+
+Commit: `d6e2228 feat(web): segunda auditoria UI/UX — 6 achados polimento`
+
+---
+
+## Etapa 17: Redesign "Tropical Maximalista" — direção B ✅ (2026-04-21)
+
+Terceira auditoria (via skill `frontend-design` — princípios do Claude) diagnosticou genericidade alta. Três direções foram mockadas em `/tmp/mentor-design-preview.html`:
+- **A — Editorial Mentor** (Fraunces italic + olive/terracotta)
+- **B — Tropical Maximalista** (Bricolage Grotesque + jungle/coral/sol) ✅ ESCOLHIDA
+- **C — Stone Restraint** (IBM Plex Sans + preto/branco/verde Stone)
+
+### Fundações (globals.css + layout root)
+- [x] **Fontes** — Plus Jakarta Sans/DM Sans → Bricolage Grotesque (display variável) + IBM Plex Sans (body)
+- [x] **Paleta** — jungle `#0F3E2A` / coral `#F87171` / sol `#FCD34D` / creme `#FFF8E7` + tokens `--ink --coral --sun --cream --jungle`
+- [x] **Gradientes** — `--gradient-brand`, `--gradient-brand-strong`, `--gradient-brand-text`, `--gradient-tropical`
+- [x] **Hard shadows** — `.shadow-hard-sm` (4px 4px 0 ink), `.shadow-hard` (6px), `.shadow-hard-lg` (10px)
+- [x] **Gradient mesh** — `.tropical-mesh` com drift 24s animate
+- [x] **Grain overlay** — `body::after` com SVG turbulence, blend overlay, opacity 55% light / 35% dark
+- [x] **Wave animation** — `@keyframes wave` para emoji saudação
+- [x] **themeColor atualizado** — light `#FFF8E7`, dark `#0A1A12`
+
+### Auth (5 arquivos)
+- [x] Gradient mesh no `(auth)/layout`; brand badge rotacionado `-2deg` com M amarela
+- [x] Cards com `border: 3px ink` + `rounded-3xl` + `shadow-hard-lg`
+- [x] Shapes decorativos: círculo coral `-top-3 -left-3` + quadrado sol `rotate-12 -bottom-4 right-6`
+- [x] Títulos com "bora" / "Em 30 segundos." / "Calma." / "senha forte." em `bg-clip-text gradient coral→sol`
+- [x] Inputs: `border: 2px ink`, focus translate `-0.5/-0.5` + shadow hard coral
+- [x] CTAs: bg-primary text-sun → hover bg-accent text-cream + hard shadow + translate `-2px`
+- [x] Password strength bars: coral / sol / emerald (tokens, não hardcoded)
+- [x] Success states: círculo `bg-sun` bordered `border: 3px ink` + `shadow-hard-sm`
+
+### Chat (7 componentes)
+- [x] Header `(chat)/layout`: brand badge rotado, `border-b: 2px ink`
+- [x] Sidebar: `border-r: 2px ink`; conversa ativa com `border-l: 4px coral`
+- [x] Empty state MessageList: "Oi 👋🏽 Sou o Max." (heading Bricolage extrabold + wave animado + outline-stroke italic)
+- [x] 4 chips de sugestão rotacionados (sun / coral / primary), stagger 80ms
+- [x] MessageBubble: bordas 2px ink; assistant bg-card + avatar sol; user bg-coral text-cream
+- [x] TypingIndicator: dots coral em bubble bordado + avatar sol
+- [x] StreamingMessage: cursor piscante em coral
+- [x] ChatInput: textarea bordada com focus coral-shadow; botão send circular (sol idle → coral quando stop-streaming)
+- [x] ConversationList "Nova conversa": primary sólido, hover hard shadow + translate
+
+### Internas (4 páginas)
+- [x] Onboarding: tropical-mesh background + progress bar gradient coral→sol + card com shapes decorativos
+- [x] Profile: card bordado 3px ink + badges de estágio tropicalizadas (sun/coral/primary)
+- [x] Settings: 3 sections com shadow-hard; section de delete com border coral + shadow coral (perigo)
+- [x] Admin: tabela bordada, header bg-muted bordered, monospace em metadata "X de Y carregados"
+- [x] DeleteConversationDialog: `border: 3px ink` + `rounded-3xl` + `shadow-hard-lg`
+
+Commit: `55af1a9 feat(web): redesign Tropical Maximalista — direção B aprovada` — 20 arquivos, +958/-591
+
+---
+
+## Status (atualizado 2026-04-21)
+- **Web app ativo em produção**: https://maximpulso.com.br (Vercel, SSL, DNS propagado)
+- **Design "Tropical Maximalista"**: Bricolage Grotesque + IBM Plex Sans, paleta jungle/coral/sol/creme, hard shadows, gradient mesh, grain overlay
+- **Acessibilidade**: WCAG AA completo (contraste, aria-live, landmarks, skip-link, reduced-motion, autoComplete/inputMode)
+- **Performance**: Lighthouse build otimizado, optimizePackageImports, PWA instalável (manifest + icons), lazy AlertDialog
+- **Admin**: `/admin` com tabela + export CSV + paginação server-side + busca local
 - **Chatbot WhatsApp em `app/` (Python/FastAPI) — funcional mas deprioritizado**
+- **Repo GitHub**: https://github.com/fkapitanovas/mentor_empreendedor (main branch, 3 commits pós-auditoria)
 
 ## Conteudo do System Prompt (14 blocos)
 1. Identidade e Tom

@@ -9,7 +9,7 @@ Mentor virtual para microempreendedores brasileiros (MEIs, MEs, autônomos). Com
 - **Database**: Supabase (Auth + PostgreSQL)
 - **LLM**: Claude API (Anthropic) via `@anthropic-ai/sdk` — modelo `claude-sonnet-4-6`
 - **Deploy**: Vercel
-- **URL**: https://web-theta-ashen-35.vercel.app
+- **URL**: https://maximpulso.com.br (alias de produção)
 
 ### Stack (WhatsApp Chatbot — legado, deprioritizado)
 - **Backend**: Python 3.9 + FastAPI
@@ -30,9 +30,27 @@ Mentor virtual para microempreendedores brasileiros (MEIs, MEs, autônomos). Com
 - Título de conversa gerado automaticamente via Claude Haiku após 1ª mensagem
 - Auth: email + senha (Supabase Auth), esqueci senha, confirmação de email, toggle de senha
 - Email: Resend via SMTP (smtp.resend.com:465), sender `Max Impulso <noreply@maximpulso.com.br>`, templates pt-BR com branding
-- Domínio: maximpulso.com.br (registrado, DNS em propagação)
-- Dark mode: light + dark + sistema (segmented control em settings, icon toggle no header)
-- Design: tema "Tropical & Vibrante" — Plus Jakarta Sans (headings) + DM Sans (body), paleta emerald/amber, dark mode neutro
+- Domínio: maximpulso.com.br (ativo, DNS propagado, SSL emitido)
+- Dark mode: light + dark + sistema (segmented control em settings, icon toggle no header com ícones Sun/Moon/Monitor dinâmicos)
+- Design: tema **"Tropical Maximalista"** (redesign 21/04/2026) — Bricolage Grotesque (display) + IBM Plex Sans (body), paleta jungle `#0F3E2A` + coral `#F87171` + sol `#FCD34D` + creme `#FFF8E7`, hard shadows solid-color, gradient mesh animado, grain overlay global, cards bordados 3px ink com shapes decorativos (círculo coral + quadrado amarelo)
+
+### Design tokens (globals.css)
+- Cores nomeadas: `--ink`, `--coral`, `--sun`, `--cream`, `--jungle`
+- Gradientes: `--gradient-brand` (verde→jungle), `--gradient-brand-strong` (coral→sol), `--gradient-brand-text`, `--gradient-tropical`
+- Hard shadows: `.shadow-hard-sm` (4px), `.shadow-hard` (6px), `.shadow-hard-lg` (10px) — solid, no blur
+- Utilities: `.tropical-mesh` (gradient mesh animado 24s), `.animate-wave`, grain global via `body::after`
+- Escala tipográfica: `--text-xs..--text-6xl`; radius canônico shadcn-style
+
+### Acessibilidade & Performance (auditorias 20–21/04/2026)
+- WCAG AA: contraste 4.5:1+, `aria-live="polite"` em streaming, `role="log"` no chat, skip-link, landmarks (banner/navigation/main), `aria-current="page"` em conversas
+- Auto-scroll inteligente (não força scroll se usuário rolou para cima), stop-streaming com `AbortController`, retry inline em erros de chat
+- `MessageBubble` memoizada com `memo()` + `useMemo(formatContent)`
+- `autoComplete` e `inputMode` em todos inputs de auth/onboarding
+- `reduced-motion` respeitado globalmente
+- PWA: `manifest.webmanifest`, ícones 192/512/maskable (gerados via sharp)
+- Metadata individual por rota (8 layout.tsx) com template `"%s | Max Impulso"`
+- `AlertDialog` lazy-loaded via `next/dynamic` em conversation-item
+- `optimizePackageImports: ['lucide-react', 'date-fns', '@supabase/ssr', '@supabase/supabase-js']`
 
 ### Supabase
 - **Project ref**: wlpglssnqkjsydjylxjj
@@ -41,16 +59,25 @@ Mentor virtual para microempreendedores brasileiros (MEIs, MEs, autônomos). Com
 - **RLS**: habilitado em todas as tabelas com policies por auth.uid()
 - **Auth callback**: `/auth/callback` troca code por session (email confirm + password reset)
 - **SMTP**: Resend configurado via custom SMTP (host smtp.resend.com, port 465, user resend)
-- **Site URL**: https://web-theta-ashen-35.vercel.app (configurar no Auth → URL Configuration)
+- **Site URL**: https://maximpulso.com.br (configurado no Auth → URL Configuration)
 - **Email confirmation**: habilitado (mailer_autoconfirm: false)
 
-### Dev Local
+### Dev Local — Web App (principal)
 ```bash
-cd ~/Mentor_Empreendedor
+cd web
+npm install
+npm run dev           # Next.js em http://localhost:3000 (ou próxima porta livre)
+npm run build         # Build de produção
+npm run lint          # ESLint
+npx tsc --noEmit      # Typecheck
+vercel --prod --yes   # Deploy produção (do diretório web/)
+```
+
+### Dev Local — WhatsApp Chatbot (legado)
+```bash
+cd ~/mentor_empreendedor
 python3 -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-# Em outro terminal:
 ngrok http --domain toylike-chelsey-esophageal.ngrok-free.dev 8000
-# Para dev local, trocar webhook no Twilio para URL ngrok + /webhook
 ```
 
 ### Key Gotchas

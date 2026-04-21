@@ -1,9 +1,9 @@
 # Handoff — Mentor Empreendedor
 
-## Estado Atual (2026-04-20)
+## Estado Atual (2026-04-21)
 
 O projeto tem **dois deploys ativos**:
-- **Web App (principal)**: Vercel — https://web-theta-ashen-35.vercel.app
+- **Web App (principal)**: Vercel — https://maximpulso.com.br (DNS propagado, SSL ativo)
 - **WhatsApp Chatbot (legado)**: Railway — deprioritizado
 
 ### O que está funcionando — Web App
@@ -18,16 +18,30 @@ O projeto tem **dois deploys ativos**:
 - Contexto: 100 últimas msgs + resumo comprimido
 - Suggestion chips no empty state (3 perguntas clicáveis)
 
-**Design — "Tropical & Vibrante" (redesign 2026-04-20):**
-- Fontes: Plus Jakarta Sans (headings) + DM Sans (body)
-- Paleta: emerald (#059669) + amber (#F59E0B), dark mode neutro (#111111)
-- Bolhas assimétricas: assistente com canto achatado esquerdo (bg-secondary), usuário com gradiente emerald→teal
-- Header 56px, sidebar bg-muted com botão gradiente, active item com borda verde
-- Auth pages: dot grid background, ícones nos inputs, botões gradiente
-- Settings: segmented theme control (Light | Dark | Sistema)
-- Profile: badges coloridos por estágio (amber/green/blue)
-- Onboarding: barra de progresso, ícones por campo
-- Animações: fade-in + slide-up em mensagens, cursor `|` pulsante no streaming
+**Design — "Tropical Maximalista" (redesign 2026-04-21, direção B aprovada):**
+- Fontes: **Bricolage Grotesque** (display variável) + **IBM Plex Sans** (body)
+- Paleta: **jungle `#0F3E2A` + coral `#F87171` + sol `#FCD34D` + creme `#FFF8E7`**; dark mode `#0A1A12`
+- Tokens nomeados em `globals.css`: `--ink`, `--coral`, `--sun`, `--cream`, `--jungle`
+- Gradientes tokenizados: `--gradient-brand` (verde→jungle), `--gradient-brand-strong` (coral→sol), `--gradient-brand-text`, `--gradient-tropical`
+- **Hard shadows signature**: `.shadow-hard-sm/md/lg` (solid, sem blur — 4/6/10px offset)
+- **Gradient mesh animado**: `.tropical-mesh` (drift 24s) nos fundos de auth e onboarding
+- **Grain overlay global** via `body::after` (SVG turbulence + mix-blend-mode overlay, 55% light / 35% dark)
+- Cards: `border: 3px ink` + `rounded-3xl` + `shadow-hard-lg` + shapes decorativos (círculo coral `-top-3 -left-3` + quadrado amarelo `rotate-12` bottom-right)
+- Brand badge rotacionado `-2deg`: pill `bg-primary` com M amarela em círculo + "MAX IMPULSO" uppercase tracking-widest
+- Bolhas do chat: assistant bordada 2px ink + bg-card + avatar sol bordado; user bg-coral text-cream border ink
+- Empty state: "Oi 👋🏽 Sou o Max." (Bricolage extrabold + emoji com animate-wave + stroke-outline italic)
+- Chips de sugestão rotacionados (sun / coral / primary), stagger 80ms, hover rotaciona para 0
+- Auth: títulos com ênfase em gradient coral→sol ("bora", "Em 30 segundos.", "Calma.", "senha forte.")
+- Password strength: 5 barras coral/sol/emerald (tokens)
+- Theme toggle: ícone dinâmico (Sun/Moon/Monitor conforme `theme`), `mounted` pattern p/ hydration
+
+**Acessibilidade (auditoria 2026-04-21):**
+- WCAG AA: contraste `--muted-foreground 5.5:1`; `aria-live="polite"` streaming; `role="log"` no chat
+- Skip-link visible-on-focus para `#main-content`; landmarks `banner/navigation/main`
+- `aria-current="page"` nas conversas ativas; `role="listitem"` nos items
+- Stop-streaming com AbortController; retry inline em erros; auto-scroll inteligente com `shouldStickRef`
+- `autoComplete` e `inputMode` em todos inputs; `reduced-motion` respeitado globalmente
+- PWA: manifest.webmanifest + ícones 192/512/maskable + apple-icon + opengraph-image (next/og)
 
 **Auth:**
 - Email + senha (Supabase Auth)
@@ -74,13 +88,13 @@ O projeto tem **dois deploys ativos**:
 - `conversation_summaries` — resumos comprimidos por conversa
 
 ### URLs e Acessos
-- **Web App**: https://web-theta-ashen-35.vercel.app
-- **Admin**: https://web-theta-ashen-35.vercel.app/admin
+- **Web App (prod)**: https://maximpulso.com.br
+- **Admin**: https://maximpulso.com.br/admin
+- **URL Vercel original**: https://web-theta-ashen-35.vercel.app (ainda ativa como alias)
 - **GitHub**: https://github.com/fkapitanovas/mentor_empreendedor
 - **Supabase**: https://supabase.com/dashboard/project/wlpglssnqkjsydjylxjj
-- **Vercel**: vercel.com (projeto `web`)
-- **Resend**: https://resend.com/domains (domínio maximpulso.com.br)
-- **Domínio**: maximpulso.com.br (futuro domínio do app)
+- **Vercel**: vercel.com (projeto `web` no team fabio-kapitanovas-projects)
+- **Resend**: https://resend.com/domains (domínio maximpulso.com.br verificado)
 - **WhatsApp (legado)**: https://faithful-intuition-production-82bb.up.railway.app
 
 ### Env Vars (Vercel — production)
@@ -93,22 +107,33 @@ O projeto tem **dois deploys ativos**:
 ### Como fazer deploy
 ```bash
 cd web
-npm run build        # Verificar build local
-git add . && git commit && git push origin main
-vercel --prod        # Deploy produção
+npm run lint && npx tsc --noEmit && npm run build   # Verificar build local
+git add . && git commit -m "..." && git push origin main
+vercel --prod --yes                                  # Deploy produção (do dir web/)
 ```
 
+> **Nota:** o push direto para `main` pode ser bloqueado pelo Auto Mode classifier — nesse caso rodar o `git push` manualmente.
+
+### Commits relevantes (2026-04-21)
+- `0debe65` — 31 achados da 1ª auditoria UI/UX/Performance implementados (5 fases, WCAG AA, PWA, etc.)
+- `d6e2228` — 6 achados de polimento da 2ª auditoria (autoComplete, inputMode, metadata por página, toast quota, lazy AlertDialog)
+- `55af1a9` — Redesign Tropical Maximalista (direção B): Bricolage + IBM Plex, paleta jungle/coral/sol/creme, hard shadows, gradient mesh, grain
+
 ### Próximos passos prioritários
-1. **Testar emails Resend** — aguardar propagação DNS do maximpulso.com.br, testar confirmação de cadastro + reset de senha
-2. **Testar fluxo completo em produção** — registro → email confirmação → onboarding → chat → perfil → dark mode → reset senha
-3. **Configurar domínio maximpulso.com.br no Vercel** — DNS A/CNAME, SSL automático
-4. **PostHog analytics** — rastrear uso, retenção, funil de conversão
-5. **Nichos sub-representados** — pet, alimentação geral, serviços domésticos, artesanato (ver todo.md)
+1. **Preview de outras rotas do Tropical** — validar visualmente onboarding, chat empty state, settings, admin em produção
+2. **PostHog analytics** — rastrear uso, retenção, funil de conversão
+3. **Nichos sub-representados** — pet, alimentação geral, serviços domésticos, artesanato (ver todo.md)
+4. **Service Worker opcional** — PWA fase 2 (offline chat cacheable, install prompt ativo)
 
 ### Decisões técnicas relevantes
-- **Design system**: Plus Jakarta Sans + DM Sans, emerald/amber, dark neutro. CSS variables em globals.css, `font-heading` para Jakarta, `font-sans` para DM Sans
-- **Admin via env var**: `ADMIN_EMAILS` (comma-separated), sem coluna de role no banco. Validação server-side com service role key para bypassar RLS
-- **cleanProfileTags defesa em profundidade**: limpa tags no streaming (parciais), no done event (completas), E ao carregar do DB (loadMessages). Qualquer camada que falhe, outra pega
-- **Livros deduplicados**: conteúdo detalhado fica no perfil do guru (conhecimento.ts), livros.ts só tem complementos e livros sem guru dedicado
-- **Conflitos explícitos**: 9 regras com prioridade definida (ex: Thiago Nigro para finanças, Érico Rocha para marketing, Kiyosaki para dívidas, Geraldo Rufino para jornada)
-- **Email via Resend SMTP**: configurado no Supabase (não no código). Templates customizados via Management API. Domínio maximpulso.com.br. Supabase Site URL deve apontar para o app (não localhost)
+- **Design system "Tropical"**: tudo via CSS tokens em `globals.css`. Cores nomeadas `--ink --coral --sun --cream --jungle`. Gradientes tokenizados. Hard shadows canônicos. Nunca hardcodar `emerald-X` / `amber-X` fora de globals.
+- **Auditoria em fases**: skill `ui-ux-pro-max` para correção (WCAG, performance, forms) + skill `frontend-design` para caráter/identidade visual.
+- **Admin via env var**: `ADMIN_EMAILS` (comma-separated), sem coluna de role no banco. Validação server-side com service role key para bypassar RLS.
+- **cleanProfileTags defesa em profundidade**: limpa tags no streaming (parciais), no done event (completas), E ao carregar do DB (loadMessages). Qualquer camada que falhe, outra pega.
+- **Livros deduplicados**: conteúdo detalhado fica no perfil do guru (conhecimento.ts), livros.ts só tem complementos e livros sem guru dedicado.
+- **Conflitos explícitos**: 9 regras com prioridade definida (ex: Thiago Nigro para finanças, Érico Rocha para marketing, Kiyosaki para dívidas, Geraldo Rufino para jornada).
+- **Email via Resend SMTP**: configurado no Supabase (não no código). Templates customizados via Management API. Domínio maximpulso.com.br. Supabase Site URL deve apontar para `https://maximpulso.com.br`.
+- **Scroll auto-stick no chat**: listener nativo passive no viewport do base-ui scroll-area + `shouldStickRef` com threshold 80px. Evita forçar scroll quando usuário rolou para cima durante streaming.
+- **AlertDialog lazy-loaded**: `DeleteConversationDialog` em arquivo separado, importado via `next/dynamic({ ssr: false, loading: () => null })` para tirar Radix AlertDialog primitives do bundle inicial do chat.
+- **Fontes via `next/font/google`**: Bricolage Grotesque (weights 500/600/700/800) + IBM Plex Sans (400/500/600/700). Nunca importar via `<link>` — sempre `next/font` para otimização automática.
+- **Middleware matcher expandido**: exclui `manifest.webmanifest|icon|apple-icon|opengraph-image|*.png|svg|...` para que assets PWA não sejam redirecionados para `/login`.
