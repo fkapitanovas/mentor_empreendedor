@@ -118,12 +118,15 @@ vercel --prod --yes                                  # Deploy produção (do dir
 - `0debe65` — 31 achados da 1ª auditoria UI/UX/Performance implementados (5 fases, WCAG AA, PWA, etc.)
 - `d6e2228` — 6 achados de polimento da 2ª auditoria (autoComplete, inputMode, metadata por página, toast quota, lazy AlertDialog)
 - `55af1a9` — Redesign Tropical Maximalista (direção B): Bricolage + IBM Plex, paleta jungle/coral/sol/creme, hard shadows, gradient mesh, grain
+- `619f5ad` — Heading contextual no /login: "Bora empreender." (primeira vez) vs "Volta aí, bora crescer." (retornando) via flag em localStorage
+- `9f0a8dd` — Atalhos FAB de scroll no chat (↑↓ no canto inferior direito quando conversa tem 4+ mensagens). Funcionando em mobile + desktop após 4 iterações de debug de Tailwind v4 + safe-area.
+- `d1c2bbb` — `.vercelignore` na raiz (guard parcial contra deploys acidentais fora de `web/`)
 
 ### Próximos passos prioritários
-1. **Preview de outras rotas do Tropical** — validar visualmente onboarding, chat empty state, settings, admin em produção
-2. **PostHog analytics** — rastrear uso, retenção, funil de conversão
-3. **Nichos sub-representados** — pet, alimentação geral, serviços domésticos, artesanato (ver todo.md)
-4. **Service Worker opcional** — PWA fase 2 (offline chat cacheable, install prompt ativo)
+1. **PostHog analytics** — rastrear uso, retenção, funil de conversão
+2. **Nichos sub-representados** — pet, alimentação geral, serviços domésticos, artesanato (ver todo.md)
+3. **Service Worker opcional** — PWA fase 2 (offline chat cacheable, install prompt ativo)
+4. **Gaps de conteúdo do prompt** — jurídico/compliance, saúde mental/burnout, métricas CAC/LTV
 
 ### Decisões técnicas relevantes
 - **Design system "Tropical"**: tudo via CSS tokens em `globals.css`. Cores nomeadas `--ink --coral --sun --cream --jungle`. Gradientes tokenizados. Hard shadows canônicos. Nunca hardcodar `emerald-X` / `amber-X` fora de globals.
@@ -137,3 +140,6 @@ vercel --prod --yes                                  # Deploy produção (do dir
 - **AlertDialog lazy-loaded**: `DeleteConversationDialog` em arquivo separado, importado via `next/dynamic({ ssr: false, loading: () => null })` para tirar Radix AlertDialog primitives do bundle inicial do chat.
 - **Fontes via `next/font/google`**: Bricolage Grotesque (weights 500/600/700/800) + IBM Plex Sans (400/500/600/700). Nunca importar via `<link>` — sempre `next/font` para otimização automática.
 - **Middleware matcher expandido**: exclui `manifest.webmanifest|icon|apple-icon|opengraph-image|*.png|svg|...` para que assets PWA não sejam redirecionados para `/login`.
+- **Heading contextual no /login**: flag `max-has-logged-in` em localStorage, setada após `signInWithPassword` OK. Default em modo privado / primeira visita: "Bora empreender."; retornando: "Volta aí, bora crescer.". Diferenciação só client-side (sem cookie/header porque a página é 'use client').
+- **FABs de scroll no chat**: posicionados com **inline style** `{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + 5rem)' }`, NÃO via arbitrary Tailwind — JIT v4 escapa vírgulas dentro de calc() inconsistente no mobile. `fixed inset-x-0 flex justify-end px-3` com `z-[60]` para escapar stacking contexts. Ações via `scrollIntoView` em refs (topRef + bottomRef) — não depende de detectar viewport do base-ui ScrollArea.
+- **Deploy Vercel guard**: `.vercelignore` na raiz mitiga deploys acidentais (antes criavam projeto duplicado `mentor_empreendedor`). SEMPRE rodar deploy com `cd web && vercel --prod --yes` em linha única.

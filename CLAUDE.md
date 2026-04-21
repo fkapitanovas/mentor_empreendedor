@@ -52,6 +52,11 @@ Mentor virtual para microempreendedores brasileiros (MEIs, MEs, autônomos). Com
 - `AlertDialog` lazy-loaded via `next/dynamic` em conversation-item
 - `optimizePackageImports: ['lucide-react', 'date-fns', '@supabase/ssr', '@supabase/supabase-js']`
 
+### Polimento de UX (pós-redesign, 21/04/2026)
+- **Heading contextual em `/login`**: primeira vez → "Bora empreender."; retornando → "Volta aí, bora crescer.". Flag `max-has-logged-in` em localStorage, setada após `signInWithPassword` OK.
+- **FABs de scroll** (↑↓) no chat quando conversa tem 4+ mensagens. Posição via inline style `calc(env(safe-area-inset-bottom, 0px) + 5rem)` — ARBITRARY TAILWIND NÃO FUNCIONA por causa do escape de vírgulas em `calc(env())` no JIT v4. Usar sempre inline style para safe-area + calc.
+- **Deploy Vercel**: sempre `cd web && vercel --prod --yes` numa linha só — deploys da raiz criam projeto duplicado acidental.
+
 ### Supabase
 - **Project ref**: wlpglssnqkjsydjylxjj
 - **Tabelas**: users, conversations, messages, conversation_summaries

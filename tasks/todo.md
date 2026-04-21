@@ -299,14 +299,46 @@ Commit: `55af1a9 feat(web): redesign Tropical Maximalista — direção B aprova
 
 ---
 
-## Status (atualizado 2026-04-21)
+## Etapa 18: Pós-redesign — ajustes finos e debug mobile ✅ (2026-04-21 tarde)
+
+### Heading contextual no /login
+- [x] Primeira visita (sem flag em localStorage): **"Bora empreender."** + "Entre na sua conta — ou crie uma agora."
+- [x] Usuário retornando (após 1º login bem-sucedido): **"Volta aí, bora crescer."** + "Tudo certo — só entrar."
+- [x] Flag `max-has-logged-in` setada após signInWithPassword bem-sucedido
+- [x] Fallback: modo privado / localStorage indisponível → sempre mostra versão neutra ("Bora empreender.")
+
+Commit: `619f5ad feat(login): heading contextual — "Bora empreender." na primeira vez`
+
+### Atalhos de scroll no chat (↑↓ FABs)
+- [x] Dois botões circulares no canto inferior direito, acima do ChatInput
+- [x] Visíveis quando conversa tem **4+ mensagens** (presença simples, não depende de scroll tracking)
+- [x] `scrollIntoView` em topRef + bottomRef (nativo do browser, não depende de detectar viewport do base-ui)
+- [x] Linguagem Tropical: `rounded-full` + `border 2px ink` + `bg-card` → hover `bg-sun` + `shadow-hard-sm` + translate
+- [x] A11Y: aria-label descritivos pt-BR, focus-visible ring accent, touch target 44px, active:scale-95
+- [x] Position: `fixed` + inline style `calc(env(safe-area-inset-bottom, 0px) + 5rem)` para respeitar home indicator iOS
+
+**Debug journey:** 5 iterações para funcionar no mobile (desktop funcionou de cara). Causa raiz: Tailwind v4 JIT escapa vírgulas dentro de `calc(env(...))` em arbitrary values de forma inconsistente, gerando CSS ignorado no mobile. Fix: inline `style={{ bottom: 'calc(...)' }}` + container `fixed inset-x-0 flex justify-end` + `z-[60]`. Lição salva em memory `feedback_tailwind_v4_calc_env.md`.
+
+Commits: `5aadab6` → `1907a6f` → `5f259a9` → `90d235d` → `9f0a8dd`
+
+### Limpeza Vercel
+- [x] Projeto duplicado `mentor_empreendedor` (criado acidentalmente por deploys da raiz) removido 3x via `vercel remove`
+- [x] `.vercelignore` adicionado na raiz (mitigação parcial — guard definitivo é sempre `cd web/` antes de `vercel --prod`)
+- [x] Lição registrada em memory `feedback_vercel_deploy_dir.md`
+
+Commit: `d1c2bbb chore: .vercelignore na raiz`
+
+---
+
+## Status (atualizado 2026-04-21 tarde)
 - **Web app ativo em produção**: https://maximpulso.com.br (Vercel, SSL, DNS propagado)
 - **Design "Tropical Maximalista"**: Bricolage Grotesque + IBM Plex Sans, paleta jungle/coral/sol/creme, hard shadows, gradient mesh, grain overlay
 - **Acessibilidade**: WCAG AA completo (contraste, aria-live, landmarks, skip-link, reduced-motion, autoComplete/inputMode)
 - **Performance**: Lighthouse build otimizado, optimizePackageImports, PWA instalável (manifest + icons), lazy AlertDialog
 - **Admin**: `/admin` com tabela + export CSV + paginação server-side + busca local
+- **Chat UX polido**: empty state Tropical, FABs de scroll (mobile+desktop), heading contextual de login
 - **Chatbot WhatsApp em `app/` (Python/FastAPI) — funcional mas deprioritizado**
-- **Repo GitHub**: https://github.com/fkapitanovas/mentor_empreendedor (main branch, 3 commits pós-auditoria)
+- **Repo GitHub**: https://github.com/fkapitanovas/mentor_empreendedor (main, 10+ commits pós-auditoria)
 
 ## Conteudo do System Prompt (14 blocos)
 1. Identidade e Tom
