@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { User, Briefcase, Clock, DollarSign, Target } from 'lucide-react'
+import { toast } from 'sonner'
 
 const DRAFT_KEY = 'onboarding-draft'
 
@@ -83,6 +84,7 @@ export default function OnboardingPage() {
   }, [])
 
   // Debounced autosave of draft to sessionStorage
+  const quotaWarnedRef = useRef(false)
   useEffect(() => {
     const timer = setTimeout(() => {
       try {
@@ -93,8 +95,17 @@ export default function OnboardingPage() {
         if (nome || setor || tempoNegocio || faturamento || desafio) {
           setDraftSaved(true)
         }
-      } catch {
-        // ignore
+      } catch (err) {
+        const isQuota =
+          err instanceof DOMException &&
+          (err.name === 'QuotaExceededError' || err.code === 22)
+        if (isQuota && !quotaWarnedRef.current) {
+          quotaWarnedRef.current = true
+          toast.error(
+            'Armazenamento cheio — seu rascunho não será salvo automaticamente.'
+          )
+        }
+        // Modo privado / storage indisponível: silencioso
       }
     }, 400)
     return () => clearTimeout(timer)
@@ -211,7 +222,7 @@ export default function OnboardingPage() {
                 <Label htmlFor="faturamento" className="font-heading text-[13px] font-semibold">Faturamento mensal</Label>
                 <div className="relative">
                   <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                  <Input id="faturamento" type="text" placeholder="Ex: R$ 5.000, 10mil" value={faturamento} onChange={(e) => setFaturamento(e.target.value)} className="h-11 rounded-xl border-[1.5px] pl-10" />
+                  <Input id="faturamento" type="text" inputMode="decimal" placeholder="Ex: R$ 5.000, 10mil" value={faturamento} onChange={(e) => setFaturamento(e.target.value)} className="h-11 rounded-xl border-[1.5px] pl-10" />
                 </div>
               </div>
 

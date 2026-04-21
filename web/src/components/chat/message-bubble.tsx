@@ -10,7 +10,7 @@ function formatContent(content: string, isAssistant: boolean) {
 
     if (isAssistant && trimmed.startsWith('### ')) {
       return (
-        <p key={i} className={cn('font-heading text-[15px] font-semibold', i > 0 && 'mt-4')}>
+        <p key={i} className={cn('font-heading text-base font-semibold', i > 0 && 'mt-4')}>
           {renderInline(trimmed.slice(4), isAssistant)}
         </p>
       )
