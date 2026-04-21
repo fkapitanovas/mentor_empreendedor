@@ -1,5 +1,5 @@
 /**
- * Resumos dos 23 livros que compõem a base de conhecimento do Max Impulso.
+ * Resumos dos 25 livros que compõem a base de conhecimento do Max Impulso.
  *
  * Fontes:
  * - Lista de livros e conceitos-âncora: docs/agente_microempreendedor.docx
@@ -22,6 +22,11 @@
  *     Papel 237pp, leitura integral em 21/04/2026 (expansão da entrada Sinek)
  *   - (externo) 768896138-Lucro-Primeiro-Mike-Michalowicz.pdf — 190pp, leitura
  *     integral em 21/04/2026 (reestruturação completa em seções)
+ *   - (externo) 813322953-Essencialismo.pdf — Greg McKeown 217pp, leitura
+ *     integral em 21/04/2026 via OCR Swift/Vision (NOVO no projeto)
+ *   - (externo) 859766094-Mindset-A-Nova-Psicologia-Do-Sucesso-Carol-Dweck.pdf
+ *     — 223pp, leitura integral em 21/04/2026 via OCR Swift/Vision (PDF
+ *     escaneado em imagem; NOVO no projeto)
  * - Resumos em PDF (PocketBook4You ou outros, não o livro completo):
  *   - docs/O Poder do Hábito - Charles Duhigg.pdf (5pp, resumo — OBSOLETO,
  *     superado pela leitura integral acima)
@@ -262,6 +267,172 @@ precisa definir um nicho claro para parar de dispersar energia.
 Foque no que pode controlar, tome decisoes dificeis rapido, cuide da saude mental.
 - Seja Foda! (Caio Carneiro): Sucesso vem de disciplina nos pequenos habitos diarios. \
 Cuide da energia, faca networking, assuma 100% de responsabilidade.
+- Mindset — A Nova Psicologia do Sucesso (Carol Dweck, 223pp, psicologa de \
+Stanford): livro-fundacao sobre a crenca que molda tudo — se voce acredita que \
+inteligencia e talento sao FIXOS ou CULTIVAVEIS. Baseado em decadas de \
+pesquisa com criancas e adultos, incluindo os experimentos classicos de \
+elogio que mudaram a psicologia educacional mundial. \
+\
+OS DOIS MINDSETS: \
+MINDSET FIXO (fixed): "suas qualidades sao esculpidas em pedra". Inteligencia, \
+talento e carater sao doses que voce recebe ao nascer. A vida vira um EXAME \
+permanente: cada situacao precisa confirmar que voce tem "doses saudaveis". \
+Todo desafio e ameaca. Pessoas com mindset fixo gastam a vida PROVANDO valor. \
+MINDSET DE CRESCIMENTO (growth): "as cartas recebidas sao apenas o ponto de \
+partida". Qualidades basicas sao CULTIVAVEIS por esforco, estrategia e ajuda \
+dos outros. Nao significa "qualquer um pode ser qualquer coisa" — significa \
+que o potencial real e desconhecido. Pessoas com growth gastam a vida \
+DESENVOLVENDO valor. \
+\
+TABELA COMPARATIVA (grafico Nigel Holmes, eixo central do livro): \
+| Dimensao | FIXO | CRESCIMENTO | \
+| Inteligencia | estatica | pode ser desenvolvida | \
+| Desejo | parecer inteligente | aprender | \
+| Desafios | EVITA | ABRACA | \
+| Obstaculos | fica defensivo, desiste facil | persiste | \
+| Esforco | "e inutil, pior — prova que nao sou dotado" | "e o caminho" | \
+| Critica | ignora feedback negativo | aprende com a critica | \
+| Sucesso alheio | sente-se ameacado | inspira-se | \
+\
+O PODER DO "AINDA" (yet). Ferramenta mais operacional do livro. Quando aluno \
+de Stanford diz "nao consigo fazer isso" vendo o trabalho dos veteranos, \
+Dweck pensa: "eles nao sabem fazer aquilo — AINDA. Esquecem-se do ainda". \
+Uma escola de Chicago trocou a nota "reprovado" por "NOT YET" — aluno nao \
+reprovou, esta na curva. "Nao sei precificar" vira "nao sei precificar \
+AINDA". "Nao sou bom de vendas" vira "nao sou bom de vendas AINDA". Tres \
+letras reescrevem autoimagem de SENTENCA para ETAPA. \
+\
+O EXPERIMENTO DO ELOGIO (Mueller & Dweck, o mais famoso do livro). Centenas \
+de criancas fazem um teste. METADE e elogiada por INTELIGENCIA ("nossa, \
+voce e muito inteligente"); outra METADE por ESFORCO ("nossa, voce se \
+esforcou muito"). Depois oferecem novo teste: "mais facil que voce vai \
+mandar bem" ou "mais dificil que pode ensinar algo". Resultado: as \
+elogiadas por inteligencia escolhem o FACIL (nao arriscam o rotulo). As \
+elogiadas por esforco escolhem o DIFICIL. Em seguida, todas fazem um \
+teste duro e erram — as "inteligentes" desmoronam e ate MENTEM sobre seus \
+resultados para outros estudantes; as "esforcadas" pedem mais. LICAO: \
+elogiar INTELIGENCIA mata a coragem. Elogiar PROCESSO (esforco, \
+estrategia, foco, persistencia) cria corajosos. \
+\
+FRACASSO como DADO vs como IDENTIDADE. No fixed, fracassar e ser um \
+fracassado (substantivo, identidade). No growth, fracassar e ter fracassado \
+(verbo, acao) — fonte de dados: "o que aprendi, o que mudo?". John Wooden \
+(tecnico lendario UCLA): "ninguem pode ser considerado fracassado ate \
+comecar a CULPAR os outros". McEnroe perdendo sempre achava culpados \
+(cinegrafista, camera, plateia). Jordan, cortado do time de ensino medio, \
+foi treinar arremessos por horas e virou o maior de todos os tempos — \
+anuncio Nike: "perdi mais de 9 mil cestas, perdi quase 300 jogos, 26 vezes \
+confiaram em mim para o arremesso decisivo e errei. E por isso que venco". \
+\
+O PROCESSO COMPLETO (atencao ao "falso growth"). Dweck ALERTA nas edicoes \
+revisadas: "mindset de crescimento NAO e apenas elogiar esforco". Esforco \
+sozinho que nao gera progresso vira PREMIO DE CONSOLACAO. O processo \
+verdadeiro = ESFORCO + ESTRATEGIA (tentar nova quando a atual falha) + \
+AJUDA (pedir a quem sabe mais). Se esforco sozinho nao funcionou, a \
+resposta nao e "se esforcar mais" — e trocar a estrategia OU pedir ajuda. \
+\
+CEOs FIXED vs GROWTH (Cap 5): \
+FIXED: Lee Iacocca (Chrysler) — apos sucesso inicial, virou "doenca do \
+CEO": culto a pessoa, calou criticos, cercou-se de bajuladores, empresa \
+estagnou. Albert Dunlap (Sunbeam) — confessou ter mindset fixo, demitia em \
+massa para parecer genio; empresa quebrou. ENRON (Kenneth Lay, Jeff \
+Skilling) — cultura do "culto ao talento": contratavam gente com diplomas \
+de elite, ninguem podia parecer burro, logo ninguem admitia erro; fraudes \
+escalaram ate falencia em 2001. \
+GROWTH: Jack Welch (GE) — quando descobriu fraude na Kidder Peabody, nao \
+escondeu nem culpou; assumiu publicamente e corrigiu. Lou Gerstner (IBM, \
+1993) — assumiu empresa quase falida, dedicou livro "aos milhares de \
+funcionarios que nunca desistiram", foi ouvir cliente, quebrou silos, \
+recompensou colaboracao. Anne Mulcahy (Xerox) — assumiu empresa a beira da \
+falencia, transformou pela cultura growth. \
+\
+CASOS DE MINDSET NO ESPORTE: \
+• MICHAEL JORDAN — cortado do time do ensino medio; na UCLA trabalhava \
+freneticamente pontos fracos; abracava fracassos publicamente; virou \
+jogador completo quando perdeu agilidade atletica (mudou jogo, nao \
+desistiu). Growth icone. \
+• JOHN MCENROE — talento puro fixed; ele mesmo admitia: "eu nunca quis \
+APRENDER". Culpava serragem, barulho, camera. Auge curto e caotico. \
+• TIGER WOODS — dominava o processo; refazia swing do zero depois de \
+ganhar Masters (porque queria evoluir). \
+• WILMA RUDOLPH — nasceu paralitica (poliomielite, pe torto); virou a \
+mulher mais rapida do mundo, 3 ouros nas Olimpiadas 1960. Exemplo maximo \
+de potencial inicial ser mau preditor de destino. \
+\
+JOHN WOODEN — o tecnico-filosofo. 10 titulos nacionais em 12 anos na \
+UCLA. Nunca gritou. "Aptidao pode nos levar ao topo, mas e preciso \
+CARATER para ficar la." Tratava igual todos os jogadores, preparava-os \
+para a VIDA, nao so para o jogo. Bill Walton: "a verdadeira competicao \
+para a qual ele nos preparava era a vida". Wooden se via como "apenas \
+mediano em estrategia" — seu dom era ANALISAR e MOTIVAR. \
+\
+FALSO MINDSET DE CRESCIMENTO (capitulo acrescentado na edicao revista). \
+Dweck alerta: o conceito virou modismo e as pessoas dizem "tenho growth" \
+enquanto AGEM como fixed. Tres equivocos comuns: \
+(1) "Tenho mente aberta, logo tenho growth" — ter personalidade flexivel \
+NAO E growth; growth e dedicacao ao desenvolvimento do talento. \
+(2) "Growth e so elogiar esforco" — esforco sem estrategia nem progresso \
+e premio de consolacao. \
+(3) "Diga as pessoas que elas podem tudo" — frase vazia que joga onus no \
+outro; growth e dar RECURSOS CONCRETOS. \
+TESTE do falso growth aplicavel ao MEI: "esta semana, eu (a) busquei \
+ativamente uma estrategia nova? (b) Pedi ajuda a alguem que sabia mais? \
+(c) Tentei algo que podia dar errado publicamente?". Se as 3 respostas \
+forem nao, seu growth e so discurso. \
+\
+OS 4 PASSOS PARA MUDAR DE MINDSET (Cap 8 — jornada): \
+PASSO 1: ABRACE SEU MINDSET FIXO. Todos temos os dois. Nao e vergonha, e \
+"bem-vindo a raca humana". Aceitar nao e deixar dominar. \
+PASSO 2: IDENTIFIQUE OS GATILHOS que disparam o fixo em voce. Novo \
+desafio grande? Dificuldade repetida? Fracasso publico? Alguem melhor que \
+voce na sua area? Prazo apertado? Critica? Observe sem julgar. \
+PASSO 3: DE UM NOME A SUA PERSONA FIXA. Tecnica de externalizacao. \
+Exemplos do livro: "Duane" (chefe que vira critico sob pressao), "Dan \
+Porcaria" (aluno que so via o que errava), "Gertrude" (narradora interna \
+que exige perfeicao). Dar nome separa voce da voz. Exemplos brasileiros \
+realistas: "Dona Duvida" (sussurra 'quem voce pensa que e?'), "Seu \
+Desiste", "Ze da Vergonha" (trava na hora de gravar), "Tia Comparacao". \
+PASSO 4: EDUQUE A PERSONA, LEVE-A NA JORNADA. Nao expulse, nao reprima; \
+reconheca: "oi, Dona Duvida, vejo voce ai; obrigada por querer me \
+proteger, mas vou tentar mesmo assim — voce vem junto?". Diante de \
+fracasso: "talvez eu nao seja boa nisso — AINDA — mas tenho ideia do que \
+tentar". Trate como parceira de viagem a reeducar, nao inimiga a \
+derrotar. \
+\
+RITUAL DIARIO (Dweck sugere). No espelho de manha: (a) Quais sao as \
+oportunidades de aprender e crescer hoje, para mim e para quem esta ao \
+meu redor? (b) Quando, onde e como vou executar meu plano? (c) Diante de \
+obstaculo, quando/onde/como vou agir no novo plano? (d) Apos vitoria, o \
+que preciso fazer para CONSERVAR e AMPLIAR meu crescimento? \
+\
+Frases-ancora: "As cartas recebidas sao apenas o ponto de partida do \
+desenvolvimento." / "Nao sabem fazer aquilo — AINDA. Esquecem-se do \
+ainda." / "Voce tem escolha. Os mindsets sao crencas — e crencas podem \
+ser mudadas." / "Aptidao pode nos levar ao topo, mas e preciso carater \
+para ficar la." (Wooden) / "Ninguem pode ser considerado fracassado ate \
+comecar a culpar os outros." (Wooden) / "A pergunta nao e 'sou talentoso \
+ou nao?'; e 'quero me tornar isso?'." / "O mindset de crescimento se \
+destina a ajudar as pessoas a aprender, nao a encobrir o fato de que \
+nao estao aprendendo." (Dweck sobre falso growth) \
+\
+Use quando o empreendedor: (a) diz "nao nasci para vendas/marketing/ \
+tecnologia" → introduzir o AINDA + exemplo Jordan cortado; (b) travou \
+num erro grande (cliente perdeu, produto encalhou) → fracasso como dado, \
+nao identidade; (c) foge de postar/gravar/vender por DM → nomear persona \
+fixa; (d) compara-se com concorrente no Instagram e desanima → sucesso \
+alheio inspira (growth) vs ameaca (fixed); (e) tentou 2x algo novo, nao \
+deu, quer desistir → lembrar que processo e esforco + ESTRATEGIA + \
+AJUDA, nao so esforco; (f) recebe critica e fecha → feedback como \
+consultoria gratis; (g) diz "sou assim mesmo, minha personalidade" → \
+personalidade tambem e cultivavel; (h) elogia talento do proprio filho/ \
+funcionario ("ele e um genio") → ensinar a elogiar PROCESSO, nao dote; \
+(i) virou "rei" do proprio negocio e nao aceita conselho → doenca do \
+CEO / Iacocca; (j) oscila entre "confiante hoje / zero amanha" → todos \
+temos os dois, treino e voltar mais rapido ao growth; (k) quer mudar de \
+mindset mas nao sabe por onde comecar → aplicar os 4 passos + ritual no \
+espelho; (l) pergunta "sou empreendedor de verdade?" → reformular para \
+"quero me tornar isso?"; (m) contratou e esta frustrado com equipe → \
+trocar linguagem de talento por linguagem de processo.
 - Obsessao pelo Cliente / Working Backwards (Colin Bryar e Bill Carr, 371pp — dois \
 ex-executivos seniores da Amazon; Bryar foi "sombra" de Bezos, Carr liderou midia \
 digital). Codifica os mecanismos operacionais que transformaram a Amazon numa \
@@ -1361,6 +1532,192 @@ habito angular por vez; (i) nao consegue convencer equipe a mudar — identifica
 o habito institucional vigente e substituir mantendo deixas/recompensas; (j) \
 quer espalhar marca organicamente — ativar lacos fracos dos clientes, nao so \
 o circulo imediato.
+- Essencialismo (Greg McKeown, 217pp): "A disciplinada busca por menos — porem \
+melhor". Nao e gestao de tempo; e um modo diferente de fazer tudo, baseado em \
+discernir as poucas coisas vitais entre as muitas triviais, eliminar o resto e \
+criar um sistema para que o essencial aconteca quase sem esforco. Ataca 3 \
+falsos pressupostos do nao-essencialista: "tenho que fazer", "tudo e \
+importante", "consigo fazer os dois" — e os substitui por "escolho fazer", "so \
+poucas coisas importam", "posso fazer qualquer coisa, mas nao tudo". \
+\
+O PARADOXO DO SUCESSO. 4 fases: (1) clareza de proposito gera sucesso; (2) \
+sucesso gera fama e mais convites; (3) mais opcoes dispersam o esforco; (4) o \
+proprio sucesso destroi a clareza que o gerou. Jim Collins: "busca \
+indisciplinada por mais" e causa de queda das gigantes. Para MEI: quando o \
+negocio comeca a dar certo, aparecem 5 convites para canais novos, parcerias, \
+produtos adicionais — se aceitar todos, destroi a clareza que gerou o \
+sucesso inicial. \
+\
+ESSENCIALISTA vs NAO-ESSENCIALISTA (tabela-chave): \
+| Pensamento | Nao-Essenc.: "tudo e importante" | Essenc.: "so poucas coisas" | \
+| Linguagem | "tenho que fazer" | "escolho fazer" | \
+| Pergunta | "como dar conta de tudo?" | "do que abrir mao?" | \
+| Atitude | reage ao mais urgente | para, discerne, escolhe | \
+| Resposta | diz sim sem pensar | diz nao a tudo exceto essencial | \
+| Resultado | exausto, sobrecarregado | no controle, com alegria | \
+\
+OS 4 PILARES (estrutura do livro): \
+ESSENCIA (caps 2-4) — a mentalidade. \
+EXPLORAR (caps 5-9) — discernir o vital do trivial. \
+ELIMINAR (caps 10-14) — cortar o trivial sem culpa. \
+EXECUTAR (caps 15-19) — fazer o essencial sem esforco. \
+\
+ESSENCIA #1: PODER DE ESCOLHA. Somos humanos porque escolhemos. O "nao \
+posso", "preciso" e "tenho que" sao mentiras reconfortantes. "A capacidade \
+de escolher nao pode ser dada nem tirada; so pode ser esquecida." Se voce \
+nao estabelecer suas prioridades, alguem fara isso por voce. Para MEI: \
+cliente problematico nao e "obrigacao" — e escolha. \
+\
+ESSENCIA #2: DISCERNIR — PARETO 80/20. Vilfredo Pareto (1790): 20% do \
+esforco gera 80% do resultado. Warren Buffett: "minha filosofia de \
+investimento se aproxima da letargia"; 90% da riqueza dele em 10 empresas. \
+Ferran Adria (El Bulli): 2M reservas/ano, atendia 50 pessoas/noite, fechava \
+6 meses/ano. John Maxwell: "nao e possivel superestimar a desimportancia \
+de quase tudo". Para MEI: descobrir quais 20% de clientes geram 80% da \
+receita; quais 20% de produtos/servicos sao campeoes. \
+\
+ESSENCIA #3: PERDER PARA GANHAR — TRADE-OFFS. Michael Porter: "estrategia \
+e fazer escolhas, e abrir mao, e escolher deliberadamente ser diferente". \
+Caso emblematico: SOUTHWEST AIRLINES (Herb Kelleher) escolheu NAO oferecer \
+refeicoes, NAO marcar assentos, NAO ter 1a classe, NAO conectar voos — \
+virou a cia aerea mais lucrativa dos EUA. Continental Lite tentou "ficar \
+em cima do muro" (ser Southwest E tradicional) e quebrou. Pergunta-chave: \
+nao "como fazer ambos?", mas sim "QUE PROBLEMA EU QUERO?" e "em que quero \
+investir tudo?". Para MEI: voce PODE fazer qualquer coisa, mas nao tudo. \
+\
+EXPLORAR #1: ESCAPAR (criar espaco). Bill Gates faz "Think Weeks" 2 vezes \
+por ano desde os anos 80 — so leitura e reflexao, sozinho, numa cabana. \
+Jeff Weiner (LinkedIn) reserva 2h/dia em blocos de 30 min. Foco nao e algo \
+que se tem — e algo que se produz. "Para ter foco e preciso ESCAPAR para \
+criar o foco." Para MEI: reservar 1 manha por semana fora da loja, sem \
+atendimento, so para pensar. \
+\
+EXPLORAR #2: BRINCAR. Nao e luxo — e antidoto contra estresse e motor de \
+criatividade. Brincar ativa a funcao executiva do cerebro. Estresse \
+cronico fecha o hipocampo e ativa a amigdala → entra em modo sobrevivencia. \
+Brincar ativa plasticidade cerebral e adaptabilidade. MEI que nao ri ha \
+meses esta sabotando a propria capacidade de inovar. \
+\
+EXPLORAR #3: DORMIR. Violinistas melhores dormem 8,6h/dia + 2,8h de \
+cochilos semanais (Ericsson/Gladwell). Czeisler (Harvard): virar uma noite \
+equivale a 0,1% de alcool no sangue (limite legal para dirigir). Bezos, \
+Andreessen e Buffett se gabam de dormir 8h. "Nossa maior prioridade e \
+proteger a capacidade de priorizar" — dormir mal queima essa capacidade. \
+\
+EXPLORAR #4: REGRA DOS 90% (criterios rigidos). Derek Sivers: "Se nao e um \
+SIM OBVIO, e um NAO OBVIO". Regra: atribua nota 0-100 a cada oportunidade \
+no criterio mais importante. Se for menor que 90, converte para 0 e \
+rejeita. O metodo das 3 perguntas para descobrir vocacao (Enric Sala): (1) \
+O que me apaixona profundamente? (2) O que aproveita melhor meu talento? \
+(3) O que atende uma necessidade real do mundo? So onde os 3 se cruzam \
+vale a pena. Para MEI: aplicar a todo orcamento novo — "esse cliente se \
+encaixa em 90% do meu perfil ideal?". \
+\
+ELIMINAR #1: OBJETIVO ESSENCIAL (Essential Intent). Nao e missao vaga nem \
+meta trimestral. E CONCRETO + INSPIRADOR + MENSURAVEL + SIGNIFICATIVO. Uma \
+decisao que elimina 1.000 decisoes futuras. Exemplos do livro: Martha Lane \
+Fox — "prover acesso a internet a todos os habitantes do Reino Unido ate o \
+final de 2012"; Brad Pitt / Make It Right — "construir 150 casas baratas, \
+ecologicas e resistentes a tempestades no Lower 9th Ward de Nova Orleans". \
+Perguntas-chave: "Se so pudessemos ser verdadeiramente EXCELENTES numa \
+coisa, qual seria?" e "Como saberemos que tivemos sucesso?". Para MEI: \
+"atingir 30 clientes recorrentes no plano premium ate dezembro" > "crescer" \
+ou "fidelizar". \
+\
+ELIMINAR #2: A ARTE DO NAO ELEGANTE. Principios: (a) separe a decisao do \
+relacionamento — negar o pedido nao e negar a pessoa; (b) dizer nao nao \
+exige usar a palavra; (c) foque no que vai perder ao dizer sim; (d) todo \
+mundo esta vendendo algo; (e) troque popularidade por respeito; (f) nao \
+claro e mais gentil que sim vago. Repertorio de respostas: "pausa \
+embaracosa" (so silencio) · "vou conferir a agenda e retorno" · "sim, mas \
+o que devo deixar de fazer em troca?" · "nao posso, mas Fulano talvez" · \
+humor. Exemplos: Stephen Covey recusando amigo para nao furar a noite \
+prometida a filha; Peter Drucker: "tenho um cesto de lixo MUITO GRANDE"; \
+Paul Rand a Steve Jobs: "entrego UMA solucao, nao opcoes". Para MEI: \
+script pronto de nao elegante ao cliente problematico poupa meses de \
+desgaste. "Pratique o sim lento e o nao rapido." \
+\
+ELIMINAR #3: DESCOMPROMETER-SE (sair de custos perdidos). Concorde perdeu \
+dinheiro por 40 anos porque ja se investira US$1 bi. Armadilhas \
+psicologicas: (a) EFEITO DOTACAO — atribuimos valor maior ao que ja temos \
+(finja que ainda nao e seu); (b) medo de desperdicio — aceite que \
+investimento ruim nao se recupera; (c) forcar encaixe — busque segunda \
+opiniao neutra; (d) STATUS QUO — aplicar ORCAMENTO BASE ZERO: reinvente do \
+zero a alocacao do seu tempo, como se nao tivesse compromisso algum; (e) \
+compromissos por reflexo — pausa de 5s antes de aceitar; (f) medo de \
+perder oportunidades — PILOTO INVERTIDO: remover a atividade e ver se \
+alguem sente falta. Para MEI: produto que "da trabalho para criar" pode \
+estar dando prejuizo silencioso — teste o piloto invertido. \
+\
+EXECUTAR #1: MARGENS DE SEGURANCA (ajuste previo). Jose no Egito: 7 anos \
+gordos, 7 magros — plane a partir do pior cenario. AMUNDSEN vs SCOTT no \
+polo sul: Amundsen levou 4 termometros e 20 marcadores para o acampamento; \
+Scott levou 1 termometro e 1 bandeira. Amundsen sobreviveu; Scott morreu. \
+"Falacia do planejamento" (Kahneman, 1979): estudantes estimavam 27 dias \
+para TCC e gastavam 55. Tecnica: SOMAR 50% AO PRAZO ESTIMADO. Para MEI: \
+promessa honesta de prazo aumenta reputacao mais que entrega rapida e \
+ansiosa. \
+\
+EXECUTAR #2: REMOVER O CAMINHANTE MAIS LENTO. Parabola de "A Meta" \
+(Goldratt): no pelotao, o Herbie mais lento define o ritmo de todos. \
+SUBTRAIR > SOMAR. Aristoteles tinha 3 tipos de trabalho: teorico (verdade), \
+pratico (acao), POIETICO (trazer a frente via REMOCAO de obstaculo). 3 \
+passos: (1) clareza do objetivo essencial; (2) identificar o caminhante \
+mais lento; (3) remover. Para MEI: gargalos tipicos sao cobranca manual, \
+pos-venda desorganizado, precificacao caso-a-caso, refazer orcamento do \
+zero. Consertar o gargalo antes de acelerar. "Concluido e melhor que \
+perfeito." \
+\
+EXECUTAR #3: PEQUENAS VITORIAS (progresso visivel). Pesquisa Amabile/Kramer: \
+o principal motivador interno e PROGRESSO VISIVEL. Richmond/Canada: "Multas \
+Positivas" (policial da medalha quando pega jovem fazendo algo certo) \
+reduziu reincidencia de 65% para 8% em 10 anos. Pixar: "nao terminamos \
+filmes, nos os lancamos". Para MEI: (a) Produto Minimo Viavel — lanca \
+imperfeito e itera; (b) Progresso Minimo Viavel — pequeno passo por dia \
+contra meta essencial; (c) Preparacao Minima Viavel — "4 min agora" contra \
+"2h no domingo que nunca vem". \
+\
+EXECUTAR #4: ROTINAS. McKeown cita Duhigg DIRETAMENTE aqui. Rotinas sao o \
+mecanismo para automatizar o essencial. Michael Phelps tinha rotina \
+identica antes de cada prova (alongamento, musica, visualizar "passar o \
+video"). Jack Dorsey tem TEMA POR DIA DA SEMANA (seg = gestao, ter = \
+produto, qua = marketing etc). Ray Zinn (Micrel): "focalize o mais \
+dificil PRIMEIRO". "A rotina certa nao mata a criatividade — libera a \
+mente para ela." Rotinas transformam essencialismo de ato heroico em \
+comportamento automatico. \
+\
+EXECUTAR #5: FOCALIZAR O AGORA. Larry Gelwix (coach rugby, 418 vitorias): \
+pergunta-chave e "O QUE E IMPORTANTE AGORA?". Gregos tinham duas palavras \
+para tempo: KHRONOS (relogio) e KAIROS (tempo presente, qualitativo). \
+Multitarefa nao e o inimigo — MULTIFOCO e que e impossivel. Tecnica: tirar \
+o futuro da cabeca criando lista "algum dia, talvez" para deixar a mente \
+livre para o agora. \
+\
+Frases-ancora: "Se nao e um sim obvio, e um nao obvio." (Sivers) / "Nossa \
+maior prioridade e proteger a capacidade de priorizar." / "Nao e possivel \
+superestimar a desimportancia de quase tudo." (Maxwell) / "Menos, porem \
+melhor." (Dieter Rams) / "Que problema eu quero?" (em vez de "como fazer \
+tudo?") / "O essencialista avalia mais para fazer menos." / "Pratique o \
+sim lento e o nao rapido." (Tom Friel) / "Concluido e melhor que \
+perfeito." / "Estrategia e fazer escolhas, e abrir mao." (Porter) \
+\
+Use quando o empreendedor: (a) diz "faco de tudo um pouco" ou "atendo \
+qualquer tipo de cliente"; (b) trabalha 12h/dia sem ver resultado \
+proporcional; (c) nao consegue dizer nao a desconto ou escopo extra; (d) \
+quer abrir canal/produto novo enquanto os atuais nao rodam bem; (e) diz \
+"preciso crescer" sem definir o que e crescer (→ Objetivo Essencial \
+concreto); (f) esta esgotado e diz "quando estabilizar eu descanso" (→ \
+dormir/brincar como essenciais); (g) nao identifica quais 20% de clientes \
+geram 80% do lucro (→ Pareto); (h) aceita mudancas de escopo do cliente \
+por medo de perder (→ repertorio de naos elegantes); (i) quer investir em \
+mais marketing mas o gargalo e entrega/pos-venda (→ caminhante mais \
+lento); (j) esta estressado com mil decisoes pequenas diarias (→ criar \
+rotinas); (k) hesita em matar produto antigo que "deu trabalho de criar" \
+(→ efeito dotacao + piloto invertido); (l) confunde estar ocupado com \
+produtivo ("tudo e prioridade"); (m) pergunta "como fazer mais em menos \
+tempo?" — redirecionar para "o que voce pode PARAR de fazer?"; (n) se \
+sente incapaz de recusar convite/parceria porque "nao quer ofender" (→ \
+separar decisao do relacionamento).
 
 INSPIRACAO:
 - O Catador de Sonhos e O Poder da Positividade (Geraldo Rufino): Conceitos centrais \
