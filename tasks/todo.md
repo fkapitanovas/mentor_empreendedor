@@ -436,3 +436,35 @@ Sistema de log de citações (gurus + livros) por mensagem do assistente, com da
 Commit: `75d7763` feat(observability): logar gurus/livros citados por estágio/setor
 
 **Passo manual após deploy**: rodar `web/sql/migration-citations.sql` no Supabase SQL Editor (já rodado — 21/04/2026 noite). Sem ele o log falha silenciosamente (console.error), nada quebra no fluxo do chat.
+
+---
+
+## Etapa 21: QA visual em produção via Playwright + 3 fixes ✅ (2026-04-21 noite)
+
+Tour visual completo em `maximpulso.com.br` (desktop + mobile, light + dark) nas 10 superfícies: /login, /register, /forgot-password, /reset-password, /onboarding, chat (existente + empty state), /profile, /settings, /admin, /admin/citations. Identificados 3 bugs, todos corrigidos em paralelo via 3 subagents e deploy executado (commit `9571014`).
+
+### Bug 1 — Token `--ink` invertido no dark (14 pontos)
+`--ink: #FCD34D` no `.dark` era igual ao `--sun`, então `text-ink` sobre `bg-[var(--sun)]` virava sol-sobre-sol invisível.
+
+Afetados: brand badge M (auth + chat), avatar assistant (message-bubble, streaming-message, typing-indicator), 2 de 4 chips do empty state, CTAs "Salvar" em /profile e /onboarding, "Atualizar senha" em /settings, "Exportar CSV" em /admin, botão send do chat-input, ícones palette/shield de /settings, contador de passos /onboarding, ícones de sucesso Mail/CheckCircle em /register, /forgot-password, /reset-password, hover state dos FABs e paginação admin.
+
+Fix: introduzido token semântico **`--on-bright`** (sempre escuro: `#0F3E2A` light, `#0A1A12` dark) registrado como `--color-on-bright` no `@theme inline` do Tailwind v4. Substituído `text-ink` por `text-on-bright` em 14 pontos. Bordas e hard shadows mantidas amarelas no dark (assinatura visual intacta).
+
+### Bug 2 — Mismatch `crescimento` vs `em_crescimento`
+Prompt/DB usam `"crescimento"` (diagnostico.ts:18) mas frontend usava `"em_crescimento"` como chave. Badge do /admin sem classe aplicada, select do /profile sem opção correta, filtro de /admin/citations sem match.
+
+Fix: alinhado em `"crescimento"` em 3 arquivos (profile, admin, admin/citations).
+
+### Bug 3 — Acentos pt-BR faltando
+- `register/page.tsx:258`: "Ja tem conta?" → "Já tem conta?"
+- `chat-input.tsx:70`: placeholder "O que voce gostaria de saber?" → "você"
+
+### Execução paralela via agents
+3 subagents com escopo de arquivo disjunto:
+- Agent A: globals.css + chat components + onboarding + settings
+- Agent B: profile + admin + admin/citations
+- Agent C: (auth) layout + register + forgot-password + reset-password
+
+Todos retornaram typecheck limpo. Build (`next build`) OK, 23 páginas. Deploy via `vercel --prod` em 36s. QA visual em produção após deploy confirmou todos os fixes funcionando no dark mode.
+
+Commit: `9571014 fix(theme): conserta contraste no dark + alinha estagio + acentos` (16 arquivos, +33/-30)
