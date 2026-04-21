@@ -211,6 +211,21 @@ vercel --prod        # Deploy produção
 - Nunca prometer resultados financeiros específicos
 - Sempre contextualizar para realidade brasileira (MEI, Simples Nacional, PIX, etc.)
 
+## Fontes do conteúdo (em `docs/`)
+
+Todo o conteúdo curado do system prompt vem dos arquivos originais do projeto, mantidos em `docs/` para referência:
+
+- **`docs/agente_microempreendedor.docx`** — documento-mãe da base de conhecimento. Contém:
+  - Perfis detalhados dos 12 gurus (Marcus Marques, Flávio Augusto, Thiago Oliveira, Thiago Nigro, Nathalia Arcuri, Gustavo Cerbasi, Rodrigo Almeida, Érico Rocha, Conrado Adolpho, Pedro Sobral, Joel Jota, Geraldo Rufino; + Ana Fontes adicionada depois)
+  - Lista dos 22 livros com conceitos-âncora
+  - Este doc alimenta `web/src/lib/prompts/conhecimento.ts` (perfis) e `web/src/lib/prompts/livros.ts` (resumos dos livros)
+
+- **`docs/influencers_impulso_stone.xlsx`** — lista de influenciadores nichados por setor (confeitaria, beleza, marketing, finanças populares, etc.), com afinidade MEI. Alimenta `web/src/lib/prompts/nichos.ts`.
+
+- **`docs/Geração de Valor – Flávio Augusto.pdf`**, **`docs/Geração de Valor 2 - ...pdf`**, **`docs/Geração de Valor 3 - ...pdf`**, **`docs/O Poder do Hábito - Charles Duhigg.pdf`** — livros lidos na íntegra para enriquecer conceitos além dos resumos do docx.
+
+**Importante:** se atualizar livros.ts ou conhecimento.ts, sempre manter fidelidade ao docx original. Mudanças substantivas de conteúdo devem ser validadas com o usuário antes (o prompt representa curadoria editorial).
+
 ## Referências de Conteúdo por Nicho
 
 Além dos gurus generalistas (doc `agente_microempreendedor.docx`), o agente deve considerar influenciadores nichados (fonte: `influencers_impulso_stone.xlsx`) para contextualizar respostas por setor:

@@ -1,3 +1,21 @@
+/**
+ * Resumos dos 22 livros que compõem a base de conhecimento do Max Impulso.
+ *
+ * Fontes:
+ * - Lista de livros e conceitos-âncora: docs/agente_microempreendedor.docx
+ *   (documento com os 12 gurus + 22 livros curados pela equipe Impulso Stone)
+ * - Livros lidos na íntegra em PDF (conceitos enriquecidos além do docx):
+ *   - docs/Geração de Valor – Flávio Augusto.pdf
+ *   - docs/Geração de Valor 2 - Flávio Augusto (Revisado).pdf
+ *   - docs/Geração de Valor 3 - Flávio Augusto.pdf
+ *   - docs/O Poder do Hábito - Charles Duhigg.pdf
+ *
+ * Deduplicação: conceitos centrais dos gurus que têm perfil dedicado
+ * (Flavio Augusto, Thiago Nigro, Nathalia Arcuri, Gustavo Cerbasi, Rodrigo
+ * Almeida, Conrado Adolpho, Thiago Oliveira, Geraldo Rufino) ficam em
+ * ./conhecimento.ts; este arquivo só traz COMPLEMENTOS dos livros desses
+ * autores e livros de autores sem perfil próprio.
+ */
 export const BASE_LIVROS = `Base de conhecimento de livros. Use estes conceitos para fundamentar suas \
 orientacoes, sem necessariamente citar os titulos — integre as ideias naturalmente. \
 Conceitos detalhados dos gurus (Flavio Augusto, Thiago Nigro, Nathalia Arcuri, \
