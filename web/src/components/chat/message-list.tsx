@@ -177,12 +177,11 @@ export function MessageList({
       {/* Atalhos de scroll (fixed no canto inferior direito, acima do input) */}
       {showShortcuts && (
         <div
-          className={cn(
-            'fixed right-3 z-40 flex flex-col gap-2 md:right-6',
-            // bottom calculado para ficar acima do ChatInput (~72px) + safe-area
-            'bottom-[calc(env(safe-area-inset-bottom,0px)+5rem)] md:bottom-[calc(env(safe-area-inset-bottom,0px)+6rem)]'
-          )}
-        >
+          className="pointer-events-none fixed inset-x-0 bottom-20 z-[60] flex justify-end px-3 md:bottom-24 md:px-6"
+          style={{
+            bottom: 'calc(env(safe-area-inset-bottom, 0px) + 5rem)',
+          }}
+        ><div className="pointer-events-auto flex flex-col gap-2">
           <button
             type="button"
             onClick={scrollToTop}
@@ -199,6 +198,7 @@ export function MessageList({
           >
             <ChevronsDown className="size-5" aria-hidden="true" />
           </button>
+          </div>
         </div>
       )}
     </div>
