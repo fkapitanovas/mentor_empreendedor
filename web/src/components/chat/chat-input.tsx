@@ -57,7 +57,7 @@ export function ChatInput({ onSend, isStreaming, onStop }: ChatInputProps) {
   const buttonDisabled = canStop ? false : (isStreaming || !value.trim())
 
   return (
-    <div className="bg-background px-4 py-3" style={{ boxShadow: '0 -4px 12px rgba(0,0,0,0.03)' }}>
+    <div className="border-t-[2px] border-ink bg-card px-4 py-3">
       <div className="mx-auto flex max-w-[720px] items-end gap-2">
         <textarea
           ref={textareaRef}
@@ -70,15 +70,15 @@ export function ChatInput({ onSend, isStreaming, onStop }: ChatInputProps) {
           placeholder="O que voce gostaria de saber?"
           disabled={textareaDisabled}
           rows={1}
-          className="flex-1 resize-none rounded-2xl border-[1.5px] border-input bg-card px-4 py-2.5 text-sm leading-relaxed placeholder:text-muted-foreground transition-colors duration-150 focus-visible:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 disabled:cursor-not-allowed disabled:opacity-50"
-          style={{ touchAction: 'manipulation', minHeight: '44px' }}
+          className="flex-1 resize-none rounded-xl border-[2px] border-ink bg-popover px-4 py-3 font-sans text-[15px] leading-relaxed placeholder:text-muted-foreground focus-visible:border-accent focus-visible:shadow-[4px_4px_0_var(--coral)] focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 focus-visible:outline-none transition-all disabled:cursor-not-allowed disabled:opacity-50"
+          style={{ touchAction: 'manipulation', minHeight: '48px' }}
           aria-label="Mensagem para o Max Impulso"
         />
         <Button
           onClick={handleButtonClick}
           disabled={buttonDisabled}
           size="icon"
-          className="h-11 w-11 shrink-0 rounded-xl bg-[image:var(--gradient-brand)] text-white transition-all duration-150 hover:scale-105 hover:shadow-md disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+          className={`h-12 w-12 shrink-0 rounded-full border-[2px] border-ink ${canStop ? 'bg-[var(--coral)] text-[var(--cream)]' : 'bg-[var(--sun)] text-ink'} hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 focus-visible:ring-0 focus-visible:border-accent disabled:opacity-40 transition-all`}
           aria-label={canStop ? 'Parar resposta' : 'Enviar mensagem'}
         >
           {canStop ? <Square className="size-5" /> : <ArrowUp className="size-5" />}

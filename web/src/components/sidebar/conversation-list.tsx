@@ -29,7 +29,7 @@ export function ConversationList({
       <div className="p-3">
         <Button
           onClick={onNew}
-          className="w-full justify-center gap-2 bg-[image:var(--gradient-brand)] font-heading text-sm font-semibold text-white transition hover:brightness-110"
+          className="w-full justify-center gap-2 bg-primary text-primary-foreground border-[2px] border-ink rounded-xl font-heading font-bold hover:bg-accent hover:text-accent-foreground hover:shadow-hard-sm hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
           size="lg"
         >
           <Plus className="size-4" />

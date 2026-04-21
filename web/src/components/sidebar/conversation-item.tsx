@@ -36,8 +36,8 @@ export function ConversationItem({
       className={cn(
         'group flex items-center gap-2 rounded-xl pr-1 text-sm transition-all duration-150',
         isActive
-          ? 'border-l-3 border-primary bg-background font-medium'
-          : 'hover:bg-background'
+          ? 'border-l-[4px] border-[var(--coral)] bg-card font-semibold'
+          : 'hover:bg-card'
       )}
     >
       <Link

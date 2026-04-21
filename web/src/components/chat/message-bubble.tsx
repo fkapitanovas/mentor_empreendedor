@@ -10,7 +10,7 @@ function formatContent(content: string, isAssistant: boolean) {
 
     if (isAssistant && trimmed.startsWith('### ')) {
       return (
-        <p key={i} className={cn('font-heading text-base font-semibold', i > 0 && 'mt-4')}>
+        <p key={i} className={cn('font-heading text-base font-bold text-ink', i > 0 && 'mt-4')}>
           {renderInline(trimmed.slice(4), isAssistant)}
         </p>
       )
@@ -35,7 +35,7 @@ function renderInline(text: string, isAssistant: boolean) {
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) {
       return (
-        <strong key={i} className={isAssistant ? 'font-semibold text-primary' : 'font-semibold'}>
+        <strong key={i} className={isAssistant ? 'font-bold text-[var(--coral)]' : 'font-bold'}>
           {part.slice(2, -2)}
         </strong>
       )
@@ -64,16 +64,16 @@ function MessageBubbleInner({ message }: MessageBubbleProps) {
       )}
     >
       {isAssistant && (
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[image:var(--gradient-brand)] text-xs font-bold text-white">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-[2px] border-ink bg-[var(--sun)] text-ink text-xs font-extrabold">
           M
         </div>
       )}
       <div
         className={cn(
-          'rounded-2xl px-4 py-3 text-sm leading-relaxed',
+          'rounded-2xl px-4 py-3 text-base leading-relaxed',
           isAssistant
-            ? 'max-w-[min(720px,85%)] rounded-tl-md border border-border bg-secondary text-secondary-foreground'
-            : 'max-w-[min(480px,75%)] rounded-tr-md bg-[image:var(--gradient-brand-strong)] text-white'
+            ? 'max-w-[min(720px,85%)] rounded-tl-md border-[2px] border-ink bg-card text-card-foreground'
+            : 'max-w-[min(480px,75%)] rounded-tr-md border-[2px] border-ink bg-[var(--coral)] text-[var(--cream)]'
         )}
         style={{ lineHeight: '1.7' }}
       >

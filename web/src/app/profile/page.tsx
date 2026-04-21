@@ -10,8 +10,6 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import {
   Select,
   SelectContent,
@@ -26,11 +24,17 @@ const ESTAGIOS = [
   { value: 'consolidado', label: 'Consolidado' },
 ]
 
-const ESTAGIO_COLORS: Record<string, string> = {
-  iniciante: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
-  em_crescimento: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
-  consolidado: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+const ESTAGIO_BADGE: Record<string, string> = {
+  iniciante: 'bg-[var(--sun)] text-ink border-[2px] border-ink',
+  em_crescimento: 'bg-[var(--coral)] text-[var(--cream)] border-[2px] border-ink',
+  consolidado: 'bg-primary text-primary-foreground border-[2px] border-ink',
 }
+
+const FIELD_LABEL =
+  'font-heading text-[11px] font-bold uppercase tracking-[0.08em] text-primary'
+
+const FIELD_INPUT =
+  'h-12 rounded-xl border-[2px] border-ink bg-popover px-4 pl-10 font-sans text-[15px] focus-visible:border-accent focus-visible:shadow-[4px_4px_0_var(--coral)] focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 transition-all'
 
 export default function ProfilePage() {
   const router = useRouter()
@@ -115,42 +119,65 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-lg px-4 py-8">
+    <div className="mx-auto max-w-2xl p-6 md:p-10">
       <Link
         href="/"
-        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        className="mb-6 inline-flex items-center gap-1.5 text-sm text-accent font-semibold hover:underline"
       >
         <ArrowLeft className="size-4" />
         Voltar ao chat
       </Link>
 
-      <h1 className="mb-6 font-heading text-xl font-bold">Seu Perfil</h1>
+      <div className="mb-8 space-y-1">
+        <h1 className="font-heading text-4xl font-extrabold tracking-tight">Seu Perfil</h1>
+        <p className="text-sm text-muted-foreground">
+          Ajuste os dados que o Max usa para personalizar as respostas.
+        </p>
+      </div>
 
-      <Card className="rounded-2xl shadow-lg">
+      <div className="rounded-3xl border-[3px] border-ink bg-card shadow-hard">
         <form onSubmit={handleSave}>
-          <CardContent className="space-y-4 p-8">
+          <div className="space-y-4 p-6 md:p-8">
             <div className="space-y-2">
-              <Label htmlFor="nome" className="font-heading text-[13px] font-semibold">Nome</Label>
+              <Label htmlFor="nome" className={FIELD_LABEL}>
+                Nome
+              </Label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                <Input id="nome" type="text" placeholder="Como voce gostaria de ser chamado?" value={nome} onChange={(e) => setNome(e.target.value)} className="h-11 rounded-xl border-[1.5px] pl-10" />
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-primary/50" />
+                <Input
+                  id="nome"
+                  type="text"
+                  placeholder="Como você gostaria de ser chamado?"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  className={FIELD_INPUT}
+                />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="setor" className="font-heading text-[13px] font-semibold">Setor</Label>
+              <Label htmlFor="setor" className={FIELD_LABEL}>
+                Setor
+              </Label>
               <div className="relative">
-                <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                <Input id="setor" type="text" placeholder="Ex: Confeitaria, Estetica, Marketing Digital" value={setor} onChange={(e) => setSetor(e.target.value)} className="h-11 rounded-xl border-[1.5px] pl-10" />
+                <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-primary/50" />
+                <Input
+                  id="setor"
+                  type="text"
+                  placeholder="Ex: Confeitaria, Estética, Marketing Digital"
+                  value={setor}
+                  onChange={(e) => setSetor(e.target.value)}
+                  className={FIELD_INPUT}
+                />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label className="font-heading text-[13px] font-semibold">Estagio</Label>
+              <Label className={FIELD_LABEL}>Estágio</Label>
               <div className="flex items-center gap-3">
                 <Select value={estagio} onValueChange={(v) => setEstagio(v ?? '')}>
-                  <SelectTrigger className="h-11 w-full rounded-xl border-[1.5px]">
-                    <SelectValue placeholder="Selecionar estagio" />
+                  <SelectTrigger className="h-12 w-full rounded-xl border-[2px] border-ink bg-popover px-4 font-sans text-[15px]">
+                    <SelectValue placeholder="Selecionar estágio" />
                   </SelectTrigger>
                   <SelectContent>
                     {ESTAGIOS.map((e) => (
@@ -161,50 +188,78 @@ export default function ProfilePage() {
                   </SelectContent>
                 </Select>
                 {estagioLabel && estagio && (
-                  <Badge className={`shrink-0 border-0 ${ESTAGIO_COLORS[estagio] || ''}`}>
+                  <span
+                    className={`shrink-0 inline-flex items-center rounded-full px-3 py-1 font-heading text-xs font-bold uppercase tracking-wider ${ESTAGIO_BADGE[estagio] || ''}`}
+                  >
                     {estagioLabel}
-                  </Badge>
+                  </span>
                 )}
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="tempoNegocio" className="font-heading text-[13px] font-semibold">Tempo de negocio</Label>
+              <Label htmlFor="tempoNegocio" className={FIELD_LABEL}>
+                Tempo de negócio
+              </Label>
               <div className="relative">
-                <Clock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                <Input id="tempoNegocio" type="text" placeholder="Ex: 2 anos, 6 meses" value={tempoNegocio} onChange={(e) => setTempoNegocio(e.target.value)} className="h-11 rounded-xl border-[1.5px] pl-10" />
+                <Clock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-primary/50" />
+                <Input
+                  id="tempoNegocio"
+                  type="text"
+                  placeholder="Ex: 2 anos, 6 meses"
+                  value={tempoNegocio}
+                  onChange={(e) => setTempoNegocio(e.target.value)}
+                  className={FIELD_INPUT}
+                />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="faturamento" className="font-heading text-[13px] font-semibold">Faturamento mensal</Label>
+              <Label htmlFor="faturamento" className={FIELD_LABEL}>
+                Faturamento mensal
+              </Label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                <Input id="faturamento" type="text" placeholder="Ex: R$ 5.000, 10mil" value={faturamento} onChange={(e) => setFaturamento(e.target.value)} className="h-11 rounded-xl border-[1.5px] pl-10" />
+                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-primary/50" />
+                <Input
+                  id="faturamento"
+                  type="text"
+                  placeholder="Ex: R$ 5.000, 10mil"
+                  value={faturamento}
+                  onChange={(e) => setFaturamento(e.target.value)}
+                  className={FIELD_INPUT}
+                />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="desafio" className="font-heading text-[13px] font-semibold">Principal desafio</Label>
+              <Label htmlFor="desafio" className={FIELD_LABEL}>
+                Principal desafio
+              </Label>
               <div className="relative">
-                <Target className="absolute left-3 top-3 size-4 text-muted-foreground" />
-                <Textarea id="desafio" placeholder="Ex: Precificacao, captar clientes, gestao financeira" value={desafio} onChange={(e) => setDesafio(e.target.value)} className="min-h-[88px] rounded-xl border-[1.5px] pl-10" />
+                <Target className="absolute left-3 top-3 size-4 text-primary/50" />
+                <Textarea
+                  id="desafio"
+                  placeholder="Ex: Precificação, captar clientes, gestão financeira"
+                  value={desafio}
+                  onChange={(e) => setDesafio(e.target.value)}
+                  className="min-h-[96px] rounded-xl border-[2px] border-ink bg-popover px-4 pl-10 py-3 font-sans text-[15px] focus-visible:border-accent focus-visible:shadow-[4px_4px_0_var(--coral)] focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 transition-all"
+                />
               </div>
             </div>
-          </CardContent>
+          </div>
 
-          <CardFooter className="px-8 pb-8">
+          <div className="px-6 pb-6 md:px-8 md:pb-8">
             <Button
               type="submit"
-              className="h-12 w-full rounded-xl bg-[image:var(--gradient-brand)] font-heading text-sm font-semibold text-white hover:brightness-105"
+              className="h-12 w-full rounded-xl border-[2px] border-ink bg-[var(--sun)] text-ink font-heading font-bold hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
               disabled={saving}
             >
               <Save className="size-4" />
               {saving ? 'Salvando...' : 'Salvar'}
             </Button>
-          </CardFooter>
+          </div>
         </form>
-      </Card>
+      </div>
     </div>
   )
 }

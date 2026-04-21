@@ -4,16 +4,14 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, Download, Search, ShieldAlert } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
 import type { User } from '@/types/database'
 
-const ESTAGIO_COLORS: Record<string, string> = {
-  iniciante: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
-  em_crescimento: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
-  consolidado: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+const ESTAGIO_BADGE: Record<string, string> = {
+  iniciante: 'bg-[var(--sun)] text-ink border-[2px] border-ink',
+  em_crescimento: 'bg-[var(--coral)] text-[var(--cream)] border-[2px] border-ink',
+  consolidado: 'bg-primary text-primary-foreground border-[2px] border-ink',
 }
 
 const ESTAGIO_LABELS: Record<string, string> = {
@@ -90,9 +88,9 @@ export default function AdminPage() {
 
   if (loading) {
     return (
-      <div className="mx-auto w-full max-w-5xl px-4 py-8">
+      <div className="mx-auto max-w-5xl p-6 md:p-10">
         <Skeleton className="mb-6 h-8 w-48" />
-        <Skeleton className="h-64 w-full rounded-2xl" />
+        <Skeleton className="h-64 w-full rounded-3xl" />
       </div>
     )
   }
@@ -102,12 +100,15 @@ export default function AdminPage() {
       <div className="flex min-h-dvh items-center justify-center p-8">
         <div className="flex flex-col items-center gap-4 text-center">
           <ShieldAlert className="size-12 text-destructive" />
-          <h1 className="font-heading text-xl font-bold">Acesso restrito</h1>
+          <h1 className="font-heading text-2xl font-extrabold tracking-tight">Acesso restrito</h1>
           <p className="text-sm text-muted-foreground">
-            Esta pagina e restrita a administradores.
+            Esta página é restrita a administradores.
           </p>
           <Link href="/">
-            <Button variant="outline" className="rounded-xl">
+            <Button
+              variant="outline"
+              className="rounded-xl border-[2px] border-ink font-heading font-bold"
+            >
               <ArrowLeft className="size-4" />
               Voltar ao chat
             </Button>
@@ -118,19 +119,22 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-4 py-8">
+    <div className="mx-auto max-w-5xl p-6 md:p-10">
       <Link
         href="/"
-        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        className="mb-6 inline-flex items-center gap-1.5 text-sm text-accent font-semibold hover:underline"
       >
         <ArrowLeft className="size-4" />
         Voltar ao chat
       </Link>
 
-      <div className="mb-6 flex items-center justify-between gap-4">
-        <div>
-          <h1 className="font-heading text-xl font-bold">Painel Admin</h1>
-          <p className="text-sm text-muted-foreground" aria-live="polite">
+      <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+        <div className="space-y-1">
+          <h1 className="font-heading text-4xl font-extrabold tracking-tight">Painel Admin</h1>
+          <p
+            className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground"
+            aria-live="polite"
+          >
             {users.length} de {total} empreendedor{total !== 1 ? 'es' : ''} carregado{users.length !== 1 ? 's' : ''}
             {query.trim() && (
               <>
@@ -141,10 +145,11 @@ export default function AdminPage() {
           </p>
         </div>
         <Button
+          variant="outline"
           onClick={() => {
             window.location.href = '/api/admin/users?format=csv'
           }}
-          className="rounded-xl bg-[image:var(--gradient-brand)] font-heading text-sm font-semibold text-white hover:brightness-105"
+          className="border-[2px] border-ink rounded-xl font-heading font-bold hover:bg-[var(--sun)] hover:text-ink transition-all"
         >
           <Download className="size-4" />
           Exportar CSV
@@ -153,46 +158,48 @@ export default function AdminPage() {
 
       <div className="mb-4">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-primary/50" />
           <Input
             type="search"
             placeholder="Buscar por email ou nome..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="h-11 rounded-xl border-[1.5px] pl-10"
-            aria-label="Buscar usuarios"
+            className="h-12 rounded-xl border-[2px] border-ink bg-popover px-4 pl-10 font-sans text-[15px] focus-visible:border-accent focus-visible:shadow-[4px_4px_0_var(--coral)] focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 transition-all"
+            aria-label="Buscar usuários"
           />
         </div>
       </div>
 
-      <Card className="overflow-hidden rounded-2xl">
+      <div className="rounded-3xl border-[3px] border-ink bg-card overflow-hidden shadow-hard-lg">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b bg-muted/50">
-                <th className="px-4 py-3 text-left font-heading font-semibold">Nome</th>
-                <th className="px-4 py-3 text-left font-heading font-semibold">Email</th>
-                <th className="px-4 py-3 text-left font-heading font-semibold">Setor</th>
-                <th className="px-4 py-3 text-left font-heading font-semibold">Estagio</th>
-                <th className="px-4 py-3 text-left font-heading font-semibold">Faturamento</th>
-                <th className="px-4 py-3 text-left font-heading font-semibold">Desafio</th>
-                <th className="px-4 py-3 text-left font-heading font-semibold">Cadastro</th>
+              <tr className="bg-muted border-b-[2px] border-ink">
+                <th className="px-4 py-3 text-left font-heading text-xs uppercase tracking-wider">Nome</th>
+                <th className="px-4 py-3 text-left font-heading text-xs uppercase tracking-wider">Email</th>
+                <th className="px-4 py-3 text-left font-heading text-xs uppercase tracking-wider">Setor</th>
+                <th className="px-4 py-3 text-left font-heading text-xs uppercase tracking-wider">Estágio</th>
+                <th className="px-4 py-3 text-left font-heading text-xs uppercase tracking-wider">Faturamento</th>
+                <th className="px-4 py-3 text-left font-heading text-xs uppercase tracking-wider">Desafio</th>
+                <th className="px-4 py-3 text-left font-heading text-xs uppercase tracking-wider">Cadastro</th>
               </tr>
             </thead>
             <tbody>
-              {filteredUsers.map((user, i) => (
+              {filteredUsers.map((user) => (
                 <tr
                   key={user.id}
-                  className={i % 2 === 1 ? 'bg-muted/20' : ''}
+                  className="border-b-[2px] border-ink/10 last:border-0"
                 >
                   <td className="px-4 py-3 font-medium">{user.name || '—'}</td>
                   <td className="px-4 py-3 text-muted-foreground">{user.email || '—'}</td>
                   <td className="px-4 py-3">{user.setor || '—'}</td>
                   <td className="px-4 py-3">
                     {user.estagio ? (
-                      <Badge className={`border-0 ${ESTAGIO_COLORS[user.estagio] || ''}`}>
+                      <span
+                        className={`inline-flex items-center rounded-full px-3 py-1 font-heading text-xs font-bold uppercase tracking-wider ${ESTAGIO_BADGE[user.estagio] || ''}`}
+                      >
                         {ESTAGIO_LABELS[user.estagio] || user.estagio}
-                      </Badge>
+                      </span>
                     ) : (
                       '—'
                     )}
@@ -207,22 +214,21 @@ export default function AdminPage() {
               {filteredUsers.length === 0 && (
                 <tr>
                   <td colSpan={7} className="px-4 py-8 text-center text-sm text-muted-foreground">
-                    Nenhum usuario encontrado.
+                    Nenhum usuário encontrado.
                   </td>
                 </tr>
               )}
             </tbody>
           </table>
         </div>
-      </Card>
+      </div>
 
       {hasMore && !query.trim() && (
-        <div className="mt-4 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <Button
             onClick={handleLoadMore}
             disabled={loadingMore}
-            variant="outline"
-            className="rounded-xl font-heading text-sm font-semibold"
+            className="h-12 rounded-xl border-[2px] border-ink bg-[var(--sun)] text-ink font-heading font-bold hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
           >
             {loadingMore ? 'Carregando...' : 'Carregar mais'}
           </Button>

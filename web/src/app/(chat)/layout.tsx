@@ -83,7 +83,7 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
       {/* Header */}
       <header
         role="banner"
-        className="flex h-14 shrink-0 items-center justify-between border-b border-border px-4"
+        className="flex h-14 shrink-0 items-center justify-between border-b-[2px] border-ink bg-card px-4"
       >
         <div className="flex items-center gap-3">
           <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
@@ -109,10 +109,10 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
             </SheetContent>
           </Sheet>
 
-          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[image:var(--gradient-brand)] text-sm font-bold text-white">
-            M
+          <div className="inline-flex items-center gap-2 pl-1.5 pr-3 py-1 bg-primary text-primary-foreground rounded-full font-heading text-xs font-bold uppercase tracking-widest shadow-hard-sm -rotate-[1.5deg]">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--sun)] text-ink font-heading font-extrabold text-sm">M</span>
+            Max Impulso
           </div>
-          <span className="font-heading text-base font-bold text-primary">Max Impulso</span>
         </div>
 
         <div className="flex items-center gap-1">
@@ -153,7 +153,7 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
         <aside
           role="navigation"
           aria-label="Conversas"
-          className="hidden w-72 shrink-0 border-r border-border bg-muted md:block"
+          className="hidden w-72 shrink-0 border-r-[2px] border-ink bg-muted md:block"
         >
           {sidebarContent}
         </aside>

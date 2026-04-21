@@ -9,7 +9,6 @@ import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ThemeToggle } from '@/components/theme-toggle'
 import {
   AlertDialog,
@@ -22,6 +21,12 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
+
+const FIELD_LABEL =
+  'font-heading text-[11px] font-bold uppercase tracking-[0.08em] text-primary'
+
+const FIELD_INPUT =
+  'h-12 rounded-xl border-[2px] border-ink bg-popover px-4 pl-10 font-sans text-[15px] focus-visible:border-accent focus-visible:shadow-[4px_4px_0_var(--coral)] focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 transition-all'
 
 export default function SettingsPage() {
   const router = useRouter()
@@ -41,7 +46,7 @@ export default function SettingsPage() {
     }
 
     if (newPassword !== confirmPassword) {
-      setPasswordError('As senhas nao coincidem.')
+      setPasswordError('As senhas não coincidem.')
       return
     }
 
@@ -74,149 +79,162 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-lg px-4 py-8">
+    <div className="mx-auto max-w-2xl p-6 md:p-10">
       <Link
         href="/"
-        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        className="mb-6 inline-flex items-center gap-1.5 text-sm text-accent font-semibold hover:underline"
       >
         <ArrowLeft className="size-4" />
         Voltar ao chat
       </Link>
 
-      <h1 className="mb-6 font-heading text-xl font-bold">Configuracoes</h1>
+      <div className="mb-8 space-y-1">
+        <h1 className="font-heading text-4xl font-extrabold tracking-tight">Configurações</h1>
+        <p className="text-sm text-muted-foreground">
+          Preferências de aparência, segurança e conta.
+        </p>
+      </div>
 
-      <div className="space-y-4">
-        <Card className="rounded-2xl">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 font-heading text-base font-bold">
-              <Palette className="size-4 text-primary" />
-              Aparencia
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium">Tema</p>
-                <p className="text-xs text-muted-foreground">
-                  Escolha entre claro, escuro ou sistema
-                </p>
-              </div>
-              <ThemeToggle variant="segmented" />
+      <div className="space-y-6">
+        {/* Aparencia */}
+        <section className="rounded-3xl border-[3px] border-ink bg-card p-6 shadow-hard">
+          <div className="mb-5 flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--sun)] border-[2px] border-ink text-ink">
+              <Palette className="size-5" />
+            </span>
+            <h2 className="font-heading text-lg font-bold">Aparência</h2>
+          </div>
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <p className="text-sm font-medium">Tema</p>
+              <p className="text-xs text-muted-foreground">
+                Escolha entre claro, escuro ou sistema
+              </p>
             </div>
-          </CardContent>
-        </Card>
+            <ThemeToggle variant="segmented" />
+          </div>
+        </section>
 
-        <Card className="rounded-2xl">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 font-heading text-base font-bold">
-              <Shield className="size-4 text-primary" />
-              Seguranca
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handlePasswordUpdate} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="newPassword" className="font-heading text-[13px] font-semibold">Nova senha</Label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                  <Input
-                    id="newPassword"
-                    type="password"
-                    placeholder="Minimo 6 caracteres"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    required
-                    className="h-11 rounded-xl border-[1.5px] pl-10"
-                  />
-                </div>
+        {/* Seguranca */}
+        <section className="rounded-3xl border-[3px] border-ink bg-card p-6 shadow-hard">
+          <div className="mb-5 flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--sun)] border-[2px] border-ink text-ink">
+              <Shield className="size-5" />
+            </span>
+            <h2 className="font-heading text-lg font-bold">Segurança</h2>
+          </div>
+
+          <form onSubmit={handlePasswordUpdate} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="newPassword" className={FIELD_LABEL}>
+                Nova senha
+              </Label>
+              <div className="relative">
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-primary/50" />
+                <Input
+                  id="newPassword"
+                  type="password"
+                  placeholder="Mínimo 6 caracteres"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  required
+                  className={FIELD_INPUT}
+                />
               </div>
+            </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="confirmPassword" className="font-heading text-[13px] font-semibold">Confirmar nova senha</Label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                  <Input
-                    id="confirmPassword"
-                    type="password"
-                    placeholder="Repita a nova senha"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    required
-                    className="h-11 rounded-xl border-[1.5px] pl-10"
-                  />
-                </div>
+            <div className="space-y-2">
+              <Label htmlFor="confirmPassword" className={FIELD_LABEL}>
+                Confirmar nova senha
+              </Label>
+              <div className="relative">
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-primary/50" />
+                <Input
+                  id="confirmPassword"
+                  type="password"
+                  placeholder="Repita a nova senha"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  className={FIELD_INPUT}
+                />
               </div>
+            </div>
 
-              {passwordError && (
-                <div
-                  role="alert"
-                  aria-live="polite"
-                  className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive"
-                >
-                  <AlertCircle className="size-4 shrink-0" />
-                  {passwordError}
-                </div>
-              )}
-
-              <Button
-                type="submit"
-                className="h-12 w-full rounded-xl bg-[image:var(--gradient-brand)] font-heading text-sm font-semibold text-white hover:brightness-105"
-                disabled={updatingPassword}
+            {passwordError && (
+              <div
+                role="alert"
+                aria-live="polite"
+                className="flex items-center gap-2 rounded-xl border-[2px] border-[var(--coral)] bg-destructive/10 p-3 text-sm text-destructive"
               >
-                {updatingPassword ? 'Atualizando...' : 'Atualizar senha'}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
+                <AlertCircle className="size-4 shrink-0" />
+                {passwordError}
+              </div>
+            )}
 
-        <Card className="rounded-2xl border-destructive/20">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 font-heading text-base font-bold">
-              <Trash2 className="size-4 text-destructive" />
-              Conta
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p
-              id="delete-account-help"
-              className="mb-4 text-sm text-muted-foreground"
+            <Button
+              type="submit"
+              className="h-12 w-full rounded-xl border-[2px] border-ink bg-[var(--sun)] text-ink font-heading font-bold hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+              disabled={updatingPassword}
             >
-              Ao excluir sua conta, voce sera desconectado. Para exclusao definitiva dos seus dados, entre em contato com o suporte.
-            </p>
-            <AlertDialog>
-              <AlertDialogTrigger
-                render={
-                  <Button
-                    variant="destructive"
-                    aria-describedby="delete-account-help"
-                    className="h-12 w-full rounded-xl font-heading text-sm font-semibold"
-                    disabled={deleting}
-                  />
-                }
-              >
-                <Trash2 className="size-4" />
-                {deleting ? 'Excluindo...' : 'Excluir conta'}
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Excluir conta?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    Voce sera desconectado e precisara entrar em contato com o suporte para exclusao definitiva dos dados. Essa acao nao pode ser desfeita.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                  <AlertDialogAction
-                    variant="destructive"
-                    onClick={handleDeleteAccount}
-                  >
-                    Sim, excluir
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-          </CardContent>
-        </Card>
+              {updatingPassword ? 'Atualizando...' : 'Atualizar senha'}
+            </Button>
+          </form>
+        </section>
+
+        {/* Conta / Delete */}
+        <section
+          className="rounded-3xl border-[3px] border-[var(--coral)] bg-card p-6"
+          style={{ boxShadow: '6px 6px 0 var(--coral)' }}
+        >
+          <div className="mb-5 flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--coral)] border-[2px] border-ink text-[var(--cream)]">
+              <Trash2 className="size-5" />
+            </span>
+            <h2 className="font-heading text-lg font-bold">Conta</h2>
+          </div>
+          <p
+            id="delete-account-help"
+            className="mb-4 text-sm text-muted-foreground"
+          >
+            Ao excluir sua conta, você será desconectado. Para exclusão definitiva dos seus dados, entre em contato com o suporte.
+          </p>
+          <AlertDialog>
+            <AlertDialogTrigger
+              render={
+                <Button
+                  variant="destructive"
+                  aria-describedby="delete-account-help"
+                  className="h-11 w-full rounded-xl border-[2px] border-ink bg-destructive text-destructive-foreground font-heading font-bold hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                  disabled={deleting}
+                />
+              }
+            >
+              <Trash2 className="size-4" />
+              {deleting ? 'Excluindo...' : 'Excluir conta'}
+            </AlertDialogTrigger>
+            <AlertDialogContent className="border-[3px] border-ink rounded-3xl shadow-hard-lg">
+              <AlertDialogHeader>
+                <AlertDialogTitle className="font-heading text-xl font-extrabold">
+                  Excluir conta?
+                </AlertDialogTitle>
+                <AlertDialogDescription>
+                  Você será desconectado e precisará entrar em contato com o suporte para exclusão definitiva dos dados. Essa ação não pode ser desfeita.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                <AlertDialogAction
+                  variant="destructive"
+                  onClick={handleDeleteAccount}
+                  className="bg-destructive text-destructive-foreground border-[2px] border-ink rounded-xl font-heading font-bold hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                >
+                  Sim, excluir
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </section>
       </div>
     </div>
   )

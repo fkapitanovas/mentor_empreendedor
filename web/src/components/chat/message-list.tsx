@@ -10,9 +10,10 @@ import { TypingIndicator } from './typing-indicator'
 import type { Message } from '@/types/database'
 
 const SUGGESTIONS = [
-  'Como precificar meu produto?',
-  'Devo me formalizar como MEI?',
+  'Como precificar sem perder margem?',
+  'Devo formalizar MEI agora?',
   'Como atrair mais clientes?',
+  'Preciso de um sócio?',
 ]
 
 interface MessageListProps {
@@ -72,36 +73,42 @@ export function MessageList({
     return (
       <div
         ref={scrollRootRef}
-        className="flex flex-1 items-center justify-center p-8"
+        className="flex flex-1 items-start justify-start p-8 md:p-12"
         role="log"
         aria-live="polite"
         aria-busy={isStreaming}
         aria-label="Conversa com Max Impulso"
       >
-        <div className="flex flex-col items-center gap-5 text-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[image:var(--gradient-brand)] text-2xl font-bold text-white font-heading">
-            M
-          </div>
-          <div>
-            <h2 className="font-heading text-2xl font-extrabold bg-clip-text text-transparent bg-[image:var(--gradient-brand-text)]">
-              Ola! Sou o Max Impulso
-            </h2>
-            <p className="mt-1 text-base text-muted-foreground">
-              Seu mentor de negocios
-            </p>
-          </div>
+        <div className="w-full max-w-3xl">
+          <h1 className="font-heading text-[clamp(3rem,8vw,5.5rem)] font-extrabold leading-[0.92] tracking-tight text-ink">
+            Oi<span className="animate-wave" aria-hidden="true">👋🏽</span>
+            <br />
+            <span className="inline-block text-transparent italic" style={{ WebkitTextStroke: '3px var(--ink)' }}>
+              Sou o Max.
+            </span>
+          </h1>
+          <p className="mt-5 max-w-xl text-base text-muted-foreground">
+            Seu mentor de negócios. Pergunta livre — ou escolhe uma:
+          </p>
           {onSendSuggestion && (
-            <div className="flex flex-col gap-2 mt-2 w-full max-w-sm">
-              {SUGGESTIONS.map((text, i) => (
-                <button
-                  key={text}
-                  onClick={() => onSendSuggestion(text)}
-                  className="rounded-xl border border-border bg-secondary px-4 py-2.5 text-sm text-foreground transition-all duration-150 hover:border-primary/30 hover:bg-primary/5 text-left animate-message-in"
-                  style={{ animationDelay: `${i * 50}ms`, animationFillMode: 'backwards' }}
-                >
-                  {text}
-                </button>
-              ))}
+            <div className="mt-8 flex flex-wrap gap-3">
+              {SUGGESTIONS.map((text, i) => {
+                const variants = [
+                  'bg-[var(--sun)] text-ink -rotate-[2deg]',
+                  'bg-[var(--coral)] text-[var(--cream)] rotate-[1.5deg]',
+                  'bg-primary text-primary-foreground -rotate-[1deg]',
+                ]
+                return (
+                  <button
+                    key={text}
+                    onClick={() => onSendSuggestion(text)}
+                    className={`rounded-full border-[2px] border-ink px-5 py-2.5 font-heading text-[15px] font-semibold shadow-hard-sm transition-all duration-200 hover:rotate-0 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_var(--ink)] animate-message-in ${variants[i % 3]}`}
+                    style={{ animationDelay: `${i * 80}ms`, animationFillMode: 'backwards' }}
+                  >
+                    {text}
+                  </button>
+                )
+              })}
             </div>
           )}
         </div>
