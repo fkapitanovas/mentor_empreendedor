@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, Suspense } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
@@ -9,6 +9,8 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Eye, EyeOff, Mail, Lock, AlertCircle } from 'lucide-react'
+
+const HAS_LOGGED_IN_KEY = 'max-has-logged-in'
 
 function LoginForm() {
   const router = useRouter()
@@ -20,6 +22,18 @@ function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [hasLoggedInBefore, setHasLoggedInBefore] = useState(false)
+
+  // Detecta se o usuário já logou ao menos uma vez nesse browser
+  useEffect(() => {
+    try {
+      // Sync de localStorage para state React no mount (padrão de hydration).
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setHasLoggedInBefore(localStorage.getItem(HAS_LOGGED_IN_KEY) === '1')
+    } catch {
+      // localStorage indisponível (modo privado) — trata como primeira vez
+    }
+  }, [])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -38,6 +52,12 @@ function LoginForm() {
       return
     }
 
+    try {
+      localStorage.setItem(HAS_LOGGED_IN_KEY, '1')
+    } catch {
+      // ignore
+    }
+
     router.push('/')
   }
 
@@ -53,14 +73,30 @@ function LoginForm() {
       />
       <div className="relative rounded-3xl border-[3px] border-ink bg-card p-8 shadow-hard-lg">
         <div>
-          <h1 className="font-heading text-[2.75rem] font-extrabold leading-[0.98] tracking-tight">
-            Volta aí,{' '}
-            <em className="not-italic bg-[image:var(--gradient-brand-strong)] bg-clip-text text-transparent">
-              bora
-            </em>{' '}
-            crescer.
-          </h1>
-          <p className="mt-3 text-sm text-muted-foreground">Tudo certo — só entrar.</p>
+          {hasLoggedInBefore ? (
+            <>
+              <h1 className="font-heading text-[2.75rem] font-extrabold leading-[0.98] tracking-tight">
+                Volta aí,{' '}
+                <em className="not-italic bg-[image:var(--gradient-brand-strong)] bg-clip-text text-transparent">
+                  bora
+                </em>{' '}
+                crescer.
+              </h1>
+              <p className="mt-3 text-sm text-muted-foreground">Tudo certo — só entrar.</p>
+            </>
+          ) : (
+            <>
+              <h1 className="font-heading text-[2.75rem] font-extrabold leading-[0.98] tracking-tight">
+                <em className="not-italic bg-[image:var(--gradient-brand-strong)] bg-clip-text text-transparent">
+                  Bora
+                </em>{' '}
+                empreender.
+              </h1>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Entre na sua conta — ou crie uma agora.
+              </p>
+            </>
+          )}
         </div>
         <form onSubmit={handleSubmit} className="mt-8 space-y-5">
           {urlError === 'invalid_link' && (
