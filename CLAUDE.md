@@ -227,6 +227,8 @@ Todo o conteúdo curado do system prompt vem dos arquivos originais do projeto, 
 
 - **`docs/Geração de Valor – Flávio Augusto.pdf`**, **`docs/Geração de Valor 2 - ...pdf`**, **`docs/Geração de Valor 3 - ...pdf`** — livros lidos na íntegra para enriquecer conceitos além dos resumos do docx.
 
+- **`docs/Guia-Definitivo-MEI-Sebrae-SC.pdf`** — e-book do Sebrae-SC com passo-a-passo oficial de formalização, emissão de DAS/DASN/NF, baixa, certidões negativas, 10 dicas para buscar crédito, perfil do empreendedor. Alimenta a seção "GUIA SEBRAE — PROCEDIMENTOS PRATICOS" em `web/src/lib/prompts/institucional.ts`. Dados numéricos específicos do PDF (limite R$60k, DAS R$44-50, pesquisa GEM 2015) **não** são usados — valores atuais (R$81k, DAS baseado em salário mínimo R$1.621, etc.) vêm da seção principal de `institucional.ts`. O guia contribui apenas com procedimentos (ainda válidos), dicas pedagógicas e princípios de gestão.
+
 - **Livros lidos na íntegra (externos ao `docs/`, registrados no cabeçalho de `livros.ts`)**: O Mito do Empreendedor (Gerber), O Poder do Hábito (Duhigg — full), Obsessão pelo Cliente (Bryar/Carr), Primeiro Pergunte Porquê (Sinek), Lucro Primeiro (Michalowicz), Essencialismo (McKeown), Mindset (Dweck), Pai Rico Pai Pobre (Kiyosaki — resumo). Negócios: um assunto de mulheres (Ana Fontes) — transcrição Kindle→MD em `~/Documents/livros/negocios-assunto-de-mulheres.md`.
 
 **Curadoria v1.2 (21/04/2026):** 3 livros removidos por desalinhamento com MEI BR (De Zero a Um, O Lado Difícil das Coisas Difíceis, Sonho Grande); 3 livros reduzidos drasticamente (Obsessão pelo Cliente 195→45 linhas, Empresas Feitas para Vencer 35→15, A Startup Enxuta 30→15). Ver seção 8.3 do PRD para razões e lista de "não voltar".

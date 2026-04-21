@@ -112,4 +112,135 @@ de CBS e IBS. Nao pode ser MEI simultaneamente.
 VALORES-CHAVE 2026:
 - Salario minimo: R$1.621 | DAS Comercio: R$82,05 | DAS Servicos: R$86,05
 - Limite MEI: R$81.000/ano | Pronampe: ate R$250 mil (Selic+6%)
-- INSS complementar: R$243,15/mes | Parcela minima DAS: R$50`
+- INSS complementar: R$243,15/mes | Parcela minima DAS: R$50
+
+---
+
+GUIA SEBRAE — PROCEDIMENTOS PRATICOS (fonte: "Guia Definitivo do MEI", Sebrae-SC):
+
+FORMALIZACAO (passo-a-passo Portal do Empreendedor):
+- Documentos: CPF, RG, comprovante de residencia/endereco comercial, carne IPTU. \
+Se declara IR: numero do recibo da ultima ou penultima declaracao. Se nunca declarou: \
+Titulo de Eleitor. (Atualizacao 2026: formalizacao exige conta gov.br Prata/Ouro.)
+- Viabilidade: antes de formalizar, consultar a prefeitura para checar se a \
+atividade pode ser exercida no endereco escolhido (uso do solo, restricoes municipais).
+- Inscricao online: portaldoempreendedor.gov.br → MEI → Formalizacao → Nova Inscricao. \
+Informar CPF, dados pessoais, RG, telefone, email, capital social, ocupacao principal \
+(e secundarias se houver), forma de atuacao (fixo, porta a porta, internet, etc), \
+endereco comercial e residencial, aceitar 3 declaracoes obrigatorias. Imprimir CCMEI.
+- Alvara de Licenca e Funcionamento: atender requisitos sanitarios, ambientais, \
+tributarios, de seguranca, uso do solo — cancelamento do Alvara Provisorio se descumprir.
+
+ALTERACOES NO CCMEI:
+- Portal → MEI → Alteracao de dados cadastrais → gerar codigo de acesso (anotar).
+- Redirecionamento para Simples Nacional: CNPJ + CPF + captcha + Titulo Eleitor/recibo IR.
+- Voltar ao Portal, informar CNPJ + CPF + codigo, alterar dados, imprimir CCMEI atualizado.
+- IMPORTANTE: toda alteracao precisa ser comunicada as prefeituras e orgaos licenciadores \
+(vigilancia sanitaria, bombeiros, SEFAZ, etc). Portal so atualiza nivel federal.
+
+EMISSAO DE DAS (aplicativo PGMEI):
+- Portal do Empreendedor → MEI → Emissao de Carne de Pagamento → PGMEI.
+- CNPJ + captcha → Emitir Guia de Pagamento (DAS) → escolher ano e meses → gerar PDF.
+- Vencimento dia 20. Atraso gera multa 0,33%/dia (max 20%) + Selic. Cuidado com boletos \
+falsos enviados por correio/email/SMS: MEI nao recebe cobranca nao solicitada.
+
+DECLARACAO ANUAL (DASN-SIMEI):
+- Portal Simples Nacional → SIMEI → DASN-SIMEI → CNPJ + captcha → ORIGINAL + ano → \
+Total Receita Anual + Total Receita Comercio/Industria → Transmitir → imprimir e guardar.
+- Prazo: 31/maio. Obrigatoria mesmo sem faturamento. Multa minima R$50.
+- Se ultrapassou teto ate 20% (ate R$97.200): gera DAS complementar sobre excedente, \
+migra para ME em janeiro. Ultrapassou mais: desenquadramento IMEDIATO e retroativo.
+
+EMISSAO DE NOTA FISCAL:
+- Servicos (NFS-e): obrigatoria desde 01/01/2026 para TODO prestador MEI. Usar Portal \
+Nacional NFS-e (nfse.gov.br) ou app NFS-e Mobile. Sem certificado digital. Informar CRT 4.
+- Produtos (NF-e): aguardar dia 10 do mes seguinte a formalizacao, fazer Inscricao \
+Estadual na SEFAZ, usar emissor gratuito emissornfe.sebrae.com.br. Maioria dos estados \
+exige certificado digital.
+- Quando emitir: sempre para PJ ou governo, e quando PF solicitar. Opcional para PF \
+que nao solicitar. MEI nao retem PIS/COFINS/CSLL na nota.
+
+CERTIDOES NEGATIVAS (para licitacoes e cadastro):
+- Certidao Conjunta Receita Federal + PGFN (Divida Ativa da Uniao)
+- CND INSS, CRF FGTS, Certidao Estadual, Certidao Municipal
+- Todas emitidas online com CNPJ. Inadimplencia no DAS impede emissao → impede \
+participacao em licitacoes → perde acesso ao Contrata+Brasil.
+
+BAIXA DO MEI:
+- Portal → MEI → Solicitacao de Baixa Cadastral → gerar codigo de acesso.
+- Validar no Simples Nacional, voltar ao Portal, informar dados, aceitar declaracao \
+de baixa, conferir, enviar, imprimir CCMEI. Sistema baixa mesmo com debitos pendentes \
+(mas debitos ainda serao cobrados — art. 9º LC 123/2006).
+- ATENCAO: baixar tambem nas prefeituras, SEFAZ, bombeiros, vigilancia sanitaria \
+(Portal so baixa nivel federal).
+- Apos baixa: emitir DASN-SIMEI de extincao (data do evento = data da baixa) + \
+certidao de baixa no CNPJ da Receita Federal.
+
+10 DICAS DO SEBRAE PARA BUSCAR CREDITO:
+1. Avalie necessidades — financiamento e mesmo a melhor opcao?
+2. Calcule lucros — o lucro cobre as parcelas?
+3. Escolha a linha certa — juros E prazos compativeis
+4. Cuidado com custos escondidos — CET inclui encargos alem da taxa
+5. Pesquise taxas em multiplas instituicoes
+6. Prepare documentacao — agiliza analise
+7. Justifique o motivo — como o recurso sera aplicado
+8. Separe PF de PJ — credito pessoal atrapalha analise da empresa
+9. Cuidado com vendas casadas de produtos bancarios
+10. Previna-se — deixe linha pre-aprovada mesmo sem precisar agora.
+
+MODALIDADES DE FINANCIAMENTO (para escolher a linha certa):
+- Capital de Giro: mercadorias, reposicao de estoque, despesas administrativas
+- Investimento Fixo: maquinas, equipamentos, obras civis
+- Misto: capital de giro + investimento
+- Onde buscar: Banco do Brasil, Caixa, cooperativas de credito, linhas de microcredito, \
+Pronampe, Procred 360 (ver secao CREDITO acima para detalhes atualizados).
+
+PERFIL DO EMPREENDEDOR DE SUCESSO (visao Sebrae):
+- Coragem para arriscar com planejamento (nunca tudo-ou-nada na ideia mais estranha)
+- Responsabilidade pelas escolhas — liderar e priorizar
+- Escolher mentor certo — alguem que ja passou pela fase de abertura/consolidacao
+- Saber ouvir clientes — feedback via conversa direta, redes sociais, canais de atendimento
+- Treinar persuasao — vender produto, ideia e a si mesmo e habilidade treinavel
+- Construir rede — eventos do setor, conexoes com quem tem interesse no que voce faz
+
+GESTAO DO DIA A DIA (recomendacoes Sebrae, agnostico de ferramenta):
+- Planejamento: Business Model Canvas para estruturar todas as areas do negocio em 1 pagina; \
+mapas mentais para traduzir ideias em planos de acao.
+- Pesquisa de mercado: Google Trends para entender demanda e sazonalidade por termo/regiao; \
+Audience Insights (Meta) para mapear publico-alvo.
+- Operacoes: agenda digital compartilhada, quadros Kanban (to-do/doing/done) para visualizar \
+processos, checklists recorrentes para tarefas criticas.
+- Financas: planilha de controle de ativos e fluxo de caixa E O INSTRUMENTO MINIMO \
+indispensavel — mesmo sem contabilidade formal, registrar toda circulacao de recursos. \
+Ferramenta gratuita do Sebrae: "Como Elaborar Controles Financeiros" (sebrae.com.br).
+- Vendas: funil de vendas com etapas (prospect, qualificado, proposta, fechado) para \
+visualizar oportunidades paradas e definir acoes.
+- Pagamento: maquininhas moveis (tablet/celular) como alternativa de menor custo vs \
+maquinas tradicionais; integracao com ecommerce via PayPal/Pagseguro/Mercado Pago.
+- Marketing digital: email marketing (MailChimp e similares) para aniversarios, datas \
+comemorativas, promocoes — criar relacionamento, nao so vender. Formularios (Google \
+Forms, SurveyMonkey) para coletar dados de clientes e pesquisas de satisfacao.
+- Atendimento: ticketing (Zendesk e similares) para manter historico e padronizar \
+respostas; Whatsapp Business como canal central quando o volume ainda e baixo.
+- Site: construtores no-code (tipo SitePX, similares) para quem nao programa — \
+dominio proprio .com.br + integracao com redes sociais.
+- Principio: adapte a ferramenta ao seu negocio, nao o contrario. Comece simples \
+(checklist, planilha) e evolua para ferramentas mais sofisticadas conforme a \
+demanda real aparecer.
+
+NOTA IMPORTANTE — EMPREENDEDORISMO NO BRASIL (dados GEM 2015, tendencia estrutural):
+- 3 em cada 10 brasileiros adultos sao considerados empreendedores.
+- Brasil e o pais mais empreendedor em taxa percentual entre adultos (GEM 2015).
+- Metade dos empreendedores ativos abriu a empresa nos ultimos 3,5 anos — o MEI e \
+o maior movimento de formalizacao empresarial do mundo (criado pela LC 128/2008).
+- Perfil: mais jovem (25-39 anos), mais feminino, mais negro, mais classe C.
+- Apos formalizacao pelo MEI: 55% aumentaram faturamento, 52% melhoraram controle \
+financeiro, 54% ampliaram investimentos.
+
+CANAIS SEBRAE (onde encaminhar duvidas especificas):
+- Sebrae local (unidades estaduais) e "Sala do Empreendedor" municipal — atendimento \
+presencial gratuito.
+- +348 cursos online gratuitos com certificado: sebrae.com.br/cursosonline
+- Trilhas por fase: Comece (iniciando), Faca (mantendo), Alcance (crescendo).
+- Quando recomendar: duvidas tributarias especificas (contador + Sebrae), elaboracao \
+de plano de negocios formal, captacao de credito maior, consultorias especializadas.`
