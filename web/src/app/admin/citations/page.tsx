@@ -32,7 +32,7 @@ type Response = {
 const ESTAGIO_OPTIONS = [
   { value: '', label: 'Todos os estágios' },
   { value: 'iniciante', label: 'Iniciante' },
-  { value: 'em_crescimento', label: 'Em crescimento' },
+  { value: 'crescimento', label: 'Em crescimento' },
   { value: 'consolidado', label: 'Consolidado' },
 ]
 

@@ -106,7 +106,7 @@ export function MessageList({
             <div className="mt-8 flex flex-wrap gap-3">
               {SUGGESTIONS.map((text, i) => {
                 const variants = [
-                  'bg-[var(--sun)] text-ink -rotate-[2deg]',
+                  'bg-[var(--sun)] text-on-bright -rotate-[2deg]',
                   'bg-[var(--coral)] text-[var(--cream)] rotate-[1.5deg]',
                   'bg-primary text-primary-foreground -rotate-[1deg]',
                 ]
@@ -186,7 +186,7 @@ export function MessageList({
             type="button"
             onClick={scrollToTop}
             aria-label="Ir para o início da conversa"
-            className="flex size-11 items-center justify-center rounded-full border-[2px] border-ink bg-card text-ink shadow-hard-sm transition-all duration-150 hover:bg-[var(--sun)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--ink)] focus-visible:bg-[var(--sun)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 active:scale-95"
+            className="flex size-11 items-center justify-center rounded-full border-[2px] border-ink bg-card text-ink shadow-hard-sm transition-all duration-150 hover:bg-[var(--sun)] hover:text-on-bright hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--ink)] focus-visible:bg-[var(--sun)] focus-visible:text-on-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 active:scale-95"
           >
             <ChevronsUp className="size-5" aria-hidden="true" />
           </button>
@@ -194,7 +194,7 @@ export function MessageList({
             type="button"
             onClick={scrollToBottom}
             aria-label="Ir para o final da conversa"
-            className="flex size-11 items-center justify-center rounded-full border-[2px] border-ink bg-card text-ink shadow-hard-sm transition-all duration-150 hover:bg-[var(--sun)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--ink)] focus-visible:bg-[var(--sun)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 active:scale-95"
+            className="flex size-11 items-center justify-center rounded-full border-[2px] border-ink bg-card text-ink shadow-hard-sm transition-all duration-150 hover:bg-[var(--sun)] hover:text-on-bright hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--ink)] focus-visible:bg-[var(--sun)] focus-visible:text-on-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 active:scale-95"
           >
             <ChevronsDown className="size-5" aria-hidden="true" />
           </button>

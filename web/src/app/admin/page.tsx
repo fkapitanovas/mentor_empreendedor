@@ -9,14 +9,14 @@ import { Skeleton } from '@/components/ui/skeleton'
 import type { User } from '@/types/database'
 
 const ESTAGIO_BADGE: Record<string, string> = {
-  iniciante: 'bg-[var(--sun)] text-ink border-[2px] border-ink',
-  em_crescimento: 'bg-[var(--coral)] text-[var(--cream)] border-[2px] border-ink',
+  iniciante: 'bg-[var(--sun)] text-on-bright border-[2px] border-ink',
+  crescimento: 'bg-[var(--coral)] text-[var(--cream)] border-[2px] border-ink',
   consolidado: 'bg-primary text-primary-foreground border-[2px] border-ink',
 }
 
 const ESTAGIO_LABELS: Record<string, string> = {
   iniciante: 'Iniciante',
-  em_crescimento: 'Em Crescimento',
+  crescimento: 'Em crescimento',
   consolidado: 'Consolidado',
 }
 
@@ -148,7 +148,7 @@ export default function AdminPage() {
           <Link href="/admin/citations">
             <Button
               variant="outline"
-              className="border-[2px] border-ink rounded-xl font-heading font-bold hover:bg-[var(--sun)] hover:text-ink transition-all"
+              className="border-[2px] border-ink rounded-xl font-heading font-bold hover:bg-[var(--sun)] hover:text-on-bright transition-all"
             >
               <Sparkles className="size-4" />
               Citações do prompt
@@ -159,7 +159,7 @@ export default function AdminPage() {
             onClick={() => {
               window.location.href = '/api/admin/users?format=csv'
             }}
-            className="border-[2px] border-ink rounded-xl font-heading font-bold hover:bg-[var(--sun)] hover:text-ink transition-all"
+            className="border-[2px] border-ink rounded-xl font-heading font-bold hover:bg-[var(--sun)] hover:text-on-bright transition-all"
           >
             <Download className="size-4" />
             Exportar CSV
@@ -239,7 +239,7 @@ export default function AdminPage() {
           <Button
             onClick={handleLoadMore}
             disabled={loadingMore}
-            className="h-12 rounded-xl border-[2px] border-ink bg-[var(--sun)] text-ink font-heading font-bold hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+            className="h-12 rounded-xl border-[2px] border-ink bg-[var(--sun)] text-on-bright font-heading font-bold hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
           >
             {loadingMore ? 'Carregando...' : 'Carregar mais'}
           </Button>

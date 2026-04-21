@@ -110,7 +110,7 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
           </Sheet>
 
           <div className="inline-flex items-center gap-2 pl-1.5 pr-3 py-1 bg-primary text-primary-foreground rounded-full font-heading text-xs font-bold uppercase tracking-widest shadow-hard-sm -rotate-[1.5deg]">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--sun)] text-ink font-heading font-extrabold text-sm">M</span>
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--sun)] text-on-bright font-heading font-extrabold text-sm">M</span>
             Max Impulso
           </div>
         </div>

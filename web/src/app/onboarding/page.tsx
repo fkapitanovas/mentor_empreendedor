@@ -170,7 +170,7 @@ export default function OnboardingPage() {
       <div className="w-full max-w-lg space-y-6">
         <div className="flex justify-center">
           <div className="inline-flex items-center gap-2 pl-1.5 pr-3 py-1 bg-primary text-primary-foreground rounded-full font-heading text-xs font-bold uppercase tracking-widest shadow-hard-sm -rotate-[2deg]">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--sun)] text-ink font-extrabold text-sm">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--sun)] text-on-bright font-extrabold text-sm">
               M
             </span>
             Max Impulso
@@ -304,7 +304,7 @@ export default function OnboardingPage() {
                   </Button>
                   <Button
                     type="submit"
-                    className="h-12 flex-1 rounded-xl border-[2px] border-ink bg-[var(--sun)] text-ink font-heading font-bold hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                    className="h-12 flex-1 rounded-xl border-[2px] border-ink bg-[var(--sun)] text-on-bright font-heading font-bold hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
                     disabled={saving || skipping}
                   >
                     {saving ? 'Salvando...' : 'Salvar'}

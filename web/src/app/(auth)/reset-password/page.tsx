@@ -67,7 +67,7 @@ export default function ResetPasswordPage() {
           className="relative flex flex-col items-center gap-5 rounded-3xl border-[3px] border-ink bg-card p-8 shadow-hard-lg"
         >
           <div className="animate-message-in flex h-16 w-16 items-center justify-center rounded-full border-[3px] border-ink bg-[var(--sun)] shadow-hard-sm">
-            <CheckCircle className="h-8 w-8 text-[color:var(--ink)]" />
+            <CheckCircle className="h-8 w-8 text-on-bright" />
           </div>
           <h2 className="font-heading text-2xl font-bold text-center">Senha redefinida!</h2>
           <p className="text-sm text-muted-foreground text-center">

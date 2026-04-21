@@ -64,7 +64,7 @@ function MessageBubbleInner({ message }: MessageBubbleProps) {
       )}
     >
       {isAssistant && (
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-[2px] border-ink bg-[var(--sun)] text-ink text-xs font-extrabold">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-[2px] border-ink bg-[var(--sun)] text-on-bright text-xs font-extrabold">
           M
         </div>
       )}

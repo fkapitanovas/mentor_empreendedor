@@ -9,7 +9,7 @@ export default function AuthLayout({
         <div className="flex justify-center">
           <div className="inline-flex items-center gap-2 pl-1.5 pr-4 py-1.5 bg-primary text-primary-foreground rounded-full font-heading text-xs font-bold uppercase tracking-widest shadow-hard-sm -rotate-[2deg]">
             <span
-              className="flex h-7 w-7 items-center justify-center rounded-full bg-[var(--sun)] font-heading text-sm font-extrabold text-[color:var(--ink)]"
+              className="flex h-7 w-7 items-center justify-center rounded-full bg-[var(--sun)] font-heading text-sm font-extrabold text-on-bright"
               aria-hidden
             >
               M

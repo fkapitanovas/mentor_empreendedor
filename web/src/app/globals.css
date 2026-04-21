@@ -42,6 +42,7 @@
 
   /* Tropical brand extras */
   --color-ink: var(--ink);
+  --color-on-bright: var(--on-bright);
   --color-coral: var(--coral);
   --color-sun: var(--sun);
 
@@ -108,6 +109,7 @@
   --sun: #FCD34D;
   --cream: #FFF8E7;
   --jungle: #065F46;
+  --on-bright: #0F3E2A;
 
   /* Brand gradients (used across buttons, avatars) */
   --gradient-brand: linear-gradient(135deg, #065F46 0%, #0F3E2A 100%);
@@ -162,6 +164,7 @@
   --sun: #FCD34D;
   --cream: #FFF8E7;
   --jungle: #0F3E2A;
+  --on-bright: #0A1A12;
 
   --gradient-brand: linear-gradient(135deg, #10B981 0%, #065F46 100%);
   --gradient-brand-strong: linear-gradient(135deg, #F87171 0%, #FCD34D 100%);

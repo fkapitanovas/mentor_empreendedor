@@ -99,7 +99,7 @@ export default function SettingsPage() {
         {/* Aparencia */}
         <section className="rounded-3xl border-[3px] border-ink bg-card p-6 shadow-hard">
           <div className="mb-5 flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--sun)] border-[2px] border-ink text-ink">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--sun)] border-[2px] border-ink text-on-bright">
               <Palette className="size-5" />
             </span>
             <h2 className="font-heading text-lg font-bold">Aparência</h2>
@@ -118,7 +118,7 @@ export default function SettingsPage() {
         {/* Seguranca */}
         <section className="rounded-3xl border-[3px] border-ink bg-card p-6 shadow-hard">
           <div className="mb-5 flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--sun)] border-[2px] border-ink text-ink">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--sun)] border-[2px] border-ink text-on-bright">
               <Shield className="size-5" />
             </span>
             <h2 className="font-heading text-lg font-bold">Segurança</h2>
@@ -174,7 +174,7 @@ export default function SettingsPage() {
 
             <Button
               type="submit"
-              className="h-12 w-full rounded-xl border-[2px] border-ink bg-[var(--sun)] text-ink font-heading font-bold hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+              className="h-12 w-full rounded-xl border-[2px] border-ink bg-[var(--sun)] text-on-bright font-heading font-bold hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
               disabled={updatingPassword}
             >
               {updatingPassword ? 'Atualizando...' : 'Atualizar senha'}

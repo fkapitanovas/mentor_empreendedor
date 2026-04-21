@@ -103,7 +103,7 @@ export default function RegisterPage() {
           className="relative flex flex-col items-center gap-5 rounded-3xl border-[3px] border-ink bg-card p-8 shadow-hard-lg"
         >
           <div className="animate-message-in flex h-16 w-16 items-center justify-center rounded-full border-[3px] border-ink bg-[var(--sun)] shadow-hard-sm">
-            <Mail className="h-8 w-8 text-[color:var(--ink)]" />
+            <Mail className="h-8 w-8 text-on-bright" />
           </div>
           <div className="text-center">
             <h2 className="font-heading text-2xl font-bold">Verifique seu e-mail</h2>
@@ -255,7 +255,7 @@ export default function RegisterPage() {
             {loading ? '...' : 'Criar conta →'}
           </Button>
           <p className="text-sm text-muted-foreground text-center">
-            Ja tem conta?{' '}
+            Já tem conta?{' '}
             <Link
               href="/login"
               className="text-accent font-bold border-b-2 border-accent hover:bg-accent hover:text-accent-foreground transition-colors"

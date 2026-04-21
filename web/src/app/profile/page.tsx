@@ -20,13 +20,13 @@ import {
 
 const ESTAGIOS = [
   { value: 'iniciante', label: 'Iniciante' },
-  { value: 'em_crescimento', label: 'Em Crescimento' },
+  { value: 'crescimento', label: 'Em crescimento' },
   { value: 'consolidado', label: 'Consolidado' },
 ]
 
 const ESTAGIO_BADGE: Record<string, string> = {
-  iniciante: 'bg-[var(--sun)] text-ink border-[2px] border-ink',
-  em_crescimento: 'bg-[var(--coral)] text-[var(--cream)] border-[2px] border-ink',
+  iniciante: 'bg-[var(--sun)] text-on-bright border-[2px] border-ink',
+  crescimento: 'bg-[var(--coral)] text-[var(--cream)] border-[2px] border-ink',
   consolidado: 'bg-primary text-primary-foreground border-[2px] border-ink',
 }
 
@@ -251,7 +251,7 @@ export default function ProfilePage() {
           <div className="px-6 pb-6 md:px-8 md:pb-8">
             <Button
               type="submit"
-              className="h-12 w-full rounded-xl border-[2px] border-ink bg-[var(--sun)] text-ink font-heading font-bold hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+              className="h-12 w-full rounded-xl border-[2px] border-ink bg-[var(--sun)] text-on-bright font-heading font-bold hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
               disabled={saving}
             >
               <Save className="size-4" />

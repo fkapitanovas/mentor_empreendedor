@@ -67,7 +67,7 @@ export function ChatInput({ onSend, isStreaming, onStop }: ChatInputProps) {
             handleInput()
           }}
           onKeyDown={handleKeyDown}
-          placeholder="O que voce gostaria de saber?"
+          placeholder="O que você gostaria de saber?"
           disabled={textareaDisabled}
           rows={1}
           className="flex-1 resize-none rounded-xl border-[2px] border-ink bg-popover px-4 py-3 font-sans text-[15px] leading-relaxed placeholder:text-muted-foreground focus-visible:border-accent focus-visible:shadow-[4px_4px_0_var(--coral)] focus-visible:-translate-x-0.5 focus-visible:-translate-y-0.5 focus-visible:outline-none transition-all disabled:cursor-not-allowed disabled:opacity-50"
@@ -78,7 +78,7 @@ export function ChatInput({ onSend, isStreaming, onStop }: ChatInputProps) {
           onClick={handleButtonClick}
           disabled={buttonDisabled}
           size="icon"
-          className={`h-12 w-12 shrink-0 rounded-full border-[2px] border-ink ${canStop ? 'bg-[var(--coral)] text-[var(--cream)]' : 'bg-[var(--sun)] text-ink'} hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 focus-visible:ring-0 focus-visible:border-accent disabled:opacity-40 transition-all`}
+          className={`h-12 w-12 shrink-0 rounded-full border-[2px] border-ink ${canStop ? 'bg-[var(--coral)] text-[var(--cream)]' : 'bg-[var(--sun)] text-on-bright'} hover:bg-accent hover:text-accent-foreground hover:shadow-[4px_4px_0_var(--ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 focus-visible:ring-0 focus-visible:border-accent disabled:opacity-40 transition-all`}
           aria-label={canStop ? 'Parar resposta' : 'Enviar mensagem'}
         >
           {canStop ? <Square className="size-5" /> : <ArrowUp className="size-5" />}
