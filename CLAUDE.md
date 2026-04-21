@@ -19,13 +19,15 @@ Mentor virtual para microempreendedores brasileiros (MEIs, MEs, autônomos). Com
 ### Architecture
 - Chat minimalista estilo Claude.ai com streaming SSE
 - Múltiplas conversas por usuário (sidebar com lista)
-- System prompt modular (14 blocos + 2 dinâmicos): Identidade/Tom, Base de Conhecimento (13 gurus incl. Ana Fontes), Base de Livros (23 livros, curadoria v1.2 — foco em MEI BR), Regras de Interação, Personalização, Resolução de Conflitos (9 tensões), Referências Nicho (26 influenciadores), Base Institucional (Sebrae + gov.br), Base Impulso Stone (8 módulos), Formalização MEI, E-commerce/Marketplaces, Ferramentas Práticas, Diagnóstico/Atualização de Perfil
-- **PRD documentado** em `docs/PRD.md` (v1.2) — matrizes fase × assunto, tipo de negócio × guru, fontes institucionais detalhadas, mecanismo de adequação de respostas. PDF sempre disponível em `~/Downloads/PRD-MaxImpulso.pdf`.
+- System prompt modular (14 blocos + 2 dinâmicos): Identidade/Tom, Base de Conhecimento (13 gurus incl. Ana Fontes), Base de Livros (23 livros, curadoria v1.2 — foco em MEI BR), Regras de Interação, Personalização, Resolução de Conflitos (9 tensões), Referências Nicho (26 influenciadores), Base Institucional (Sebrae + gov.br + Guia Definitivo do MEI Sebrae-SC), Base Impulso Stone (8 módulos), Formalização MEI, E-commerce/Marketplaces, Ferramentas Práticas, Diagnóstico/Atualização de Perfil. **Total ~59.250 tokens (~30% do contexto 200k do Sonnet 4.6).**
+- **PRD documentado** em `docs/PRD.md` (v1.3) — matrizes fase × assunto, tipo de negócio × guru, fontes institucionais detalhadas, mecanismo de adequação de respostas. PDF sempre disponível em `~/Downloads/PRD-MaxImpulso.pdf`.
+- **Brand Max Impulso**: foguete SVG colorido (chama laranja/amarela + corpo dark + janela turquesa + aletas coral). Arquivos em `web/public/brand/` (icon-color, icon-dark, icon-white, horizontal lockup + preview HTML). Aplicado em favicon.ico (multi-size 16/32/48), icon.tsx (32×32), apple-icon.tsx (180×180), opengraph-image.tsx (1200×630) e PWA icons (192/512/maskable laranja #FF6B35 com foguete branco). Gerador em `scripts/generate-pwa-icons.mjs` (lê `brand/max-impulso-icon-color.svg`).
 - Onboarding opcional: formulário com 5 campos ou pular (IA captura organicamente)
 - Diagnóstico via conversa: Claude extrai perfil e sinaliza via tag `[PERFIL_EXTRAIDO]`
 - Atualização dinâmica: Claude detecta mudanças e sinaliza via tag `[PERFIL_ATUALIZADO]`
 - Tags removidas no client (`cleanProfileTags()` no useChat) antes de renderizar + ao carregar do DB
 - Admin: `/admin` com tabela de perfis + exportação CSV, protegido por `ADMIN_EMAILS` env var
+- **Observabilidade do prompt**: `/admin/citations` com dashboard de gurus/livros citados por estágio/setor/período. Tabela `prompt_citations` com snapshot do perfil no momento. Detecção via regex calibrada em `lib/observability/citations-catalog.ts`. Log fire-and-forget em `api/chat/route.ts` via service-role.
 - Memória de longo prazo: resumos a cada 20 mensagens, injetados no system prompt
 - Contexto: 100 últimas mensagens + resumo comprimido
 - Título de conversa gerado automaticamente via Claude Haiku após 1ª mensagem
@@ -60,9 +62,9 @@ Mentor virtual para microempreendedores brasileiros (MEIs, MEs, autônomos). Com
 
 ### Supabase
 - **Project ref**: wlpglssnqkjsydjylxjj
-- **Tabelas**: users, conversations, messages, conversation_summaries
+- **Tabelas**: users, conversations, messages, conversation_summaries, **prompt_citations** (21/04/2026 — observabilidade)
 - **Trigger**: `handle_new_user()` — auto-cria perfil em `public.users` quando signup em `auth.users`
-- **RLS**: habilitado em todas as tabelas com policies por auth.uid()
+- **RLS**: habilitado em todas as tabelas com policies por auth.uid() (`prompt_citations` sem policies — acesso só via service-role)
 - **Auth callback**: `/auth/callback` troca code por session (email confirm + password reset)
 - **SMTP**: Resend configurado via custom SMTP (host smtp.resend.com, port 465, user resend)
 - **Site URL**: https://maximpulso.com.br (configurado no Auth → URL Configuration)

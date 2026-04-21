@@ -375,8 +375,64 @@ Commit: `d1c2bbb chore: .vercelignore na raiz`
 
 ## Proximos passos prioritarios (pos-v1.2)
 - [ ] Adicionar livros de gap identificado: **$100M Offers** (Hormozi — precificacao/oferta), **Nunca Divida a Diferenca** (Chris Voss — negociacao), **Radical Candor** (Kim Scott — primeira contratacao)
-- [ ] Observabilidade do prompt: logar qual livro/guru e citado por estagio/setor para iterar curadoria
+- [x] Observabilidade do prompt: logar qual livro/guru e citado por estagio/setor para iterar curadoria (Etapa 20 — 21/04/2026)
 - [ ] PostHog analytics (retencao, funil de conversao)
 - [ ] Nichos sub-representados (pet, alimentacao geral, servicos domesticos, artesanato)
 - [ ] Service Worker opcional (PWA fase 2 offline)
 - [ ] Gaps de conteudo: juridico/compliance, saude mental/burnout, metricas CAC/LTV
+
+---
+
+## Etapa 19: Brand + Favicon/PWA/OG + Integração Sebrae ✅ (2026-04-21 noite)
+
+### Brand Max Impulso — foguete colorido aplicado em todos os ativos
+- [x] Copiar 4 SVGs fonte (color / dark / white / horizontal) + preview HTML para `web/public/brand/`
+- [x] Reescrever `icon.tsx` (32×32) e `apple-icon.tsx` (180×180) renderizando SVG inline via ImageResponse (satori)
+- [x] Redesenhar `opengraph-image.tsx` (1200×630): card com foguete + wordmark "MAX IMPULSO" + headline "Seu mentor de negócios, a qualquer hora." + pílula laranja `maximpulso.com.br`
+- [x] Regenerar `public/icon-192.png`, `icon-512.png` (foguete em tile creme arredondado) e `icon-maskable-512.png` (foguete branco sobre laranja `#FF6B35`, safe area 60%)
+- [x] Gerar `src/app/favicon.ico` multi-size (16/32/48) com PNGs embutidos via wrapper ICO manual
+- [x] Atualizar `manifest.webmanifest`: theme_color `#FF6B35` (Impulso), background_color `#FAFAF9`
+- [x] Estender `scripts/generate-pwa-icons.mjs` para ler `brand/max-impulso-icon-color.svg` e também produzir favicon.ico
+- [x] Deploy produção — verificação visual OK: OG com wordmark bem formado, apple-icon com foguete colorido, favicon pequeno mas reconhecível
+
+Commit: `e1eb754` feat(brand): aplicar logo Max Impulso em favicon, PWA e OG
+
+### Integração Sebrae ao prompt
+- [x] Salvar PDF em `docs/Guia-Definitivo-MEI-Sebrae-SC.pdf` (56 pp, 1.5 MB)
+- [x] Extrair conteúdo via `pypdf` e triar: manter procedimentos oficiais (ainda válidos) + pedagogia; descartar valores numéricos desatualizados (R$60k, DAS R$44-50) e ferramentas descontinuadas (Payleven, ZeroPaper, Qipu, Precifica, Markeup, E.R.P.Flex, etc.)
+- [x] Adicionar seção "GUIA SEBRAE — PROCEDIMENTOS PRATICOS" em `institucional.ts` (+130 linhas / ~2.050 tokens): formalização, alteração CCMEI, emissão DAS (PGMEI), DASN-SIMEI, NFS-e/NF-e, certidões negativas, baixa do MEI, 10 dicas Sebrae para buscar crédito, modalidades de financiamento, perfil do empreendedor, gestão do dia a dia (planejamento/pesquisa/operações/financeiro/vendas/pagamentos/marketing/atendimento/site), dados GEM 2015 (marcados como estruturais), canais Sebrae
+- [x] Atualizar CLAUDE.md (projeto) com referência ao PDF como fonte oficial
+- [x] Atualizar PRD para v1.3: bump versão, BASE_INSTITUCIONAL ~2.050 → ~4.100 tokens, total ~57.200 → ~59.250, seção 5.1 expandida com linha dedicada + nota editorial, seção 5.5 com 5 novas perguntas, anexo 9.2 atualizado, changelog no fim
+- [x] Regenerar `~/Downloads/PRD-MaxImpulso.pdf` (21 pp, 900 KB) via python-markdown + Chrome headless
+
+Commits: `b5c6534` feat(prompts): integrar Guia Sebrae-SC à base institucional · `dec4e42` docs(prd): v1.3
+
+---
+
+## Etapa 20: Observabilidade do prompt ✅ (2026-04-21 noite)
+
+Sistema de log de citações (gurus + livros) por mensagem do assistente, com dashboard admin para iterar a curadoria.
+
+### Detecção
+- [x] `web/src/lib/observability/citations-catalog.ts`: catálogo canônico com 13 gurus + 23 livros e patterns regex calibrados
+  - Nomes únicos (Cerbasi, Rufino, Arcuri) aceitos sozinhos
+  - Nomes ambíguos (Marcus, Rodrigo, Thiago) exigem sobrenome
+  - "Mindset" exige Dweck/autor no contexto (palavra genérica em pt-BR)
+  - "Rework" exige Jason Fried (verbo comum em inglês)
+- [x] `web/src/lib/observability/detect-citations.ts`: normaliza para global regex, conta ocorrências por `citation_key`
+- [x] Retorna array `{type, key, name, count}` por mensagem analisada
+
+### Pipeline de log
+- [x] Migration `web/sql/migration-citations.sql`: tabela `prompt_citations` com FKs (message/conversation/user) + snapshot (setor/estagio/faturamento_mensal) + citation_type/key/name/count + índices por user_created/estagio/setor/key/message. RLS habilitado sem policies (acesso só via service-role).
+- [x] `web/src/lib/observability/log-citations.ts`: helper fire-and-forget, usa service-role, loga erros sem propagar
+- [x] Integração em `api/chat/route.ts`: capturar id do assistant message via `.insert(...).select('id').single()`, chamar logCitations com snapshot do userProfile carregado no início do fluxo
+
+### Dashboard admin
+- [x] `web/src/app/api/admin/citations/route.ts`: GET com filtros `estagio`, `setor`, `since` (7d/30d/90d). Agregação em memória (~2k linhas). Retorna ranking com total/mentions/uniqueUsers/byEstagio/bySetor. Protegido por `ADMIN_EMAILS` + service-role.
+- [x] `web/src/app/admin/citations/page.tsx`: dashboard Tropical Maximalista com seletor de estágio, campo setor com datalist, seletor de período. Tabelas separadas para gurus e livros ordenadas por total. Barrinha visual proporcional ao máximo. Top estágio e top setor em linha.
+- [x] `web/src/app/admin/citations/layout.tsx`: metadata `robots: noindex`, title "Citações do prompt | Max Impulso"
+- [x] Link no header de `/admin` para `/admin/citations` (botão Sparkles)
+
+Commit: `75d7763` feat(observability): logar gurus/livros citados por estágio/setor
+
+**Passo manual após deploy**: rodar `web/sql/migration-citations.sql` no Supabase SQL Editor (já rodado — 21/04/2026 noite). Sem ele o log falha silenciosamente (console.error), nada quebra no fluxo do chat.
