@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import { AlertCircle } from 'lucide-react'
+import { useEffect, useRef, useState, useCallback } from 'react'
+import { AlertCircle, ChevronsUp, ChevronsDown } from 'lucide-react'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import { MessageBubble } from './message-bubble'
 import { StreamingMessage } from './streaming-message'
 import { TypingIndicator } from './typing-indicator'
@@ -39,6 +40,8 @@ export function MessageList({
   const scrollRootRef = useRef<HTMLDivElement>(null)
   const viewportRef = useRef<HTMLDivElement | null>(null)
   const shouldStickRef = useRef(true)
+  const [showTop, setShowTop] = useState(false)
+  const [showBottom, setShowBottom] = useState(false)
 
   // Locate the Base UI viewport element once the ScrollArea mounts and attach scroll listener
   useEffect(() => {
@@ -54,14 +57,27 @@ export function MessageList({
     const handleScroll = () => {
       const distanceFromBottom = el.scrollHeight - el.scrollTop - el.clientHeight
       shouldStickRef.current = distanceFromBottom < 80
+      // FAB visibility: mostra só quando há ~400px para navegar em cada direção
+      setShowTop(el.scrollTop > 400)
+      setShowBottom(distanceFromBottom > 400)
     }
+    handleScroll()
     el.addEventListener('scroll', handleScroll, { passive: true })
 
     return () => {
       el.removeEventListener('scroll', handleScroll)
       onViewportReady?.(null)
     }
-  }, [onViewportReady])
+  }, [onViewportReady, messages.length])
+
+  const scrollToTop = useCallback(() => {
+    viewportRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
+
+  const scrollToBottom = useCallback(() => {
+    const el = viewportRef.current
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' })
+  }, [])
 
   useEffect(() => {
     if (shouldStickRef.current) {
@@ -119,7 +135,7 @@ export function MessageList({
   return (
     <div
       ref={scrollRootRef}
-      className="flex min-h-0 flex-1 flex-col"
+      className="relative flex min-h-0 flex-1 flex-col"
     >
       <ScrollArea
         className="flex-1"
@@ -162,6 +178,41 @@ export function MessageList({
           <div ref={bottomRef} />
         </div>
       </ScrollArea>
+
+      {/* Atalhos de scroll para conversas longas */}
+      <div
+        className="pointer-events-none absolute bottom-4 right-3 z-20 flex flex-col gap-2 md:bottom-6 md:right-6"
+        aria-hidden={!showTop && !showBottom}
+      >
+        <button
+          type="button"
+          onClick={scrollToTop}
+          aria-label="Ir para o início da conversa"
+          className={cn(
+            'pointer-events-auto flex size-11 items-center justify-center rounded-full border-[2px] border-ink bg-card text-ink shadow-hard-sm transition-all duration-200 hover:bg-[var(--sun)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--ink)] focus-visible:bg-[var(--sun)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
+            showTop
+              ? 'opacity-100 scale-100'
+              : 'pointer-events-none opacity-0 scale-90'
+          )}
+          tabIndex={showTop ? 0 : -1}
+        >
+          <ChevronsUp className="size-5" aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          onClick={scrollToBottom}
+          aria-label="Ir para o final da conversa"
+          className={cn(
+            'pointer-events-auto flex size-11 items-center justify-center rounded-full border-[2px] border-ink bg-card text-ink shadow-hard-sm transition-all duration-200 hover:bg-[var(--sun)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--ink)] focus-visible:bg-[var(--sun)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
+            showBottom
+              ? 'opacity-100 scale-100'
+              : 'pointer-events-none opacity-0 scale-90'
+          )}
+          tabIndex={showBottom ? 0 : -1}
+        >
+          <ChevronsDown className="size-5" aria-hidden="true" />
+        </button>
+      </div>
     </div>
   )
 }
