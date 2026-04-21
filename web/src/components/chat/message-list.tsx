@@ -37,52 +37,38 @@ export function MessageList({
   onViewportReady,
 }: MessageListProps) {
   const bottomRef = useRef<HTMLDivElement>(null)
-  const scrollRootRef = useRef<HTMLDivElement>(null)
   const viewportRef = useRef<HTMLDivElement | null>(null)
   const shouldStickRef = useRef(true)
   const [showTop, setShowTop] = useState(false)
   const [showBottom, setShowBottom] = useState(false)
 
-  // Locate the scrollable viewport once the ScrollArea mounts and attach scroll listener
+  // Ref callback direto na Viewport do base-ui. Dispara quando o elemento
+  // monta; chama o callback do parent e ancora o scroll listener.
+  const handleViewportRef = useCallback(
+    (el: HTMLDivElement | null) => {
+      viewportRef.current = el
+      onViewportReady?.(el)
+    },
+    [onViewportReady]
+  )
+
+  // Scroll listener anexado sempre que a viewport estiver disponível
   useEffect(() => {
-    const root = scrollRootRef.current
-    if (!root) return
-
-    // Base UI expõe a viewport via data-slot; fallback: procura o primeiro
-    // descendente com overflow-y auto/scroll (a implementação interna do
-    // base-ui pode envolver a viewport em outro wrapper).
-    let el = root.querySelector<HTMLDivElement>(
-      '[data-slot="scroll-area-viewport"]'
-    )
-    if (!el) {
-      const all = root.querySelectorAll<HTMLDivElement>('div')
-      for (const candidate of all) {
-        const overflow = getComputedStyle(candidate).overflowY
-        if (overflow === 'auto' || overflow === 'scroll') {
-          el = candidate
-          break
-        }
-      }
-    }
-    viewportRef.current = el
-    onViewportReady?.(el)
-
+    const el = viewportRef.current
     if (!el) return
     const handleScroll = () => {
       const distanceFromBottom = el.scrollHeight - el.scrollTop - el.clientHeight
       shouldStickRef.current = distanceFromBottom < 80
-      // FABs: gatilho baixo para acionar em conversas moderadas (~1 tela de mobile = ~600px)
-      setShowTop(el.scrollTop > 150)
-      setShowBottom(distanceFromBottom > 150)
+      // Thresholds baixos: acionam assim que há ~100px de sobra em cada direção
+      setShowTop(el.scrollTop > 100)
+      setShowBottom(distanceFromBottom > 100)
     }
     handleScroll()
     el.addEventListener('scroll', handleScroll, { passive: true })
-
     return () => {
       el.removeEventListener('scroll', handleScroll)
-      onViewportReady?.(null)
     }
-  }, [onViewportReady, messages.length])
+  }, [messages.length])
 
   const scrollToTop = useCallback(() => {
     viewportRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
@@ -102,7 +88,6 @@ export function MessageList({
   if (messages.length === 0 && !isStreaming && !error) {
     return (
       <div
-        ref={scrollRootRef}
         className="flex flex-1 items-start justify-start p-8 md:p-12"
         role="log"
         aria-live="polite"
@@ -147,11 +132,9 @@ export function MessageList({
   }
 
   return (
-    <div
-      ref={scrollRootRef}
-      className="relative flex min-h-0 flex-1 flex-col"
-    >
+    <div className="relative flex min-h-0 flex-1 flex-col">
       <ScrollArea
+        viewportRef={handleViewportRef}
         className="flex-1"
         role="log"
         aria-live="polite"
