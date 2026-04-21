@@ -58,9 +58,45 @@ Use quando o empreendedor: esta preso no operacional, nao tira ferias, nao conse
 delegar, diz "so eu faco direito", quer escalar mas sente que "o negocio vai parar \
 se eu sair", confunde habilidade tecnica com capacidade empreendedora, precisa \
 profissionalizar um negocio que cresceu organicamente.
-- Empresas Feitas para Vencer (Jim Collins): Descubra a interseccao entre o que faz \
-de melhor, o que te apaixona e o que gera dinheiro. Disciplina e consistencia vencem \
-estrategias brilhantes pontuais.
+- Empresas Feitas para Vencer (Jim Collins): Resultado de estudo de 5 anos comparando \
+empresas que saltaram de boas para grandes (com retorno de acoes 3x o mercado por \
+15+ anos) com concorrentes que estagnaram. As conclusoes contrariam o senso comum \
+sobre liderancas carismaticas e estrategias ousadas. CONCEITO DO OURICO (Hedgehog): \
+interseccao de 3 circulos — (a) o que voce pode ser o MELHOR DO MUNDO em fazer (nao \
+o que voce quer ser, o que voce PODE ser), (b) o que MOVE SUA MAQUINA ECONOMICA \
+(qual e o denominador — lucro por cliente? por hora? por m2? identifique o seu), \
+(c) o que voce e PROFUNDAMENTE APAIXONADO por fazer. Fazer qualquer coisa fora \
+dessa interseccao e dispersao. A maioria dos MEIs fica nos circulos 2 ou 3 \
+isolados; a forca esta no centro. LIDERANCA DE NIVEL 5: humildade pessoal + \
+determinacao profissional inabalavel. Lideres grandes dao credito quando da certo \
+e assumem culpa quando da errado (o oposto do que a maioria faz). "Janela e \
+espelho": olham pela janela para explicar o sucesso (foi a equipe, a sorte, o \
+mercado) e no espelho para explicar o fracasso (fui eu). PRIMEIRO QUEM, DEPOIS O \
+QUE: coloque as pessoas certas no onibus, tire as erradas, ponha as certas nos \
+assentos certos — DEPOIS decida para onde dirigir. Com o time errado, nenhuma \
+estrategia salva; com o time certo, a estrategia emerge. Para MEI: contratar bem \
+antes de crescer, nao o contrario. Demissao nao e "cortar custo", e dever com o \
+resto do time. PARADOXO DE STOCKDALE (confrontar os fatos brutais): fe absoluta \
+de que voce vai prevalecer no final E disciplina para encarar a realidade mais \
+brutal do presente, por pior que seja. Otimistas ingenuos ("vai melhorar no \
+proximo mes") quebram; realistas com fe duram. Para MEI: olhar o extrato real, \
+medir ticket medio real, ouvir o cliente que reclamou — sem fugir. VOLANTE \
+(FLYWHEEL): grandeza nao vem de um evento magico, uma grande ideia ou uma reforma \
+dramatica. Vem de empurrar um volante pesado volta apos volta, ate que o momento \
+assuma e ele gire sozinho. O oposto e o CIRCULO-PERDICAO: lancar programa, nao \
+ver resultado, trocar, lancar outro, trocar — muita atividade, zero acumulo. \
+CULTURA DE DISCIPLINA: pessoas disciplinadas dentro do Hedgehog dispensam \
+hierarquia pesada e controles excessivos. Liberdade dentro de estrutura. \
+TECNOLOGIA COMO ACELERADOR: tecnologia nao cria grandeza; amplifica o que ja \
+existe. Empresa sem Hedgehog + tecnologia nova = bagunca amplificada. CUIDADO \
+COM BHAGs desconectadas: objetivos ambiciosos (Big Hairy Audacious Goals) funcionam \
+SO quando alinhados ao Hedgehog. Frase-ancora: "Bom e inimigo do otimo. E por isso \
+tao poucas coisas se tornam otimas." \
+Use quando o empreendedor: esta em varios nichos ao mesmo tempo, quer crescer mas \
+nao sabe em qual direcao, contrata "para tapar buraco" em vez de contratar bem, \
+foge de feedback negativo, pula de estrategia em estrategia sem ver resultado \
+(ciclo-perdicao), idolatra solucoes magicas/ferramentas novas como salvacao, ou \
+precisa definir um nicho claro para parar de dispersar energia.
 - O Lado Dificil das Coisas Dificeis (Ben Horowitz): Momentos dificeis fazem parte. \
 Foque no que pode controlar, tome decisoes dificeis rapido, cuide da saude mental.
 - Seja Foda! (Caio Carneiro): Sucesso vem de disciplina nos pequenos habitos diarios. \
@@ -142,8 +178,53 @@ por preco porque nao sabe explicar por que cobrar mais, tem dificuldade de fidel
 cliente (venda pontual mas nao recorrente), quer criar uma marca forte com pouca \
 verba, esta reformulando identidade visual/comunicacao, ou sente que o negocio \
 "perdeu o sentido" e quer redescobrir proposito.
-- Como Fazer Amigos e Influenciar Pessoas (Dale Carnegie): Escute mais que fale, use \
-o nome do cliente, resolva problemas com empatia, faca o outro se sentir importante.
+- Como Fazer Amigos e Influenciar Pessoas (Dale Carnegie): Publicado em 1936, \
+segue sendo o manual definitivo de relacionamento interpessoal — base para venda, \
+atendimento, negociacao, gestao de equipe e ate conversas dificeis com fornecedor. \
+Organizado em 4 conjuntos de principios, todos aplicaveis ao dia a dia do MEI \
+brasileiro. 3 PRINCIPIOS FUNDAMENTAIS para lidar com qualquer pessoa: (1) Nao \
+critique, nao condene, nao se queixe — 95% das pessoas nao se consideram erradas, \
+nem o pior bandido. Criticar gera defensividade, nao mudanca. (2) Aprecie \
+honesta e sinceramente — elogio sincero tem efeito duradouro; bajulacao vazia se \
+detecta rapido e queima relacao. Treine enxergar o bom. (3) Desperte no outro \
+um desejo ardente — pessoas fazem coisas pelos PROPRIOS motivos, nao pelos seus. \
+"Use minhoca como isca, nao morango — o peixe gosta de minhoca." Antes de pedir \
+ou vender, pergunte: o que essa pessoa QUER? 6 MANEIRAS DE FAZER AS PESSOAS \
+GOSTAREM DE VOCE: (1) Interesse-se GENUINAMENTE pelo outro — nao estude-o para \
+vender, interesse-se de verdade. (2) Sorria — sinal universal de receptividade, \
+custa zero. (3) Lembre e use o NOME da pessoa — para ela, o som mais doce em \
+qualquer idioma. Errar nome de cliente e falha grave; acertar apos muito tempo \
+gera fidelizacao. (4) Seja bom ouvinte, incentive o outro a falar de si mesmo — \
+a maioria prefere falar a ouvir; seja a excecao. (5) Fale sobre os INTERESSES DO \
+OUTRO — descubra o que o mobiliza e converse sobre isso. (6) Faca a pessoa se \
+sentir IMPORTANTE — e sinceramente. O desejo de ser importante e um dos mais \
+fortes da natureza humana; atende-lo gera lealdade. 12 MANEIRAS DE LEVAR PESSOAS \
+AO SEU MODO DE PENSAR (vendas, negociacao): (1) A unica forma de ganhar uma \
+discussao e evita-la — mesmo vencendo, voce perde a relacao; (2) Respeite a \
+opiniao do outro; nunca diga "voce esta errado"; (3) Se voce errou, admita \
+RAPIDA e ENFATICAMENTE (desarma o outro instantaneamente); (4) Comece de forma \
+amigavel — tom gentil vence; (5) Consiga uma resposta "sim" imediata (socratico: \
+faca perguntas em que o outro so pode concordar, e a inercia carrega para o \
+pedido maior); (6) Deixe o outro FALAR MAIS que voce; (7) Deixe o outro sentir \
+que a ideia e dele — sugira, nao imponha; (8) Tente HONESTAMENTE ver as coisas \
+do ponto de vista do outro; (9) Seja receptivo as ideias e desejos do outro; \
+(10) Apele para motivos mais nobres; (11) Dramatize suas ideias (nao basta dizer \
+— mostre); (12) Lance um desafio — pessoas querem provar seu valor. 9 MANEIRAS \
+DE MUDAR PESSOAS SEM OFENDER (aplique ao gerenciar equipe, reclamar com \
+fornecedor, orientar cliente): (1) Comece com ELOGIO e apreciacao honesta; \
+(2) Chame atencao para erros INDIRETAMENTE; (3) Fale dos SEUS PROPRIOS erros \
+antes de criticar o outro; (4) Faca PERGUNTAS em vez de dar ordens; (5) Salve \
+as aparencias do outro (let the person save face — nunca humilhe em publico); \
+(6) Elogie a menor melhora; (7) De ao outro uma BOA REPUTACAO a qual \
+corresponder ("voce sempre foi pontual, por isso estranhei..."); (8) Use \
+encorajamento — faca a falta parecer FACIL de corrigir; (9) Faca a outra pessoa \
+ficar FELIZ em fazer o que voce sugere (alinhe com o que ela quer). Frase-ancora: \
+"Lide com as pessoas como sao, nao como gostaria que fossem." \
+Use quando o empreendedor: atende cliente dificil, precisa negociar com \
+fornecedor, tem que chamar atencao de funcionario sem perde-lo, quer fidelizar \
+em vez de vender avulso, precisa pedir indicacao/depoimento, tem conflito com \
+socio ou familiar no negocio, sente que "da certo com produto mas erra nas \
+pessoas", ou quer transformar cliente em fa (nao so comprador).
 
 INOVACAO E AGILIDADE:
 - Pense Dentro da Caixa e O Segredo da Gestao Agil (Thiago Oliveira): Conceitos \
