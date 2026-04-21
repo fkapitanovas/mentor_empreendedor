@@ -43,13 +43,27 @@ export function MessageList({
   const [showTop, setShowTop] = useState(false)
   const [showBottom, setShowBottom] = useState(false)
 
-  // Locate the Base UI viewport element once the ScrollArea mounts and attach scroll listener
+  // Locate the scrollable viewport once the ScrollArea mounts and attach scroll listener
   useEffect(() => {
     const root = scrollRootRef.current
     if (!root) return
-    const el = root.querySelector<HTMLDivElement>(
+
+    // Base UI expõe a viewport via data-slot; fallback: procura o primeiro
+    // descendente com overflow-y auto/scroll (a implementação interna do
+    // base-ui pode envolver a viewport em outro wrapper).
+    let el = root.querySelector<HTMLDivElement>(
       '[data-slot="scroll-area-viewport"]'
     )
+    if (!el) {
+      const all = root.querySelectorAll<HTMLDivElement>('div')
+      for (const candidate of all) {
+        const overflow = getComputedStyle(candidate).overflowY
+        if (overflow === 'auto' || overflow === 'scroll') {
+          el = candidate
+          break
+        }
+      }
+    }
     viewportRef.current = el
     onViewportReady?.(el)
 
@@ -57,9 +71,9 @@ export function MessageList({
     const handleScroll = () => {
       const distanceFromBottom = el.scrollHeight - el.scrollTop - el.clientHeight
       shouldStickRef.current = distanceFromBottom < 80
-      // FAB visibility: mostra só quando há ~400px para navegar em cada direção
-      setShowTop(el.scrollTop > 400)
-      setShowBottom(distanceFromBottom > 400)
+      // FABs: gatilho baixo para acionar em conversas moderadas (~1 tela de mobile = ~600px)
+      setShowTop(el.scrollTop > 150)
+      setShowBottom(distanceFromBottom > 150)
     }
     handleScroll()
     el.addEventListener('scroll', handleScroll, { passive: true })
