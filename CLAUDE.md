@@ -19,7 +19,8 @@ Mentor virtual para microempreendedores brasileiros (MEIs, MEs, autônomos). Com
 ### Architecture
 - Chat minimalista estilo Claude.ai com streaming SSE
 - Múltiplas conversas por usuário (sidebar com lista)
-- System prompt modular (14 blocos + 2 dinâmicos): Identidade/Tom, Base de Conhecimento (12 gurus), Base de Livros (22 livros incl. Lucro Primeiro), Regras de Interação, Personalização, Resolução de Conflitos (9 tensões), Referências Nicho, Base Institucional, Base Impulso Stone, Formalização MEI, E-commerce/Marketplaces, Ferramentas Práticas, Diagnóstico/Atualização de Perfil
+- System prompt modular (14 blocos + 2 dinâmicos): Identidade/Tom, Base de Conhecimento (13 gurus incl. Ana Fontes), Base de Livros (23 livros, curadoria v1.2 — foco em MEI BR), Regras de Interação, Personalização, Resolução de Conflitos (9 tensões), Referências Nicho (26 influenciadores), Base Institucional (Sebrae + gov.br), Base Impulso Stone (8 módulos), Formalização MEI, E-commerce/Marketplaces, Ferramentas Práticas, Diagnóstico/Atualização de Perfil
+- **PRD documentado** em `docs/PRD.md` (v1.2) — matrizes fase × assunto, tipo de negócio × guru, fontes institucionais detalhadas, mecanismo de adequação de respostas. PDF sempre disponível em `~/Downloads/PRD-MaxImpulso.pdf`.
 - Onboarding opcional: formulário com 5 campos ou pular (IA captura organicamente)
 - Diagnóstico via conversa: Claude extrai perfil e sinaliza via tag `[PERFIL_EXTRAIDO]`
 - Atualização dinâmica: Claude detecta mudanças e sinaliza via tag `[PERFIL_ATUALIZADO]`
@@ -175,7 +176,7 @@ mentor_empreendedor/
 │   │   │   ├── supabase/        # client, server, middleware
 │   │   │   ├── prompts/         # 14 blocos do system prompt
 │   │   │   │   ├── conhecimento.ts  # 12 perfis de gurus (incl. Ana Fontes)
-│   │   │   │   ├── livros.ts        # 22 livros (deduplicado vs perfis)
+│   │   │   │   ├── livros.ts        # 23 livros (v1.2 curadoria MEI BR)
 │   │   │   │   ├── formalizacao.ts  # MEI, DAS, migração ME, tributação
 │   │   │   │   ├── ecommerce.ts     # Marketplaces, logística, vendas online
 │   │   │   │   ├── ferramentas.ts   # Ferramentas por faixa de faturamento
@@ -217,12 +218,18 @@ Todo o conteúdo curado do system prompt vem dos arquivos originais do projeto, 
 
 - **`docs/agente_microempreendedor.docx`** — documento-mãe da base de conhecimento. Contém:
   - Perfis detalhados dos 12 gurus (Marcus Marques, Flávio Augusto, Thiago Oliveira, Thiago Nigro, Nathalia Arcuri, Gustavo Cerbasi, Rodrigo Almeida, Érico Rocha, Conrado Adolpho, Pedro Sobral, Joel Jota, Geraldo Rufino; + Ana Fontes adicionada depois)
-  - Lista dos 22 livros com conceitos-âncora
+  - Lista dos 22 livros-base com conceitos-âncora (expandida depois para 23 na v1.2)
   - Este doc alimenta `web/src/lib/prompts/conhecimento.ts` (perfis) e `web/src/lib/prompts/livros.ts` (resumos dos livros)
+
+- **`docs/PRD.md`** — documento de requisitos do produto (v1.2, 21/04/2026). Fonte canônica da arquitetura do system prompt, matrizes de maturidade, fontes institucionais e mecanismo de adequação. Regenera PDF via `python3 markdown + Chrome headless` para `~/Downloads/PRD-MaxImpulso.pdf`.
 
 - **`docs/influencers_impulso_stone.xlsx`** — lista de influenciadores nichados por setor (confeitaria, beleza, marketing, finanças populares, etc.), com afinidade MEI. Alimenta `web/src/lib/prompts/nichos.ts`.
 
-- **`docs/Geração de Valor – Flávio Augusto.pdf`**, **`docs/Geração de Valor 2 - ...pdf`**, **`docs/Geração de Valor 3 - ...pdf`**, **`docs/O Poder do Hábito - Charles Duhigg.pdf`** — livros lidos na íntegra para enriquecer conceitos além dos resumos do docx.
+- **`docs/Geração de Valor – Flávio Augusto.pdf`**, **`docs/Geração de Valor 2 - ...pdf`**, **`docs/Geração de Valor 3 - ...pdf`** — livros lidos na íntegra para enriquecer conceitos além dos resumos do docx.
+
+- **Livros lidos na íntegra (externos ao `docs/`, registrados no cabeçalho de `livros.ts`)**: O Mito do Empreendedor (Gerber), O Poder do Hábito (Duhigg — full), Obsessão pelo Cliente (Bryar/Carr), Primeiro Pergunte Porquê (Sinek), Lucro Primeiro (Michalowicz), Essencialismo (McKeown), Mindset (Dweck), Pai Rico Pai Pobre (Kiyosaki — resumo). Negócios: um assunto de mulheres (Ana Fontes) — transcrição Kindle→MD em `~/Documents/livros/negocios-assunto-de-mulheres.md`.
+
+**Curadoria v1.2 (21/04/2026):** 3 livros removidos por desalinhamento com MEI BR (De Zero a Um, O Lado Difícil das Coisas Difíceis, Sonho Grande); 3 livros reduzidos drasticamente (Obsessão pelo Cliente 195→45 linhas, Empresas Feitas para Vencer 35→15, A Startup Enxuta 30→15). Ver seção 8.3 do PRD para razões e lista de "não voltar".
 
 **Importante:** se atualizar livros.ts ou conhecimento.ts, sempre manter fidelidade ao docx original. Mudanças substantivas de conteúdo devem ser validadas com o usuário antes (o prompt representa curadoria editorial).
 

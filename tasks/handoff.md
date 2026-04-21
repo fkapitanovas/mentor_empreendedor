@@ -11,7 +11,8 @@ O projeto tem **dois deploys ativos**:
 **Chat:**
 - Chat com streaming SSE (Claude Sonnet 4.6 → ReadableStream)
 - Múltiplas conversas com sidebar, título auto-gerado via Haiku
-- System prompt modular (14 blocos): 12 gurus, 22 livros, 9 regras de conflito, formalização MEI, e-commerce, ferramentas práticas, referências por nicho
+- System prompt modular (14 blocos): **13 gurus** (incl. Ana Fontes), **23 livros** (curadoria v1.2 — foco em MEI BR), 9 regras de conflito, formalização MEI, e-commerce, ferramentas práticas, referências por nicho (26 influenciadores)
+- **PRD em `docs/PRD.md`** (v1.2, 21 pp) + **PDF em `~/Downloads/PRD-MaxImpulso.pdf`** com matrizes fase × assunto, tipo × guru, fontes institucionais detalhadas
 - Diagnóstico via conversa (onboarding orgânico via tags `[PERFIL_EXTRAIDO]`/`[PERFIL_ATUALIZADO]`)
 - Tags limpas no client (useChat) + ao carregar do DB (defesa em profundidade)
 - Memória de longo prazo: resumos a cada 20 mensagens
@@ -121,12 +122,24 @@ vercel --prod --yes                                  # Deploy produção (do dir
 - `619f5ad` — Heading contextual no /login: "Bora empreender." (primeira vez) vs "Volta aí, bora crescer." (retornando) via flag em localStorage
 - `9f0a8dd` — Atalhos FAB de scroll no chat (↑↓ no canto inferior direito quando conversa tem 4+ mensagens). Funcionando em mobile + desktop após 4 iterações de debug de Tailwind v4 + safe-area.
 - `d1c2bbb` — `.vercelignore` na raiz (guard parcial contra deploys acidentais fora de `web/`)
+- `c15fb29` — Perfil Ana Fontes enriquecido com conceitos do livro *Negócios: um assunto de mulheres* (Jandaíra, 2022)
+- `3bcb90a` / `2642e0e` — Expansão profunda de 5 livros (Gerber, Sinek, Ries, Collins, Carnegie)
+- `1bdb9f4` — Reescrita O Mito do Empreendedor via leitura integral (207 pp)
+- `cfd8987` / `8b1c90a` — Duhigg expandido, depois reescrito integralmente via OCR do PDF completo (477 pp)
+- `231b3b5` — Pai Rico Pai Pobre expandido (185 linhas)
+- `4521cc7` — 3 livros via agentes paralelos: Working Backwards (novo), Sinek (expansão), Lucro Primeiro (reestruturação)
+- `5738874` — +2 livros novos via agentes paralelos: Essencialismo (McKeown) + Mindset (Dweck)
+- `87e47f8` — **PRD completo do projeto** em `docs/PRD.md` (matrizes, fontes, mecanismo)
+- `ddfef13` — **Migração do livro da Ana Fontes** de `conhecimento.ts` para `livros.ts` (separação perfil × obra)
+- `1ff5ab4` — **Curadoria v1.2**: removidos 3 livros (De Zero a Um, O Lado Difícil, Sonho Grande) + reduzidos 3 (Obsessão pelo Cliente, Empresas Feitas para Vencer, A Startup Enxuta). 26 → 23 livros. Seção 8.3 do PRD = lista "não voltar".
 
-### Próximos passos prioritários
-1. **PostHog analytics** — rastrear uso, retenção, funil de conversão
-2. **Nichos sub-representados** — pet, alimentação geral, serviços domésticos, artesanato (ver todo.md)
-3. **Service Worker opcional** — PWA fase 2 (offline chat cacheable, install prompt ativo)
-4. **Gaps de conteúdo do prompt** — jurídico/compliance, saúde mental/burnout, métricas CAC/LTV
+### Próximos passos prioritários (pós-curadoria v1.2)
+1. **Adicionar livros de gap estrutural** — $100M Offers (Hormozi, precificação tática), Nunca Divida a Diferença (Chris Voss, negociação), Radical Candor (Kim Scott, primeira contratação). Margem ~19% no `livros.ts` permite.
+2. **Observabilidade do prompt** — logar qual livro/guru é citado por estágio/setor em cada resposta, feedback para iterar curadoria
+3. **PostHog analytics** — rastrear uso, retenção, funil de conversão
+4. **Nichos sub-representados** — pet, alimentação geral, serviços domésticos, artesanato (ver todo.md)
+5. **Service Worker opcional** — PWA fase 2 (offline chat cacheable, install prompt ativo)
+6. **Gaps de conteúdo do prompt** — jurídico/compliance, saúde mental/burnout, métricas CAC/LTV
 
 ### Decisões técnicas relevantes
 - **Design system "Tropical"**: tudo via CSS tokens em `globals.css`. Cores nomeadas `--ink --coral --sun --cream --jungle`. Gradientes tokenizados. Hard shadows canônicos. Nunca hardcodar `emerald-X` / `amber-X` fora de globals.

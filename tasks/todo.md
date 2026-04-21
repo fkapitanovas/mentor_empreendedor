@@ -340,19 +340,43 @@ Commit: `d1c2bbb chore: .vercelignore na raiz`
 - **Chatbot WhatsApp em `app/` (Python/FastAPI) — funcional mas deprioritizado**
 - **Repo GitHub**: https://github.com/fkapitanovas/mentor_empreendedor (main, 10+ commits pós-auditoria)
 
-## Conteudo do System Prompt (14 blocos)
+## Conteudo do System Prompt (14 blocos, v1.2 — 21/04/2026)
 1. Identidade e Tom
-2. Base de Conhecimento por Tema (12 gurus incl. Ana Fontes)
-3. Base de Livros (22 livros incl. Lucro Primeiro — deduplicada)
-4. Regras de Interacao
-5. Personalizacao por Estagio
-6. Resolucao de Conflitos (9 tensoes)
-7. Referencias Nichadas por Setor (confeitaria, beleza, marketing, financas, moda, gastronomia, MEI)
-8. Base Institucional
-9. Base Impulso Stone
+2. Base de Conhecimento por Tema (13 gurus incl. Ana Fontes) — ~12.200 tokens
+3. Base de Livros (23 livros, curadoria v1.2) — ~32.500 tokens
+4. Regras de Interacao (10 regras obrigatorias)
+5. Personalizacao por Estagio (iniciante / crescimento / consolidado)
+6. Resolucao de Conflitos (9 tensoes entre gurus)
+7. Referencias Nichadas por Setor (26 influenciadores)
+8. Base Institucional (Sebrae + gov.br, valores 2026)
+9. Base Impulso Stone (8 modulos do programa)
 10. Formalizacao MEI (DAS 2026, obrigacoes, migracao ME)
 11. E-commerce (marketplaces, logistica, vendas online)
 12. Ferramentas Praticas (financeiro, CRM, design, pagamentos, IA)
 13. Instrucoes de Diagnostico/Atualizacao (dinamico)
 + Contexto do Usuario (pos-onboarding)
 + Historico Resumido (quando existir)
+
+**Total system prompt ~57.200 tokens (29% do context window do Sonnet 4.6).**
+
+## Etapa 15: Curadoria da Base de Livros v1.2 ✅ (21/04/2026 tarde)
+- [x] Migrar livro da Ana Fontes de conhecimento.ts para livros.ts (separacao perfil × obra)
+- [x] **Remover 3 livros fora da realidade MEI BR**: De Zero a Um (Thiel), O Lado Dificil das Coisas Dificeis (Horowitz), Sonho Grande (Correa)
+- [x] **Reduzir 3 livros a apenas conceitos universais**: Obsessao pelo Cliente (195→45), Empresas Feitas para Vencer (35→15), A Startup Enxuta (30→15)
+- [x] Expandir 3 livros a partir de PDFs completos: Mindset (Dweck), Essencialismo (McKeown), Pai Rico Pai Pobre (Kiyosaki)
+- [x] Criar PRD completo do projeto em `docs/PRD.md` (v1.2, ~600 linhas cobrindo matrizes, fontes, mecanismo de adequacao)
+- [x] Gerar PDF do PRD em `~/Downloads/PRD-MaxImpulso.pdf` via Chrome headless + CSS Tropical (21 paginas)
+
+**Resultado da v1.2:**
+- Livros: 26 → 23 (foco na realidade MEI brasileiro)
+- `livros.ts`: 118.809 → 106.595 chars (-10,3%) / ~36.200 → ~32.500 tokens
+- Margem ate teto saudavel de 40k tokens: 10% → 19%
+- Commits: `ddfef13` (migracao Ana Fontes), `1ff5ab4` (curadoria v1.2)
+
+## Proximos passos prioritarios (pos-v1.2)
+- [ ] Adicionar livros de gap identificado: **$100M Offers** (Hormozi — precificacao/oferta), **Nunca Divida a Diferenca** (Chris Voss — negociacao), **Radical Candor** (Kim Scott — primeira contratacao)
+- [ ] Observabilidade do prompt: logar qual livro/guru e citado por estagio/setor para iterar curadoria
+- [ ] PostHog analytics (retencao, funil de conversao)
+- [ ] Nichos sub-representados (pet, alimentacao geral, servicos domesticos, artesanato)
+- [ ] Service Worker opcional (PWA fase 2 offline)
+- [ ] Gaps de conteudo: juridico/compliance, saude mental/burnout, metricas CAC/LTV
