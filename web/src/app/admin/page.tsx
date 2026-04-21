@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, Download, Search, ShieldAlert } from 'lucide-react'
+import { ArrowLeft, Download, Search, ShieldAlert, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -144,16 +144,27 @@ export default function AdminPage() {
             )}
           </p>
         </div>
-        <Button
-          variant="outline"
-          onClick={() => {
-            window.location.href = '/api/admin/users?format=csv'
-          }}
-          className="border-[2px] border-ink rounded-xl font-heading font-bold hover:bg-[var(--sun)] hover:text-ink transition-all"
-        >
-          <Download className="size-4" />
-          Exportar CSV
-        </Button>
+        <div className="flex flex-wrap items-center gap-2">
+          <Link href="/admin/citations">
+            <Button
+              variant="outline"
+              className="border-[2px] border-ink rounded-xl font-heading font-bold hover:bg-[var(--sun)] hover:text-ink transition-all"
+            >
+              <Sparkles className="size-4" />
+              Citações do prompt
+            </Button>
+          </Link>
+          <Button
+            variant="outline"
+            onClick={() => {
+              window.location.href = '/api/admin/users?format=csv'
+            }}
+            className="border-[2px] border-ink rounded-xl font-heading font-bold hover:bg-[var(--sun)] hover:text-ink transition-all"
+          >
+            <Download className="size-4" />
+            Exportar CSV
+          </Button>
+        </div>
       </div>
 
       <div className="mb-4">

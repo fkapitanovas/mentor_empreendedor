@@ -8,6 +8,7 @@ import {
   standardizeProfileFields,
 } from '@/lib/profile-extractor'
 import { generateConversationSummary } from '@/lib/summary'
+import { logCitations } from '@/lib/observability/log-citations'
 import type { User, Message } from '@/types/database'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! })
@@ -157,13 +158,36 @@ export async function POST(request: Request) {
             extractProfile(fullText) || extractProfileUpdate(fullText)
           let profileUpdated = false
 
-          // Save assistant message (cleaned)
-          await supabase.from('messages').insert({
-            user_id: authUser.id,
-            conversation_id: conversationId,
-            role: 'assistant',
-            content: cleanedText,
-          })
+          // Save assistant message (cleaned) + capture id for observability
+          const { data: assistantRow } = await supabase
+            .from('messages')
+            .insert({
+              user_id: authUser.id,
+              conversation_id: conversationId,
+              role: 'assistant',
+              content: cleanedText,
+            })
+            .select('id')
+            .single()
+
+          // Fire-and-forget: log citations (gurus + livros) para analytics de curadoria
+          if (assistantRow?.id) {
+            logCitations({
+              messageId: assistantRow.id,
+              conversationId,
+              userId: authUser.id,
+              profileSnapshot: userProfile
+                ? {
+                    setor: userProfile.setor,
+                    estagio: userProfile.estagio,
+                    faturamento_mensal: userProfile.faturamento_mensal,
+                  }
+                : null,
+              assistantText: cleanedText,
+            }).catch((err) => {
+              console.error('[citations] log failed:', err)
+            })
+          }
 
           // Update user profile if extracted
           if (profileData) {
