@@ -221,7 +221,7 @@ Todo o conteúdo curado do system prompt vem dos arquivos originais do projeto, 
   - Lista dos 22 livros-base com conceitos-âncora (expandida depois para 23 na v1.2)
   - Este doc alimenta `web/src/lib/prompts/conhecimento.ts` (perfis) e `web/src/lib/prompts/livros.ts` (resumos dos livros)
 
-- **`docs/PRD.md`** — documento de requisitos do produto (v1.2, 21/04/2026). Fonte canônica da arquitetura do system prompt, matrizes de maturidade, fontes institucionais e mecanismo de adequação. Regenera PDF via `python3 markdown + Chrome headless` para `~/Downloads/PRD-MaxImpulso.pdf`.
+- **`docs/PRD.md`** — documento de requisitos do produto (v1.3, 21/04/2026). Fonte canônica da arquitetura do system prompt, matrizes de maturidade, fontes institucionais e mecanismo de adequação. Regenera PDF via `python3 markdown + Chrome headless` para `~/Downloads/PRD-MaxImpulso.pdf`.
 
 - **`docs/influencers_impulso_stone.xlsx`** — lista de influenciadores nichados por setor (confeitaria, beleza, marketing, finanças populares, etc.), com afinidade MEI. Alimenta `web/src/lib/prompts/nichos.ts`.
 

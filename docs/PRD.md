@@ -1,6 +1,6 @@
 # PRD — Max Impulso (Mentor Virtual para Microempreendedores)
 
-> **Versão**: 1.2 · **Data**: 21/04/2026 · **Domínio de produção**: https://maximpulso.com.br
+> **Versão**: 1.3 · **Data**: 21/04/2026 · **Domínio de produção**: https://maximpulso.com.br
 > **Stack**: Next.js 16 + React 19 + Supabase + Claude Sonnet 4.6 + Resend
 > **Escopo deste documento**: especificação da base de conhecimento, matrizes de personalização, fontes curadas e mecanismo de adequação de respostas por fase do negócio e setor.
 
@@ -49,7 +49,7 @@ buildSystemPrompt(user, summary)
     ├── [5] PERSONALIZACAO_ESTAGIO           ~170 tokens
     ├── [6] RESOLUCAO_CONFLITOS (9 tensões)  ~1.100 tokens
     ├── [7] REFERENCIAS_NICHO (26 influ.)    ~2.250 tokens
-    ├── [8] BASE_INSTITUCIONAL (Sebrae/gov)  ~2.050 tokens
+    ├── [8] BASE_INSTITUCIONAL (Sebrae/gov)  ~4.100 tokens
     ├── [9] BASE_IMPULSO_STONE               ~1.100 tokens
     ├── [10] BASE_FORMALIZACAO (MEI/ME)      ~1.350 tokens
     ├── [11] BASE_ECOMMERCE                  ~1.550 tokens
@@ -65,7 +65,7 @@ buildSystemPrompt(user, summary)
             └── HISTORICO_RESUMIDO           variável
 ```
 
-**Tokens totais típicos do system prompt**: ~57.200 tokens (≈ 29% do contexto de 200k do Sonnet 4.6).
+**Tokens totais típicos do system prompt**: ~59.250 tokens (≈ 30% do contexto de 200k do Sonnet 4.6).
 **Prompt caching ativo** (`cache_control: ephemeral` em `api/chat/route.ts`) — hit cache reduz latência e custo em ~90%.
 
 ### 2.2 Camadas conceituais
@@ -241,8 +241,11 @@ Quatro fontes externas alimentam o sistema com dados oficiais e verificáveis, p
 | **Consultorias gratuitas** | Presenciais e online sobre formalização, plano de negócios, precificação |
 | **Ferramentas** | Templates de plano de negócios, Canvas, calculadoras de precificação |
 | **Emissor NF-e gratuito** | emissornfe.sebrae.com.br (complementa NFS-e do Portal Nacional) |
+| **Guia Definitivo do MEI (Sebrae-SC)** | E-book oficial (56pp, `docs/Guia-Definitivo-MEI-Sebrae-SC.pdf`) com passo-a-passo operacional: formalização, alteração de CCMEI, emissão de DAS (PGMEI), DASN-SIMEI, NFS-e/NF-e, certidões negativas, baixa do MEI, **10 dicas para buscar crédito**, perfil do empreendedor, modalidades de financiamento (capital de giro/investimento fixo/misto). Integrado em `institucional.ts` na seção "GUIA SEBRAE — PROCEDIMENTOS PRATICOS" (adicionada em 21/04/2026, v1.3) |
 
-**Como o Max usa**: quando o empreendedor pergunta sobre capacitação, Max direciona para Sebrae. Quando é sobre estatística ("quantos MEIs fecham?"), Max cita o dado do Sebrae para validar o conselho.
+**Como o Max usa**: quando o empreendedor pergunta sobre capacitação, Max direciona para Sebrae. Quando é sobre estatística ("quantos MEIs fecham?"), Max cita o dado do Sebrae para validar o conselho. Quando é sobre **procedimento passo-a-passo** ("como dou baixa no MEI?", "como emito DAS atrasado?", "como peço certidão negativa?"), Max cita o roteiro do Guia Sebrae-SC ancorado nos portais oficiais.
+
+> **Nota editorial sobre o Guia Sebrae-SC**: o e-book é de 2015 e traz valores desatualizados (limite R$60k, DAS R$44-50) e dezenas de ferramentas descontinuadas (Payleven, ZeroPaper antigo, Qipu, Precifica, Markeup, E.R.P.Flex, Turbo Store, etc.). Na integração ao prompt, **apenas os procedimentos oficiais** (que seguem válidos) e a pedagogia (10 dicas de crédito, perfil do empreendedor, princípios de gestão) foram preservados. Os dados numéricos atuais continuam vindo da seção principal do `institucional.ts` (R$81k, DAS R$82-87, salário mínimo R$1.621, etc.). Ferramentas específicas foram generalizadas para categorias (maquininha móvel, ticketing, email marketing, construtor de sites no-code) sem nomes desatualizados.
 
 ### 5.2 gov.br (Portal Nacional do Governo Federal)
 
@@ -327,6 +330,11 @@ Quatro fontes externas alimentam o sistema com dados oficiais e verificáveis, p
 | "Qual maquininha usar?" | Stone (Ton), Mercado Pago, InfinitePay | `BASE_FERRAMENTAS` |
 | "Sou MEI e vou receber Bolsa Família?" | gov.br (CadÚnico) | `BASE_INSTITUCIONAL` |
 | "Fazer lançamento de infoproduto?" | Érico Rocha (guru) + gov.br para regulamentação | `BASE_CONHECIMENTO` + `BASE_INSTITUCIONAL` |
+| "Como emitir meu DAS?" | Guia Sebrae-SC (PGMEI, passo-a-passo) + gov.br | `BASE_INSTITUCIONAL` |
+| "Como dar baixa no MEI?" | Guia Sebrae-SC (roteiro oficial) + gov.br | `BASE_INSTITUCIONAL` |
+| "Quais certidões preciso para licitação?" | Guia Sebrae-SC | `BASE_INSTITUCIONAL` |
+| "Alterar dados do CCMEI?" | Guia Sebrae-SC + gov.br | `BASE_INSTITUCIONAL` |
+| "Vou pedir empréstimo — no que devo prestar atenção?" | Guia Sebrae-SC (10 dicas) + Pronampe/Procred 360 | `BASE_INSTITUCIONAL` |
 
 ---
 
@@ -546,6 +554,7 @@ web/src/lib/prompts/
 - `influencers_impulso_stone.xlsx` — planilha de influenciadores nichados com afinidade MEI (4-5)
 - `Geração de Valor – Flávio Augusto.pdf` (+ vol 2 e 3) — lidos na íntegra para enriquecimento
 - `O Poder do Hábito - Charles Duhigg.pdf` — **obsoleto** (5pp, resumo); substituído por leitura integral do PDF original em 21/04/2026
+- `Guia-Definitivo-MEI-Sebrae-SC.pdf` — e-book Sebrae-SC (56pp, 2015) com procedimentos oficiais do MEI. Integrado em `institucional.ts` como "GUIA SEBRAE — PROCEDIMENTOS PRATICOS" em 21/04/2026 (v1.3). Valores numéricos do PDF **não** foram usados (desatualizados); apenas os procedimentos (válidos) e a pedagogia (perfil do empreendedor, 10 dicas de crédito, princípios de gestão).
 
 ### 9.3 Campos de perfil do usuário (Supabase `public.users`)
 
@@ -571,4 +580,9 @@ web/src/lib/prompts/
 
 ---
 
-**FIM do PRD v1.0** · Próxima revisão prevista quando `livros.ts` atingir 40k tokens OU quando arquitetura mudar para RAG.
+**FIM do PRD v1.3** · Changelog:
+- **v1.3 (21/04/2026)**: Integração do Guia Definitivo do MEI (Sebrae-SC) em `institucional.ts` — +2.050 tokens no BASE_INSTITUCIONAL (~2.050 → ~4.100). Seção 5.1 expandida, seção 5.5 com 5 novas perguntas endereçadas, anexo 9.2 atualizado.
+- **v1.2 (21/04/2026)**: Curadoria de livros.ts — 3 livros removidos por desalinhamento com MEI BR + 3 reduzidos drasticamente.
+- **v1.0**: Versão inicial.
+
+Próxima revisão prevista quando `livros.ts` atingir 40k tokens OU quando arquitetura mudar para RAG.
