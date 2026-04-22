@@ -964,9 +964,64 @@ MARKETING E VENDAS:
 - 8Ps do Marketing Digital (Conrado Adolpho): Conceitos centrais no perfil. \
 Complemento: funil de vendas em 3 etapas — Topo (atrair com conteudo sobre dores), \
 Meio (quebrar objecoes), Fundo (oferta irresistivel para quem ja esta pronto).
-- Bora Vender (Alfredo Soares): Use redes como canais de venda ativa. Construa \
-autoridade com conteudo, responda rapido, crie funil simples (conteudo → direct → oferta), \
-peca indicacoes ativamente.
+- Bora Vender (Alfredo Soares, Editora Gente 2019, 194pp — co-fundador XTECH \
+COMMERCE / VTEX): Conceitos centrais no perfil Alfredo Soares. Frameworks do \
+livro aplicaveis ao MEI: \
+\
+CHA — tripe do vendedor: (C)onhecimento (produto, mercado, concorrencia, \
+cliente), (H)abilidades (escuta, empatia, perguntas), (A)titudes (persistencia, \
+disciplina, integridade). Vendedor ruim falha em A antes de C ou H. \
+\
+4 MITOS DE VENDAS (p.59) a desconstruir: (1) vendedor precisa ter labia — falso, \
+escutar vende mais; (2) vendedor nasce pronto — falso, se aprende; (3) cliente \
+tem sempre razao — falso, cliente toxico drena; (4) vender e para poucos — \
+falso, todos vendemos o tempo todo. \
+\
+5 DICAS DE THIAGO CONCER (via Bora Vender, p.62) para perder medo de vender: \
+(1) goste do que vende (sem isso nao sustenta); (2) traduza cada caracteristica \
+em beneficio claro; (3) abra com declaracao de forca ("sou X, ajudo Y a \
+alcancar Z"); (4) valorize historia da empresa; (5) aproxime-se do cliente via \
+redes sociais antes de abordar (curtir, comentar, plantar contexto). \
+\
+JORNADA DO CONSUMIDOR EM 4 ESTAGIOS (p.119): (I) Aprendizado/Descoberta — nao \
+sabe que tem problema; (II) Reconhecimento do Problema — sente a dor; (III) \
+Consideracao da Solucao — compara alternativas; (IV) Decisao de Compra — \
+pronto pra pagar. Conteudo e oferta mudam em cada estagio. Tentar fechar em I \
+e atropelar; esperar demais em IV e perder para o concorrente. \
+\
+SPIN SELLING APLICADO (Neil Rackham, p.125): (S)ituacao — diagnostico; \
+(P)roblema — investigar dor; (I)mplicacao — dimensionar custo da dor; \
+(N)ecessidade de solucao — cliente pede a solucao. Roteiro que descobre dor \
+antes da oferta. \
+\
+9 GATILHOS MENTAIS PARA CONSTRUIR OFERTAS (p.129-130): reciprocidade, escassez, \
+autoridade, comprometimento/consistencia, medo (da inacao), prova social, \
+afinidade, emocao, polemica. Todos eticos quando lastreados em verdade. \
+\
+ESTATISTICAS-ANCORA DE FOLLOW-UP (p.127): 48% dos vendedores nao fazem nenhum \
+follow-up; 10% fazem mais de 3 contatos; 80% das vendas acontecem entre o 5o e \
+o 12o contato. Quem persiste com metodo vende. Quem desiste no primeiro "vou \
+pensar" nao. \
+\
+17 ETAPAS PRATICAS PARA MONTAR LOJA VIRTUAL (cap. bonus, com Bruno de Oliveira, \
+p.166-174): (1) Proposito; (2) Valores; (3) Planejamento (o que vendo, pra \
+quem, fornecedor); (4) Nome; (5) Dominio (.com.br + .com); (6) E-mail \
+profissional; (7) Telefone fixo/celular exclusivos; (8) Identidade visual \
+(logo, favicon); (9) Redes sociais; (10) Montar time (ou decidir solo); (11) \
+Legalizacao (MEI, contador, Simples); (12) MVP do produto; (13) Montar loja \
+virtual; (14) Usar gigantes a favor (marketplaces); (15) Fugir dos 3 erros \
+fatais (tratar como "lojinha", focar no produto e nao na audiencia, nao \
+divulgar); (16) Profissionalizar; (17) Planos de contingencia. \
+\
+Frases-ancora: "Pensamento nao gera fluxo de caixa." (p.36) / "Faca rapido, \
+erre rapido, aprenda rapido, refaca rapido." (p.69, mantra XTECH) / "No \
+mundo digital nao existe 'eu acho', existe metrica." (p.111) / "Nao venda \
+pela internet, use a internet para vender." (p.177) / "Muito risco, pouco \
+ego." (p.134). \
+\
+Use quando: MEI precisa de manual pratico de vendas consultivas, quer montar \
+ou estruturar ecommerce, ou precisa de frameworks tangiveis (CHA, SPIN, funil, \
+9 gatilhos, jornada) para profissionalizar o comercial do negocio.
 - Comece pelo Porque (Simon Sinek, 237pp — titulo original "Start with Why"; em \
 portugues de Portugal "Primeiro Pergunte Porque"): livro-manifesto sobre \
 proposito organizacional. Tese: organizacoes e lideres que inspiram comportamento \
