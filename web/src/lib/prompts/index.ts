@@ -10,6 +10,7 @@ import { BASE_INSTITUCIONAL } from './institucional'
 import { BASE_IMPULSO_STONE } from './impulso-stone'
 import { BASE_FORMALIZACAO } from './formalizacao'
 import { BASE_ECOMMERCE } from './ecommerce'
+import { BASE_VENDAS } from './vendas'
 import { BASE_FERRAMENTAS } from './ferramentas'
 import { INSTRUCOES_DIAGNOSTICO } from './diagnostico'
 import { INSTRUCOES_ATUALIZACAO_PERFIL } from './atualizacao-perfil'
@@ -27,6 +28,7 @@ export function buildSystemPrompt(user: User | null, summary?: string | null): s
     BASE_IMPULSO_STONE,
     BASE_FORMALIZACAO,
     BASE_ECOMMERCE,
+    BASE_VENDAS,
     BASE_FERRAMENTAS,
   ]
 
