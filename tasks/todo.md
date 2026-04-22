@@ -468,3 +468,53 @@ Fix: alinhado em `"crescimento"` em 3 arquivos (profile, admin, admin/citations)
 Todos retornaram typecheck limpo. Build (`next build`) OK, 23 páginas. Deploy via `vercel --prod` em 36s. QA visual em produção após deploy confirmou todos os fixes funcionando no dark mode.
 
 Commit: `9571014 fix(theme): conserta contraste no dark + alinha estagio + acentos` (16 arquivos, +33/-30)
+
+---
+
+## Etapa 22: Bloco vendas dedicado — profundidade em "vender mais" ✅ (2026-04-22)
+
+Teste com empreendedor real sinalizou que a sessão "vender mais" estava rasa. Mapeamento confirmou: o conteúdo vivia espalhado entre `impulso-stone.ts` (módulo 2 prometia "11 estratégias Instagram" / "13 estratégias WhatsApp" sem listar), perfis de Érico/Conrado/Pedro em `conhecimento.ts`, 3 linhas sobre Bora Vender em `livros.ts`. Nada sistemático sobre scripts, objeções, negociação, copywriting, follow-up, pós-venda, indicação, disciplina de vendedor.
+
+### Entregáveis
+
+- **Novo `web/src/lib/prompts/vendas.ts`** (548 linhas, ~11k tokens) — 10 seções: (1) princípios fundamentais (CHA, 4 mitos); (2) cliente ideal (8 perguntas, jornada 4 estágios, 20/80); (3) scripts de abordagem (declaração de força, DM Insta, WhatsApp, cold mail, balcão); (4) **11 estratégias Instagram + 13 estratégias WhatsApp** destrinchadas com exemplo por nicho (dívida do Impulso Stone finalmente paga); (5) SPIN Selling com roteiro de 10 perguntas; (6) tratamento de 6 objeções clássicas do MEI BR (cada uma com 2-3 respostas prontas); (7) copywriting (AIDA/PAS/4U/BAB + 9 gatilhos mentais); (8) régua de follow-up em 7 tempos + técnicas de fechamento; (9) pós-venda, recompra, indicação e reativação (Carnegie aplicado); (10) mentalidade e rotina de vendedor solo (Alfredo + Joel Jota moderando hustle).
+- **Alfredo Soares (@tioricco) como 13º guru** em `conhecimento.ts` (+59 linhas, padrão denso tipo Érico Rocha) — bio XTECH/VTEX, tese de execução, CHA, funil 4 fundamentos, jornada, SPIN, 9 gatilhos, LTV≥3×CAC, 4 estatísticas-âncora de follow-up, estratégia War, 8 frases-chave.
+- **Entrada Bora Vender expandida** em `livros.ts` de 3 → ~55 linhas, foco em frameworks (CHA, 4 mitos, 5 dicas Thiago Concer, jornada, SPIN, 9 gatilhos, 17 etapas do capítulo bônus de e-commerce, estatísticas de follow-up).
+- **Módulo 2 do Impulso Stone enxugado** — deixou de prometer "11 estratégias Instagram" sem entregar, vira cross-reference sutil ao bloco novo.
+- **`index.ts`** importa `BASE_VENDAS` e insere entre ecommerce e ferramentas.
+
+### Fonte principal
+
+Livro **"Bora Vender: a melhor estratégia é atitude"** (Alfredo Soares, Editora Gente 2019, 194pp), lido na íntegra por subagente. Trechos e frases-âncora citados com número de página quando literal (p.36, 57, 62, 69, 72, 90, 106, 107, 111, 119, 120, 125, 127, 129-130, 134, 166-174, 177).
+
+### Impacto
+
+- Prompt: 59k → ~70k tokens (~35% do contexto 200k, ainda com folga).
+- 5 commits de código + spec (`docs/superpowers/specs/2026-04-22-bloco-vendas-design.md`) + plano (`docs/superpowers/plans/2026-04-22-bloco-vendas.md`).
+- Deploy: `dpl_8uLq33VJQ2WseYSY2tQ2rpcGVu3S` → https://maximpulso.com.br (build em 16s, 37s total).
+
+### Cuidados editoriais aplicados
+
+- Linguagem hustle do Alfredo moderada com equilíbrio do Joel Jota (saúde > família > trabalho, disciplina > motivação).
+- Táticas de "percepção" no limite ético do livro (foto em escritório emprestado, 0800 com 3 nomes) NÃO incorporadas.
+- Conteúdo datado (Buscapé, Socialrocket que fere ToS) filtrado.
+- M&A/valuation do cap. 9 ignorado (inaplicável a MEI).
+- Plaintext ASCII sem acentos no system prompt (convenção do projeto).
+
+Commits sequenciais:
+- `42595ce` docs(spec): bloco vendas
+- `231c829` docs(plan): plano de implementação
+- `cf0f4e2` feat(prompts): vendas.ts com 10 seções (+548)
+- `e948c52` feat(prompts): Alfredo Soares 13º guru (+59)
+- `86e0aeb` chore(prompts): enxuga módulo 2 Impulso Stone (-5 +5)
+- `8b415f4` feat(prompts): expande Bora Vender em livros.ts (+58 -3)
+- `636ec7e` feat(prompts): integra BASE_VENDAS no system prompt (+2)
+
+### Próximo passo manual
+
+Teste interativo no chat de produção com 3 prompts de validação:
+1. "Como vender mais na internet?" — deve trazer frameworks concretos (CHA, jornada, SPIN) + exemplos do setor do usuário, não bullets genéricos.
+2. "Meu cliente fala que tá caro, o que faço?" — deve trazer pelo menos 2 das 3 respostas prontas da seção 6 (ancoragem reversa, resumo de valor, parcelamento).
+3. "Quais são as 11 estratégias de Instagram do Impulso Stone?" — deve listar as 11 com números (a dívida foi paga).
+
+Observar `/admin/citations` ao longo dos próximos dias para confirmar que "Alfredo Soares" e "Bora Vender" aparecem como fontes citadas. Se não aparecerem, pode ser preciso atualizar `lib/observability/citations-catalog.ts`.
