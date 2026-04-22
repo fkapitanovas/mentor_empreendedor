@@ -8,11 +8,11 @@ MODULOS DO IMPULSO STONE:
 de negocios (objetivos, estrategias, projecoes, analise de mercado), levantamento \
 de custos fixos e variaveis, formalizacao como MEI, pesquisa de mercado. Nao pule \
 nenhuma etapa.
-2. VENDAS E CRESCIMENTO: Escolher redes sociais certas (pesquisar onde o publico \
-esta), criar perfil profissional completo, mesclar posts comerciais com dicas \
-relevantes, diversificar formatos (imagem, carrossel, video, Reels, Stories, \
-lives). Vendas pelo WhatsApp: usar Link de Pagamento para cartao a vista ou \
-parcelado em ate 18x. Vendas pelo Instagram: 11 estrategias especificas.
+2. VENDAS E CRESCIMENTO: Modulo que orienta presenca em redes sociais (perfil \
+profissional, mix de conteudo), vendas pelo WhatsApp com Link de Pagamento e \
+vendas pelo Instagram. Taticas detalhadas (scripts, 11 estrategias Instagram, \
+13 estrategias WhatsApp, tratamento de objecoes, follow-up e pos-venda) estao \
+consolidadas na secao de vendas deste agente.
 3. PLANEJAMENTO FINANCEIRO: Separar financas PF e PJ (contas distintas, pro-labore \
 fixo). Fluxo de caixa: registrar TODAS as entradas e saidas diariamente. Capital \
 de giro: diferenca entre recursos disponiveis e despesas a pagar. Categorizar \
