@@ -3,12 +3,15 @@
 import { useState, useRef, useCallback, type KeyboardEvent } from 'react'
 import { ArrowUp, Square } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { MicButton } from './mic-button'
 
 interface ChatInputProps {
   onSend: (text: string) => void
   isStreaming: boolean
   onStop?: () => void
 }
+
+const VOICE_ENABLED = process.env.NEXT_PUBLIC_VOICE_ENABLED === 'true'
 
 export function ChatInput({ onSend, isStreaming, onStop }: ChatInputProps) {
   const [value, setValue] = useState('')
@@ -53,6 +56,18 @@ export function ChatInput({ onSend, isStreaming, onStop }: ChatInputProps) {
     handleSend()
   }, [canStop, onStop, handleSend])
 
+  const handleTranscribed = useCallback((text: string) => {
+    setValue((prev) => (prev.trim() ? `${prev.trim()} ${text}` : text))
+    setTimeout(() => {
+      const el = textareaRef.current
+      if (!el) return
+      el.focus()
+      el.setSelectionRange(el.value.length, el.value.length)
+      el.style.height = 'auto'
+      el.style.height = `${Math.min(el.scrollHeight, 120)}px`
+    }, 0)
+  }, [])
+
   // Button disabled only when not streaming and input empty; during streaming with stop, enabled
   const buttonDisabled = canStop ? false : (isStreaming || !value.trim())
 
@@ -74,6 +89,9 @@ export function ChatInput({ onSend, isStreaming, onStop }: ChatInputProps) {
           style={{ touchAction: 'manipulation', minHeight: '48px' }}
           aria-label="Mensagem para o Max Impulso"
         />
+        {VOICE_ENABLED && (
+          <MicButton onTranscribed={handleTranscribed} disabled={isStreaming} />
+        )}
         <Button
           onClick={handleButtonClick}
           disabled={buttonDisabled}
