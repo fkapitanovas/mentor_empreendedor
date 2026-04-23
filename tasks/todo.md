@@ -518,3 +518,85 @@ Teste interativo no chat de produção com 3 prompts de validação:
 3. "Quais são as 11 estratégias de Instagram do Impulso Stone?" — deve listar as 11 com números (a dívida foi paga).
 
 Observar `/admin/citations` ao longo dos próximos dias para confirmar que "Alfredo Soares" e "Bora Vender" aparecem como fontes citadas. Se não aparecerem, pode ser preciso atualizar `lib/observability/citations-catalog.ts`.
+
+---
+
+## Etapa 23: Input de áudio via Groq Whisper Turbo ✅ (2026-04-22)
+
+Empreendedores MEIs comunicam naturalmente por áudio no WhatsApp. Adicionar input de voz no chat reduz fricção em mobile/ambiente barulhento (feira, balcão, carro) e expande cenários de uso. Validado em produção com usuário real: "funcionou perfeitamente".
+
+### Entregáveis
+
+- **Novo `web/src/lib/groq.ts`** (17 linhas) — wrapper lazy do SDK Groq com `getGroqClient()` + `isGroqConfigured()`.
+- **Novo `web/src/app/api/transcribe/route.ts`** (93 linhas) — POST multipart, valida sessão Supabase, chama `whisper-large-v3-turbo` com `language='pt'` + `temperature=0`, retorna `{text}`. Runtime `nodejs`, `maxDuration=60`. Logs estruturados JSON com `userId/audioBytes/charCount/groqLatencyMs/success` — **sem** texto transcrito. 6 códigos HTTP mapeados: 401/400/413/429/502/503.
+- **Novo `web/src/hooks/use-voice-recorder.ts`** (246 linhas) — hook encapsulando `MediaRecorder`. Interface: `{ state, elapsedMs, error, startRecording, stopRecording, cancelRecording }`. MIME detection (WebM/Opus → WebM → MP4 → default). Cap 2min auto-stop, min 1s. Cleanup no unmount. Áudio com `echoCancellation + noiseSuppression + autoGainControl`.
+- **Novo `web/src/components/chat/mic-button.tsx`** (159 linhas) — 3 estados visuais Tropical Maximalista: `idle` (Mic, bg-popover), `recording` (Square, bg-coral pulsando + timer MM:SS ao lado), `transcribing` (Loader2 spinning, bg-sun). Sonner toasts para 7 erros distintos (permissão negada, sem mic, browser não suportado, áudio curto, áudio longo, rate limit, sem conexão). Autodetecta suporte de browser — se falha, não renderiza.
+- **`chat-input.tsx` modificado** (+18 linhas) — MicButton entre textarea e send quando `NEXT_PUBLIC_VOICE_ENABLED=true`. Callback `handleTranscribed` **anexa** ao final do value atual (não sobrescreve rascunho), foca textarea e posiciona cursor ao fim.
+- **`package.json`** — adicionada dep `groq-sdk` (~300KB).
+- **`.env.local.example`** — documenta `GROQ_API_KEY` e `NEXT_PUBLIC_VOICE_ENABLED`.
+
+### Decisões editoriais
+
+- **Tap-to-toggle + preview editável** (vs hold-to-record direto). Empreendedor confere o texto antes de enviar, evitando "frustração silenciosa" por erros de transcrição em ambiente barulhento.
+- **Botão sempre visível** (vs mic-quando-vazio/send-quando-digitado). Não esconde affordance de quem nunca usou.
+- **Zero storage de áudio** — Blob vai da memória Node direto pro Groq e some. Sem LGPD, sem storage cost.
+- **Feature flag `NEXT_PUBLIC_VOICE_ENABLED`** — build-time constant, esconde MicButton se não "true".
+- **Fallback gracioso** — se browser não suporta MediaRecorder OU flag desligada, MicButton não renderiza. Sem erro, sem UI quebrada.
+
+### Stack técnica
+
+- **Groq `whisper-large-v3-turbo`** — PT-BR excelente, ~3× mais rápido que Whisper Large v3, mesma qualidade. Custo ~$0.0007/min.
+- **MediaRecorder API** — WebM/Opus nativo, fallback MP4 para Safari iOS <18.
+- **Sonner** para toasts (já estava instalado).
+- **Runtime Node** no endpoint (não edge — SDK Groq precisa Node APIs + multipart).
+
+### Impacto
+
+- **Custo estimado**: 100 MEIs × 10min/dia = ~$21/mês. 200 MEIs × 15min/dia = ~$63/mês. Rodinha.
+- **Token budget do prompt**: ZERO impacto (é backend). Prompt permanece ~70k tokens.
+- **Código novo**: ~515 linhas (4 arquivos novos + 1 modificado).
+- **Dependência nova**: `groq-sdk` (única).
+- **Deploy**: `dpl_24pCT1bdbQXKUXJq4fUqVEma2TQn` em https://maximpulso.com.br.
+
+### Smoke test em produção
+
+Usuário testou fluxo completo em mobile:
+1. Tap no mic → permissão liberada → botão fica coral pulsando com timer
+2. Falar pergunta por ~8s → tap de novo → loader amarelo → texto aparece no textarea
+3. Editar se necessário → tap em send → resposta normal do Max chega por streaming
+
+**Resultado: "funcionou perfeitamente".**
+
+### Env vars Vercel (production)
+
+- `GROQ_API_KEY` (sensível, encrypted)
+- `NEXT_PUBLIC_VOICE_ENABLED=true` (build-time)
+
+Preview ainda não configurado — Vercel CLI tem bug com "all preview branches" em `vercel env add`. Se precisar habilitar em preview (ex: testar PRs antes do merge), adicionar manualmente no dashboard em Settings → Environment Variables.
+
+Commits sequenciais:
+- `2506704` docs(spec): input de áudio via Groq Whisper Turbo
+- `9594a10` docs(plan): plano de implementação
+- `a6f59e8` chore(deps): adiciona groq-sdk
+- `5e93627` feat(audio): wrapper lazy do cliente Groq
+- `edf2ee8` feat(audio): endpoint /api/transcribe
+- `44d738c` feat(audio): hook useVoiceRecorder (MediaRecorder)
+- `950f449` feat(audio): componente MicButton com 3 estados
+- `806edea` feat(audio): integra MicButton no chat-input
+
+### Pendências pós-deploy
+
+- [ ] **Migrar Groq free tier → pay-per-token** (quando for o momento)
+  - **Quando**: após 1-2 semanas de uso em produção, validando qualidade da transcrição em mobile real com múltiplos empreendedores (não só o smoke test inicial). Se houver ≥20 MEIs usando áudio regularmente e/ou começar a bater no rate limit (30 req/min, 14.400 req/dia do free tier), é hora de migrar.
+  - **Como**: em [console.groq.com](https://console.groq.com) → Billing → adicionar método de pagamento e ativar plano pay-per-token. A `GROQ_API_KEY` não muda (é a mesma key); o plano é associado à conta. Preço: ~$0.04/hora de áudio no Whisper Turbo. Limite de rate vai a 60 req/min e 28.800 req/dia (conforme tier).
+  - **Sinais que indicam hora de migrar**:
+    1. Logs no Vercel mostrando `error: "rate_limited"` em `/api/transcribe`
+    2. Toasts "Muitas gravações seguidas. Aguarda uns segundos." reportados por usuários
+    3. Crescimento consistente de volume (>500 transcrições/dia sustentadas)
+  - **Antes de migrar**: validar qualidade PT-BR com ≥5 áudios reais de nichos diferentes (confeiteira, esteticista, prestador de serviço, loja, MEI em geral) para ter certeza que o modelo atende antes de pagar.
+
+- [ ] **Habilitar GROQ_API_KEY + NEXT_PUBLIC_VOICE_ENABLED em Preview Vercel** — via dashboard (Vercel CLI tem bug para "all preview branches"). Permite testar PRs com áudio antes do merge.
+
+- [ ] **Atualizar `lib/observability/citations-catalog.ts`** se Alfredo Soares não aparecer em `/admin/citations` depois de alguns dias — verificar regex do nome.
+
+- [ ] **Considerar voice-to-voice** (Claude responder em áudio via TTS) como feature futura. Feature separada, custo e complexidade adicionais. Só depois que input por áudio estiver consolidado e validado em mobile real.
